@@ -98,6 +98,22 @@ export default function Features() {
       {/* Section Title */}
       <SectionTitle title="مميزات النظام" />
 
+      {/* Introductory text matching Figma node 201:1021 */}
+      <div className="flex flex-col gap-5 md:gap-7 items-center text-center max-w-[968px] mx-auto px-4">
+        <p
+          className="font-['Almarai:Regular'] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] leading-relaxed md:leading-[38px] text-black m-0"
+          dir="auto"
+        >
+          من خلال منصة حافظ، نسعى إلى جعل رحلة حفظ القرآن الكريم ومراجعته أكثر سهولة وتنظيمًا واستمرارية. توفر المنصة بيئة تساعد المستخدمين على تنظيم الحفظ، متابعة التقدم، وتطوير عادة يومية ثابتة مع كتاب الله. نؤمن أن الاستمرار هو أساس النجاح في رحلة الحفظ، لذلك صُممت حافظ لتساعدك على تنظيم وقتك، متابعة إنجازاتك، وتذكّرك بمهام الحفظ والمراجعة، بما يتناسب مع أهدافك ومستواك.
+        </p>
+        <p
+          className="font-['Almarai:Bold'] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] leading-relaxed md:leading-[36px] text-[#1a5a81] m-0"
+          dir="auto"
+        >
+          حافظ ليست مجرد أداة لتنظيم الحفظ، بل رفيق في رحلة القرآن، يساعدك على بناء عادة مستدامة، متابعة تقدمك، والاستمرار بخطوات ثابتة نحو إتقان ما حفظت.
+        </p>
+      </div>
+
       {/* Feature cards grid */}
       <div className="flex flex-wrap gap-5 md:gap-[21px] items-center justify-center w-full">
         {features.map((feature) => (

@@ -2,7 +2,6 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 
 import Hero from '../components/home/Hero';
-import About from '../components/home/About';
 import Features from '../components/home/Features';
 import Users from '../components/home/Users';
 import Institutions from '../components/home/Institutions';
@@ -26,7 +25,6 @@ export default function Home() {
 
       <main className="flex-1 w-full">
         <Hero />
-        <About />
         <Features />
         <Users />
         <Institutions />

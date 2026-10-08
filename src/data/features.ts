@@ -9,9 +9,9 @@ export interface Feature {
 
 export const features: Feature[] = [
   {
-    id: 'teachers',
-    icon: IMAGES.featurePresentation,
-    title: 'إدارة المعلمين',
+    id: 'circles',
+    icon: IMAGES.featureCircles,
+    title: 'إدارة الحلقات',
     description:
       'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربي',
   },
@@ -23,16 +23,16 @@ export const features: Feature[] = [
       'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربي',
   },
   {
-    id: 'circles',
-    icon: IMAGES.featureCircles,
-    title: 'إدارة الحلقات',
+    id: 'teachers',
+    icon: IMAGES.featurePresentation,
+    title: 'إدارة المعلمين',
     description:
       'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربي',
   },
   {
-    id: 'attendance',
-    icon: IMAGES.featureAttendance,
-    title: 'الحضور',
+    id: 'memorization',
+    icon: IMAGES.featureMemorization,
+    title: 'الحفظ و المراجعة',
     description:
       'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربي',
   },
@@ -44,9 +44,9 @@ export const features: Feature[] = [
       'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربي',
   },
   {
-    id: 'memorization',
-    icon: IMAGES.featureMemorization,
-    title: 'الحفظ و المراجعة',
+    id: 'attendance',
+    icon: IMAGES.featureAttendance,
+    title: 'الحضور',
     description:
       'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربي',
   },
@@ -59,8 +59,8 @@ export interface WhyItem {
 }
 
 export const whyItems: WhyItem[] = [
-  { id: 'management', icon: IMAGES.whyIconSettings, label: 'تسهيل الإدارة' },
-  { id: 'data', icon: IMAGES.whyIconData, label: 'بيانات واضحة' },
-  { id: 'tracking', icon: IMAGES.whyIconActivity, label: 'متابعة مستمرة' },
   { id: 'organization', icon: IMAGES.whyIconDashboard, label: 'تنظيم افضل' },
+  { id: 'tracking', icon: IMAGES.whyIconActivity, label: 'متابعة مستمرة' },
+  { id: 'data', icon: IMAGES.whyIconData, label: 'بيانات واضحة' },
+  { id: 'management', icon: IMAGES.whyIconSettings, label: 'تسهيل الإدارة' },
 ];

@@ -17,7 +17,22 @@ export default function CTA() {
         py-12 md:py-16 px-4 sm:px-8
       "
     >
-      {/* Decorative Arabic bg watermark */}
+      {/* Diagonal Ribbon matching Figma node 196:515 */}
+      <div className="absolute top-0 right-0 w-[160px] sm:w-[220px] md:w-[280px] h-[160px] sm:h-[220px] md:h-[280px] pointer-events-none overflow-hidden z-20">
+        <div
+          className="
+            absolute bg-[#cab178] text-white
+            font-['Almarai:Bold'] text-[14px] sm:text-[18px] md:text-[22px]
+            py-2 sm:py-3 text-center shadow-md
+            w-[240px] sm:w-[320px] md:w-[400px]
+            top-[30px] sm:top-[45px] md:top-[60px] -right-[55px] sm:-right-[70px] md:-right-[85px]
+            rotate-45 select-none tracking-wide
+          "
+          dir="auto"
+        >
+          اطلب نسختك الآن!
+        </div>
+      </div>
       <div className="-translate-x-1/2 absolute flex h-[350px] items-center left-1/2 top-0 w-[1440px] pointer-events-none opacity-30">
         {Array.from({ length: 5 }).map((_, i) => (
           <ArabicBg
