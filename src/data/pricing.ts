@@ -12,36 +12,27 @@ export interface PricingPlan {
 
 export const pricingPlans: PricingPlan[] = [
   {
-    id: 'primary',
-    title: 'المدرسة الابتدائية',
-    description: 'هبطت بنا الطائرة حيث مطار الكويت ',
-    price: 'DA 49900 / سنويا',
-    originalPrice: '1000 دج',
-    discount: 'خصم 20%',
-    bookCover: IMAGES.bookCoverUniversity, // imgBookCover7
-  },
-  {
-    id: 'middle',
+    id: 'plan-1',
     title: 'المدرسة المتوسطة',
-    description: 'هبطت بنا الطائرة حيث مطار الكويت ',
+    description: 'هبطت بنا الطائرة حيث مطار الكويت',
     price: 'DA 49900 / سنويا',
     originalPrice: '1000 دج',
     discount: 'خصم 20%',
     bookCover: IMAGES.bookCoverUniversity, // imgBookCover7
   },
   {
-    id: 'high',
-    title: 'المدرسة الثانوية',
-    description: 'هبطت بنا الطائرة حيث مطار الكويت ',
+    id: 'plan-2',
+    title: 'المدرسة المتوسطة',
+    description: 'هبطت بنا الطائرة حيث مطار الكويت',
     price: 'DA 49900 / سنويا',
     originalPrice: '1000 دج',
     discount: 'خصم 20%',
     bookCover: IMAGES.bookCoverUniversity, // imgBookCover7
   },
   {
-    id: 'university',
-    title: 'المدرسة الجامعية',
-    description: 'هبطت بنا الطائرة حيث مطار الكويت ',
+    id: 'plan-3',
+    title: 'المدرسة المتوسطة',
+    description: 'هبطت بنا الطائرة حيث مطار الكويت',
     price: 'DA 49900 / سنويا',
     originalPrice: '1000 دج',
     discount: 'خصم 20%',
