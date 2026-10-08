@@ -527,18 +527,6 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           </motion.a>
         </div>
 
-        {/* Line under mobile navbar */}
-        <div
-          className="
-            block md:hidden
-            h-[2px] w-full
-            bg-gradient-to-r
-            from-transparent
-            via-[#cab178]
-            to-transparent
-            shadow-xs
-          "
-        />
       </motion.header>
 
       {/* ── Mobile Slide-out Drawer ── */}
