@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IMAGES } from '../../constants/images';
 import { navLinks } from '../../data/navigation';
+import type { NavLink } from '../../data/navigation';
 import ArabicBg from '../common/ArabicBg';
 
 interface NavbarProps {
@@ -9,16 +10,82 @@ interface NavbarProps {
 }
 
 /**
- * Site-wide Navbar with Framer Motion animations.
- * - Fixed across the entire web page with glassmorphism blur (backdrop-blur-md).
- * - Animated mobile button on the RIGHT side, mobile sidebar on the RIGHT side with spring slide.
- * - AnimatePresence for butter-smooth mobile drawer transitions.
- * - Staggered entrance for drawer links.
- * - Button hover & tap physics.
+ * Site-wide Navbar with Framer Motion animations & dynamic active link coloring.
+ * - Colors the clicked title in gold (#cab178) with animated underline.
+ * - Automatically tracks active section on scroll via scroll spy.
  * - Supports multi-page navigation (Home vs Terms & Conditions).
+ * - Animated mobile drawer from the right.
  */
 export default function Navbar({ activePage = 'home' }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string>(() => {
+    if (activePage === 'terms') return 'terms';
+    const hash = window.location.hash;
+    if (hash === '#features') return 'features';
+    if (hash === '#pricing') return 'offers';
+    if (hash === '#contact') return 'support';
+    if (hash === '#terms') return 'terms';
+    return 'home';
+  });
+
+  // Sync active link with hash changes and activePage prop
+  useEffect(() => {
+    if (activePage === 'terms') {
+      setActiveId('terms');
+      return;
+    }
+
+    const updateFromHash = () => {
+      const hash = window.location.hash;
+      if (hash === '#features') setActiveId('features');
+      else if (hash === '#pricing') setActiveId('offers');
+      else if (hash === '#contact') setActiveId('support');
+      else if (hash === '#terms') setActiveId('terms');
+      else if (hash === '#home' || !hash) setActiveId('home');
+    };
+
+    updateFromHash();
+    window.addEventListener('hashchange', updateFromHash);
+    return () => window.removeEventListener('hashchange', updateFromHash);
+  }, [activePage]);
+
+  // Scroll Spy: dynamically highlight the title matching the section on screen
+  useEffect(() => {
+    if (activePage !== 'home') return;
+
+    const sections = [
+      { id: 'home', linkId: 'home' },
+      { id: 'features', linkId: 'features' },
+      { id: 'pricing', linkId: 'offers' },
+      { id: 'contact', linkId: 'support' },
+    ];
+
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPos = window.scrollY + 250;
+
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const el = document.getElementById(sections[i].id);
+            if (el) {
+              const top = el.offsetTop;
+              if (scrollPos >= top) {
+                setActiveId(sections[i].linkId);
+                break;
+              }
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activePage]);
 
   // Prevent background scroll when mobile drawer is open
   useEffect(() => {
@@ -32,6 +99,61 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
     };
   }, [mobileMenuOpen]);
 
+  // Handle clicking a navigation link
+  const handleNavClick = (link: NavLink, e: React.MouseEvent) => {
+    setActiveId(link.id);
+    setMobileMenuOpen(false);
+
+    if (link.id === 'terms') {
+      window.location.hash = '#terms';
+      return;
+    }
+
+    if (activePage === 'terms') {
+      // Navigating from Terms back to Home section
+      window.location.hash = link.href;
+    } else {
+      // Smooth scroll on Home page
+      const targetId = link.href.replace('#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', link.href);
+      }
+    }
+  };
+
+  // Handle CTA button click
+  const handleCtaClick = () => {
+    setActiveId('offers');
+    setMobileMenuOpen(false);
+    if (activePage === 'terms') {
+      window.location.hash = '#pricing';
+    } else {
+      const el = document.getElementById('pricing') || document.getElementById('cta');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', '#pricing');
+      }
+    }
+  };
+
+  // Handle Logo click
+  const handleLogoClick = (e: React.MouseEvent) => {
+    setActiveId('home');
+    setMobileMenuOpen(false);
+    if (activePage === 'terms') {
+      window.location.hash = '#home';
+    } else {
+      const el = document.getElementById('home');
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', '#home');
+      }
+    }
+  };
 
   return (
     <>
@@ -56,12 +178,7 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
               type="button"
               whileHover={{ scale: 1.05, boxShadow: '0px 10px 20px rgba(0,0,0,0.15)' }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const el = document.getElementById('pricing') || document.getElementById('cta');
-                if (el) {
-                  el.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
+              onClick={handleCtaClick}
               className="
                 bg-[#cab178] hover:bg-[#bfa56a] text-white
                 font-['Almarai:Bold'] font-bold
@@ -76,12 +193,11 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
             </motion.button>
           </div>
 
-          {/* Center: nav links */}
+          {/* Center: nav links with dynamic active coloring */}
           <nav aria-label="التنقل الرئيسي">
             <ul className="flex gap-6 lg:gap-8 items-center list-none m-0 p-0" dir="rtl">
               {navLinks.map((link) => {
-                const isLinkActive =
-                  activePage === 'terms' ? link.id === 'terms' : link.id === 'home';
+                const isLinkActive = activeId === link.id;
 
                 return (
                   <motion.li
@@ -91,12 +207,16 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
                   >
                     <a
                       href={link.href}
+                      onClick={(e) => handleNavClick(link, e)}
                       dir="auto"
                       className={`
-                        font-['Almarai:Regular'] not-italic text-[18px] lg:text-[20px] leading-[normal]
-                        whitespace-nowrap no-underline transition-colors duration-200
-                        hover:text-[#cab178]
-                        ${isLinkActive ? 'text-[#cab178] font-bold' : 'text-white'}
+                        font-['Almarai:Bold'] not-italic text-[18px] lg:text-[20px] leading-[normal]
+                        whitespace-nowrap no-underline transition-all duration-200 cursor-pointer
+                        ${
+                          isLinkActive
+                            ? 'text-[#cab178] font-bold drop-shadow-[0_2px_10px_rgba(202,177,120,0.45)] scale-105'
+                            : 'text-white/90 hover:text-[#cab178]'
+                        }
                       `}
                     >
                       {link.label}
@@ -105,6 +225,7 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
                       <motion.span
                         layoutId="navUnderline"
                         className="h-0 w-[30.27px] relative block"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       >
                         <img
                           alt=""
@@ -123,10 +244,11 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
           {/* Logo (right side in LTR) */}
           <motion.a
             href="#home"
+            onClick={handleLogoClick}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             aria-label="الصفحة الرئيسية"
-            className="relative shrink-0 h-[56.75px] w-[66px] transition-transform duration-200"
+            className="relative shrink-0 h-[56.75px] w-[66px] transition-transform duration-200 cursor-pointer"
           >
             <ArabicBg positionClass="inset-0" opacityClass="opacity-0" />
             <img
@@ -187,9 +309,10 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
           {/* Logo for Mobile Header (on the LEFT in RTL) */}
           <motion.a
             href="#home"
+            onClick={handleLogoClick}
             whileTap={{ scale: 0.95 }}
             aria-label="الصفحة الرئيسية"
-            className="relative shrink-0 h-[36px] w-[42px]"
+            className="relative shrink-0 h-[36px] w-[42px] cursor-pointer"
           >
             <img
               alt="شعار حافظ"
@@ -213,40 +336,38 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-xs"
+              className="absolute inset-0 bg-black/60 backdrop-blur-xs"
               onClick={() => setMobileMenuOpen(false)}
-              aria-hidden="true"
             />
 
-            {/* Drawer content panel on the RIGHT side with spring slide */}
+            {/* Slide-out Drawer from the RIGHT matching Figma node 205:1602 */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 26, stiffness: 220 }}
+              transition={{ type: 'spring', damping: 28, stiffness: 300 }}
               className="
-                fixed top-0 right-0 bottom-0 h-screen h-[100dvh] w-[82%] max-w-[320px] bg-[#1a5a81] shadow-2xl
-                flex flex-col justify-between py-6 px-7 z-50 overflow-y-auto overflow-x-hidden
-                border-l border-white/10
+                absolute right-0 top-0 bottom-0
+                w-[280px] sm:w-[320px] max-w-[85vw]
+                h-screen h-[100dvh]
+                bg-[#1a5a81] border-l border-white/20
+                shadow-2xl flex flex-col justify-between
+                px-6 py-6 z-10 overflow-hidden
               "
             >
-              {/* Background Arabic calligraphy watermark */}
-              <div className="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 top-1/2 size-[600px] pointer-events-none opacity-5">
-                <img
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute inset-0 size-full object-cover max-w-none"
-                  src={IMAGES.arabicBg}
-                />
+              {/* Calligraphy Watermark in Mobile Drawer */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+                <ArabicBg positionClass="top-10 -right-10" sizeClass="size-[350px]" opacityClass="opacity-10" />
+                <ArabicBg positionClass="bottom-0 -left-10" sizeClass="size-[350px]" opacityClass="opacity-10" />
               </div>
 
-              {/* Drawer Top Row: Close X on the LEFT, Hafiz Logo on the RIGHT */}
-              <div className="flex items-center justify-between w-full relative z-10 pt-2">
+              {/* Drawer Top: Close button on right + Logo on left */}
+              <div className="flex items-center justify-between w-full relative z-10 pb-4 border-b border-white/15">
                 <motion.button
                   type="button"
-                  whileTap={{ scale: 0.85 }}
-                  aria-label="إغلاق القائمة"
+                  whileTap={{ scale: 0.9 }}
                   onClick={() => setMobileMenuOpen(false)}
+                  aria-label="إغلاق القائمة"
                   className="text-white hover:text-[#cab178] p-2 transition-colors cursor-pointer flex items-center justify-center -mr-2"
                 >
                   <svg className="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -257,9 +378,9 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
 
                 <a
                   href="#home"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={handleLogoClick}
                   aria-label="الصفحة الرئيسية"
-                  className="relative shrink-0 h-[50px] w-[58px]"
+                  className="relative shrink-0 h-[50px] w-[58px] cursor-pointer"
                 >
                   <img
                     alt="شعار حافظ"
@@ -269,12 +390,11 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
                 </a>
               </div>
 
-              {/* Navigation links with staggered fade & slide */}
+              {/* Navigation links with dynamic active coloring */}
               <nav className="my-auto py-8 relative z-10" aria-label="روابط الموبايل">
                 <ul className="flex flex-col gap-6 items-end w-full list-none p-0 m-0">
                   {navLinks.map((link, idx) => {
-                    const isLinkActive =
-                      activePage === 'terms' ? link.id === 'terms' : link.id === 'home';
+                    const isLinkActive = activeId === link.id;
 
                     return (
                       <motion.li
@@ -286,13 +406,13 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
                       >
                         <a
                           href={link.href}
-                          onClick={() => setMobileMenuOpen(false)}
+                          onClick={(e) => handleNavClick(link, e)}
                           className={`
                             block font-['Almarai:Bold'] text-[24px] font-bold text-right leading-tight
-                            transition-colors duration-200 no-underline
+                            transition-all duration-200 no-underline cursor-pointer
                             ${
                               isLinkActive
-                                ? 'text-[#cab178]'
+                                ? 'text-[#cab178] drop-shadow-[0_2px_8px_rgba(202,177,120,0.5)] scale-105 pr-2 border-r-4 border-[#cab178]'
                                 : 'text-white hover:text-[#cab178]'
                             }
                           `}
@@ -317,13 +437,7 @@ export default function Navbar({ activePage = 'home' }: NavbarProps) {
                   type="button"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    const el = document.getElementById('pricing') || document.getElementById('cta');
-                    if (el) {
-                      el.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={handleCtaClick}
                   className="
                     bg-[#cab178] hover:bg-[#bfa56a] text-white
                     w-full h-[60px] sm:h-[64px] rounded-[12px]

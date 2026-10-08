@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 
@@ -19,9 +20,23 @@ import Contact from '../components/home/Contact';
  * Styled with Almarai font throughout.
  */
 export default function Home() {
+  // Smooth scroll to initial section if hash exists
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col overflow-x-hidden font-['Almarai']" dir="rtl">
-      <Navbar />
+      <Navbar activePage="home" />
+
 
       <main className="flex-1 w-full">
         <Hero />
