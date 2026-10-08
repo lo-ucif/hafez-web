@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import { motion } from 'framer-motion';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -23,6 +24,7 @@ const sizeClasses: Record<NonNullable<ButtonProps['size']>, string> = {
 /**
  * Generic Button component used throughout the app.
  * Supports three visual variants (primary / gold / outline) and three sizes.
+ * Enhanced with Framer Motion hover and click/tap interactive animations.
  */
 export default function Button({
   children,
@@ -33,8 +35,11 @@ export default function Button({
   ...rest
 }: ButtonProps) {
   return (
-    <button
+    <motion.button
       type="button"
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 20 }}
       className={`
         inline-flex items-center justify-center
         font-['Almarai:Regular'] not-italic leading-none
@@ -45,9 +50,10 @@ export default function Button({
         ${fullWidth ? 'w-full' : ''}
         ${className}
       `}
-      {...rest}
+      {...(rest as any)}
     >
       {children}
-    </button>
+    </motion.button>
   );
 }
+

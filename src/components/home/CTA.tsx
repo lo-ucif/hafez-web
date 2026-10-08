@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { IMAGES } from '../../constants/images';
 import Button from '../common/Button';
 import ArabicBg from '../common/ArabicBg';
@@ -18,7 +19,13 @@ export default function CTA() {
       "
     >
       {/* Diagonal Ribbon matching Figma node 196:515 */}
-      <div className="absolute top-0 right-0 w-[160px] sm:w-[220px] md:w-[280px] h-[160px] sm:h-[220px] md:h-[280px] pointer-events-none overflow-hidden z-20">
+      <motion.div
+        initial={{ opacity: 0, x: 50, y: -50 }}
+        whileInView={{ opacity: 1, x: 0, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="absolute top-0 right-0 w-[160px] sm:w-[220px] md:w-[280px] h-[160px] sm:h-[220px] md:h-[280px] pointer-events-none overflow-hidden z-20"
+      >
         <div
           className="
             absolute bg-[#cab178] text-white
@@ -32,7 +39,8 @@ export default function CTA() {
         >
           اطلب نسختك الآن!
         </div>
-      </div>
+      </motion.div>
+
       <div className="-translate-x-1/2 absolute flex h-[350px] items-center left-1/2 top-0 w-[1440px] pointer-events-none opacity-30">
         {Array.from({ length: 5 }).map((_, i) => (
           <ArabicBg
@@ -44,28 +52,40 @@ export default function CTA() {
         ))}
       </div>
 
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
         className="
           flex flex-col md:flex-row-reverse gap-8 md:gap-16 lg:gap-24 items-center justify-center
           w-full max-w-[1200px] relative z-10
         "
       >
         {/* Book cover / Mascot illustration */}
-        <div className="w-[260px] sm:w-[290px] md:w-[308px] h-auto aspect-[308/350] relative rounded-[13px] shadow-2xl shrink-0 overflow-hidden">
+        <motion.div
+          whileHover={{ y: -8, scale: 1.03 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="w-[260px] sm:w-[290px] md:w-[308px] h-auto aspect-[308/350] relative rounded-[13px] shadow-2xl shrink-0 overflow-hidden cursor-pointer"
+        >
           <img
             alt="غلاف كتاب طلب نسخة"
             className="absolute inset-0 object-cover rounded-[13px] size-full pointer-events-none"
             src={IMAGES.ctaBookCover}
           />
-        </div>
+        </motion.div>
 
         {/* Text + button */}
         <div
           dir="rtl"
           className="flex flex-col gap-6 md:gap-[24px] items-center md:items-start justify-center max-w-[480px] text-center md:text-right"
         >
-          <h2
+          <motion.h2
             dir="auto"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
             className="
               font-['Almarai:Bold'] not-italic
               text-[26px] sm:text-[30px] md:text-[36px]
@@ -75,7 +95,7 @@ export default function CTA() {
           >
             <span className="block">لديكم مدرسة قرآنية؟</span>
             <span className="block">{` لا تتردّد واطلب نسختك الآن!`}</span>
-          </h2>
+          </motion.h2>
 
           <Button
             variant="gold"
@@ -85,7 +105,8 @@ export default function CTA() {
             طلب نسخة
           </Button>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
+

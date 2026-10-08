@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import SectionTitle from '../common/SectionTitle';
 import ArabicBg from '../common/ArabicBg';
 
@@ -20,13 +21,18 @@ export default function SpecialOffer() {
       <SectionTitle title="عروض المنصة" />
 
       {/* Blue Banner with Gold Border matching Figma node 196:447 */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 25 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.55, ease: 'easeOut' }}
+        whileHover={{ scale: 1.015 }}
         className="
           bg-[#1a5a81] border-[#cab178] border-[3.5px] border-solid
           relative rounded-[8px] overflow-hidden
           w-full max-w-[918px] min-h-[150px]
           flex flex-col items-center justify-center gap-4 py-6 px-4
-          shadow-lg
+          shadow-lg cursor-pointer
         "
       >
         {/* Background Calligraphy Watermark */}
@@ -44,23 +50,31 @@ export default function SpecialOffer() {
         </div>
 
         {/* Title: مدرسة قرآنية */}
-        <h3
+        <motion.h3
           dir="auto"
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="
             font-['Almarai:Regular'] not-italic text-[20px] md:text-[22px]
             text-center text-white tracking-wide m-0 relative z-10
           "
         >
           مدرسة قرآنية
-        </h3>
+        </motion.h3>
 
         {/* White Badge / Button: مجانا لفترة محدودة */}
-        <div
+        <motion.div
+          animate={{ scale: [1, 1.04, 1] }}
+          transition={{ repeat: Infinity, duration: 2.4, ease: 'easeInOut' }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.94 }}
           className="
             relative z-10 bg-white
             px-7 py-2.5 rounded-[6px] shadow-md
             flex items-center justify-center
-            w-auto min-w-[210px]
+            w-auto min-w-[210px] cursor-pointer
           "
         >
           <span
@@ -72,8 +86,9 @@ export default function SpecialOffer() {
           >
             مجانا لفترة محدودة
           </span>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
+

@@ -1,11 +1,12 @@
+import { motion } from 'framer-motion';
 import { IMAGES } from '../../constants/images';
 import ArabicBg from '../common/ArabicBg';
 
 /**
- * Hero section — full-width blue banner with platform logo,
- * headline text, and CTA button.
- * Responsive: matches mobile phone mode (Figma node 173-282) on small screens
- * and expands gracefully on desktop screens.
+ * Hero section with Framer Motion entrance & interactive animations.
+ * - Gentle floating motion on hero logo.
+ * - Staggered fade & rise on headline.
+ * - Interactive hover & tap on button.
  */
 export default function Hero() {
   return (
@@ -29,24 +30,40 @@ export default function Hero() {
         "
       />
 
-      {/* Decorative Arabic-bg overlays */}
-      <ArabicBg positionClass="-translate-x-1/2 left-1/2 top-[-19px]" sizeClass="size-[600px] md:size-[836px]" />
+      {/* Decorative Arabic-bg overlays with subtle motion */}
+      <motion.div
+        animate={{ rotate: [0, 2, 0, -2, 0] }}
+        transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
+        className="pointer-events-none"
+      >
+        <ArabicBg positionClass="-translate-x-1/2 left-1/2 top-[-19px]" sizeClass="size-[600px] md:size-[836px]" />
+      </motion.div>
       <ArabicBg positionClass="-translate-y-1/2 left-[-292px] top-1/2 hidden md:block" sizeClass="size-[840px]" />
       <ArabicBg positionClass="-translate-y-1/2 left-[896px] top-1/2 hidden md:block" sizeClass="size-[830px]" />
 
       {/* Main Content */}
       <div className="flex flex-col gap-5 md:gap-[33px] items-center relative z-10 w-full max-w-[615px] px-4">
-        {/* Platform logo illustration */}
-        <div className="h-[210px] w-[246px] sm:h-[238px] sm:w-[279px] md:h-[366px] md:w-[429px] relative shrink-0 transition-all duration-300">
-          <img
+        {/* Platform logo illustration with gentle float */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="h-[210px] w-[246px] sm:h-[238px] sm:w-[279px] md:h-[366px] md:w-[429px] relative shrink-0"
+        >
+          <motion.img
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             alt="شعار منصة حافظ"
-            className="absolute block inset-0 max-w-none size-full object-contain"
+            className="absolute block inset-0 max-w-none size-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.2)]"
             src={IMAGES.heroLogo}
           />
-        </div>
+        </motion.div>
 
-        {/* Headline */}
-        <h1
+        {/* Headline with staggered entrance */}
+        <motion.h1
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
           dir="auto"
           className="
             font-['Almarai:Regular'] not-italic
@@ -57,31 +74,36 @@ export default function Hero() {
         >
           <span className="block">منصة ذكية لإدارة حلقات</span>
           <span className="block">{` القرآن`}</span>
-        </h1>
+        </motion.h1>
 
-        {/* CTA Button matching Figma mobile node 173:335 */}
-        <a
-          href="#about"
+        {/* CTA Button matching Figma with interactive physics */}
+        <motion.a
+          href="#features"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.45, ease: 'easeOut' }}
+          whileHover={{ scale: 1.08, boxShadow: '0px 8px 25px rgba(202, 177, 120, 0.4)' }}
+          whileTap={{ scale: 0.94 }}
           className="
-            bg-[#cab178] hover:bg-[#b89f66] active:scale-95
-            transition-all duration-200
+            bg-[#cab178] hover:bg-[#b89f66]
+            transition-colors duration-200
             flex items-center justify-center
-            px-4 py-2 sm:px-[15px] sm:py-[6.5px] md:px-7 md:py-2.5
-            rounded-[4px] md:rounded-[6px]
-            w-auto min-w-[88px] cursor-pointer no-underline
-            shadow-sm hover:shadow-md
+            px-6 py-2.5 sm:px-8 sm:py-3 md:px-9 md:py-3
+            rounded-[6px] md:rounded-[8px]
+            w-auto min-w-[120px] cursor-pointer no-underline
+            shadow-md
           "
         >
           <span
             className="
-              font-['Almarai:Regular'] leading-none not-italic
-              text-[12px] md:text-[16px] text-white whitespace-nowrap
+              font-['Almarai:Bold'] font-bold leading-none not-italic
+              text-[15px] md:text-[18px] text-white whitespace-nowrap
             "
             dir="auto"
           >
             متابعة
           </span>
-        </a>
+        </motion.a>
       </div>
     </section>
   );

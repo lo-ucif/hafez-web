@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { IMAGES } from '../../constants/images';
 
 interface SectionTitleProps {
@@ -10,10 +11,18 @@ interface SectionTitleProps {
 /**
  * Reusable section-title badge that matches the Figma design:
  * two narrow coloured bars framing the title text over a wider bar.
+ * Enhanced with Framer Motion scroll-reveal and subtle hover effect.
  */
 export default function SectionTitle({ title, className = '' }: SectionTitleProps) {
   return (
-    <div className={`flex items-center justify-end relative shrink-0 ${className}`}>
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      whileHover={{ scale: 1.03 }}
+      className={`flex items-center justify-end relative shrink-0 cursor-default select-none ${className}`}
+    >
       {/* Left narrow bar */}
       <div className="h-[53px] relative shrink-0 w-[9px]">
         <img
@@ -54,6 +63,7 @@ export default function SectionTitle({ title, className = '' }: SectionTitleProp
       >
         {title}
       </p>
-    </div>
+    </motion.div>
   );
 }
+

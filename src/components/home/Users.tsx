@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { userTypes } from '../../data/users';
 import type { UserType } from '../../data/users';
 import { IMAGES } from '../../constants/images';
@@ -6,15 +7,20 @@ import ArabicBg from '../common/ArabicBg';
 
 // ─── User Card ────────────────────────────────────────────────────────────────
 
-function UserCard({ user }: { user: UserType }) {
+function UserCard({ user, index }: { user: UserType; index: number }) {
   return (
-    <article
+    <motion.article
+      initial={{ opacity: 0, y: 35 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
+      whileHover={{ y: -8 }}
       className="
-        drop-shadow-[0px_8.463px_6.347px_rgba(0,0,0,0.1),0px_3.385px_2.539px_rgba(0,0,0,0.1)]
+        group drop-shadow-[0px_8.463px_6.347px_rgba(0,0,0,0.1),0px_3.385px_2.539px_rgba(0,0,0,0.1)]
         flex flex-col items-center
         pb-[45px] pt-[8.463px]
         relative rounded-[24px] w-[283.5px]
-        overflow-visible transition-transform duration-200 hover:-translate-y-1
+        overflow-visible
       "
       style={{
         backgroundImage:
@@ -27,11 +33,11 @@ function UserCard({ user }: { user: UserType }) {
         opacityClass="opacity-6"
       />
 
-      {/* Book cover image */}
+      {/* Book cover image with hover scale */}
       <div className="h-[276.518px] relative rounded-[10.155px] w-full overflow-hidden">
         <img
           alt={`غلاف كتاب ${user.title}`}
-          className="absolute h-full max-w-none pointer-events-none rounded-[10.155px]"
+          className="absolute h-full max-w-none pointer-events-none rounded-[10.155px] transition-transform duration-300 group-hover:scale-105"
           style={{
             left: user.coverOffsetX,
             top: user.coverOffsetY,
@@ -61,13 +67,16 @@ function UserCard({ user }: { user: UserType }) {
 
       {/* Action button – positioned overlapping bottom edge */}
       <div className="-translate-x-1/2 absolute bottom-[-15px] left-1/2 z-10">
-        <button
+        <motion.button
           type="button"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.92 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           className="
             bg-[#1a5a81] flex gap-[7px] items-center
             px-[27px] py-[8.5px] rounded-[9999px]
-            cursor-pointer hover:bg-[#154e70] active:scale-95
-            transition-all duration-200 shadow-md
+            cursor-pointer hover:bg-[#154e70]
+            transition-colors duration-200 shadow-md
           "
           aria-label={`المزيد عن ${user.title}`}
         >
@@ -75,17 +84,14 @@ function UserCard({ user }: { user: UserType }) {
           <span className="font-['Almarai:Bold'] not-italic text-[12px] text-white leading-none">
             المزيد
           </span>
-        </button>
+        </motion.button>
       </div>
-    </article>
+    </motion.article>
   );
 }
 
 // ─── Users Section ────────────────────────────────────────────────────────────
 
-/**
- * System users section — "مستخدمو النظام" book-style cards.
- */
 export default function Users() {
   return (
     <section
@@ -100,10 +106,11 @@ export default function Users() {
       <SectionTitle title="مستخدمو النظام" />
 
       <div className="flex flex-wrap gap-8 sm:gap-6 md:gap-[20px] items-center justify-center w-full">
-        {userTypes.map((user) => (
-          <UserCard key={user.id} user={user} />
+        {userTypes.map((user, index) => (
+          <UserCard key={user.id} user={user} index={index} />
         ))}
       </div>
     </section>
   );
 }
+

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { IMAGES } from '../../constants/images';
 import { socialLinks, footerQuickLinks } from '../../data/navigation';
 
@@ -6,6 +7,7 @@ import { socialLinks, footerQuickLinks } from '../../data/navigation';
  * Corresponds to Figma desktop node 196:572 ("Footer / 1 /").
  * Features 3-column layout: Quick Links, Social Links with icons, and the large Hafiz Logo.
  * Uses Tajawal and Almarai typography.
+ * Enhanced with Framer Motion interactive hover and scroll entrance animations.
  */
 export default function Footer() {
   return (
@@ -17,7 +19,13 @@ export default function Footer() {
         pb-8 md:pb-[60px] pt-12 md:pt-[60px] px-6 md:px-[40px]
       "
     >
-      <div className="flex flex-col gap-10 md:gap-[40px] items-center justify-center max-w-[1280px] w-full relative z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex flex-col gap-10 md:gap-[40px] items-center justify-center max-w-[1280px] w-full relative z-10"
+      >
         {/* ── 3 Main Columns matching Figma node 201:1376 ── */}
         <div className="flex flex-col md:flex-row flex-wrap gap-10 md:gap-[40px] items-start md:items-center justify-between w-full">
           {/* Column 1: Quick Links matching Figma node 201:1395 */}
@@ -32,17 +40,19 @@ export default function Footer() {
               <ul className="flex flex-col items-start w-full list-none m-0 p-0">
                 {footerQuickLinks.map((link) => (
                   <li key={link.id} className="w-full">
-                    <a
+                    <motion.a
                       href={link.href}
                       dir="auto"
+                      whileHover={{ x: -6, color: '#cab178' }}
+                      transition={{ duration: 0.2 }}
                       className="
                         block py-2 w-full text-right no-underline
                         font-['Tajawal:Regular'] text-[15px] md:text-[16px] text-white/90
-                        hover:text-white hover:underline transition-all
+                        transition-colors
                       "
                     >
                       {link.label}
-                    </a>
+                    </motion.a>
                   </li>
                 ))}
               </ul>
@@ -61,13 +71,15 @@ export default function Footer() {
               <ul className="flex flex-col items-end w-full list-none m-0 p-0">
                 {socialLinks.map((link) => (
                   <li key={link.id} className="w-full">
-                    <a
+                    <motion.a
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      whileHover={{ x: -6, color: '#cab178' }}
+                      transition={{ duration: 0.2 }}
                       className="
                         flex gap-3 items-center justify-start py-2 w-full no-underline
-                        text-white/90 hover:text-white hover:translate-x-[-2px] transition-all
+                        text-white/90 transition-colors
                       "
                       aria-label={link.label}
                     >
@@ -83,7 +95,7 @@ export default function Footer() {
                       >
                         {link.label}
                       </span>
-                    </a>
+                    </motion.a>
                   </li>
                 ))}
               </ul>
@@ -92,13 +104,17 @@ export default function Footer() {
 
           {/* Column 3: Big Hafiz Logo matching Figma node 201:1414 */}
           <div className="flex flex-1 items-center justify-center md:justify-end w-full min-w-[240px] max-w-[320px]">
-            <div className="h-[180px] md:h-[235px] w-[220px] md:w-[276px] relative shrink-0">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 18 }}
+              className="h-[180px] md:h-[235px] w-[220px] md:w-[276px] relative shrink-0 cursor-pointer"
+            >
               <img
                 alt="شعار حافظ"
                 className="absolute block inset-0 max-w-none size-full object-contain"
                 src={IMAGES.heroLogo}
               />
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -123,7 +139,8 @@ export default function Footer() {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 }
+

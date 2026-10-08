@@ -1,19 +1,26 @@
+import { motion } from 'framer-motion';
 import { additionalServices } from '../../data/pricing';
-import type { AdditionalService } from '../../data/pricing';
-import { IMAGES } from '../../constants/images';
-import SectionTitle from '../common/SectionTitle';
-import ArabicBg from '../common/ArabicBg';
+ import type { AdditionalService } from '../../data/pricing';
+ import { IMAGES } from '../../constants/images';
+ import SectionTitle from '../common/SectionTitle';
+ import ArabicBg from '../common/ArabicBg';
 
 // ─── Service Card ─────────────────────────────────────────────────────────────
 
-function ServiceCard({ service }: { service: AdditionalService }) {
+function ServiceCard({ service, index }: { service: AdditionalService; index: number }) {
   return (
-    <article
+    <motion.article
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
+      whileHover={{ y: -6, scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       className="
         border-[#cab178] border-[3.501px] border-solid
         flex items-center justify-end
         relative
-        overflow-hidden
+        overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-shadow
       "
     >
       {/* Background image */}
@@ -63,7 +70,7 @@ function ServiceCard({ service }: { service: AdditionalService }) {
           </li>
         ))}
       </ul>
-    </article>
+    </motion.article>
   );
 }
 
@@ -86,10 +93,11 @@ export default function AdditionalServices() {
       <SectionTitle title="الخدمات الإضافية" />
 
       <div className="content-center flex flex-wrap gap-[26.256px] items-center justify-center w-full">
-        {additionalServices.map((service) => (
-          <ServiceCard key={service.id} service={service} />
+        {additionalServices.map((service, index) => (
+          <ServiceCard key={service.id} service={service} index={index} />
         ))}
       </div>
     </section>
   );
 }
+
