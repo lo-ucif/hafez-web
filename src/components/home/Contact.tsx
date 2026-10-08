@@ -14,7 +14,7 @@ function ContactInfoRow({ icon, iconAlt, text, underline = false }: ContactInfoR
     <div className="flex gap-3 items-center justify-end w-full">
       <p
         className={`
-          font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] md:text-[20px] text-black text-right
+          font-['Almarai:Regular'] not-italic text-[16px] sm:text-[18px] md:text-[20px] text-black text-right
           leading-[1.5] whitespace-nowrap m-0
           ${underline ? 'underline' : ''}
         `}
@@ -30,6 +30,7 @@ function ContactInfoRow({ icon, iconAlt, text, underline = false }: ContactInfoR
 /**
  * Contact section — contact form + contact info panel.
  * Responsive for mobile mode and desktop mode.
+ * Styled with Almarai font throughout.
  */
 export default function Contact() {
   const [agreed, setAgreed] = useState(false);
@@ -56,7 +57,7 @@ export default function Contact() {
           {/* Row 1: First name + Last name */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full">
             <div className="flex flex-1 flex-col gap-1.5 items-end justify-center">
-              <label htmlFor="firstName" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
+              <label htmlFor="firstName" className="font-['Almarai:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
                 الاسم الأول
               </label>
               <input
@@ -64,11 +65,11 @@ export default function Contact() {
                 type="text"
                 dir="rtl"
                 placeholder="محمد"
-                className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-right text-[16px] outline-none transition-colors"
+                className="font-['Almarai:Regular'] border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-right text-[16px] outline-none transition-colors"
               />
             </div>
             <div className="flex flex-1 flex-col gap-1.5 items-end justify-center">
-              <label htmlFor="lastName" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
+              <label htmlFor="lastName" className="font-['Almarai:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
                 اسم العائلة
               </label>
               <input
@@ -76,7 +77,7 @@ export default function Contact() {
                 type="text"
                 dir="rtl"
                 placeholder="بن علي"
-                className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-right text-[16px] outline-none transition-colors"
+                className="font-['Almarai:Regular'] border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-right text-[16px] outline-none transition-colors"
               />
             </div>
           </div>
@@ -84,7 +85,7 @@ export default function Contact() {
           {/* Row 2: Email + Phone */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full">
             <div className="flex flex-1 flex-col gap-1.5 items-end justify-center">
-              <label htmlFor="email" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
+              <label htmlFor="email" className="font-['Almarai:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
                 البريد الإلكتروني
               </label>
               <input
@@ -92,11 +93,11 @@ export default function Contact() {
                 type="email"
                 dir="ltr"
                 placeholder="example@domain.com"
-                className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-left text-[16px] outline-none transition-colors"
+                className="font-['Almarai:Regular'] border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-left text-[16px] outline-none transition-colors"
               />
             </div>
             <div className="flex flex-1 flex-col gap-1.5 items-end justify-center">
-              <label htmlFor="phone" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
+              <label htmlFor="phone" className="font-['Almarai:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
                 رقم الهاتف
               </label>
               <input
@@ -104,21 +105,21 @@ export default function Contact() {
                 type="tel"
                 dir="ltr"
                 placeholder="07 80 00 00 00"
-                className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-left text-[16px] outline-none transition-colors"
+                className="font-['Almarai:Regular'] border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-left text-[16px] outline-none transition-colors"
               />
             </div>
           </div>
 
           {/* Subject Dropdown */}
           <div className="flex flex-col gap-1.5 items-end w-full">
-            <label htmlFor="subject" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
+            <label htmlFor="subject" className="font-['Almarai:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
               موضوع التواصل
             </label>
             <div className="relative w-full">
               <select
                 id="subject"
                 dir="rtl"
-                className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 pl-8 text-right text-[16px] bg-white appearance-none outline-none cursor-pointer"
+                className="font-['Almarai:Regular'] border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 pl-8 text-right text-[16px] bg-white appearance-none outline-none cursor-pointer"
                 defaultValue=""
               >
                 <option value="" disabled>اختر الخدمة أو الاستفسار</option>
@@ -135,7 +136,7 @@ export default function Contact() {
 
           {/* Message Textarea */}
           <div className="flex flex-col gap-1.5 items-end w-full">
-            <label htmlFor="message" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
+            <label htmlFor="message" className="font-['Almarai:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
               رسالة
             </label>
             <textarea
@@ -143,7 +144,7 @@ export default function Contact() {
               rows={4}
               dir="rtl"
               placeholder="اكتب رسالتك هنا..."
-              className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] w-full p-3 text-right text-[16px] outline-none resize-none transition-colors"
+              className="font-['Almarai:Regular'] border border-black/40 focus:border-[#1a5a81] rounded-[4px] w-full p-3 text-right text-[16px] outline-none resize-none transition-colors"
             />
           </div>
 
@@ -156,7 +157,7 @@ export default function Contact() {
               onChange={(e) => setAgreed(e.target.checked)}
               className="size-4.5 accent-[#1a5a81] rounded cursor-pointer"
             />
-            <label htmlFor="terms" className="font-['Tajawal:Regular'] text-[15px] sm:text-[17px] text-black cursor-pointer select-none">
+            <label htmlFor="terms" className="font-['Almarai:Regular'] text-[15px] sm:text-[17px] text-black cursor-pointer select-none">
               أقبل شروط الموقع
             </label>
           </div>
@@ -166,7 +167,7 @@ export default function Contact() {
             type="submit"
             variant="primary"
             size="md"
-            className="rounded-[7px] w-full sm:w-auto px-8"
+            className="font-['Almarai:Bold'] rounded-[7px] w-full sm:w-auto px-8"
           >
             إرسال
           </Button>
@@ -183,7 +184,7 @@ export default function Contact() {
           <h2 className="font-['Almarai:Bold'] text-[32px] sm:text-[42px] md:text-[50px] text-[#1a5a81] leading-tight m-0">
             تواصل معنا:
           </h2>
-          <p className="font-['Tajawal:Regular'] text-[16px] sm:text-[18px] md:text-[20px] text-black/80 m-0">
+          <p className="font-['Almarai:Regular'] text-[16px] sm:text-[18px] md:text-[20px] text-black/80 m-0">
             شارك احتياجاتك سنقدم لك حلولاً مخصصة
           </p>
         </div>

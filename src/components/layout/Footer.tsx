@@ -5,6 +5,7 @@ import { socialLinks, footerQuickLinks } from '../../data/navigation';
  * Site-wide Footer.
  * Sections: quick links, social links, newsletter subscription, copyright.
  * Fully responsive for mobile phone mode and desktop mode.
+ * Uses Almarai font throughout.
  */
 export default function Footer() {
   return (
@@ -31,7 +32,7 @@ export default function Footer() {
 
           {/* Social Links column */}
           <div className="flex flex-1 flex-col gap-4 items-start w-full min-w-[260px]">
-            <p className="font-['Tajawal:Bold'] text-[18px] text-white leading-[1.5] w-full m-0" dir="auto">
+            <p className="font-['Almarai:Bold'] text-[18px] text-white leading-[1.5] w-full m-0" dir="auto">
               تابعنا
             </p>
             <nav aria-label="روابط التواصل الاجتماعي" className="w-full">
@@ -43,7 +44,7 @@ export default function Footer() {
                       className="flex gap-3 items-center justify-end py-2 w-full no-underline text-white/90 hover:text-white hover:translate-x-[-2px] transition-all"
                       aria-label={link.label}
                     >
-                      <span className="font-['Tajawal:Regular'] text-[15px] sm:text-[16px] leading-[1.5] whitespace-nowrap" dir="auto">
+                      <span className="font-['Almarai:Regular'] text-[15px] sm:text-[16px] leading-[1.5] whitespace-nowrap" dir="auto">
                         {link.label}
                       </span>
                       <img
@@ -60,7 +61,7 @@ export default function Footer() {
 
           {/* Quick Links column */}
           <div className="flex flex-1 flex-col gap-4 items-start w-full min-w-[260px]">
-            <p className="font-['Tajawal:Bold'] text-[18px] text-white leading-[1.5] w-full m-0" dir="auto">
+            <p className="font-['Almarai:Bold'] text-[18px] text-white leading-[1.5] w-full m-0" dir="auto">
               روابط سريعة
             </p>
             <nav aria-label="روابط سريعة" className="w-full">
@@ -72,7 +73,7 @@ export default function Footer() {
                       dir="auto"
                       className="
                         block py-2 w-full text-right
-                        font-['Tajawal:Regular'] text-[15px] sm:text-[16px] text-white/90
+                        font-['Almarai:Regular'] text-[15px] sm:text-[16px] text-white/90
                         hover:text-white hover:underline transition-all
                       "
                     >
@@ -88,7 +89,7 @@ export default function Footer() {
           <div className="flex flex-1 flex-col gap-4 sm:gap-6 items-start justify-center w-full min-w-[280px] max-w-[440px]">
             <p
               dir="auto"
-              className="font-['Tajawal:Regular'] text-[16px] sm:text-[18px] text-white leading-relaxed text-right w-full m-0"
+              className="font-['Almarai:Regular'] text-[16px] sm:text-[18px] text-white leading-relaxed text-right w-full m-0"
             >
               اشترك في نشرتنا لتصلك أحدث المبادرات المجتمعية والاستراتيجيات المؤسسية لجمعية الإرشاد والإصلاح
             </p>
@@ -107,7 +108,7 @@ export default function Footer() {
                   className="
                     bg-white/10 border border-white/20 rounded-[4px]
                     px-3 py-2 text-white
-                    font-['Tajawal:Regular'] text-[15px] sm:text-[16px]
+                    font-['Almarai:Regular'] text-[15px] sm:text-[16px]
                     placeholder:text-white/60 text-right
                     outline-none focus:border-white/60 transition-colors flex-1
                   "
@@ -117,7 +118,7 @@ export default function Footer() {
                   className="
                     border border-white/30 rounded-[4px]
                     px-5 py-2
-                    font-['Tajawal:Bold'] text-[15px] sm:text-[16px] text-white
+                    font-['Almarai:Bold'] text-[15px] sm:text-[16px] text-white
                     whitespace-nowrap cursor-pointer
                     hover:bg-white/15 active:scale-95 transition-all
                   "
@@ -127,7 +128,7 @@ export default function Footer() {
               </form>
               <p
                 dir="auto"
-                className="font-['Tajawal:Regular'] text-[12px] text-white/70 leading-normal text-right w-full m-0"
+                className="font-['Almarai:Regular'] text-[12px] text-white/70 leading-normal text-right w-full m-0"
               >
                 من خلال الاشتراك، أنت توافق على سياسة الخصوصية الخاصة بنا وتوافق على تلقي التحديثات
               </p>
@@ -157,10 +158,10 @@ export default function Footer() {
               text-white text-center sm:text-right w-full leading-normal
             "
           >
-            <p className="font-['Tajawal:Bold'] text-[15px] sm:text-[17px] m-0" dir="auto">
+            <p className="font-['Almarai:Bold'] text-[15px] sm:text-[17px] m-0" dir="auto">
               من إنجاز منصة حافظ
             </p>
-            <p className="font-['Tajawal:Regular'] text-[14px] sm:text-[16px] text-white/80 m-0" dir="auto">
+            <p className="font-['Almarai:Regular'] text-[14px] sm:text-[16px] text-white/80 m-0" dir="auto">
               © 2026 منصة حافظ. جميع الحقوق محفوظة
             </p>
           </div>

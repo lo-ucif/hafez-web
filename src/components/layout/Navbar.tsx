@@ -44,7 +44,7 @@ export default function Navbar() {
             type="button"
             className="
               bg-white text-[#1a5a81] cursor-pointer
-              font-['Changa:SemiBold'] font-semibold
+              font-['Almarai:Bold'] font-bold
               text-[16px] leading-none
               px-5 py-2.5 rounded-[4px]
               transition-all duration-200
@@ -243,7 +243,7 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="
                     flex-1 bg-white text-[#1a5a81] cursor-pointer
-                    font-['Changa:SemiBold'] font-semibold
+                    font-['Almarai:Bold'] font-bold
                     text-[15px] py-2 px-3 rounded-[4px]
                     text-center transition-colors hover:bg-gray-100
                   "
