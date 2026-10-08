@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import { IMAGES } from '../../constants/images';
-import { institutions } from '../../data/institutions';
-import ArabicBg from '../common/ArabicBg';
+import { motion } from "framer-motion";
+import { IMAGES } from "../../constants/images";
+import { institutions } from "../../data/institutions";
+import ArabicBg from "../common/ArabicBg";
 
 /**
  * Institutions / Organization users banner section.
@@ -18,16 +18,14 @@ export default function Institutions() {
         pb-14 md:pb-[100px] pt-12 md:pt-[80px] px-4 md:px-[10px]
       "
     >
-      <ArabicBg positionClass="left-[-249px] top-[-677px]" sizeClass="size-[1983px]" opacityClass="opacity-3" />
+      <ArabicBg
+        positionClass="left-[-249px] top-[-677px]"
+        sizeClass="size-[1983px]"
+        opacityClass="opacity-3"
+      />
 
       {/* Heading matching Figma node 196:418 */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="flex flex-col gap-2.5 items-center justify-center relative z-10"
-      >
+      <div className="flex flex-col gap-2.5 items-center justify-center relative z-10">
         <h2
           dir="auto"
           className="
@@ -39,20 +37,21 @@ export default function Institutions() {
         </h2>
         <div className="h-0 relative w-[92px]">
           <div className="absolute inset-[-3.77px_0_0_0]">
-            <img alt="" aria-hidden="true" className="block max-w-none size-full" src={IMAGES.navUnderline} />
+            <img
+              alt=""
+              aria-hidden="true"
+              className="block max-w-none size-full"
+              src={IMAGES.navUnderline}
+            />
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Cards list matching Figma node 196:421 */}
       <div className="flex flex-wrap gap-8 md:gap-[67px] items-center justify-center w-full relative z-10 max-w-[1440px] mx-auto">
         {institutions.map((item, index) => (
           <motion.article
             key={item.id}
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, delay: index * 0.12, ease: 'easeOut' }}
             whileHover={{ y: -8, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="
@@ -63,12 +62,11 @@ export default function Institutions() {
             "
           >
             {/* Gold tag badge positioned top-right on the card matching Figma node 196:423 */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
+            <div
               className="
                 absolute bg-[#cab178] border-[#cab178] border-[0.717px] border-solid
                 flex items-center justify-center
-                right-[10px] top-[10px] z-20 overflow-hidden
+                right-[-30px] top-[10px] z-20 overflow-hidden
                 px-[20px] py-[10px] shadow-sm
               "
             >
@@ -78,7 +76,7 @@ export default function Institutions() {
               >
                 {item.title}
               </span>
-            </motion.div>
+            </div>
 
             {/* Institution image */}
             <div className="h-[210px] sm:h-[222px] w-[295px] sm:w-[307px] relative rounded-[8.132px] overflow-hidden">
@@ -94,4 +92,3 @@ export default function Institutions() {
     </section>
   );
 }
-

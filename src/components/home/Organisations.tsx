@@ -19,8 +19,6 @@ export default function Organisations() {
 
       {/* Heading */}
       <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="flex flex-col gap-[10px] items-center justify-center relative z-10"
@@ -40,8 +38,6 @@ export default function Organisations() {
 
       {/* Logos row */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.15 }}
         className="content-center flex flex-wrap gap-[50px] items-center justify-center w-full relative z-10"

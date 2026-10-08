@@ -1,29 +1,92 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { IMAGES } from '../../constants/images';
-import SectionTitle from '../common/SectionTitle';
 
-const TOTAL_SLIDES = 8;
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { IMAGES } from "../../constants/images";
+import SectionTitle from "../common/SectionTitle";
 
-/**
- * Gallery section — "صور من النظام" image slider.
- * Responsive: scales down arrow controls, slide preview, and dot indicators
- * to match Figma mobile phone mode (node 173:727) while remaining full-sized on desktop.
- * Enhanced with Framer Motion slide transitions and interactive controls.
- */
+
+// صور معرض منصة حافظ
+const gallerySlides = [
+  {
+    image: IMAGES.gallerySlide1,
+    title: "الصفحة الرئيسية",
+    description: "الواجهة الرئيسية لمنصة حافظ",
+  },
+  {
+    image: IMAGES.gallerySlide2,
+    title: "إدارة الحفظ",
+    description: "تنظيم حفظ القرآن الكريم ومراجعته",
+  },
+  {
+    image: IMAGES.gallerySlide3,
+    title: "متابعة التقدم",
+    description: "متابعة تقدم المستخدم في الحفظ والمراجعة",
+  },
+  {
+    image: IMAGES.gallerySlide4,
+    title: "خطة الحفظ",
+    description: "تنظيم خطة الحفظ اليومية",
+  },
+  {
+    image: IMAGES.gallerySlide5,
+    title: "المراجعة اليومية",
+    description: "تنظيم جلسات مراجعة القرآن الكريم",
+  },
+  {
+    image: IMAGES.gallerySlide6,
+    title: "الإحصائيات",
+    description: "عرض إحصائيات تقدم المستخدم",
+  },
+  {
+    image: IMAGES.gallerySlide7,
+    title: "إدارة المهام",
+    description: "متابعة المهام اليومية للحفظ والمراجعة",
+  },
+  {
+    image: IMAGES.gallerySlide8,
+    title: "الملف الشخصي",
+    description: "عرض معلومات المستخدم وإنجازاته",
+  },
+];
+
+const TOTAL_SLIDES = gallerySlides.length;
+
 export default function Gallery() {
-  const [currentSlide, setCurrentSlide] = useState(6); // Default active index (matching Figma design)
+  // الشريحة النشطة؛ تبدأ من الصورة السابعة إذا كانت موجودة
+  const [currentSlide, setCurrentSlide] = useState(
+    Math.min(6, gallerySlides.length - 1),
+  );
+
+  // اتجاه حركة الصور
   const [direction, setDirection] = useState(0);
 
+  // الانتقال إلى الصورة السابقة
   const handlePrev = () => {
     setDirection(-1);
-    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : TOTAL_SLIDES - 1));
+
+    setCurrentSlide((prev) =>
+      prev > 0 ? prev - 1 : TOTAL_SLIDES - 1,
+    );
   };
 
+  // الانتقال إلى الصورة التالية
   const handleNext = () => {
     setDirection(1);
-    setCurrentSlide((prev) => (prev < TOTAL_SLIDES - 1 ? prev + 1 : 0));
+
+    setCurrentSlide((prev) =>
+      prev < TOTAL_SLIDES - 1 ? prev + 1 : 0,
+    );
   };
+
+  // الانتقال إلى صورة محددة
+  const handleSelectSlide = (index: number) => {
+    if (index === currentSlide) return;
+
+    setDirection(index > currentSlide ? 1 : -1);
+    setCurrentSlide(index);
+  };
+
+  const activeSlide = gallerySlides[currentSlide];
 
   return (
     <section
@@ -37,15 +100,19 @@ export default function Gallery() {
     >
       <SectionTitle title="صور من النظام" />
 
-      {/* Slider container */}
+      {/* حاوية معرض الصور */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex gap-4 sm:gap-8 md:gap-[84px] items-center justify-center relative w-full max-w-[1034px]"
+        className="
+          flex gap-4 sm:gap-8 md:gap-[84px]
+          items-center justify-center relative
+          w-full max-w-[1034px]
+        "
       >
-        {/* Previous arrow */}
+        {/* زر الصورة السابقة */}
         <motion.button
           type="button"
           onClick={handlePrev}
@@ -59,33 +126,61 @@ export default function Gallery() {
             transition-opacity shrink-0
           "
         >
-          <div className="flex-none rotate-90 size-[21px] sm:size-[30px] md:size-[54px] relative">
+          <div
+            className="
+              flex-none rotate-270
+              size-[21px] sm:size-[30px] md:size-[54px]
+              relative
+            "
+          >
             <img
               alt=""
               aria-hidden="true"
               className="absolute block inset-0 max-w-none size-full"
-              src={IMAGES.galleryArrowLeft}
+              src={IMAGES.galleryArrowRight}
             />
           </div>
         </motion.button>
 
-        {/* Main slide display with smooth animated crossfade */}
-        <div className="w-[258px] sm:w-[380px] md:w-[666px] h-auto aspect-[666/444] relative rounded-[8px] sm:rounded-[12px] overflow-hidden shadow-lg bg-gray-100">
-          <AnimatePresence mode="wait">
+        {/* الصورة الحالية */}
+        <div
+          className="
+            w-[258px] sm:w-[380px] md:w-[666px]
+            h-auto aspect-[666/444]
+            relative rounded-[8px] sm:rounded-[12px]
+            overflow-hidden shadow-lg bg-gray-100 shrink-0
+          "
+        >
+          <AnimatePresence mode="wait" initial={false}>
             <motion.img
               key={currentSlide}
-              initial={{ opacity: 0, scale: 0.98, x: direction * 30 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              exit={{ opacity: 0, scale: 0.98, x: -direction * 30 }}
-              transition={{ duration: 0.35, ease: 'easeInOut' }}
-              alt={`لقطة ${currentSlide + 1} من واجهة منصة حافظ`}
+              src={activeSlide.image}
+              alt={activeSlide.title}
+              initial={{
+                opacity: 0,
+                scale: 0.98,
+                x: direction * 30,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                x: 0,
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.98,
+                x: direction * -30,
+              }}
+              transition={{
+                duration: 0.35,
+                ease: "easeInOut",
+              }}
               className="absolute inset-0 object-cover size-full"
-              src={IMAGES.gallerySlide}
             />
           </AnimatePresence>
         </div>
 
-        {/* Next arrow */}
+        {/* زر الصورة التالية */}
         <motion.button
           type="button"
           onClick={handleNext}
@@ -99,40 +194,66 @@ export default function Gallery() {
             transition-opacity shrink-0
           "
         >
-          <div className="-rotate-90 flex-none size-[21px] sm:size-[30px] md:size-[54px] relative">
+          <div
+            className="
+              -rotate-270 flex-none
+              size-[21px] sm:size-[30px] md:size-[54px]
+              relative
+            "
+          >
             <img
               alt=""
               aria-hidden="true"
               className="absolute block inset-0 max-w-none size-full"
-              src={IMAGES.galleryArrowRight}
+              src={IMAGES.galleryArrowLeft}
             />
           </div>
         </motion.button>
       </motion.div>
 
-      {/* Dot indicators matching Figma node 173:733 */}
-      <div className="flex gap-1.5 sm:gap-2 md:gap-[13px] items-center" role="tablist" aria-label="مؤشرات الشرائح">
-        {Array.from({ length: TOTAL_SLIDES }).map((_, i) => {
-          const isActive = i === currentSlide;
+      {/* عنوان ووصف الصورة الحالية */}
+      <motion.div
+        key={`description-${currentSlide}`}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="text-center px-4 max-w-xl"
+      >
+        <h3 className="text-lg md:text-xl font-semibold text-[#1a5a81]">
+          {activeSlide.title}
+        </h3>
+
+        <p className="mt-2 text-sm md:text-base text-gray-600">
+          {activeSlide.description}
+        </p>
+      </motion.div>
+
+      {/* مؤشرات الصور */}
+      <div
+        className="flex gap-1.5 sm:gap-2 md:gap-[13px] items-center"
+        role="tablist"
+        aria-label="مؤشرات الشرائح"
+      >
+        {gallerySlides.map((slide, index) => {
+          const isActive = index === currentSlide;
+
           return (
             <motion.button
-              key={i}
+              key={slide.title}
               type="button"
               role="tab"
               aria-selected={isActive}
-              aria-label={`الشريحة ${i + 1}`}
-              whileHover={{ scale: 1.25 }}
+              aria-label={`الشريحة ${index + 1}: ${slide.title}`}
+              whileHover={{ scale: 1.15 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => {
-                setDirection(i > currentSlide ? 1 : -1);
-                setCurrentSlide(i);
-              }}
+              onClick={() => handleSelectSlide(index)}
               className={`
-                transition-all duration-300 rounded-[999px] cursor-pointer p-0 border-none
+                transition-all duration-300 rounded-[999px]
+                cursor-pointer p-0 border-none shrink-0
                 ${
                   isActive
-                    ? 'bg-[#1a5a81] h-[6.7px] md:h-[13px] w-[21px] md:w-[42px]'
-                    : 'bg-[#97bacf] size-[6.7px] md:size-[13px] hover:bg-[#78a5bf]'
+                    ? "bg-[#1a5a81] h-[6.7px] md:h-[13px] w-[21px] md:w-[42px]"
+                    : "bg-[#97bacf] size-[6.7px] md:size-[13px] hover:bg-[#78a5bf]"
                 }
               `}
             />

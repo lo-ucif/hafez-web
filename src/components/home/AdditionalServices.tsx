@@ -10,12 +10,7 @@ import { additionalServices } from '../../data/pricing';
 function ServiceCard({ service, index }: { service: AdditionalService; index: number }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
-      whileHover={{ y: -6, scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={{ y: -2, scale: 1.02 }}
       className="
         border-[#cab178] border-[3.501px] border-solid
         flex items-center justify-end

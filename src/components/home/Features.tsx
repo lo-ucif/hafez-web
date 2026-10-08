@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion';
-import { IMAGES } from '../../constants/images';
-import { features, whyItems } from '../../data/features';
-import type { Feature, WhyItem } from '../../data/features';
-import SectionTitle from '../common/SectionTitle';
-import ArabicBg from '../common/ArabicBg';
+import { motion } from "framer-motion";
+import { IMAGES } from "../../constants/images";
+import { features, whyItems } from "../../data/features";
+import type { Feature, WhyItem } from "../../data/features";
+import SectionTitle from "../common/SectionTitle";
+import ArabicBg from "../common/ArabicBg";
 
 // ─── Feature Card ─────────────────────────────────────────────────────────────
 
@@ -12,11 +12,12 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
     <motion.article
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.45, delay: index * 0.08, ease: 'easeOut' }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.45, delay: index * 0.08, ease: "easeOut" }}
       whileHover={{
         y: -8,
-        boxShadow: '0 20px 25px -5px rgba(26,90,129,0.12), 0 8px 10px -6px rgba(26,90,129,0.08)',
+        boxShadow:
+          "0 20px 25px -5px rgba(26,90,129,0.12), 0 8px 10px -6px rgba(26,90,129,0.08)",
       }}
       whileTap={{ scale: 0.98 }}
       className="
@@ -28,7 +29,11 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
         overflow-hidden cursor-pointer select-none
       "
     >
-      <ArabicBg positionClass="-translate-x-1/2 left-1/2 top-0" sizeClass="size-[308px]" opacityClass="opacity-6" />
+      <ArabicBg
+        positionClass="-translate-x-1/2 left-1/2 top-0"
+        sizeClass="size-[308px]"
+        opacityClass="opacity-6"
+      />
 
       <motion.img
         alt={feature.title}
@@ -67,35 +72,91 @@ function WhyHafezItem({ item, index }: { item: WhyItem; index: number }) {
     <motion.div
       initial={{ opacity: 0, scale: 0.85, y: 20 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.12, ease: 'easeOut' }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{
+        duration: 0.5,
+        ease: "easeOut",
+      }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      className="flex flex-col gap-3 md:gap-[20px] items-center relative cursor-pointer"
+      className="
+        flex flex-col gap-3 md:gap-[20px]
+        items-center relative cursor-pointer
+      "
     >
-      <div className="relative size-[130px] sm:size-[140px] md:size-[153px] flex items-center justify-center">
-        <motion.img
-          alt=""
-          aria-hidden="true"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-          className="absolute block inset-0 max-w-none size-full"
-          src={IMAGES.whyCircle}
-        />
+      <div
+        className="
+          relative
+          size-[130px] sm:size-[140px] md:size-[153px]
+          flex items-center justify-center
+        "
+      >
+        {/* Circle animation: 0% → 100% */}
+        <svg
+          className="absolute inset-0 w-full h-full -rotate-90"
+          viewBox="0 0 100 100"
+        >
+          {/* Background circle */}
+          <circle
+            cx="50"
+            cy="50"
+            r="47"
+            fill="none"
+            stroke="#cab178"
+            strokeWidth="1.5"
+            opacity="0"
+          />
+
+          {/* Animated circle */}
+          <motion.circle
+            cx="50"
+            cy="50"
+            r="47"
+            fill="none"
+            stroke="#cab178"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            pathLength="1"
+            initial={{ pathLength: 0 }}
+            whileInView={{ pathLength: 1 }}
+            viewport={{
+              once: true,
+              amount: 0.4,
+            }}
+            transition={{
+              duration: 1.5,
+              delay: index * 0.12,
+              ease: "easeInOut",
+            }}
+          />
+        </svg>
+
+        {/* Icon */}
         <img
           alt=""
           aria-hidden="true"
-          className="relative size-[50px] md:size-[60px] object-contain z-10"
+          className="
+            relative
+            size-[50px] md:size-[60px]
+            object-contain
+            z-10
+          "
           src={item.icon}
         />
       </div>
 
+      {/* Label */}
       <p
         dir="auto"
         className="
-          font-['Almarai:Regular'] not-italic
-          text-[17px] md:text-[20px] text-[#cab178] text-center
-          whitespace-nowrap leading-normal m-0
+          font-['Almarai:Regular']
+          not-italic
+          text-[17px] md:text-[20px]
+          text-[#cab178]
+          text-center
+          whitespace-nowrap
+          leading-normal
+          m-0
         "
       >
         {item.label}
@@ -121,26 +182,27 @@ export default function Features() {
       <SectionTitle title="مميزات النظام" />
 
       {/* Introductory text matching Figma node 201:1021 */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="flex flex-col gap-5 md:gap-7 items-center text-center max-w-[968px] mx-auto px-4"
-      >
+      <div className="flex flex-col gap-5 md:gap-7 items-center text-center max-w-[968px] mx-auto px-4">
         <p
           className="font-['Almarai:Regular'] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] leading-relaxed md:leading-[38px] text-black m-0"
           dir="auto"
         >
-          من خلال منصة حافظ، نسعى إلى جعل رحلة حفظ القرآن الكريم ومراجعته أكثر سهولة وتنظيمًا واستمرارية. توفر المنصة بيئة تساعد المستخدمين على تنظيم الحفظ، متابعة التقدم، وتطوير عادة يومية ثابتة مع كتاب الله. نؤمن أن الاستمرار هو أساس النجاح في رحلة الحفظ، لذلك صُممت حافظ لتساعدك على تنظيم وقتك، متابعة إنجازاتك، وتذكّرك بمهام الحفظ والمراجعة، بما يتناسب مع أهدافك ومستواك.
+          من خلال منصة حافظ، نسعى إلى جعل رحلة حفظ القرآن الكريم ومراجعته أكثر
+          سهولة وتنظيمًا واستمرارية. توفر المنصة بيئة تساعد المستخدمين على تنظيم
+          الحفظ، متابعة التقدم، وتطوير عادة يومية ثابتة مع كتاب الله. نؤمن أن
+          الاستمرار هو أساس النجاح في رحلة الحفظ، لذلك صُممت حافظ لتساعدك على
+          تنظيم وقتك، متابعة إنجازاتك، وتذكّرك بمهام الحفظ والمراجعة، بما يتناسب
+          مع أهدافك ومستواك.
         </p>
         <p
           className="font-['Almarai:Bold'] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] leading-relaxed md:leading-[36px] text-[#1a5a81] m-0"
           dir="auto"
         >
-          حافظ ليست مجرد أداة لتنظيم الحفظ، بل رفيق في رحلة القرآن، يساعدك على بناء عادة مستدامة، متابعة تقدمك، والاستمرار بخطوات ثابتة نحو إتقان ما حفظت.
+          حافظ ليست مجرد أداة لتنظيم الحفظ، بل رفيق في رحلة القرآن، يساعدك على
+          بناء عادة مستدامة، متابعة تقدمك، والاستمرار بخطوات ثابتة نحو إتقان ما
+          حفظت.
         </p>
-      </motion.div>
+      </div>
 
       {/* Feature cards grid */}
       <div className="flex flex-wrap gap-5 md:gap-[21px] items-center justify-center w-full">
@@ -175,4 +237,3 @@ export default function Features() {
     </section>
   );
 }
-

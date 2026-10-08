@@ -1,4 +1,4 @@
-import { IMAGES } from '../constants/images';
+import { IMAGES } from "../constants/images";
 
 export interface InstitutionItem {
   id: string;
@@ -8,18 +8,18 @@ export interface InstitutionItem {
 
 export const institutions: InstitutionItem[] = [
   {
-    id: 'associations',
-    title: 'جمعيات و مؤسسات',
-    image: IMAGES.bookCoverPrimary, // imgBookCover4
+    id: "mosque",
+    title: "مسجد",
+    image: IMAGES.bookCoverHigh, // imgBookCover6
   },
   {
-    id: 'school',
-    title: 'مدرسة قرأنية',
+    id: "school",
+    title: "مدرسة قرأنية",
     image: IMAGES.bookCoverMiddle, // imgBookCover5
   },
   {
-    id: 'mosque',
-    title: 'مسجد',
-    image: IMAGES.bookCoverHigh, // imgBookCover6
+    id: "associations",
+    title: "جمعيات و مؤسسات",
+    image: IMAGES.bookCoverPrimary, // imgBookCover4
   },
 ];

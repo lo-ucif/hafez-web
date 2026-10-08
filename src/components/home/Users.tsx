@@ -10,10 +10,6 @@ import ArabicBg from '../common/ArabicBg';
 function UserCard({ user, index }: { user: UserType; index: number }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 35 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
       whileHover={{ y: -8 }}
       className="
         group drop-shadow-[0px_8.463px_6.347px_rgba(0,0,0,0.1),0px_3.385px_2.539px_rgba(0,0,0,0.1)]

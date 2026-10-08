@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { IMAGES } from '../../constants/images';
-import ArabicBg from '../common/ArabicBg';
+import { motion } from "framer-motion";
+import { IMAGES } from "../../constants/images";
+import ArabicBg from "../common/ArabicBg";
 
 /**
  * Hero section with Framer Motion entrance & interactive animations.
@@ -31,15 +31,19 @@ export default function Hero() {
       />
 
       {/* Decorative Arabic-bg overlays with subtle motion */}
-      <motion.div
-        animate={{ rotate: [0, 2, 0, -2, 0] }}
-        transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
-        className="pointer-events-none"
-      >
-        <ArabicBg positionClass="-translate-x-1/2 left-1/2 top-[-19px]" sizeClass="size-[600px] md:size-[836px]" />
-      </motion.div>
-      <ArabicBg positionClass="-translate-y-1/2 left-[-292px] top-1/2 hidden md:block" sizeClass="size-[840px]" />
-      <ArabicBg positionClass="-translate-y-1/2 left-[896px] top-1/2 hidden md:block" sizeClass="size-[830px]" />
+
+      <ArabicBg
+        positionClass="-translate-x-1/2 left-1/2 top-[-19px]"
+        sizeClass="size-[600px] md:size-[836px]"
+      />
+      <ArabicBg
+        positionClass="-translate-y-1/2 left-[-255px] top-1/2 hidden md:block"
+        sizeClass="size-[840px]"
+      />
+      <ArabicBg
+        positionClass="-translate-y-1/2 left-[940px] top-1/2 hidden md:block"
+        sizeClass="size-[830px]"
+      />
 
       {/* Main Content */}
       <div className="flex flex-col gap-5 md:gap-[33px] items-center relative z-10 w-full max-w-[615px] px-4">
@@ -52,7 +56,7 @@ export default function Hero() {
         >
           <motion.img
             animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             alt="شعار منصة حافظ"
             className="absolute block inset-0 max-w-none size-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.2)]"
             src={IMAGES.heroLogo}
@@ -63,7 +67,7 @@ export default function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
+          transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}
           dir="auto"
           className="
             font-['Almarai:Regular'] not-italic
@@ -81,8 +85,11 @@ export default function Hero() {
           href="#features"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45, ease: 'easeOut' }}
-          whileHover={{ scale: 1.08, boxShadow: '0px 8px 25px rgba(202, 177, 120, 0.4)' }}
+          transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
+          whileHover={{
+            scale: 1.08,
+            boxShadow: "0px 8px 25px rgba(202, 177, 120, 0.4)",
+          }}
           whileTap={{ scale: 0.94 }}
           className="
             bg-[#cab178] hover:bg-[#b89f66]

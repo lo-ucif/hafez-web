@@ -22,15 +22,11 @@ export default function SpecialOffer() {
 
       {/* Blue Banner with Gold Border matching Figma node 196:447 */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 25 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.55, ease: 'easeOut' }}
         whileHover={{ scale: 1.015 }}
         className="
           bg-[#1a5a81] border-[#cab178] border-[3.5px] border-solid
-          relative rounded-[8px] overflow-hidden
-          w-full max-w-[918px] min-h-[150px]
+          relative  overflow-hidden
+          w-full max-w-[350px] min-h-[150px]
           flex flex-col items-center justify-center gap-4 py-6 px-4
           shadow-lg cursor-pointer
         "
