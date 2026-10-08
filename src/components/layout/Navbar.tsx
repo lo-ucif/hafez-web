@@ -4,6 +4,10 @@ import { IMAGES } from '../../constants/images';
 import { navLinks } from '../../data/navigation';
 import ArabicBg from '../common/ArabicBg';
 
+interface NavbarProps {
+  activePage?: 'home' | 'terms';
+}
+
 /**
  * Site-wide Navbar with Framer Motion animations.
  * - Fixed across the entire web page with glassmorphism blur (backdrop-blur-md).
@@ -11,8 +15,9 @@ import ArabicBg from '../common/ArabicBg';
  * - AnimatePresence for butter-smooth mobile drawer transitions.
  * - Staggered entrance for drawer links.
  * - Button hover & tap physics.
+ * - Supports multi-page navigation (Home vs Terms & Conditions).
  */
-export default function Navbar() {
+export default function Navbar({ activePage = 'home' }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Prevent background scroll when mobile drawer is open
@@ -26,6 +31,7 @@ export default function Navbar() {
       document.body.style.overflow = '';
     };
   }, [mobileMenuOpen]);
+
 
   return (
     <>
@@ -73,39 +79,44 @@ export default function Navbar() {
           {/* Center: nav links */}
           <nav aria-label="التنقل الرئيسي">
             <ul className="flex gap-6 lg:gap-8 items-center list-none m-0 p-0" dir="rtl">
-              {navLinks.map((link) => (
-                <motion.li
-                  key={link.id}
-                  whileHover={{ y: -2 }}
-                  className="relative flex flex-col items-center gap-[5px]"
-                >
-                  <a
-                    href={link.href}
-                    dir="auto"
-                    className={`
-                      font-['Almarai:Regular'] not-italic text-[18px] lg:text-[20px] leading-[normal]
-                      whitespace-nowrap no-underline transition-colors duration-200
-                      hover:text-[#cab178]
-                      ${link.isActive ? 'text-[#cab178] font-bold' : 'text-white'}
-                    `}
+              {navLinks.map((link) => {
+                const isLinkActive =
+                  activePage === 'terms' ? link.id === 'terms' : link.id === 'home';
+
+                return (
+                  <motion.li
+                    key={link.id}
+                    whileHover={{ y: -2 }}
+                    className="relative flex flex-col items-center gap-[5px]"
                   >
-                    {link.label}
-                  </a>
-                  {link.isActive && (
-                    <motion.span
-                      layoutId="navUnderline"
-                      className="h-0 w-[30.27px] relative block"
+                    <a
+                      href={link.href}
+                      dir="auto"
+                      className={`
+                        font-['Almarai:Regular'] not-italic text-[18px] lg:text-[20px] leading-[normal]
+                        whitespace-nowrap no-underline transition-colors duration-200
+                        hover:text-[#cab178]
+                        ${isLinkActive ? 'text-[#cab178] font-bold' : 'text-white'}
+                      `}
                     >
-                      <img
-                        alt=""
-                        aria-hidden="true"
-                        className="absolute inset-[-2.16px_0_0_0] block max-w-none size-full"
-                        src={IMAGES.navUnderline}
-                      />
-                    </motion.span>
-                  )}
-                </motion.li>
-              ))}
+                      {link.label}
+                    </a>
+                    {isLinkActive && (
+                      <motion.span
+                        layoutId="navUnderline"
+                        className="h-0 w-[30.27px] relative block"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          className="absolute inset-[-2.16px_0_0_0] block max-w-none size-full"
+                          src={IMAGES.navUnderline}
+                        />
+                      </motion.span>
+                    )}
+                  </motion.li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -261,32 +272,37 @@ export default function Navbar() {
               {/* Navigation links with staggered fade & slide */}
               <nav className="my-auto py-8 relative z-10" aria-label="روابط الموبايل">
                 <ul className="flex flex-col gap-6 items-end w-full list-none p-0 m-0">
-                  {navLinks.map((link, idx) => (
-                    <motion.li
-                      key={link.id}
-                      initial={{ opacity: 0, x: 25 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.08 * (idx + 1), duration: 0.25 }}
-                      className="w-full text-right"
-                    >
-                      <a
-                        href={link.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={`
-                          block font-['Almarai:Bold'] text-[24px] font-bold text-right leading-tight
-                          transition-colors duration-200 no-underline
-                          ${
-                            link.isActive
-                              ? 'text-[#cab178]'
-                              : 'text-white hover:text-[#cab178]'
-                          }
-                        `}
-                        dir="auto"
+                  {navLinks.map((link, idx) => {
+                    const isLinkActive =
+                      activePage === 'terms' ? link.id === 'terms' : link.id === 'home';
+
+                    return (
+                      <motion.li
+                        key={link.id}
+                        initial={{ opacity: 0, x: 25 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.08 * (idx + 1), duration: 0.25 }}
+                        className="w-full text-right"
                       >
-                        {link.label}
-                      </a>
-                    </motion.li>
-                  ))}
+                        <a
+                          href={link.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`
+                            block font-['Almarai:Bold'] text-[24px] font-bold text-right leading-tight
+                            transition-colors duration-200 no-underline
+                            ${
+                              isLinkActive
+                                ? 'text-[#cab178]'
+                                : 'text-white hover:text-[#cab178]'
+                            }
+                          `}
+                          dir="auto"
+                        >
+                          {link.label}
+                        </a>
+                      </motion.li>
+                    );
+                  })}
                 </ul>
               </nav>
 
