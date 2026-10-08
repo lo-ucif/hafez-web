@@ -1,13 +1,13 @@
-import { motion } from 'framer-motion';
-import { userTypes } from '../../data/users';
-import type { UserType } from '../../data/users';
-import { IMAGES } from '../../constants/images';
-import SectionTitle from '../common/SectionTitle';
-import ArabicBg from '../common/ArabicBg';
+import { motion } from "framer-motion";
+import { userTypes } from "../../data/users";
+import type { UserType } from "../../data/users";
+import { IMAGES } from "../../constants/images";
+import SectionTitle from "../common/SectionTitle";
+import ArabicBg from "../common/ArabicBg";
 
 // ─── User Card ────────────────────────────────────────────────────────────────
 
-function UserCard({ user, index }: { user: UserType; index: number }) {
+function UserCard({ user }: { user: UserType; index: number }) {
   return (
     <motion.article
       whileHover={{ y: -8 }}
@@ -20,7 +20,7 @@ function UserCard({ user, index }: { user: UserType; index: number }) {
       "
       style={{
         backgroundImage:
-          'linear-gradient(90deg, rgba(255,255,255,0.002) 0%, rgba(255,255,255,0.002) 100%), linear-gradient(90deg, rgb(255,255,255) 0%, rgb(255,255,255) 100%)',
+          "linear-gradient(90deg, rgba(255,255,255,0.002) 0%, rgba(255,255,255,0.002) 100%), linear-gradient(90deg, rgb(255,255,255) 0%, rgb(255,255,255) 100%)",
       }}
     >
       <ArabicBg
@@ -67,7 +67,7 @@ function UserCard({ user, index }: { user: UserType; index: number }) {
           type="button"
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.92 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
           className="
             bg-[#1a5a81] flex gap-[7px] items-center
             px-[27px] py-[8.5px] rounded-[9999px]
@@ -76,7 +76,12 @@ function UserCard({ user, index }: { user: UserType; index: number }) {
           "
           aria-label={`المزيد عن ${user.title}`}
         >
-          <img alt="" aria-hidden="true" className="size-[14px]" src={IMAGES.plusIcon} />
+          <img
+            alt=""
+            aria-hidden="true"
+            className="size-[14px]"
+            src={IMAGES.plusIcon}
+          />
           <span className="font-['Almarai:Bold'] not-italic text-[12px] text-white leading-none">
             المزيد
           </span>
@@ -109,4 +114,3 @@ export default function Users() {
     </section>
   );
 }
-

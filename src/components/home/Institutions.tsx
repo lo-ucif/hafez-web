@@ -49,7 +49,7 @@ export default function Institutions() {
 
       {/* Cards list matching Figma node 196:421 */}
       <div className="flex flex-wrap gap-8 md:gap-[67px] items-center justify-center w-full relative z-10 max-w-[1440px] mx-auto">
-        {institutions.map((item, index) => (
+        {institutions.map((item) => (
           <motion.article
             key={item.id}
             whileHover={{ y: -8, scale: 1.02 }}

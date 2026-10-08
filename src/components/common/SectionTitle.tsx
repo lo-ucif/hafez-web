@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { IMAGES } from "../../constants/images";
 
 interface SectionTitleProps {

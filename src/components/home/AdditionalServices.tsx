@@ -7,7 +7,7 @@ import { additionalServices } from '../../data/pricing';
 
 // ─── Service Card ─────────────────────────────────────────────────────────────
 
-function ServiceCard({ service, index }: { service: AdditionalService; index: number }) {
+function ServiceCard({ service }: { service: AdditionalService; index: number }) {
   return (
     <motion.article
       whileHover={{ y: -2, scale: 1.02 }}

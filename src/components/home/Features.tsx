@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { IMAGES } from "../../constants/images";
 import { features, whyItems } from "../../data/features";
 import type { Feature, WhyItem } from "../../data/features";
 import SectionTitle from "../common/SectionTitle";
