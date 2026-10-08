@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { IMAGES } from '../../constants/images';
 import Button from '../common/Button';
 
@@ -10,184 +11,199 @@ interface ContactInfoRowProps {
 
 function ContactInfoRow({ icon, iconAlt, text, underline = false }: ContactInfoRowProps) {
   return (
-    <div className="flex gap-[10px] items-center justify-end w-full">
+    <div className="flex gap-3 items-center justify-end w-full">
       <p
         className={`
-          font-['Tajawal:Regular'] not-italic text-[20px] text-black text-right
-          leading-[1.5] whitespace-nowrap
+          font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] md:text-[20px] text-black text-right
+          leading-[1.5] whitespace-nowrap m-0
           ${underline ? 'underline' : ''}
         `}
         dir="auto"
       >
         {text}
       </p>
-      <img src={icon} alt={iconAlt} className="size-[24px] shrink-0" />
+      <img src={icon} alt={iconAlt} className="size-[22px] sm:size-[24px] shrink-0" />
     </div>
   );
 }
 
 /**
- * Contact section — contact form + contact info panel side by side.
+ * Contact section — contact form + contact info panel.
+ * Responsive for mobile mode and desktop mode.
  */
 export default function Contact() {
+  const [agreed, setAgreed] = useState(false);
+
   return (
     <section
       id="contact"
       aria-label="تواصل معنا"
       className="
-        content-center flex flex-wrap gap-0 items-center justify-center
-        overflow-clip px-[80px] py-[50px]
-        relative w-full
+        flex flex-col-reverse lg:flex-row flex-wrap gap-10 lg:gap-16 items-center justify-center
+        overflow-clip px-4 sm:px-8 md:px-[60px] py-10 md:py-[50px]
+        relative w-full max-w-[1440px] mx-auto
       "
       dir="rtl"
     >
       {/* ── Contact Form ── */}
-      <div className="flex flex-[1_0_0] flex-col gap-[21.224px] items-end justify-center min-w-[300px] relative">
+      <div className="flex flex-1 flex-col gap-5 items-end justify-center w-full min-w-[280px] max-w-[620px]">
         <form
-          className="flex flex-col gap-[21.224px] items-end w-full"
+          className="flex flex-col gap-4 sm:gap-5 items-end w-full"
           onSubmit={(e) => e.preventDefault()}
           aria-label="نموذج التواصل"
           noValidate
         >
           {/* Row 1: First name + Last name */}
-          <div className="content-center flex flex-wrap gap-[21.224px] items-center justify-center w-full">
-            <div className="flex flex-[1_0_0] flex-col gap-[7.075px] items-end justify-center min-w-[265px]">
-              <label htmlFor="firstName" className="font-['Tajawal:Regular'] not-italic text-[20px] text-black text-right leading-[1.5] w-full">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full">
+            <div className="flex flex-1 flex-col gap-1.5 items-end justify-center">
+              <label htmlFor="firstName" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
                 الاسم الأول
               </label>
               <input
                 id="firstName"
                 type="text"
                 dir="rtl"
-                className="border-[0.884px] border-black border-solid flex-1 min-h-[42px] rounded-[3.537px] w-full px-3 outline-none focus:border-[#1a5a81] transition-colors"
+                placeholder="محمد"
+                className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-right text-[16px] outline-none transition-colors"
               />
             </div>
-            <div className="flex flex-[1_0_0] flex-col gap-[7.075px] items-end justify-center min-w-[265px]">
-              <label htmlFor="lastName" className="font-['Tajawal:Regular'] not-italic text-[20px] text-black text-right leading-[1.5] w-full">
+            <div className="flex flex-1 flex-col gap-1.5 items-end justify-center">
+              <label htmlFor="lastName" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
                 اسم العائلة
               </label>
               <input
                 id="lastName"
                 type="text"
                 dir="rtl"
-                className="border-[0.884px] border-black border-solid h-[42.449px] rounded-[3.537px] w-full px-3 outline-none focus:border-[#1a5a81] transition-colors"
+                placeholder="بن علي"
+                className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-right text-[16px] outline-none transition-colors"
               />
             </div>
           </div>
 
           {/* Row 2: Email + Phone */}
-          <div className="content-center flex flex-wrap gap-[21.224px] items-center justify-center w-full">
-            <div className="flex flex-[1_0_0] flex-col gap-[7.075px] items-end justify-center min-w-[265px]">
-              <label htmlFor="email" className="font-['Tajawal:Regular'] not-italic text-[20px] text-black text-right leading-[1.5] w-full">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full">
+            <div className="flex flex-1 flex-col gap-1.5 items-end justify-center">
+              <label htmlFor="email" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
                 البريد الإلكتروني
               </label>
               <input
                 id="email"
                 type="email"
-                dir="rtl"
-                className="border-[0.884px] border-black border-solid h-[44.217px] rounded-[3.537px] w-full px-3 outline-none focus:border-[#1a5a81] transition-colors"
+                dir="ltr"
+                placeholder="example@domain.com"
+                className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-left text-[16px] outline-none transition-colors"
               />
             </div>
-            <div className="flex flex-[1_0_0] flex-col gap-[7.075px] items-end justify-center min-w-[265px]">
-              <label htmlFor="phone" className="font-['Tajawal:Regular'] not-italic text-[20px] text-black text-right leading-[1.5] w-full">
+            <div className="flex flex-1 flex-col gap-1.5 items-end justify-center">
+              <label htmlFor="phone" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
                 رقم الهاتف
               </label>
               <input
                 id="phone"
                 type="tel"
                 dir="ltr"
-                className="border-[0.884px] border-black border-solid h-[44.217px] rounded-[3.537px] w-full px-3 outline-none focus:border-[#1a5a81] transition-colors"
+                placeholder="07 80 00 00 00"
+                className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 text-left text-[16px] outline-none transition-colors"
               />
             </div>
           </div>
 
-          {/* Subject select */}
-          <div className="flex flex-col gap-[7.075px] items-center justify-center min-w-[265px] w-full">
-            <label htmlFor="subject" className="font-['Tajawal:Regular'] not-italic text-[20px] text-black text-right leading-[1.5] w-full">
+          {/* Subject Dropdown */}
+          <div className="flex flex-col gap-1.5 items-end w-full">
+            <label htmlFor="subject" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
               موضوع التواصل
             </label>
-            <select
-              id="subject"
-              dir="rtl"
-              defaultValue=""
-              className="border-[0.884px] border-black border-solid h-[58px] rounded-[3.537px] w-full px-[10.612px] font-['Tajawal:Regular'] text-[20px] outline-none focus:border-[#1a5a81] transition-colors bg-white"
-            >
-              <option value="" disabled>اختر موضوع التواصل</option>
-              <option value="demo">طلب عرض تجريبي</option>
-              <option value="pricing">الأسعار</option>
-              <option value="support">الدعم الفني</option>
-              <option value="other">أخرى</option>
-            </select>
+            <div className="relative w-full">
+              <select
+                id="subject"
+                dir="rtl"
+                className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] h-[44px] w-full px-3 pl-8 text-right text-[16px] bg-white appearance-none outline-none cursor-pointer"
+                defaultValue=""
+              >
+                <option value="" disabled>اختر الخدمة أو الاستفسار</option>
+                <option value="demo">طلب نسخة تجريبية</option>
+                <option value="support">الدعم الفني</option>
+                <option value="partnership">شراكة وتعاون</option>
+                <option value="other">استفسار عام</option>
+              </select>
+              <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                <img alt="" aria-hidden="true" className="size-[20px]" src={IMAGES.galleryArrowSelect} />
+              </div>
+            </div>
           </div>
 
-          {/* Message textarea */}
-          <div className="flex flex-col gap-[7.075px] items-center justify-center min-w-[265px] w-full">
-            <label htmlFor="message" className="font-['Tajawal:Regular'] not-italic text-[20px] text-black text-right leading-[1.5] w-full">
+          {/* Message Textarea */}
+          <div className="flex flex-col gap-1.5 items-end w-full">
+            <label htmlFor="message" className="font-['Tajawal:Regular'] not-italic text-[16px] sm:text-[18px] text-black text-right w-full">
               رسالة
             </label>
             <textarea
               id="message"
+              rows={4}
               dir="rtl"
-              rows={5}
-              className="border-[0.884px] border-black border-solid h-[159.184px] rounded-[3.537px] w-full px-3 py-2 resize-y font-['Tajawal:Regular'] text-[20px] outline-none focus:border-[#1a5a81] transition-colors"
+              placeholder="اكتب رسالتك هنا..."
+              className="border border-black/40 focus:border-[#1a5a81] rounded-[4px] w-full p-3 text-right text-[16px] outline-none resize-none transition-colors"
             />
           </div>
 
           {/* Terms checkbox */}
-          <div className="flex items-center justify-between py-[3px] w-full">
+          <div className="flex items-center gap-3 w-full py-1">
             <input
               id="terms"
               type="checkbox"
-              className="border-[0.884px] border-black border-solid rounded-[1.769px] size-[16px] cursor-pointer accent-[#1a5a81]"
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+              className="size-4.5 accent-[#1a5a81] rounded cursor-pointer"
             />
-            <label htmlFor="terms" className="font-['Tajawal:Regular'] not-italic text-[20px] text-black leading-[1.5] cursor-pointer">
+            <label htmlFor="terms" className="font-['Tajawal:Regular'] text-[15px] sm:text-[17px] text-black cursor-pointer select-none">
               أقبل شروط الموقع
             </label>
           </div>
 
-          <Button variant="primary" size="md" className="rounded-[7.075px] w-[86.667px] h-[41.565px]">
+          {/* Submit button */}
+          <Button
+            type="submit"
+            variant="primary"
+            size="md"
+            className="rounded-[7px] w-full sm:w-auto px-8"
+          >
             إرسال
           </Button>
         </form>
       </div>
 
       {/* ── Contact Info Panel ── */}
-      <div className="flex flex-[1_0_0] flex-col gap-[10px] items-end justify-center min-w-[300px] relative">
-        <p
-          dir="auto"
-          className="font-['Almarai:Regular'] not-italic text-[24px] text-black text-right leading-[1.5] whitespace-nowrap"
-        >
+      <div className="flex flex-1 flex-col gap-4 sm:gap-6 items-end justify-center w-full max-w-[500px]">
+        <p className="font-['Almarai:Regular'] text-[18px] sm:text-[22px] md:text-[24px] text-black text-right m-0">
           نحن هنا للاستماع إليك
         </p>
 
-        <div className="flex flex-col gap-[10px] items-end justify-center p-[10px] w-full">
-          <h2
-            dir="auto"
-            className="font-['Almarai:Bold'] not-italic text-[60px] text-[#1a5a81] text-right tracking-[-0.6px] leading-[1.2] whitespace-nowrap"
-          >
-            {`تواصل معنا: `}
+        <div className="flex flex-col gap-2 items-end text-right w-full">
+          <h2 className="font-['Almarai:Bold'] text-[32px] sm:text-[42px] md:text-[50px] text-[#1a5a81] leading-tight m-0">
+            تواصل معنا:
           </h2>
-          <p dir="auto" className="font-['Tajawal:Regular'] text-[20px] text-black leading-[1.5] min-w-full w-[min-content]">
+          <p className="font-['Tajawal:Regular'] text-[16px] sm:text-[18px] md:text-[20px] text-black/80 m-0">
             شارك احتياجاتك سنقدم لك حلولاً مخصصة
           </p>
         </div>
 
-        <div className="flex flex-col gap-[10px] items-end py-[8px] w-full">
+        <div className="flex flex-col gap-3.5 items-end py-2 w-full">
           <ContactInfoRow
             icon={IMAGES.iconMail}
-            iconAlt="البريد الإلكتروني"
+            iconAlt="أيقونة البريد"
             text="info@mnst_hafez.com"
           />
           <ContactInfoRow
             icon={IMAGES.iconPhone}
-            iconAlt="الهاتف"
+            iconAlt="أيقونة الهاتف"
             text="07 802 802 08"
             underline
           />
           <ContactInfoRow
             icon={IMAGES.iconLocation}
-            iconAlt="الموقع"
-            text={` الجزائر العاصمة ، الجزائر`}
+            iconAlt="أيقونة الموقع"
+            text="الجزائر العاصمة ، الجزائر"
           />
         </div>
       </div>

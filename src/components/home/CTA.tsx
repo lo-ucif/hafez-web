@@ -4,7 +4,8 @@ import ArabicBg from '../common/ArabicBg';
 
 /**
  * CTA (Call-to-Action) section — "لديكم مدرسة قرآنية؟" full-width banner
- * with book cover and request-copy button.
+ * with mascot book cover, gold badge, and request button.
+ * Responsive for phone mode and desktop mode.
  */
 export default function CTA() {
   return (
@@ -13,10 +14,11 @@ export default function CTA() {
       className="
         bg-[#1a5a81] relative w-full overflow-clip
         flex flex-col items-center justify-center
+        py-12 md:py-16 px-4 sm:px-8
       "
     >
-      {/* Decorative Arabic bg row */}
-      <div className="-translate-x-1/2 absolute flex h-[350px] items-center left-1/2 top-[0.43px] w-[1440px]">
+      {/* Decorative Arabic bg watermark */}
+      <div className="-translate-x-1/2 absolute flex h-[350px] items-center left-1/2 top-0 w-[1440px] pointer-events-none opacity-30">
         {Array.from({ length: 5 }).map((_, i) => (
           <ArabicBg
             key={i}
@@ -27,12 +29,17 @@ export default function CTA() {
         ))}
       </div>
 
-      <div className="content-center flex flex-wrap gap-[10px_390px] items-center w-full relative">
-        {/* Book cover */}
-        <div className="h-[350.659px] relative rounded-[12.878px] w-[308px]">
+      <div
+        className="
+          flex flex-col md:flex-row-reverse gap-8 md:gap-16 lg:gap-24 items-center justify-center
+          w-full max-w-[1200px] relative z-10
+        "
+      >
+        {/* Book cover / Mascot illustration */}
+        <div className="w-[260px] sm:w-[290px] md:w-[308px] h-auto aspect-[308/350] relative rounded-[13px] shadow-2xl shrink-0 overflow-hidden">
           <img
             alt="غلاف كتاب طلب نسخة"
-            className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[12.878px] size-full"
+            className="absolute inset-0 object-cover rounded-[13px] size-full pointer-events-none"
             src={IMAGES.ctaBookCover}
           />
         </div>
@@ -40,17 +47,26 @@ export default function CTA() {
         {/* Text + button */}
         <div
           dir="rtl"
-          className="flex flex-col gap-[20px] items-end justify-center w-[437px]"
+          className="flex flex-col gap-6 md:gap-[24px] items-center md:items-start justify-center max-w-[480px] text-center md:text-right"
         >
           <h2
             dir="auto"
-            className="font-['Almarai:Bold'] not-italic text-[36px] text-right text-white leading-[60px] whitespace-pre-wrap min-w-full w-[min-content]"
+            className="
+              font-['Almarai:Bold'] not-italic
+              text-[26px] sm:text-[30px] md:text-[36px]
+              text-white leading-snug md:leading-[55px]
+              whitespace-pre-wrap m-0
+            "
           >
             <span className="block">لديكم مدرسة قرآنية؟</span>
             <span className="block">{` لا تتردّد واطلب نسختك الآن!`}</span>
           </h2>
 
-          <Button variant="gold" size="lg" className="rounded-[12px] w-[285px] h-[64px]">
+          <Button
+            variant="gold"
+            size="lg"
+            className="rounded-[12px] w-full max-w-[285px] h-[56px] sm:h-[64px] text-[20px] sm:text-[24px]"
+          >
             طلب نسخة
           </Button>
         </div>

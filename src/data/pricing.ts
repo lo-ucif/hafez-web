@@ -17,7 +17,8 @@ export const pricingPlans: PricingPlan[] = [
     description: 'هبطت بنا الطائرة حيث مطار الكويت ',
     price: 'DA 49900 / سنويا',
     originalPrice: '1000 دج',
-    bookCover: IMAGES.bookCoverPrimary,
+    discount: 'خصم 20%',
+    bookCover: IMAGES.bookCoverUniversity, // imgBookCover7
   },
   {
     id: 'middle',
@@ -26,7 +27,7 @@ export const pricingPlans: PricingPlan[] = [
     price: 'DA 49900 / سنويا',
     originalPrice: '1000 دج',
     discount: 'خصم 20%',
-    bookCover: IMAGES.bookCoverMiddle,
+    bookCover: IMAGES.bookCoverUniversity, // imgBookCover7
   },
   {
     id: 'high',
@@ -34,7 +35,8 @@ export const pricingPlans: PricingPlan[] = [
     description: 'هبطت بنا الطائرة حيث مطار الكويت ',
     price: 'DA 49900 / سنويا',
     originalPrice: '1000 دج',
-    bookCover: IMAGES.bookCoverHigh,
+    discount: 'خصم 20%',
+    bookCover: IMAGES.bookCoverUniversity, // imgBookCover7
   },
   {
     id: 'university',
@@ -43,7 +45,7 @@ export const pricingPlans: PricingPlan[] = [
     price: 'DA 49900 / سنويا',
     originalPrice: '1000 دج',
     discount: 'خصم 20%',
-    bookCover: IMAGES.bookCoverUniversity,
+    bookCover: IMAGES.bookCoverUniversity, // imgBookCover7
   },
 ];
 

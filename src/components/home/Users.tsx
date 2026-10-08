@@ -14,7 +14,7 @@ function UserCard({ user }: { user: UserType }) {
         flex flex-col items-center
         pb-[45px] pt-[8.463px]
         relative rounded-[24px] w-[283.5px]
-        overflow-hidden
+        overflow-visible transition-transform duration-200 hover:-translate-y-1
       "
       style={{
         backgroundImage:
@@ -28,19 +28,17 @@ function UserCard({ user }: { user: UserType }) {
       />
 
       {/* Book cover image */}
-      <div className="h-[276.518px] relative rounded-[10.155px] w-full">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[10.155px]">
-          <img
-            alt={`غلاف كتاب ${user.title}`}
-            className="absolute h-full max-w-none"
-            style={{
-              left: user.coverOffsetX,
-              top: user.coverOffsetY,
-              width: user.coverScale,
-            }}
-            src={user.bookCover}
-          />
-        </div>
+      <div className="h-[276.518px] relative rounded-[10.155px] w-full overflow-hidden">
+        <img
+          alt={`غلاف كتاب ${user.title}`}
+          className="absolute h-full max-w-none pointer-events-none rounded-[10.155px]"
+          style={{
+            left: user.coverOffsetX,
+            top: user.coverOffsetY,
+            width: user.coverScale,
+          }}
+          src={user.bookCover}
+        />
       </div>
 
       {/* Title */}
@@ -48,32 +46,33 @@ function UserCard({ user }: { user: UserType }) {
         <div className="flex flex-col items-center w-full">
           <h3
             dir="auto"
-            className="font-['Almarai:Bold'] not-italic text-[20px] text-[#333] text-center leading-[23.696px] whitespace-nowrap"
+            className="font-['Almarai:Bold'] not-italic text-[20px] text-[#333] text-center leading-[23.696px] whitespace-nowrap m-0 mb-1"
           >
             {user.title}
           </h3>
           <p
             dir="auto"
-            className="font-['Almarai:Regular'] not-italic text-[10.155px] text-[#666] text-center leading-[16.502px] whitespace-nowrap"
+            className="font-['Almarai:Regular'] not-italic text-[11px] text-[#666] text-center leading-relaxed m-0"
           >
             {user.description}
           </p>
         </div>
       </div>
 
-      {/* "More" action button */}
-      <div className="-translate-x-1/2 absolute bottom-[-14.92px] left-[calc(50%+0.28px)]">
+      {/* Action button – positioned overlapping bottom edge */}
+      <div className="-translate-x-1/2 absolute bottom-[-15px] left-1/2 z-10">
         <button
           type="button"
           className="
-            bg-[#1a5a81] flex gap-[6.77px] items-center
-            px-[27.081px] py-[8.463px] rounded-[8461.84px]
-            cursor-pointer hover:bg-[#154e70] transition-colors duration-200
+            bg-[#1a5a81] flex gap-[7px] items-center
+            px-[27px] py-[8.5px] rounded-[9999px]
+            cursor-pointer hover:bg-[#154e70] active:scale-95
+            transition-all duration-200 shadow-md
           "
           aria-label={`المزيد عن ${user.title}`}
         >
-          <img alt="" aria-hidden="true" className="size-[13.54px]" src={IMAGES.plusIcon} />
-          <span className="font-['Almarai:Bold'] not-italic text-[11.848px] text-white leading-[16.925px]">
+          <img alt="" aria-hidden="true" className="size-[14px]" src={IMAGES.plusIcon} />
+          <span className="font-['Almarai:Bold'] not-italic text-[12px] text-white leading-none">
             المزيد
           </span>
         </button>
@@ -93,14 +92,14 @@ export default function Users() {
       id="users"
       aria-label="مستخدمو النظام"
       className="
-        bg-white flex flex-col gap-[60px] items-center overflow-clip
-        pb-[60px] pt-[100px] px-[10px]
-        relative w-full
+        bg-white flex flex-col gap-12 md:gap-[60px] items-center overflow-clip
+        pb-16 md:pb-[60px] pt-12 md:pt-[100px] px-4 md:px-[10px]
+        relative w-full max-w-[1440px] mx-auto
       "
     >
       <SectionTitle title="مستخدمو النظام" />
 
-      <div className="content-center flex flex-wrap gap-[20px] items-center justify-center w-full">
+      <div className="flex flex-wrap gap-8 sm:gap-6 md:gap-[20px] items-center justify-center w-full">
         {userTypes.map((user) => (
           <UserCard key={user.id} user={user} />
         ))}

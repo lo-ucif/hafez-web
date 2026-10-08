@@ -12,24 +12,24 @@ function FeatureCard({ feature }: { feature: Feature }) {
       className="
         backdrop-blur-[34.87px] bg-white
         drop-shadow-[0px_2px_3px_rgba(0,0,0,0.12)]
-        flex flex-col gap-[34px] h-[311px] items-center justify-center
-        pb-[5px] pt-[26px] px-[10px]
-        relative rounded-[24px] w-[362px]
-        overflow-hidden
+        flex flex-col gap-6 md:gap-[34px] min-h-[290px] md:h-[311px] items-center justify-center
+        pb-5 pt-6 px-4
+        relative rounded-[24px] w-full max-w-[362px]
+        overflow-hidden transition-transform duration-200 hover:-translate-y-1
       "
     >
       <ArabicBg positionClass="-translate-x-1/2 left-1/2 top-0" sizeClass="size-[308px]" opacityClass="opacity-6" />
 
       <img
         alt={feature.title}
-        className="relative shrink-0 size-[90px] object-contain"
+        className="relative shrink-0 size-[75px] md:size-[90px] object-contain"
         src={feature.icon}
       />
       <h3
         dir="auto"
         className="
-          font-['Almarai:Bold'] not-italic text-[24px] text-black text-center
-          leading-[13.948px] min-w-full w-[min-content]
+          font-['Almarai:Bold'] not-italic text-[20px] md:text-[24px] text-black text-center
+          leading-normal m-0
         "
       >
         {feature.title}
@@ -37,9 +37,9 @@ function FeatureCard({ feature }: { feature: Feature }) {
       <p
         dir="auto"
         className="
-          font-['Almarai:Regular'] not-italic text-[18px]
-          text-[rgba(0,0,0,0.6)] text-center leading-[25.9px]
-          h-[94px] min-w-full w-[min-content]
+          font-['Almarai:Regular'] not-italic text-[15px] md:text-[18px]
+          text-[rgba(0,0,0,0.6)] text-center leading-relaxed
+          m-0 max-w-[300px]
         "
       >
         {feature.description}
@@ -52,8 +52,8 @@ function FeatureCard({ feature }: { feature: Feature }) {
 
 function WhyHafezItem({ item }: { item: WhyItem }) {
   return (
-    <div className="flex flex-col gap-[20px] items-center relative">
-      <div className="relative size-[153px]">
+    <div className="flex flex-col gap-3 md:gap-[20px] items-center relative">
+      <div className="relative size-[130px] sm:size-[140px] md:size-[153px] flex items-center justify-center">
         <img
           alt=""
           aria-hidden="true"
@@ -61,17 +61,19 @@ function WhyHafezItem({ item }: { item: WhyItem }) {
           src={IMAGES.whyCircle}
         />
         <img
-          alt={item.label}
-          className="absolute left-[47px] top-[47px] size-[60px] object-contain"
+          alt=""
+          aria-hidden="true"
+          className="relative size-[50px] md:size-[60px] object-contain z-10"
           src={item.icon}
         />
       </div>
+
       <p
         dir="auto"
         className="
-          font-['Almarai:Regular'] not-italic text-[20px]
-          text-[#cab178] text-center leading-[normal]
-          whitespace-nowrap
+          font-['Almarai:Regular'] not-italic
+          text-[17px] md:text-[20px] text-[#cab178] text-center
+          whitespace-nowrap leading-normal m-0
         "
       >
         {item.label}
@@ -82,42 +84,46 @@ function WhyHafezItem({ item }: { item: WhyItem }) {
 
 // ─── Features Section ─────────────────────────────────────────────────────────
 
-/**
- * Features section — "مميزات النظام" feature cards + "لماذا حافظ" circle icons.
- */
 export default function Features() {
   return (
     <section
       id="features"
       aria-label="مميزات النظام"
       className="
-        bg-white flex flex-col gap-[60px] items-center overflow-clip
-        pb-[10px] pt-[100px] px-[10px]
-        relative w-full
+        bg-white flex flex-col gap-12 md:gap-[60px] items-center overflow-clip
+        pb-10 md:pb-[10px] pt-12 md:pt-[100px] px-4 sm:px-6 md:px-[10px]
+        relative w-full max-w-[1440px] mx-auto
       "
     >
+      {/* Section Title */}
       <SectionTitle title="مميزات النظام" />
 
       {/* Feature cards grid */}
-      <div className="content-center drop-shadow-[0px_4px_2px_rgba(0,0,0,0.25)] flex flex-wrap gap-[21px] items-center justify-center w-full">
+      <div className="flex flex-wrap gap-5 md:gap-[21px] items-center justify-center w-full">
         {features.map((feature) => (
           <FeatureCard key={feature.id} feature={feature} />
         ))}
       </div>
 
-      {/* "Why Hafez" sub-heading */}
-      <p
-        dir="auto"
-        className="font-['Almarai:Regular'] not-italic text-[24px] text-[#cab178] text-center leading-[normal] whitespace-nowrap"
-      >
-        لماذا حافظ
-      </p>
+      {/* "Why Hafez" subsection */}
+      <div className="flex flex-col gap-8 md:gap-12 items-center w-full mt-6">
+        <h2
+          dir="auto"
+          className="
+            font-['Almarai:Regular'] not-italic
+            text-[22px] md:text-[24px] text-[#cab178] text-center
+            whitespace-nowrap leading-normal m-0
+          "
+        >
+          لماذا حافظ
+        </h2>
 
-      {/* Why Hafez items */}
-      <div className="content-center flex flex-wrap gap-[80px] items-center justify-center w-full">
-        {whyItems.map((item) => (
-          <WhyHafezItem key={item.id} item={item} />
-        ))}
+        {/* Circular icons */}
+        <div className="flex flex-wrap gap-8 sm:gap-12 md:gap-[80px] items-center justify-center w-full">
+          {whyItems.map((item) => (
+            <WhyHafezItem key={item.id} item={item} />
+          ))}
+        </div>
       </div>
     </section>
   );
