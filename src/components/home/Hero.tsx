@@ -15,7 +15,7 @@ export default function Hero() {
       className="
         bg-[#1a5a81] relative w-full overflow-clip
         flex flex-col items-center justify-center
-        min-h-[480px] md:h-[798px] py-10 md:py-0
+        min-h-[500px] md:h-[798px] pt-[70px] md:pt-[100px] pb-10 md:pb-0
       "
     >
       {/* Decorative black blur at the bottom */}
