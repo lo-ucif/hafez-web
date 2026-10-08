@@ -40,31 +40,27 @@ export default function Navbar() {
           "
           dir="ltr"
         >
-          {/* Auth buttons (left side in LTR) matching Figma node 196:181 */}
-          <div className="flex items-center gap-4">
+          {/* CTA Button (left side in LTR) */}
+          <div className="flex items-center">
             <button
               type="button"
+              onClick={() => {
+                const el = document.getElementById('pricing') || document.getElementById('cta');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               className="
-                text-white cursor-pointer
-                font-['Changa'] font-semibold
-                text-[16px] leading-none px-4 py-2.5
-                hover:text-white/80 transition-colors
-              "
-            >
-              تسجيل الدخول
-            </button>
-            <button
-              type="button"
-              className="
-                bg-white text-[#1a5a81] cursor-pointer
-                font-['Changa'] font-semibold
-                text-[16px] leading-none
-                px-5 py-2.5 rounded-[4px]
+                bg-[#cab178] hover:bg-[#bfa56a] active:scale-95 text-white
+                font-['Almarai:Bold'] font-bold
+                text-[16px] lg:text-[18px] leading-none
+                px-6 py-3 rounded-[8px]
                 transition-all duration-200
-                hover:bg-gray-100 active:scale-95 shadow-sm
+                cursor-pointer shadow-md hover:shadow-lg
               "
+              dir="auto"
             >
-              إنشاء حساب
+              طلب نسخة
             </button>
           </div>
 
