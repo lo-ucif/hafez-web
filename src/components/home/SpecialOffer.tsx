@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import SectionTitle from '../common/SectionTitle';
-import ArabicBg from '../common/ArabicBg';
+import { motion } from "framer-motion";
+import SectionTitle from "../common/SectionTitle";
+import ArabicBg from "../common/ArabicBg";
 
 /**
  * Special Offer Banner — "عروض المنصة: مدرسة قرآنية - مجانا لفترة محدودة"
@@ -20,71 +20,58 @@ export default function SpecialOffer() {
     >
       <SectionTitle title="عروض المنصة" />
 
-      {/* Blue Banner with Gold Border matching Figma node 196:447 */}
-      <motion.div
-        whileHover={{ scale: 1.015 }}
-        className="
-          bg-[#1a5a81] border-[#cab178] border-[3.5px] border-solid
-          relative  overflow-hidden
-          w-full max-w-[350px] min-h-[150px]
-          flex flex-col items-center justify-center gap-4 py-6 px-4
-          shadow-lg cursor-pointer
-        "
-      >
-        {/* Background Calligraphy Watermark */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
-          <div className="flex justify-center items-center h-full w-full">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <ArabicBg
-                key={i}
-                positionClass="relative shrink-0 -mx-10"
-                sizeClass="size-[290px]"
-                opacityClass="opacity-6"
-              />
-            ))}
+      <div className="bg-gradient-to-br from-[#1a5a81] to-[#15455E] text-white rounded-xl p-8 sm:p-12 relative overflow-hidden shadow-xl text-center">
+        <ArabicBg
+          positionClass="absolute top-0 md:left-105 "
+          sizeClass="size-[400px]"
+          opacityClass="md:opacity-6 opacity-0"
+        />
+        <ArabicBg
+          positionClass="absolute top-0 md:right-120"
+          sizeClass="size-[400px]"
+          opacityClass="md:opacity-6 opacity-0"
+        />
+        <ArabicBg
+          positionClass="absolute top-0 left-1/2 -translate-x-1/2"
+          sizeClass="size-[400px]"
+          opacityClass="opacity-6"
+        />
+        <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center gap-5">
+          <span className="text-[16px] font-bold text-[#cab178] tracking-widest uppercase">
+            منصة حافظ
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight m-0 text-white">
+            هل ترغب في تجربة مجانية لفترة محدودة !
+          </h2>
+          <p className="text-sm md:text-base text-white/80 leading-relaxed m-0">
+            احصل على نسختك الخاصة المجانية لفترة محدودة
+          </p>
+
+          <div className="flex flex-wrap justify-center items-center gap-4 mt-2">
+            <a
+              href="#pricing"
+              className="
+                          bg-[#cab178] hover:bg-[#bfa56a] text-white font-bold
+                          px-7 py-3 rounded-xl transition-all shadow-lg hover:shadow-xl
+                          no-underline text-base
+                        "
+            >
+              طلب نسخة تجريبية
+            </a>
+
+            <a
+              href="#contact"
+              className="
+                          bg-white/10 hover:bg-white/20 text-white font-bold
+                          px-6 py-3 rounded-xl transition-all border border-white/20
+                          no-underline text-base
+                        "
+            >
+              تواصل مع فريق الدعم
+            </a>
           </div>
         </div>
-
-        {/* Title: مدرسة قرآنية */}
-        <motion.h3
-          dir="auto"
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="
-            font-['Almarai:Regular'] not-italic text-[20px] md:text-[22px]
-            text-center text-white tracking-wide m-0 relative z-10
-          "
-        >
-          مدرسة قرآنية
-        </motion.h3>
-
-        {/* White Badge / Button: مجانا لفترة محدودة */}
-        <motion.div
-          animate={{ scale: [1, 1.04, 1] }}
-          transition={{ repeat: Infinity, duration: 2.4, ease: 'easeInOut' }}
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.94 }}
-          className="
-            relative z-10 bg-white
-            px-7 py-2.5 rounded-[6px] shadow-md
-            flex items-center justify-center
-            w-auto min-w-[210px] cursor-pointer
-          "
-        >
-          <span
-            dir="auto"
-            className="
-              font-['Almarai:Bold'] not-italic text-[#1a5a81]
-              text-[16px] md:text-[18px] text-center whitespace-nowrap leading-tight
-            "
-          >
-            مجانا لفترة محدودة
-          </span>
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
-
