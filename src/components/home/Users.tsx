@@ -1,44 +1,20 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { userTypes } from "../../data/users";
 import type { UserType } from "../../data/users";
 import { IMAGES } from "../../constants/images";
 import SectionTitle from "../common/SectionTitle";
 import ArabicBg from "../common/ArabicBg";
-import UserRoleExpandedPanel from "./UserRoleExpandedPanel";
 
-const gridContainerMotion = {
-  initial: { opacity: 0, scale: 0.96, y: 24 },
-  animate: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
-  },
-  exit: {
-    opacity: 0,
-    scale: 0.97,
-    y: 16,
-    transition: { duration: 0.3, ease: [0.4, 0, 1, 1] },
-  },
-};
-
-const cardGridMotion = {
+const cardGridMotion: Variants = {
   initial: { opacity: 0, y: 12 },
   animate: {
     opacity: 1,
     y: 0,
     transition: { staggerChildren: 0.06, delayChildren: 0.04 },
   },
-  exit: {
-    opacity: 0,
-    y: -16,
-    scale: 0.97,
-    transition: { duration: 0.28, ease: "easeIn" },
-  },
 };
 
-const cardItemMotion = {
+const cardItemMotion: Variants = {
   initial: { opacity: 0, y: 20, scale: 0.96 },
   animate: {
     opacity: 1,
@@ -53,14 +29,12 @@ const cardItemMotion = {
 
 function UserCard({
   user,
-  onExpand,
 }: {
   user: UserType;
-  index: number;
-  onExpand: (id: string) => void;
 }) {
   return (
-    <motion.article
+    <motion.a
+      href={`#/role/${user.id}`}
       layout
       variants={cardItemMotion}
       whileHover={{ y: -8 }}
@@ -69,8 +43,10 @@ function UserCard({
         flex flex-col items-center
         pb-[45px] pt-[8.463px]
         relative rounded-[24px] w-[283.5px]
-        overflow-visible
+        overflow-visible no-underline
+        focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#cab178]
       "
+      aria-label={`عرض تفاصيل دور ${user.title}`}
       style={{
         backgroundImage:
           "linear-gradient(90deg, rgba(255,255,255,0.002) 0%, rgba(255,255,255,0.002) 100%), linear-gradient(90deg, rgb(255,255,255) 0%, rgb(255,255,255) 100%)",
@@ -115,42 +91,25 @@ function UserCard({
       </div>
 
       <div className="-translate-x-1/2 absolute bottom-[-15px] left-1/2 z-10">
-        <motion.button
-          type="button"
-          onClick={() => onExpand(user.id)}
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.92 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        <span
           className="
             bg-[#1a5a81] flex gap-[7px] items-center
             px-[27px] py-[8.5px] rounded-[9999px]
-            cursor-pointer hover:bg-[#154e70]
+            group-hover:bg-[#154e70]
             transition-colors duration-200 shadow-md border-0
           "
-          aria-label={`المزيد عن ${user.title}`}
-          aria-expanded={false}
         >
           <img alt="" aria-hidden="true" className="size-[14px]" src={IMAGES.plusIcon} />
           <span className="font-['Almarai:Bold'] not-italic text-[12px] text-white leading-none">المزيد</span>
-        </motion.button>
+        </span>
       </div>
-    </motion.article>
+    </motion.a>
   );
 }
 
 // ─── Users Section ────────────────────────────────────────────────────────────
 
 export default function Users() {
-  const [expandedRoleId, setExpandedRoleId] = useState<string | null>(null);
-
-  const handleExpand = (roleId: string) => {
-    setExpandedRoleId(roleId);
-  };
-
-  const handleClose = () => {
-    setExpandedRoleId(null);
-  };
-
   return (
     <section
       id="users"
@@ -165,41 +124,16 @@ export default function Users() {
       <SectionTitle title="مستخدمو النظام" />
 
       <div className="w-full flex flex-col items-center relative min-h-[320px]">
-        <AnimatePresence mode="wait" initial={false}>
-          {expandedRoleId ? (
-            <motion.div
-              key="expanded-panel"
-              className="w-full flex justify-center"
-              variants={gridContainerMotion}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              <UserRoleExpandedPanel roleId={expandedRoleId} onClose={handleClose} />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="cards-grid"
-              className="w-full overflow-hidden"
-              variants={gridContainerMotion}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              <motion.div
-                variants={cardGridMotion}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className="flex flex-wrap gap-8 sm:gap-6 md:gap-[20px] items-center justify-center w-full"
-              >
-                {userTypes.map((user, index) => (
-                  <UserCard key={user.id} user={user} index={index} onExpand={handleExpand} />
-                ))}
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <motion.div
+          variants={cardGridMotion}
+          initial="initial"
+          animate="animate"
+          className="flex flex-wrap gap-8 sm:gap-6 md:gap-[20px] items-center justify-center w-full"
+        >
+          {userTypes.map((user) => (
+            <UserCard key={user.id} user={user} />
+          ))}
+        </motion.div>
       </div>
     </section>
   );

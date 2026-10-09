@@ -10,6 +10,7 @@ export interface NavLink {
 export const navLinks: NavLink[] = [
   { id: 'home', label: 'الرئيسية', href: '#home', isActive: true },
   { id: 'features', label: 'مميزات النظام', href: '#features' },
+  { id: 'users', label: 'المستخدمون', href: '#users' },
   { id: 'offers', label: 'العروض', href: '#pricing' },
   { id: 'support', label: 'الدعم', href: '#contact' },
   { id: 'terms', label: 'الشروط والأحكام', href: '#terms' },

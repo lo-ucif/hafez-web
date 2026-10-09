@@ -9,6 +9,11 @@ interface NavbarProps {
   activePage?: "home" | "terms" | "roles";
 }
 
+function navigateToHash(hash: string) {
+  window.history.pushState(null, "", hash);
+  window.dispatchEvent(new HashChangeEvent("hashchange"));
+}
+
 /**
  * Site-wide Navbar with Framer Motion animations & dynamic active link coloring.
  * - Colors the clicked title in gold (#cab178) with animated underline.
@@ -24,10 +29,12 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
   const [activeId, setActiveId] = useState<string>(() => {
     if (activePage === "terms") return "terms";
+    if (activePage === "roles") return "users";
 
     const hash = window.location.hash;
 
     if (hash === "#features") return "features";
+    if (hash === "#users") return "users";
     if (hash === "#pricing") return "offers";
     if (hash === "#contact") return "support";
     if (hash === "#terms") return "terms";
@@ -45,21 +52,16 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
    * Other pages:
    * Always colored
    */
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(() => {
+    return activePage !== "home" || window.scrollY > 10;
+  });
 
   useEffect(() => {
-    // Other pages always have colored navbar
-    if (activePage !== "home") {
-      setIsScrolled(true);
-      return;
-    }
+    if (activePage !== "home") return;
 
     const handleNavbarScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-
-    // Check initial position
-    handleNavbarScroll();
 
     window.addEventListener("scroll", handleNavbarScroll, {
       passive: true,
@@ -82,16 +84,15 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
   // Sync active link with hash changes and activePage prop
   useEffect(() => {
-    if (activePage === "terms") {
-      setActiveId("terms");
-      return;
-    }
+    if (activePage !== "home") return;
 
     const updateFromHash = () => {
       const hash = window.location.hash;
 
       if (hash === "#features") {
         setActiveId("features");
+      } else if (hash === "#users") {
+        setActiveId("users");
       } else if (hash === "#pricing") {
         setActiveId("offers");
       } else if (hash === "#contact") {
@@ -119,6 +120,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     const sections = [
       { id: "home", linkId: "home" },
       { id: "features", linkId: "features" },
+      { id: "users", linkId: "users" },
       { id: "pricing", linkId: "offers" },
       { id: "contact", linkId: "support" },
     ];
@@ -178,13 +180,15 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     setMobileMenuOpen(false);
 
     if (link.id === "terms") {
-      window.location.hash = "#terms";
+      e.preventDefault();
+      navigateToHash("#terms");
       return;
     }
 
     if (activePage !== "home") {
       // Navigating from other pages back to Home section
-      window.location.hash = link.href;
+      e.preventDefault();
+      navigateToHash(link.href);
     } else {
       // Smooth scroll on Home page
       const targetId = link.href.replace("#", "");
@@ -197,7 +201,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           behavior: "smooth",
         });
 
-        window.history.pushState(null, "", link.href);
+        navigateToHash(link.href);
       }
     }
   };
@@ -208,7 +212,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     setMobileMenuOpen(false);
 
     if (activePage !== "home") {
-      window.location.hash = "#pricing";
+      navigateToHash("#pricing");
     } else {
       const el =
         document.getElementById("pricing") || document.getElementById("cta");
@@ -218,7 +222,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           behavior: "smooth",
         });
 
-        window.history.pushState(null, "", "#pricing");
+        navigateToHash("#pricing");
       }
     }
   };
@@ -229,7 +233,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     setMobileMenuOpen(false);
 
     if (activePage !== "home") {
-      window.location.hash = "#home";
+      navigateToHash("#home");
     } else {
       const el = document.getElementById("home");
 
@@ -240,7 +244,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           behavior: "smooth",
         });
 
-        window.history.pushState(null, "", "#home");
+        navigateToHash("#home");
       }
     }
   };

@@ -28,7 +28,7 @@ export default function App() {
   }
 
   if (isRolePage) {
-    return <RoleDetails initialRoleId={selectedRoleId} />;
+    return <RoleDetails key={selectedRoleId} initialRoleId={selectedRoleId} />;
   }
 
   return <Home />;

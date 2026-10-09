@@ -18,14 +18,6 @@ export default function RoleDetails({ initialRoleId = "supervisor" }: RoleDetail
 
   const [activeScreenTab, setActiveScreenTab] = useState<number>(0);
 
-  // Sync state if initialRoleId prop changes or hash changes
-  useEffect(() => {
-    if (rolesDetailsData[initialRoleId]) {
-      setSelectedRoleId(initialRoleId);
-      setActiveScreenTab(0);
-    }
-  }, [initialRoleId]);
-
   // Scroll to top when changing role
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -36,7 +28,9 @@ export default function RoleDetails({ initialRoleId = "supervisor" }: RoleDetail
   const handleRoleSelect = (roleId: string) => {
     setSelectedRoleId(roleId);
     setActiveScreenTab(0);
-    window.location.hash = `#/role/${roleId}`;
+    const hash = `#/role/${roleId}`;
+    window.history.pushState(null, "", hash);
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
   };
 
   const handleBackToUsers = () => {
@@ -100,17 +94,13 @@ export default function RoleDetails({ initialRoleId = "supervisor" }: RoleDetail
                   px-5 py-[8.5px] rounded-full shadow-md
                   cursor-pointer hover:bg-[#154e70] transition-colors border-0
                 "
-                aria-label="العودة إلى بطاقات المستخدمين"
+                aria-label="إغلاق تفاصيل المستخدم والعودة إلى البطاقات"
               >
                 <span className="font-['Almarai:Bold'] text-[14px] text-white leading-none">
-                  العودة
+                  إغلاق التفاصيل
                 </span>
-                <svg className="w-[13px] h-[13px] text-white rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path
-                    fillRule="evenodd"
-                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
+                <svg className="w-[15px] h-[15px] text-white" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="m5 5 10 10M15 5 5 15" strokeLinecap="round" />
                 </svg>
               </motion.button>
             </div>

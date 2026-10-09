@@ -17,7 +17,7 @@ export function useSlider(total: number, initial = 0) {
 
   const prev = useCallback(() => {
     setIndex((prev) => clamp(prev - 1, 0, total - 1));
-  }, []);
+  }, [total]);
 
   const goTo = useCallback(
     (i: number) => setIndex(clamp(i, 0, total - 1)),
