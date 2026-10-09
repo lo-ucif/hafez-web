@@ -20,17 +20,24 @@ import Contact from "../components/home/Contact";
  * Styled with Almarai font throughout.
  */
 export default function Home() {
-  // Smooth scroll to initial section if hash exists
+  // Smooth scroll when landing on a section hash (e.g. #users after العودة)
   useEffect(() => {
-    if (window.location.hash) {
-      const id = window.location.hash.replace("#", "");
+    const scrollToSectionFromHash = () => {
+      const hash = window.location.hash;
+      if (!hash || hash.startsWith("#/role")) return;
+
+      const id = hash.replace(/^#\/?/, "");
       const el = document.getElementById(id);
       if (el) {
         setTimeout(() => {
           el.scrollIntoView({ behavior: "smooth" });
         }, 100);
       }
-    }
+    };
+
+    scrollToSectionFromHash();
+    window.addEventListener("hashchange", scrollToSectionFromHash);
+    return () => window.removeEventListener("hashchange", scrollToSectionFromHash);
   }, []);
 
   return (

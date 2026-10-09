@@ -6,7 +6,7 @@ import type { NavLink } from "../../data/navigation";
 import ArabicBg from "../common/ArabicBg";
 
 interface NavbarProps {
-  activePage?: "home" | "terms";
+  activePage?: "home" | "terms" | "roles";
 }
 
 /**
@@ -182,8 +182,8 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       return;
     }
 
-    if (activePage === "terms") {
-      // Navigating from Terms back to Home section
+    if (activePage !== "home") {
+      // Navigating from other pages back to Home section
       window.location.hash = link.href;
     } else {
       // Smooth scroll on Home page
@@ -207,7 +207,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     setActiveId("offers");
     setMobileMenuOpen(false);
 
-    if (activePage === "terms") {
+    if (activePage !== "home") {
       window.location.hash = "#pricing";
     } else {
       const el =
@@ -228,7 +228,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     setActiveId("home");
     setMobileMenuOpen(false);
 
-    if (activePage === "terms") {
+    if (activePage !== "home") {
       window.location.hash = "#home";
     } else {
       const el = document.getElementById("home");
