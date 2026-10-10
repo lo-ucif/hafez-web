@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import SectionTitle from "../common/SectionTitle";
 import ArabicBg from "../common/ArabicBg";
 
