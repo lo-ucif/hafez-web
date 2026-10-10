@@ -59,7 +59,7 @@
 
 //       <main className="flex-1 w-full pt-[90px] md:pt-[130px] pb-20 relative">
 //         {/* Subtle decorative Islamic watermark */}
-// {/* 
+// {/*
 //         <div className="flex items-center justify-end w-full relative z-10 px-1">
 //           <motion.button
 //             type="button"
@@ -1067,3 +1067,10 @@
 //     </div>
 //   );
 // }
+export const RoleDetails = () => {
+  return (
+    <div>
+      <h1>Role Details</h1>
+    </div>
+  );
+};
