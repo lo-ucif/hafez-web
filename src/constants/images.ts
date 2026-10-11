@@ -42,6 +42,7 @@ export const IMAGES = {
   bookCoverStudent: "/figma-exact/imgBookCover1.png",
   bookCoverTeacher: "/figma-exact/imgBookCover2.png",
   bookCoverAdmin: "/figma-exact/imgBookCover3.png",
+  roleHeroArch: "/figma-exact/imgRectangle39633.svg",
 
   // Pricing book covers
   bookCoverPrimary: "/figma-exact/imgBookCover4.png",

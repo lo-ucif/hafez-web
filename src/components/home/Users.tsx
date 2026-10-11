@@ -27,14 +27,15 @@ const cardItemMotion: Variants = {
 
 // ─── User Card ────────────────────────────────────────────────────────────────
 
-function UserCard({
-  user,
-}: {
-  user: UserType;
-}) {
+function UserCard({ user }: { user: UserType }) {
+  const handleClick = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  };
+
   return (
     <motion.a
-      // href={`#/role/${user.id}`}
+      href={`#/role/${user.id}`}
+      onClick={handleClick}
       layout
       variants={cardItemMotion}
       whileHover={{ y: -8 }}
@@ -99,8 +100,15 @@ function UserCard({
             transition-colors duration-200 shadow-md border-0
           "
         >
-          <img alt="" aria-hidden="true" className="size-[14px]" src={IMAGES.plusIcon} />
-          <span className="font-['Almarai:Bold'] not-italic text-[12px] text-white leading-none">المزيد</span>
+          <img
+            alt=""
+            aria-hidden="true"
+            className="size-[14px]"
+            src={IMAGES.plusIcon}
+          />
+          <span className="font-['Almarai:Bold'] not-italic text-[12px] text-white leading-none">
+            المزيد
+          </span>
         </span>
       </div>
     </motion.a>
