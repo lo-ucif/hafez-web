@@ -91,13 +91,6 @@ export default function RoleDetails({
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [initialRoleId]);
 
-  const scrollToPreview = () => {
-    document.getElementById("system-preview")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
   const handleNextSlide = () => {
     setActiveSlideIndex((prev) => (prev + 1) % slides.length);
   };
@@ -384,7 +377,7 @@ export default function RoleDetails({
                   key={currentSlide.id}
                   src={currentSlide.image}
                   alt={currentSlide.title}
-                  initial={{ opacity: 0, scale: 0.98}}
+                  initial={{ opacity: 0, scale: 0.98 }}
                   animate={{
                     opacity: 1,
                     scale: 1,
@@ -404,21 +397,21 @@ export default function RoleDetails({
             </div>
 
             {/* زر الصورة التالية */}
-              <motion.button
-                type="button"
-                onClick={handleNextSlide}
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.88 }}
-                aria-label="الشريحة التالية"
-                className="
+            <motion.button
+              type="button"
+              onClick={handleNextSlide}
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.88 }}
+              aria-label="الشريحة التالية"
+              className="
                             flex items-center justify-center
                             size-[28px] sm:size-[36px] md:size-[54px]
                             cursor-pointer opacity-80 hover:opacity-100
                             transition-opacity shrink-0
                           "
-                                >
-                                  <div
-                                    className="
+            >
+              <div
+                className="
                               -rotate-270 flex-none
                               size-[21px] sm:size-[30px] md:size-[54px]
                               relative
