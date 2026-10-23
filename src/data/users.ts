@@ -16,7 +16,7 @@ export const userTypes: UserType[] = [
   {
     id: 'supervisor',
     title: 'المشرف',
-    description: 'هبطت بنا الطائرة حيث مطار الكويت الجديد، الذي يقع بين محبيتي الكويت، والحمدي، ويعتبر آية في الفن المعماري',
+    description: 'إدارة شاملة لكافة الحلقات والمعلمين، متابعة سير العملية التعليمية بدقة، واستخراج تقارير إحصائية متقدمة لتقييم الأداء العام.',
     bookCover: IMAGES.bookCoverAdmin,
     coverOffsetX: '-7.65%',
     coverOffsetY: '5.8%',
@@ -27,7 +27,7 @@ export const userTypes: UserType[] = [
   {
     id: 'teacher',
     title: 'المعلم',
-    description: 'هبطت بنا الطائرة حيث مطار الكويت الجديد، الذي يقع بين محبيتي الكويت، والحمدي، ويعتبر آية في الفن المعماري',
+    description: 'متابعة يومية لتسميع الطلاب، تسجيل الحفظ الجديد والمراجعة بدقة، رصد الحضور، وتدوين الملاحظات التوجيهية لتحفيز الطلاب.',
     bookCover: IMAGES.bookCoverTeacher,
     coverOffsetX: '-7.65%',
     coverOffsetY: '5.8%',
@@ -38,7 +38,7 @@ export const userTypes: UserType[] = [
   {
     id: 'student',
     title: 'الطالب',
-    description: 'هبطت بنا الطائرة حيث مطار الكويت الجديد، الذي يقع بين محبيتي الكويت، والحمدي، ويعتبر آية في الفن المعماري',
+    description: 'خطة يومية واضحة للورد القرآني، متابعة تقدم الحفظ والتفوق عبر لوحة الصدارة، والاطلاع على مواعيد الحلقات بكل سهولة.',
     bookCover: IMAGES.bookCoverStudent,
     coverOffsetX: '-15.38%',
     coverOffsetY: '4.64%',
@@ -49,7 +49,7 @@ export const userTypes: UserType[] = [
   {
     id: 'parent',
     title: 'ولي الأمر',
-    description: 'هبطت بنا الطائرة حيث مطار الكويت الجديد، الذي يقع بين محبيتي الكويت، والحمدي، ويعتبر آية في الفن المعماري',
+    description: 'متابعة مستمرة لمسار حفظ الأبناء وسجل الحضور والغياب، مع الاطلاع المباشر على تقييم المعلم ومستوى التقدم القرآني.',
     bookCover: IMAGES.bookCoverParent,
     coverOffsetX: '-7.65%',
     coverOffsetY: '5.8%',

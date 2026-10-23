@@ -32,9 +32,10 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const footerQuickLinks = [
-  { id: 'about', label: 'من نحن', href: '#about' },
-  { id: 'fatwas', label: 'فتاوى', href: '#fatwas' },
-  { id: 'library', label: 'مكتبة الوسائط', href: '#library' },
-  { id: 'news', label: 'أخبارنا وفعالياتنا', href: '#news' },
-  { id: 'contact', label: 'اتصل بنا', href: '#contact' },
+  { id: 'about', label: 'عن المنصة', href: '#home' },
+  { id: 'features', label: 'مميزات النظام', href: '#features' },
+  { id: 'roles', label: 'الأدوار في النظام', href: '#roles' },
+  { id: 'gallery', label: 'معرض النظام', href: '#gallery' },
+  { id: 'testimonials', label: 'آراء المستخدمين', href: '#testimonials' },
+  { id: 'contact', label: 'تواصل معنا', href: '#contact' },
 ];

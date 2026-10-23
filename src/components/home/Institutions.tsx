@@ -23,7 +23,7 @@ export default function Institutions() {
       {/* Heading matching Figma Desktop - 7 */}
       <SectionTitle
         title="من يستعمل النظام"
-        subtitle="استعراض حي ومفصل لكيفية ظهور لوحة التحكم، الأدوات التفاعلية، والتقارير المتاحة لـ المشرف في منصة حافظ."
+        subtitle="حلول تقنية مرنة مصممة خصيصاً لتناسب مختلف المؤسسات التعليمية والدعوية من المساجد إلى المدارس والمقارئ."
       />
 
       {/* Cards list matching Figma Desktop - 7 / node 196:421 */}

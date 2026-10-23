@@ -117,7 +117,7 @@ export default function Users() {
     >
       <SectionTitle
         title="منظومة واحدة لكل الأدوار"
-        subtitle="استعراض حي ومفصل لكيفية ظهور لوحة التحكم، الأدوات التفاعلية، والتقارير المتاحة لـ المشرف في منصة حافظ."
+        subtitle="واجهات مخصصة لكل مستخدم تلبي احتياجات المشرف، المعلم، الطالب، وولي الأمر بتجربة سلسة ومتكاملة."
       />
 
       <div className="w-full flex flex-col items-center relative min-h-[320px] mt-2">
