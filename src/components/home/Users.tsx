@@ -27,31 +27,19 @@ const cardItemMotion: Variants = {
 // ─── User Card ────────────────────────────────────────────────────────────────
 
 function UserCard({ user }: { user: UserType }) {
-  const handleClick = (e: React.MouseEvent) => {
-    if (!user.available) {
-      e.preventDefault();
-      return;
-    }
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  };
-
   return (
-    <motion.a
-      href={user.available ? `#/role/${user.id}` : undefined}
-      onClick={handleClick}
+    <motion.div
       layout
       variants={cardItemMotion}
-      whileHover={{ y: -8 }}
-      className={`
+      whileHover={{ y: -6 }}
+      className="
         group drop-shadow-[0px_8.463px_6.347px_rgba(0,0,0,0.1),0px_3.385px_2.539px_rgba(0,0,0,0.1)]
         flex flex-col items-center
         pb-[45px] pt-[8.463px]
         relative rounded-[24px] w-[283.5px]
-        overflow-visible no-underline
-        ${user.available ? "cursor-pointer" : "cursor-default"}
-        focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#cab178]
-      `}
-      aria-label={`عرض تفاصيل دور ${user.title}`}
+        overflow-visible select-none cursor-default
+      "
+      aria-label={user.title}
       style={{
         backgroundImage:
           "linear-gradient(90deg, rgba(255,255,255,0.002) 0%, rgba(255,255,255,0.002) 100%), linear-gradient(90deg, rgb(255,255,255) 0%, rgb(255,255,255) 100%)",
@@ -66,8 +54,8 @@ function UserCard({ user }: { user: UserType }) {
       <div className="block w-full">
         <div className="h-[276.518px] relative rounded-[10.155px] w-full overflow-hidden">
           <img
-            alt={`غلاف دور ${user.title}`}
-            className="absolute h-full max-w-none pointer-events-none rounded-[10.155px] transition-transform duration-300 group-hover:scale-105"
+            alt={user.title}
+            className="absolute h-full max-w-none pointer-events-none rounded-[10.155px] transition-transform duration-300 group-hover:scale-103"
             style={{
               left: user.coverOffsetX,
               top: user.coverOffsetY,
@@ -81,7 +69,7 @@ function UserCard({ user }: { user: UserType }) {
           <div className="flex flex-col items-center w-full">
             <h3
               dir="auto"
-              className="font-['Almarai:Bold'] not-italic text-[20px] text-[#333] group-hover:text-[#1a5a81] transition-colors text-center leading-[23.696px] whitespace-nowrap m-0 mb-1"
+              className="font-['Almarai:Bold'] not-italic text-[20px] text-[#333] text-center leading-[23.696px] whitespace-nowrap m-0 mb-1"
             >
               {user.title}
             </h3>
@@ -95,8 +83,8 @@ function UserCard({ user }: { user: UserType }) {
         </div>
       </div>
 
-      {/* Pill button matching Figma Desktop - 7: متوفر حاليا / قريبا */}
-      <div className="-translate-x-1/2 absolute bottom-[-15px] left-1/2 z-10">
+      {/* Pill badge matching Figma Desktop - 7: متوفر حاليا / قريبا */}
+      <div className="-translate-x-1/2 absolute bottom-[-15px] left-1/2 z-10 pointer-events-none">
         <span
           className={`
             flex items-center justify-center
@@ -105,15 +93,15 @@ function UserCard({ user }: { user: UserType }) {
             font-['Almarai:Bold'] font-bold not-italic text-[13px] text-white leading-none whitespace-nowrap
             ${
               user.available
-                ? "bg-[#1a5a81] group-hover:bg-[#154e70]"
-                : "bg-[#1a5a81]/85 group-hover:bg-[#1a5a81]"
+                ? "bg-[#1a5a81]"
+                : "bg-[#1a5a81]/85"
             }
           `}
         >
           {user.status}
         </span>
       </div>
-    </motion.a>
+    </motion.div>
   );
 }
 
