@@ -176,26 +176,20 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       if (el) {
         const isMobile = window.innerWidth < 768;
         const headerHeight = isMobile ? 54 : 84;
+        const currentScroll =
+          window.scrollY ||
+          window.pageYOffset ||
+          document.documentElement.scrollTop ||
+          0;
+        const targetY =
+          el.getBoundingClientRect().top + currentScroll - headerHeight;
 
-        const doScroll = () => {
-          const currentScroll =
-            window.scrollY ||
-            window.pageYOffset ||
-            document.documentElement.scrollTop ||
-            0;
-          const targetY =
-            el.getBoundingClientRect().top + currentScroll - headerHeight;
-          window.scrollTo({
-            top: Math.max(0, targetY),
-            behavior: "smooth",
-          });
-        };
+        window.scrollTo({
+          top: Math.max(0, targetY),
+          behavior: "smooth",
+        });
 
-        doScroll();
-        requestAnimationFrame(doScroll);
-        setTimeout(doScroll, 60);
-        setTimeout(doScroll, 180);
-        navigateToHash(link.href);
+        window.history.pushState(null, "", link.href);
       }
     }
   };
@@ -211,11 +205,22 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       const el = document.getElementById("offers") || document.getElementById("contact");
 
       if (el) {
-        el.scrollIntoView({
+        const isMobile = window.innerWidth < 768;
+        const headerHeight = isMobile ? 54 : 84;
+        const currentScroll =
+          window.scrollY ||
+          window.pageYOffset ||
+          document.documentElement.scrollTop ||
+          0;
+        const targetY =
+          el.getBoundingClientRect().top + currentScroll - headerHeight;
+
+        window.scrollTo({
+          top: Math.max(0, targetY),
           behavior: "smooth",
         });
 
-        navigateToHash("#offers");
+        window.history.pushState(null, "", "#offers");
       }
     }
   };
@@ -232,11 +237,22 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       const el = document.getElementById("contact");
 
       if (el) {
-        el.scrollIntoView({
+        const isMobile = window.innerWidth < 768;
+        const headerHeight = isMobile ? 54 : 84;
+        const currentScroll =
+          window.scrollY ||
+          window.pageYOffset ||
+          document.documentElement.scrollTop ||
+          0;
+        const targetY =
+          el.getBoundingClientRect().top + currentScroll - headerHeight;
+
+        window.scrollTo({
+          top: Math.max(0, targetY),
           behavior: "smooth",
         });
 
-        navigateToHash("#contact");
+        window.history.pushState(null, "", "#contact");
       }
     }
   };
@@ -249,17 +265,12 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     if (activePage !== "home") {
       navigateToHash("#home");
     } else {
-      const el = document.getElementById("home");
-
-      if (el) {
-        e.preventDefault();
-
-        el.scrollIntoView({
-          behavior: "smooth",
-        });
-
-        navigateToHash("#home");
-      }
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      window.history.pushState(null, "", "#home");
     }
   };
 

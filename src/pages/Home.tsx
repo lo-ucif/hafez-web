@@ -17,24 +17,21 @@ import Contact from "../components/home/Contact";
  * Styled with Almarai font throughout.
  */
 export default function Home() {
-  // Smooth scroll when landing on a section hash (e.g. #users after العودة)
+  // Smooth scroll when landing on a section hash from another page (e.g. returning to #features)
   useEffect(() => {
-    const scrollToSectionFromHash = () => {
-      const hash = window.location.hash;
-      if (!hash || hash.startsWith("#/role")) return;
+    const hash = window.location.hash;
+    if (!hash || hash === "#home" || hash.startsWith("#/role") || hash.startsWith("#terms")) return;
 
-      const id = hash.replace(/^#\/?/, "");
-      const el = document.getElementById(id);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-      }
-    };
-
-    scrollToSectionFromHash();
-    window.addEventListener("hashchange", scrollToSectionFromHash);
-    return () => window.removeEventListener("hashchange", scrollToSectionFromHash);
+    const id = hash.replace(/^#\/?/, "");
+    const el = document.getElementById(id);
+    if (el) {
+      setTimeout(() => {
+        const headerHeight = window.innerWidth < 768 ? 54 : 84;
+        const currentScroll = window.scrollY || window.pageYOffset || 0;
+        const targetY = el.getBoundingClientRect().top + currentScroll - headerHeight;
+        window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+      }, 100);
+    }
   }, []);
 
   return (

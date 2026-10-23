@@ -9,8 +9,19 @@ export default function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      setCurrentHash(window.location.hash);
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      const newHash = window.location.hash;
+      const isSwitchingPage =
+        newHash === "#terms" ||
+        newHash === "#/terms" ||
+        newHash.startsWith("#/role") ||
+        newHash.startsWith("#role");
+
+      setCurrentHash(newHash);
+
+      // Only scroll to top when actually navigating to a different page
+      if (isSwitchingPage) {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      }
     };
 
     window.addEventListener("hashchange", handleHashChange);
