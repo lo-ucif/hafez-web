@@ -22,13 +22,14 @@ export default function Hero() {
       {/* Decorative black blur at the bottom */}
       <div
         className="
-          -translate-x-1/2 absolute bg-black
+          -translate-x-1/2 absolute
           blur-[40px] md:blur-[124px]
           bottom-[-40px] md:top-[716px] md:bottom-auto
           h-[120px] md:h-[375px] left-1/2
           w-[360px] sm:w-[450px] md:w-[1500px] pointer-events-none
         "
       />
+
 
       {/* Decorative Arabic-bg overlays with subtle motion */}
 
