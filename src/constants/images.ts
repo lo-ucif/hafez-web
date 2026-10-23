@@ -52,7 +52,8 @@ export const IMAGES = {
   bookCoverPrimary: "/figma-exact/institution-maqraa.webp",
   bookCoverMiddle: "/figma-exact/institution-school.webp",
   bookCoverHigh: "/figma-exact/institution-mosque.webp",
-  bookCoverUniversity: "/figma-exact/imgBookCover7.webp",
+  bookCoverUniversity: "/figma-exact/robot-mascot.webp",
+  robotMascot: "/figma-exact/robot-mascot.webp",
 
   // CTA section
   ctaBookCover: hafez,

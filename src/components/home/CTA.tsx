@@ -52,16 +52,17 @@ export default function CTA() {
           w-full max-w-[1200px] relative z-10
         "
       >
-        {/* Book cover / Mascot illustration matching Figma node 196:503 */}
+        {/* Mascot illustration with SVG background matching user request */}
         <motion.div
           whileHover={{ y: -8, scale: 1.03 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="w-[280px] sm:w-[308px] h-[320px] sm:h-[350.66px] relative shrink-0 overflow-hidden cursor-pointer"
+          className="w-[280px] sm:w-[320px] h-[320px] sm:h-[350px] relative shrink-0 flex items-center justify-center cursor-pointer select-none"
         >
+          {/* Transparent Robot Mascot */}
           <img
             alt="شعار حافظ الروبوت"
-            className="absolute inset-0 max-w-none object-contain size-full pointer-events-none"
-            src={IMAGES.bookCoverUniversity}
+            className="relative z-10 w-auto h-[100%] max-h-[400px] "
+            src={IMAGES.robotMascot}
           />
         </motion.div>
 
@@ -85,7 +86,10 @@ export default function CTA() {
 
           <motion.a
             href="#contact"
-            whileHover={{ scale: 1.05, boxShadow: "0px 8px 25px rgba(202, 177, 120, 0.45)" }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 8px 25px rgba(202, 177, 120, 0.45)",
+            }}
             whileTap={{ scale: 0.95 }}
             className="
               bg-[#cab178] hover:bg-[#bfa56a] text-white
