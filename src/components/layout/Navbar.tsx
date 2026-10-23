@@ -501,273 +501,223 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
       </motion.header>
 
-      {/* ── Mobile Slide-out Drawer ── */}
+      {/* ── Mobile Navbar Drawer (Figma node 308:144 - Opens from Right, Height = Device Height) ── */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 md:hidden" dir="rtl">
-            {/* Backdrop overlay */}
+          <div className="fixed inset-0 z-50 md:hidden">
+            {/* Backdrop Overlay */}
             <motion.div
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-              }}
-              transition={{
-                duration: 0.3,
-              }}
-              className="
-                absolute inset-0
-                bg-black/60
-                backdrop-blur-xs
-              "
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 bg-black/60 backdrop-blur-xs"
               onClick={() => setMobileMenuOpen(false)}
             />
 
-            {/* Slide-out Drawer */}
+            {/* Slide-in Drawer from Right */}
             <motion.div
-              initial={{
-                x: "100%",
-              }}
-              animate={{
-                x: 0,
-              }}
-              exit={{
-                x: "100%",
-              }}
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
               transition={{
                 type: "spring",
-                damping: 28,
+                damping: 30,
                 stiffness: 300,
+                mass: 0.8,
               }}
               className="
-                absolute right-0 top-0 bottom-0
-                w-[280px] sm:w-[320px]
-                max-w-[85vw]
+                fixed top-0 bottom-0 right-0 z-50
+                w-[300px] sm:w-[340px] max-w-[85vw]
                 h-screen h-[100dvh]
                 bg-[#1a5a81]
                 border-l border-white/20
-                shadow-2xl
-                flex flex-col
-                justify-between
-                px-6 py-6
-                z-10
-                overflow-hidden
+                shadow-[-10px_0_40px_rgba(0,0,0,0.5)]
+                flex flex-col justify-between
+                py-6 px-5 sm:px-6
+                overflow-y-auto
+                relative
               "
+              data-node-id="308:144"
+              data-name="Hero"
             >
-              {/* Calligraphy Watermark */}
-              <div
-                className="
-                  absolute inset-0
-                  pointer-events-none
-                  overflow-hidden
-                  opacity-10
-                "
-              >
+              {/* Calligraphy Watermarks */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
                 <ArabicBg
                   positionClass="top-10 -right-10"
-                  sizeClass="size-[350px]"
-                  opacityClass="opacity-10"
+                  sizeClass="size-[320px]"
+                  opacityClass="opacity-15"
                 />
-
                 <ArabicBg
                   positionClass="bottom-0 -left-10"
-                  sizeClass="size-[350px]"
-                  opacityClass="opacity-10"
+                  sizeClass="size-[320px]"
+                  opacityClass="opacity-15"
                 />
               </div>
 
-              {/* Drawer Top */}
+              {/* Top Bar: Logo on Left, Close Button on Right (LTR flex) */}
               <div
-                className="
-                  flex items-center
-                  justify-between
-                  w-full relative z-10
-                  pb-4
-                  border-b border-white/15
-                "
+                className="flex items-center justify-between w-full relative z-10 shrink-0 pb-3 border-b border-white/10"
+                data-node-id="308:145"
+                dir="ltr"
               >
-                {/* Close button */}
-                <motion.button
-                  type="button"
-                  whileTap={{
-                    scale: 0.9,
-                  }}
-                  onClick={() => setMobileMenuOpen(false)}
-                  aria-label="إغلاق القائمة"
-                  className="
-                    text-white
-                    hover:text-[#cab178]
-                    p-2
-                    transition-colors
-                    cursor-pointer
-                    flex items-center
-                    justify-center
-                    -mr-2
-                  "
-                >
-                  <svg
-                    className="size-8"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <line x1="18" y1="6" x2="6" y2="18" />
-
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </motion.button>
-
-                {/* Drawer Logo */}
+                {/* Logo (Figma node 308:146) */}
                 <a
                   href="#home"
                   onClick={handleLogoClick}
                   aria-label="الصفحة الرئيسية"
-                  className="
-                    relative shrink-0
-                    h-[50px] w-[58px]
-                    cursor-pointer
-                  "
+                  className="relative shrink-0 h-[48px] w-[56px] cursor-pointer"
+                  data-node-id="308:147"
                 >
                   <img
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute h-[48px] left-[33.8px] top-0 w-[4.6px] max-w-none block"
+                    src={IMAGES.logoBarTop}
+                  />
+                  <img
                     alt="شعار حافظ"
-                    className="
-                      block size-full
-                      object-contain
-                    "
-                    src={IMAGES.footerLogo}
+                    className="absolute h-[35.2px] left-0 top-[6.9px] w-[31.5px] max-w-none block"
+                    src={IMAGES.logoPartHa}
+                  />
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute h-[30.3px] left-[32.4px] top-[10.9px] w-[19.7px] max-w-none block"
+                    src={IMAGES.logoPartHin}
+                  />
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute h-[16.5px] left-[34.6px] top-[24.6px] w-[21.8px] max-w-none block"
+                    src={IMAGES.logoBarBottom}
                   />
                 </a>
+
+                {/* Close Button (Figma node 308:163) */}
+                <motion.button
+                  type="button"
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-label="إغلاق القائمة"
+                  className="
+                    size-[40px] flex items-center justify-center
+                    text-white hover:text-[#cab178]
+                    transition-colors cursor-pointer
+                  "
+                  data-node-id="308:163"
+                >
+                  <svg
+                    className="size-[28px]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </motion.button>
               </div>
 
-              {/* Navigation links */}
-              <nav
-                className="
-                  my-auto py-8
-                  relative z-10
-                "
-                aria-label="روابط الموبايل"
+              {/* Navigation Links (Figma node 308:165) */}
+              <div
+                className="flex flex-col items-center justify-center w-full my-auto py-5 relative z-10"
+                data-node-id="308:165"
+                dir="rtl"
               >
-                <ul
-                  className="
-                    flex flex-col gap-6
-                    items-end
-                    w-full
-                    list-none p-0 m-0
-                  "
-                >
-                  {navLinks.map((link, idx) => {
+                <nav className="w-full flex flex-col gap-3 sm:gap-[18px]" data-node-id="308:166" aria-label="روابط الموبايل">
+                  {navLinks.map((link) => {
                     const isLinkActive = activeId === link.id;
 
                     return (
-                      <motion.li
+                      <motion.a
                         key={link.id}
-                        initial={{
-                          opacity: 0,
-                          x: 25,
-                        }}
-                        animate={{
-                          opacity: 1,
-                          x: 0,
-                        }}
-                        transition={{
-                          delay: 0.08 * (idx + 1),
-                          duration: 0.25,
-                        }}
-                        className="
-                          w-full
-                          text-right
-                        "
+                        href={link.href}
+                        onClick={(e) => handleNavClick(link, e)}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full flex items-center justify-between no-underline cursor-pointer select-none group py-1"
                       >
-                        <a
-                          href={link.href}
-                          onClick={(e) => handleNavClick(link, e)}
+                        {/* Title Text (Figma nodes 308:169-174) on the RIGHT in RTL */}
+                        <span
+                          dir="auto"
                           className={`
-                            py-3 px-2 border-b border-white/10
-                            flex items-center justify-between
-                            font-['Almarai'] text-[20px]
+                            font-['Almarai:Bold'] font-bold
+                            text-[20px] sm:text-[22px] text-right
                             transition-colors duration-200
-                            no-underline cursor-pointer select-none
                             ${
                               isLinkActive
-                                ? "text-[#cab178] font-bold"
-                                : "text-white/90 hover:text-[#cab178] font-medium"
+                                ? "text-[#cab178]"
+                                : "text-white group-hover:text-[#cab178]"
                             }
                           `}
-                          dir="auto"
                         >
-                          <span>{link.label}</span>
-                          {isLinkActive && (
-                            <span className="w-2 h-2 rounded-full bg-[#cab178]" />
-                          )}
-                        </a>
-                      </motion.li>
+                          {link.label}
+                        </span>
+
+                        {/* Active Gold Indicator Dot (Figma node 308:168) on the far-LEFT in RTL */}
+                        {isLinkActive ? (
+                          <div
+                            className="bg-[#cab178] rounded-[84px] shrink-0 size-[12px] sm:size-[14px] shadow-[0_0_10px_#cab178]"
+                            data-node-id="308:168"
+                          />
+                        ) : (
+                          <div className="size-[12px] sm:size-[14px] shrink-0" />
+                        )}
+                      </motion.a>
                     );
                   })}
-                </ul>
-              </nav>
+                </nav>
+              </div>
 
-              {/* Drawer Bottom: CTA */}
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  delay: 0.4,
-                  duration: 0.3,
-                }}
-                className="
-                  w-full
-                  relative z-10
-                  pt-4 pb-2
-                  flex justify-center
-                "
+              {/* Bottom Action Buttons (Figma node 308:175) */}
+              <div
+                className="flex flex-col gap-3 w-full pb-2 shrink-0 relative z-10"
+                data-node-id="308:175"
+                dir="rtl"
               >
+                {/* Button 1: طلب نسخة (Figma node 308:176) */}
                 <motion.button
                   type="button"
-                  whileHover={{
-                    scale: 1.03,
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                  }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.96 }}
                   onClick={handleCtaClick}
                   className="
-                    bg-[#cab178]
-                    hover:bg-[#bfa56a]
-                    text-white
-                    w-full
-                    h-[60px]
-                    sm:h-[64px]
-                    rounded-[12px]
-                    flex items-center
-                    justify-center
-                    font-['Almarai:Bold']
-                    font-bold
-                    text-[22px]
-                    sm:text-[24px]
-                    text-center
-                    shadow-lg
-                    hover:shadow-xl
-                    cursor-pointer
-                    transition-colors
+                    bg-white hover:bg-slate-50 text-[#1a5a81]
+                    w-full py-[12px] sm:py-[14px]
+                    flex items-center justify-center
+                    font-['Changa:SemiBold'] font-semibold text-[20px] sm:text-[22px] leading-none
+                    rounded-[2px] shadow-md
+                    transition-all cursor-pointer whitespace-nowrap
                   "
                   dir="auto"
+                  data-node-id="308:176"
                 >
                   طلب نسخة
                 </motion.button>
-              </motion.div>
+
+                {/* Button 2: تواصل معنا (Figma node 308:178) */}
+                <motion.a
+                  href="#contact"
+                  onClick={handleContactClick}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.96 }}
+                  className="
+                    bg-[#15455e] hover:bg-[#11384d] text-white
+                    w-full py-[12px] sm:py-[14px]
+                    flex items-center justify-center
+                    font-['Changa:SemiBold'] font-semibold text-[20px] sm:text-[22px] leading-none
+                    rounded-[2px] shadow-md
+                    no-underline transition-all cursor-pointer whitespace-nowrap
+                  "
+                  dir="auto"
+                  data-node-id="308:178"
+                >
+                  تواصل معنا
+                </motion.a>
+              </div>
             </motion.div>
           </div>
         )}
