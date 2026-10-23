@@ -10,7 +10,8 @@ import ArabicBg from "../common/ArabicBg";
 export default function CTA() {
   return (
     <section
-      aria-label="طلب نسخة"
+      id="offers"
+      aria-label="العروض - طلب نسخة"
       className="
         bg-[#1a5a81] relative w-full overflow-clip
         flex flex-col items-center justify-center

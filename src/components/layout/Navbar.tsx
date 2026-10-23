@@ -29,30 +29,16 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
   const [activeId, setActiveId] = useState<string>(() => {
     if (activePage === "terms") return "terms";
-    if (activePage === "roles") return "users";
 
     const hash = window.location.hash;
-
     if (hash === "#features") return "features";
-    if (hash === "#users") return "users";
-    if (hash === "#institutions") return "institutions";
-    if (hash === "#gallery") return "gallery";
-    if (hash === "#contact") return "contact";
+    if (hash === "#offers") return "offers";
+    if (hash === "#contact") return "support";
     if (hash === "#terms") return "terms";
 
     return "home";
   });
 
-  /*
-   * Navbar background state
-   *
-   * Home page:
-   * 0px - 200px  => transparent
-   * > 200px      => colored
-   *
-   * Other pages:
-   * Always colored
-   */
   const [isScrolled, setIsScrolled] = useState(() => {
     return activePage !== "home" || window.scrollY > 10;
   });
@@ -73,15 +59,10 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     };
   }, [activePage]);
 
-  /*
-   * Navbar background
-   *
-   * Home + before 200px => transparent
-   * Home + after 200px  => #15455E
-   * Other pages         => #15455E
-   */
   const navbarBackground =
-    activePage === "home" && !isScrolled ? "bg-transparent" : "bg-[#1A5A81]";
+    activePage === "home" && !isScrolled
+      ? "bg-[#1A5A81]/95 md:bg-transparent"
+      : "bg-[#1A5A81] shadow-md";
 
   // Sync active link with hash changes and activePage prop
   useEffect(() => {
@@ -92,14 +73,10 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
       if (hash === "#features") {
         setActiveId("features");
-      } else if (hash === "#users") {
-        setActiveId("users");
-      } else if (hash === "#institutions") {
-        setActiveId("institutions");
-      } else if (hash === "#gallery") {
-        setActiveId("gallery");
+      } else if (hash === "#offers") {
+        setActiveId("offers");
       } else if (hash === "#contact") {
-        setActiveId("contact");
+        setActiveId("support");
       } else if (hash === "#terms") {
         setActiveId("terms");
       } else if (hash === "#home" || !hash) {
@@ -120,49 +97,48 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
   useEffect(() => {
     if (activePage !== "home") return;
 
-    const sections = [
-      { id: "home", linkId: "home" },
-      { id: "features", linkId: "features" },
-      { id: "users", linkId: "users" },
-      { id: "institutions", linkId: "institutions" },
-      { id: "gallery", linkId: "gallery" },
-      { id: "contact", linkId: "contact" },
-    ];
-
-    let ticking = false;
-
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollPos = window.scrollY + 250;
+      const currentScroll =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        0;
+      setIsScrolled(currentScroll > 15);
 
-          for (let i = sections.length - 1; i >= 0; i--) {
-            const el = document.getElementById(sections[i].id);
+      // If scrolled close to bottom of page, highlight the last item (support/contact)
+      if (
+        window.innerHeight + currentScroll >=
+        document.documentElement.scrollHeight - 70
+      ) {
+        setActiveId("support");
+        return;
+      }
 
-            if (el) {
-              const top = el.offsetTop;
+      const offsetThreshold = window.innerWidth < 768 ? 80 : 140;
+      const scrollPosition = currentScroll + offsetThreshold;
 
-              if (scrollPos >= top) {
-                setActiveId(sections[i].linkId);
-                break;
-              }
-            }
+      const sections = [
+        { id: "home", linkId: "home" },
+        { id: "features", linkId: "features" },
+        { id: "offers", linkId: "offers" },
+        { id: "contact", linkId: "support" },
+      ];
+
+      for (const item of [...sections].reverse()) {
+        const el = document.getElementById(item.id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + currentScroll;
+          if (scrollPosition >= top) {
+            setActiveId(item.linkId);
+            break;
           }
-
-          ticking = false;
-        });
-
-        ticking = true;
+        }
       }
     };
 
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [activePage]);
 
   // Prevent background scroll when mobile drawer is open
@@ -179,40 +155,75 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
   }, [mobileMenuOpen]);
 
   // Handle clicking a navigation link
-  const handleNavClick = (link: NavLink, e: React.MouseEvent) => {
+  const handleNavClick = (link: NavLink, e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+    }
     setActiveId(link.id);
     setMobileMenuOpen(false);
 
     if (link.id === "terms") {
-      e.preventDefault();
       navigateToHash("#terms");
       return;
     }
 
     if (activePage !== "home") {
-      // Navigating from other pages back to Home section
-      e.preventDefault();
       navigateToHash(link.href);
     } else {
-      // Smooth scroll on Home page
       const targetId = link.href.replace("#", "");
-      const element = document.getElementById(targetId);
+      const el = document.getElementById(targetId);
 
-      if (element) {
-        e.preventDefault();
+      if (el) {
+        const isMobile = window.innerWidth < 768;
+        const headerHeight = isMobile ? 54 : 84;
 
-        element.scrollIntoView({
-          behavior: "smooth",
-        });
+        const doScroll = () => {
+          const currentScroll =
+            window.scrollY ||
+            window.pageYOffset ||
+            document.documentElement.scrollTop ||
+            0;
+          const targetY =
+            el.getBoundingClientRect().top + currentScroll - headerHeight;
+          window.scrollTo({
+            top: Math.max(0, targetY),
+            behavior: "smooth",
+          });
+        };
 
+        doScroll();
+        requestAnimationFrame(doScroll);
+        setTimeout(doScroll, 60);
+        setTimeout(doScroll, 180);
         navigateToHash(link.href);
       }
     }
   };
 
-  // Handle CTA button click
+  // Handle CTA button click ("طلب نسخة")
   const handleCtaClick = () => {
-    setActiveId("contact");
+    setActiveId("offers");
+    setMobileMenuOpen(false);
+
+    if (activePage !== "home") {
+      navigateToHash("#offers");
+    } else {
+      const el = document.getElementById("offers") || document.getElementById("contact");
+
+      if (el) {
+        el.scrollIntoView({
+          behavior: "smooth",
+        });
+
+        navigateToHash("#offers");
+      }
+    }
+  };
+
+  // Handle Contact button click ("تواصل معنا")
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setActiveId("support");
     setMobileMenuOpen(false);
 
     if (activePage !== "home") {
@@ -266,35 +277,62 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           fixed top-0 left-0 right-0 z-40 w-full
           ${navbarBackground}
           transition-colors duration-300 ease-in-out
+          overflow-hidden
         `}
       >
-        {/* ── Desktop Navigation (md and up) ── */}
+        {/* Subtle Arabic calligraphy watermark pattern matching Figma Desktop - 7 */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+          <ArabicBg
+            positionClass="top-[-100px] left-1/2 -translate-x-1/2"
+            sizeClass="w-[1440px] h-[300px]"
+            opacityClass="opacity-20"
+          />
+        </div>
+
+        {/* ── Desktop Navigation (md and up) matching Figma node 196:180 ── */}
         <div
           className="
             hidden md:flex items-center justify-between
-            h-18 px-6 lg:px-12 w-full max-w-360 mx-auto
+            h-[76px] px-6 lg:px-8 xl:px-12 w-full max-w-[1440px] mx-auto relative z-10
           "
           dir="ltr"
         >
-          {/* CTA Button (left side in LTR) */}
-          <div className="flex items-center">
+          {/* Left Side Buttons (LTR): تواصل معنا + طلب نسخة */}
+          <div className="flex items-center gap-4 lg:gap-6">
+            <motion.a
+              href="#contact"
+              onClick={handleContactClick}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              className="
+                font-['Changa'] font-semibold
+                text-[15px] lg:text-[16px] text-white hover:text-[#cab178]
+                px-[14px] lg:px-[20px] py-[8px]
+                transition-colors duration-200 cursor-pointer no-underline whitespace-nowrap
+              "
+              dir="auto"
+            >
+              تواصل معنا
+            </motion.a>
+
             <motion.button
               type="button"
               whileHover={{
-                scale: 1.05,
-                boxShadow: "0px 10px 20px rgba(0,0,0,0.15)",
+                scale: 1.04,
+                boxShadow: "0px 6px 16px rgba(0,0,0,0.18)",
               }}
               whileTap={{
-                scale: 0.95,
+                scale: 0.96,
               }}
               onClick={handleCtaClick}
               className="
-                bg-[#cab178] hover:bg-[#bfa56a] text-white
-                font-['Almarai:Bold'] font-bold
-                text-[16px] lg:text-[18px] leading-none
-                px-3 py-2.5
-                transition-colors duration-200
-                cursor-pointer shadow-md
+                bg-white hover:bg-slate-50 text-[#1a5a81]
+                font-['Changa'] font-semibold
+                text-[15px] lg:text-[16px] leading-none
+                px-[20px] lg:px-[23px] py-[10px]
+                rounded-[2px] shadow-sm
+                transition-all duration-200
+                cursor-pointer whitespace-nowrap
               "
               dir="auto"
             >
@@ -302,164 +340,84 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             </motion.button>
           </div>
 
-          {/* Center: nav links with dynamic active coloring */}
-          <nav aria-label="التنقل الرئيسي">
-            <ul
-              className="
-                flex gap-6 lg:gap-8 items-center
-                list-none m-0 p-0
-              "
-              dir="rtl"
+          {/* Right Group: Nav Links + Logo in RTL */}
+          <div className="flex items-center gap-[30px] lg:gap-[45px] xl:gap-[60px]" dir="rtl">
+            {/* Logo on the far right (first child in RTL) */}
+            <motion.a
+              href="#home"
+              onClick={handleLogoClick}
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="الصفحة الرئيسية"
+              className="relative shrink-0 h-[56.75px] w-[66px] transition-transform duration-200 cursor-pointer"
             >
-              {navLinks.map((link) => {
-                const isLinkActive = activeId === link.id;
+              <img
+                alt=""
+                aria-hidden="true"
+                className="absolute h-[56.75px] left-[39.9px] top-0 w-[5.448px] max-w-none block"
+                src={IMAGES.logoBarTop}
+              />
+              <img
+                alt="شعار حافظ"
+                className="absolute h-[41.612px] left-0 top-[8.15px] w-[37.218px] max-w-none block"
+                src={IMAGES.logoPartHa}
+              />
+              <img
+                alt=""
+                aria-hidden="true"
+                className="absolute h-[35.776px] left-[38.3px] top-[12.89px] w-[23.314px] max-w-none block"
+                src={IMAGES.logoPartHin}
+              />
+              <img
+                alt=""
+                aria-hidden="true"
+                className="absolute h-[19.551px] left-[40.81px] top-[29.03px] w-[25.722px] max-w-none block"
+                src={IMAGES.logoBarBottom}
+              />
+            </motion.a>
 
-                return (
-                  <motion.li
-                    key={link.id}
-                    whileHover={{
-                      y: -2,
-                    }}
-                    className="
-                      relative flex flex-col
-                      items-center gap-[5px]
-                    "
-                  >
-                    <a
-                      href={link.href}
-                      onClick={(e) => handleNavClick(link, e)}
-                      dir="auto"
-                      className={`
-                        font-['Almarai:Bold']
-                        not-italic
-                        text-[18px] lg:text-[16px]
-                        leading-[normal]
-                        whitespace-nowrap
-                        no-underline
-                        transition-all duration-200
-                        cursor-pointer
+            {/* Nav links to the left of the Logo matching requested style */}
+            <nav aria-label="التنقل الرئيسي" className="hidden md:flex items-center gap-1 lg:gap-2">
+              <ul className="flex items-center list-none m-0 p-0" dir="rtl">
+                {navLinks.map((link) => {
+                  const isLinkActive = activeId === link.id;
 
-                        ${
+                  return (
+                    <li key={link.id} className="relative flex items-center">
+                      <a
+                        href={link.href}
+                        onClick={(e) => handleNavClick(link, e)}
+                        dir="auto"
+                        className={`relative flex flex-col items-center justify-center px-3 lg:px-4 py-2 text-[18px] transition-colors cursor-pointer group select-none no-underline ${
                           isLinkActive
-                            ? "text-[#cab178] font-bold drop-shadow-[0_2px_10px_rgba(202,177,120,0.45)] scale-105"
-                            : "text-white/90 hover:text-[#cab178]"
-                        }
-                      `}
-                    >
-                      {link.label}
-                    </a>
-
-                    {isLinkActive && (
-                      <motion.span
-                        layoutId="navUnderline"
-                        className="
-                          h-0 w-[30.27px]
-                          relative block
-                        "
-                        transition={{
-                          type: "spring",
-                          stiffness: 380,
-                          damping: 30,
-                        }}
+                            ? "text-[#cab178] font-semibold"
+                            : "text-white/90 hover:text-[#cab178] font-medium"
+                        }`}
                       >
-                        <img
-                          alt=""
-                          aria-hidden="true"
-                          className="
-                            absolute
-                            inset-[-2.16px_0_0_0]
-                            block max-w-none
-                            size-full
-                          "
-                          src={IMAGES.navUnderline}
-                        />
-                      </motion.span>
-                    )}
-                  </motion.li>
-                );
-              })}
-            </ul>
-          </nav>
-
-          {/* Logo (right side in LTR) */}
-          <motion.a
-            href="#home"
-            onClick={handleLogoClick}
-            whileHover={{
-              scale: 1.08,
-            }}
-            whileTap={{
-              scale: 0.95,
-            }}
-            aria-label="الصفحة الرئيسية"
-            className="
-              relative shrink-0
-              h-[56.75px] w-[66px]
-              transition-transform duration-200
-              cursor-pointer
-            "
-          >
-            <ArabicBg positionClass="inset-0" opacityClass="opacity-0" />
-
-            <img
-              alt=""
-              aria-hidden="true"
-              className="
-                absolute
-                h-[56.75px]
-                left-[39.9px]
-                top-0
-                w-[5.448px]
-                max-w-none
-                block
-              "
-              src={IMAGES.logoBarTop}
-            />
-
-            <img
-              alt="شعار حافظ"
-              className="
-                absolute
-                h-[41.612px]
-                left-0
-                top-[8.15px]
-                w-[37.218px]
-                max-w-none
-                block
-              "
-              src={IMAGES.logoPartHa}
-            />
-
-            <img
-              alt=""
-              aria-hidden="true"
-              className="
-                absolute
-                h-[35.776px]
-                left-[38.3px]
-                top-[12.89px]
-                w-[23.314px]
-                max-w-none
-                block
-              "
-              src={IMAGES.logoPartHin}
-            />
-
-            <img
-              alt=""
-              aria-hidden="true"
-              className="
-                absolute
-                h-[19.551px]
-                left-[40.81px]
-                top-[29.03px]
-                w-[25.722px]
-                max-w-none
-                block
-              "
-              src={IMAGES.logoBarBottom}
-            />
-          </motion.a>
+                        <span>{link.label}</span>
+                        {/* Smooth Animated Active indicator dot */}
+                        <span className="h-2 flex items-center justify-center mt-1">
+                          {isLinkActive ? (
+                            <motion.span
+                              layoutId="navActiveIndicator"
+                              className="w-2 h-2 rounded-full bg-[#cab178]"
+                              transition={{
+                                type: "spring",
+                                stiffness: 380,
+                                damping: 28,
+                              }}
+                            />
+                          ) : (
+                            <span className="w-2 h-2 rounded-full bg-transparent" />
+                          )}
+                        </span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </div>
         </div>
 
         {/* ── Mobile Navigation Header Bar ── */}
@@ -724,26 +682,23 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
                           href={link.href}
                           onClick={(e) => handleNavClick(link, e)}
                           className={`
-                            block
-                            font-['Almarai:Bold']
-                            text-[24px]
-                            font-bold
-                            text-right
-                            leading-tight
-                            transition-all
-                            duration-200
-                            no-underline
-                            cursor-pointer
-
+                            py-3 px-2 border-b border-white/10
+                            flex items-center justify-between
+                            font-['Almarai'] text-[20px]
+                            transition-colors duration-200
+                            no-underline cursor-pointer select-none
                             ${
                               isLinkActive
-                                ? "text-[#cab178] drop-shadow-[0_2px_8px_rgba(202,177,120,0.5)] scale-105 pr-2 border-r-4 border-[#cab178]"
-                                : "text-white hover:text-[#cab178]"
+                                ? "text-[#cab178] font-bold"
+                                : "text-white/90 hover:text-[#cab178] font-medium"
                             }
                           `}
                           dir="auto"
                         >
-                          {link.label}
+                          <span>{link.label}</span>
+                          {isLinkActive && (
+                            <span className="w-2 h-2 rounded-full bg-[#cab178]" />
+                          )}
                         </a>
                       </motion.li>
                     );
