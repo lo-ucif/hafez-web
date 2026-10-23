@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SectionTitle from "../common/SectionTitle";
 
+/**
+ * Contact section matching Figma node 312:78 ("section 12").
+ * Features top SectionTitle pill badge, 2-column layout (text on right, form card on left in RTL),
+ * and clean styled form controls with validation.
+ */
 export default function Contact() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -40,29 +46,46 @@ export default function Contact() {
     <section
       id="contact"
       aria-label="تواصل معنا"
-      className="bg-[#fefefe] w-full py-[50px] md:py-[80px] px-4 sm:px-8 lg:px-[100px] flex justify-center items-center overflow-hidden"
+      className="bg-[#fefefe] w-full py-[40px] md:py-[60px] px-4 sm:px-8 lg:px-[100px] flex flex-col gap-[30px] md:gap-[40px] items-center justify-center relative overflow-hidden"
       dir="rtl"
+      data-node-id="312:78"
+      data-name="section 12"
     >
-      <div className="w-full max-w-[1240px] flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-[60px]">
-        {/* ── Text Section matching Figma node 298:81 (Right side in RTL) ── */}
-        <div className="w-full lg:w-[488px] flex flex-col gap-6 sm:gap-[30px] lg:gap-[36px] items-start text-right">
+      {/* Top Section Title Pill Badge matching Figma node 312:138 - 312:142 */}
+      <SectionTitle title="تواصل معنا" />
+
+      {/* Main 2-column Content matching Figma node 312:79 */}
+      <div
+        className="w-full max-w-[1240px] flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-[60px]"
+        data-node-id="312:79"
+      >
+        {/* ── 1. Text Section matching Figma node 312:101 (Right side in RTL) ── */}
+        <div
+          className="w-full lg:w-[488px] flex flex-col gap-6 sm:gap-[30px] lg:gap-[40px] items-start text-right shrink-0"
+          data-node-id="312:101"
+        >
           <h2
-            className="font-['Almarai:Bold'] font-bold text-[#1a5a81] text-[40px] sm:text-[50px] lg:text-[60px] tracking-[-0.6px] leading-[1.2] m-0"
+            className="font-['Almarai:Bold'] font-bold text-[#1a5a81] text-[36px] sm:text-[48px] lg:text-[60px] tracking-[-0.6px] leading-[1.2] m-0"
             dir="auto"
+            data-node-id="312:102"
           >
             تواصل معنا:
           </h2>
 
           <p
-            className="font-['Changa'] font-medium text-[20px] sm:text-[22px] lg:text-[25px] leading-[1.48] text-black/60 m-0"
+            className="font-['Changa:Medium'] font-medium text-[20px] sm:text-[22px] lg:text-[25px] leading-[1.48] text-[rgba(0,0,0,0.6)] m-0"
             dir="auto"
+            data-node-id="312:103"
           >
             هل لديك سؤال عن التسجيل أو الحلقات أو التطبيق؟ اكتب لنا وسيردّ عليك فريق المشروع في أقرب وقت.
           </p>
         </div>
 
-        {/* ── Form Card matching Figma node 298:83 (Left side in RTL) ── */}
-        <div className="bg-white w-full max-w-[560px] rounded-[30px] shadow-[0px_0px_31.9px_0px_rgba(0,0,0,0.06)] px-6 sm:px-[35px] py-[35px] sm:py-[40px] flex flex-col gap-[20px] relative shrink-0">
+        {/* ── 2. Form Card matching Figma node 312:80 (Left side in RTL) ── */}
+        <div
+          className="bg-white w-full max-w-[601px] rounded-[30px] shadow-[0px_0px_31.9px_0px_rgba(0,0,0,0.06)] px-6 sm:px-[30px] py-[35px] sm:py-[40px] flex flex-col gap-[20px] relative shrink-0"
+          data-node-id="312:80"
+        >
           <AnimatePresence mode="wait">
             {submitted ? (
               <motion.div
@@ -106,10 +129,10 @@ export default function Contact() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex flex-col gap-[18px] w-full"
+                className="flex flex-col gap-[20px] w-full"
               >
-                {/* الاسم الكامل */}
-                <div className="h-[54px] sm:h-[58px] relative w-full">
+                {/* الاسم الكامل matching Figma node 312:81 */}
+                <div className="h-[60px] relative w-full" data-node-id="312:81">
                   <input
                     type="text"
                     required
@@ -118,13 +141,13 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, fullName: e.target.value })
                     }
-                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-[20px] font-['Changa:Regular'] text-[15px] sm:text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/50 transition-colors text-right"
+                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-[20px] font-['Changa:Regular'] text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/60 transition-colors text-right"
                     dir="auto"
                   />
                 </div>
 
-                {/* البريد الالكتروني */}
-                <div className="h-[54px] sm:h-[58px] relative w-full">
+                {/* البريد الالكتروني matching Figma node 312:84 */}
+                <div className="h-[60px] relative w-full" data-node-id="312:84">
                   <input
                     type="email"
                     required
@@ -133,13 +156,13 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-[20px] font-['Changa:Regular'] text-[15px] sm:text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/50 transition-colors text-right"
+                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-[20px] font-['Changa:Regular'] text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/60 transition-colors text-right"
                     dir="auto"
                   />
                 </div>
 
-                {/* رقم الهاتف */}
-                <div className="h-[54px] sm:h-[58px] relative w-full">
+                {/* رقم الهاتف matching Figma node 312:87 */}
+                <div className="h-[60px] relative w-full" data-node-id="312:87">
                   <input
                     type="tel"
                     required
@@ -148,13 +171,13 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-[20px] font-['Changa:Regular'] text-[15px] sm:text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/50 transition-colors text-right"
+                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-[20px] font-['Changa:Regular'] text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/60 transition-colors text-right"
                     dir="auto"
                   />
                 </div>
 
-                {/* الموضوع */}
-                <div className="h-[54px] sm:h-[58px] relative w-full">
+                {/* الموضوع matching Figma node 312:90 */}
+                <div className="h-[60px] relative w-full" data-node-id="312:90">
                   <input
                     type="text"
                     required
@@ -163,13 +186,13 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, subject: e.target.value })
                     }
-                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-[20px] font-['Changa:Regular'] text-[15px] sm:text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/50 transition-colors text-right"
+                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-[20px] font-['Changa:Regular'] text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/60 transition-colors text-right"
                     dir="auto"
                   />
                 </div>
 
-                {/* الرسالة */}
-                <div className="h-[140px] sm:h-[155px] relative w-full">
+                {/* الرسالة matching Figma node 312:93 */}
+                <div className="h-[165px] relative w-full" data-node-id="312:93">
                   <textarea
                     required
                     placeholder="الرسالة"
@@ -177,13 +200,16 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
                     }
-                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] p-[16px] sm:p-[18px] font-['Changa:Regular'] text-[15px] sm:text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/50 transition-colors resize-none text-right"
+                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] p-[18px] font-['Changa:Regular'] text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/60 transition-colors resize-none text-right"
                     dir="auto"
                   />
                 </div>
 
-                {/* أوافق على الشروط وسياسة الخصوصية (المربع على اليمين والنص بجانبه) */}
-                <div className="flex items-center gap-2.5 pt-1">
+                {/* أوافق على الشروط وسياسة الخصوصية matching Figma node 312:96 */}
+                <div
+                  className="flex items-center gap-2.5 pt-1 w-full justify-start"
+                  data-node-id="312:96"
+                >
                   <input
                     type="checkbox"
                     id="contact-terms"
@@ -192,24 +218,26 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, agreeTerms: e.target.checked })
                     }
-                    className="size-[18px] rounded-[3px] border-[#a4a4a4] border-[1.5px] accent-[#1a5a81] cursor-pointer"
+                    className="size-[20px] rounded-[3px] border-[#a4a4a4] border-[1.5px] accent-[#1a5a81] cursor-pointer"
                   />
                   <label
                     htmlFor="contact-terms"
-                    className="font-['Changa'] font-light text-[14px] sm:text-[15px] text-[#0a142f]/70 cursor-pointer select-none leading-none"
+                    className="font-['Changa'] font-light text-[15px] sm:text-[16px] text-[#303030] cursor-pointer select-none leading-none"
+                    data-node-id="312:98"
                   >
                     أوافق على الشروط وسياسة الخصوصية
                   </label>
                 </div>
 
-                {/* زر الإرسال matching Figma node 298:99 */}
-                <div className="flex justify-center pt-2">
+                {/* زر الإرسال matching Figma node 312:99 */}
+                <div className="flex justify-center pt-2 w-full">
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    className="bg-[#1a5a81] hover:bg-[#154e70] h-[48px] sm:h-[51px] w-[180px] sm:w-[199px] rounded-[6px] text-white font-['Changa:SemiBold'] font-semibold text-[20px] sm:text-[22px] flex items-center justify-center transition-all cursor-pointer shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
+                    data-node-id="312:99"
+                    className="bg-[#1a5a81] hover:bg-[#154e70] h-[51px] w-[199.57px] rounded-[6px] text-white font-['Changa:SemiBold'] font-semibold text-[22px] sm:text-[24px] flex items-center justify-center transition-all cursor-pointer shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "..." : "ارسل الان"}
                   </motion.button>
