@@ -1,10 +1,11 @@
 // ─── Figma-exact public image paths ───────────────────────────────────────────
 // All images live in /public/figma-exact/ and are referenced by absolute URL.
 
-import hafez from "../assets/hafez.png";
+import hafez from "../assets/hafez.webp";
+
 export const IMAGES = {
   // Decorative / background
-  arabicBg: "/figma-exact/img22.png",
+  arabicBg: "/figma-exact/img22.webp",
 
   // Hero / branding
   heroLogo: "/figma-exact/imgFrame1000009141.svg",
@@ -37,36 +38,32 @@ export const IMAGES = {
   whyIconActivity: "/figma-exact/imgMynauiActivitySolid.svg",
   whyIconDashboard: "/figma-exact/imgKeylineIconsLayoutDashboardFill.svg",
 
-  // Users section – book covers
-  bookCoverParent: "/figma-exact/imgBookCover.png",
-  bookCoverStudent: "/figma-exact/imgBookCover1.png",
-  bookCoverTeacher: "/figma-exact/imgBookCover2.png",
-  bookCoverAdmin: "/figma-exact/imgBookCover3.png",
+  // Users section – book covers (WebP)
+  bookCoverParent: "/figma-exact/imgBookCover.webp",
+  bookCoverStudent: "/figma-exact/imgBookCover1.webp",
+  bookCoverTeacher: "/figma-exact/imgBookCover2.webp",
+  bookCoverAdmin: "/figma-exact/imgBookCover3.webp",
   roleHeroArch: "/figma-exact/imgRectangle39633.svg",
 
-  // Institutions / Book covers
-  institutionMaqraa: "/figma-exact/institution-maqraa.png",
-  institutionSchool: "/figma-exact/institution-school.png",
-  institutionMosque: "/figma-exact/institution-mosque.png",
-  bookCoverPrimary: "/figma-exact/institution-maqraa.png",
-  bookCoverMiddle: "/figma-exact/institution-school.png",
-  bookCoverHigh: "/figma-exact/institution-mosque.png",
-  bookCoverUniversity: "/figma-exact/imgBookCover7.png",
+  // Institutions / Book covers (WebP)
+  institutionMaqraa: "/figma-exact/institution-maqraa.webp",
+  institutionSchool: "/figma-exact/institution-school.webp",
+  institutionMosque: "/figma-exact/institution-mosque.webp",
+  bookCoverPrimary: "/figma-exact/institution-maqraa.webp",
+  bookCoverMiddle: "/figma-exact/institution-school.webp",
+  bookCoverHigh: "/figma-exact/institution-mosque.webp",
+  bookCoverUniversity: "/figma-exact/imgBookCover7.webp",
 
   // CTA section
   ctaBookCover: hafez,
-
-  // Additional services
-  servicesBg: "/figma-exact/imgRectangle39630.svg",
-  servicesPriceBg: "/figma-exact/imgRectangle39631.svg",
 
   // Organisations banner
   orgDivider: "/figma-exact/imgVector21.svg",
   orgLogo: "/figma-exact/imgGroup2.svg",
   orgDividerLine: "/figma-exact/imgLine2.svg",
 
-  // Gallery
-  gallerySlide: "/figma-exact/imgSlide4361.png",
+  // Gallery (WebP)
+  gallerySlide: "/figma-exact/imgSlide4361.webp",
   galleryArrowLeft: "/figma-exact/imgKeyboardArrowDown.svg",
   galleryArrowRight: "/figma-exact/imgKeyboardArrowDown1.svg",
   galleryArrowSelect: "/figma-exact/imgKeyboardArrowDown2.svg",
@@ -89,13 +86,13 @@ export const IMAGES = {
   // Navbar active underline
   navUnderline: "/figma-exact/imgLine1.svg",
 
-  //image gallery
-  gallerySlide1: "/figma-exact/imgBookCover.png",
-  gallerySlide2: "/figma-exact/imgBookCover.png",
-  gallerySlide3: "/figma-exact/imgBookCover.png",
-  gallerySlide4: "/figma-exact/imgBookCover.png",
-  gallerySlide5: "/figma-exact/imgBookCover.png",
-  gallerySlide6: "/figma-exact/imgBookCover.png",
-  gallerySlide7: "/figma-exact/imgBookCover.png",
-  gallerySlide8: "/figma-exact/imgBookCover.png",
+  // Image gallery (WebP)
+  gallerySlide1: "/figma-exact/imgBookCover.webp",
+  gallerySlide2: "/figma-exact/imgBookCover.webp",
+  gallerySlide3: "/figma-exact/imgBookCover.webp",
+  gallerySlide4: "/figma-exact/imgBookCover.webp",
+  gallerySlide5: "/figma-exact/imgBookCover.webp",
+  gallerySlide6: "/figma-exact/imgBookCover.webp",
+  gallerySlide7: "/figma-exact/imgBookCover.webp",
+  gallerySlide8: "/figma-exact/imgBookCover.webp",
 } as const;
