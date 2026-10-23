@@ -8,6 +8,7 @@ import Users from "../components/home/Users";
 import Institutions from "../components/home/Institutions";
 import Organisations from "../components/home/Organisations";
 import Gallery from "../components/home/Gallery";
+import Testimonials from "../components/home/Testimonials";
 import CTA from "../components/home/CTA";
 import Contact from "../components/home/Contact";
 
@@ -48,6 +49,7 @@ export default function Home() {
         <Institutions />
         <Organisations />
         <Gallery />
+        <Testimonials />
         <CTA />
         <Contact />
       </main>
