@@ -91,11 +91,7 @@ function UserCard({ user }: { user: UserType }) {
             px-[26px] py-[7px] rounded-[9999px]
             transition-all duration-200 shadow-md border-0
             font-['Almarai:Bold'] font-bold not-italic text-[13px] text-white leading-none whitespace-nowrap
-            ${
-              user.available
-                ? "bg-[#1a5a81]"
-                : "bg-[#1a5a81]/85"
-            }
+            ${user.available ? "bg-[#1a5a81]" : "bg-[#1a5a81]/85"}
           `}
         >
           {user.status}
@@ -119,19 +115,10 @@ export default function Users() {
         overflow-x-clip
       "
     >
-      <SectionTitle title="الأدوار في النظام" />
-
-      {/* Subtitle matching Figma Desktop - 7 */}
-      <p
-        dir="auto"
-        className="
-          font-['Almarai:Regular'] text-[15px] sm:text-[17px] md:text-[18px]
-          text-gray-600 text-center max-w-[760px] leading-relaxed m-0 -mt-2
-        "
-      >
-        استعراض حي ومفصل لكيفية ظهور لوحة التحكم، الأدوات التفاعلية، والتقارير المتاحة
-        لـ المشرف في منصة حافظ.
-      </p>
+      <SectionTitle
+        title="منظومة واحدة لكل الأدوار"
+        subtitle="استعراض حي ومفصل لكيفية ظهور لوحة التحكم، الأدوات التفاعلية، والتقارير المتاحة لـ المشرف في منصة حافظ."
+      />
 
       <div className="w-full flex flex-col items-center relative min-h-[320px] mt-2">
         <motion.div

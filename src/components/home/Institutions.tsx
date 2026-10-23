@@ -21,19 +21,10 @@ export default function Institutions() {
       "
     >
       {/* Heading matching Figma Desktop - 7 */}
-      <SectionTitle title="من يستعمل النظام" />
-
-      {/* Subtitle matching Figma Desktop - 7 */}
-      <p
-        dir="auto"
-        className="
-          font-['Almarai:Regular'] text-[15px] sm:text-[17px] md:text-[18px]
-          text-gray-600 text-center max-w-[760px] leading-relaxed m-0 -mt-2
-        "
-      >
-        استعراض حي ومفصل لكيفية ظهور لوحة التحكم، الأدوات التفاعلية، والتقارير المتاحة
-        لـ المشرف في منصة حافظ.
-      </p>
+      <SectionTitle
+        title="من يستعمل النظام"
+        subtitle="استعراض حي ومفصل لكيفية ظهور لوحة التحكم، الأدوات التفاعلية، والتقارير المتاحة لـ المشرف في منصة حافظ."
+      />
 
       {/* Cards list matching Figma Desktop - 7 / node 196:421 */}
       <div className="flex flex-wrap gap-8 md:gap-[50px] lg:gap-[67px] items-center justify-center w-full relative z-10 max-w-[1280px] mx-auto mt-4">

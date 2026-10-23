@@ -1,69 +1,81 @@
-import { IMAGES } from "../../constants/images";
+import { motion } from "framer-motion";
 
 interface SectionTitleProps {
-  /** The text label rendered inside the decorated title bar */
+  /** The text label rendered inside the pill badge */
   title: string;
+  /** Optional subtitle or description text rendered below the badge */
+  subtitle?: string;
   /** Optional extra Tailwind classes on the wrapper */
   className?: string;
 }
 
 /**
- * Reusable section-title badge that matches the Figma design:
- * two narrow coloured bars framing the title text over a wider bar.
- * Enhanced with Framer Motion scroll-reveal and subtle hover effect.
+ * Reusable section-title pill badge that matches Figma node 240:57:
+ * Dark blue rounded capsule with drop shadow and optional descriptive snippet.
  */
 export default function SectionTitle({
   title,
+  subtitle,
   className = "",
 }: SectionTitleProps) {
   return (
     <div
-      className={`content-stretch flex items-center justify-center relative shrink-0 cursor-default select-none ${className}`}
+      className={`content-stretch flex flex-col gap-[10px] items-center relative shrink-0 cursor-default select-none ${className}`}
+      data-node-id="240:57"
     >
-      {/* Left gold narrow bar matching Figma node 196:260 */}
-      <div className="h-[53px] relative shrink-0 w-[9px]">
-        <img
-          alt=""
-          className="absolute block inset-0 max-w-none size-full"
-          src={IMAGES.sectionBarShort}
-        />
-      </div>
-
-      {/* Main wide bar matching Figma node 196:261 */}
-      <div className="h-[53px] relative shrink-0 w-[262px] bg-[#1a5a81] overflow-hidden flex items-center justify-center">
-        <img
-          alt=""
-          className="absolute block inset-0 max-w-none size-full"
-          src={IMAGES.sectionBarLong}
-        />
-        {/* Repeating calligraphy watermark layer */}
+      {/* Pill Badge matching Figma node 240:58 */}
+      <motion.div
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.98 }}
+        className="
+          bg-[#1a5a81] content-stretch flex gap-[9.3px] items-center
+          px-[32px] sm:px-[37.31px] py-[10px] sm:py-[11.66px]
+          relative rounded-[11658px] rounded-full shrink-0
+          shadow-[0px_11.659px_17.489px_-3.498px_rgba(0,0,0,0.1),0px_4.664px_6.996px_-4.664px_rgba(0,0,0,0.1)]
+          transition-shadow duration-300
+        "
+        data-node-id="240:58"
+        data-name="Button"
+      >
         <div
-          className="absolute inset-0 opacity-10 pointer-events-none bg-repeat bg-center"
-          style={{ backgroundImage: `url(${IMAGES.arabicBg})`, backgroundSize: "53px" }}
-        />
-        {/* Title text matching Figma node 196:263 */}
-        <p
-          dir="auto"
-          className="
-            -translate-x-1/2 -translate-y-1/2
-            absolute left-1/2 top-1/2 z-10
-            font-['Almarai:Bold'] font-bold not-italic
-            text-[22px] sm:text-[24px] text-center text-white
-            whitespace-nowrap leading-none m-0
-          "
+          className="content-stretch flex flex-col items-center relative shrink-0"
+          data-node-id="240:62"
+          data-name="Container"
         >
-          {title}
-        </p>
-      </div>
+          <span
+            dir="auto"
+            className="
+              font-['Almarai:Bold'] font-bold text-white
+              text-[18px] sm:text-[19.288px] text-center
+              whitespace-nowrap leading-[23.319px] m-0
+            "
+            data-node-id="240:63"
+          >
+            {title}
+          </span>
+        </div>
+      </motion.div>
 
-      {/* Right gold narrow bar matching Figma node 196:262 */}
-      <div className="h-[53px] relative shrink-0 w-[9px]">
-        <img
-          alt=""
-          className="absolute block inset-0 max-w-none size-full"
-          src={IMAGES.sectionBarShort}
-        />
-      </div>
+      {/* Subtitle / Description Snippet matching Figma node 240:64 */}
+      {subtitle && (
+        <div
+          className="content-stretch flex flex-col items-center justify-center overflow-clip relative shrink-0 w-full max-w-[670px] px-4"
+          data-node-id="240:64"
+          data-name="Description/Snippet"
+        >
+          <p
+            dir="auto"
+            className="
+              font-['Almarai:Regular'] text-[#666666]
+              text-[16px] sm:text-[18px] md:text-[20px] text-center
+              leading-relaxed m-0
+            "
+            data-node-id="240:65"
+          >
+            {subtitle}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

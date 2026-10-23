@@ -91,19 +91,10 @@ export default function Gallery() {
         relative w-full max-w-[1440px] mx-auto
       "
     >
-      <SectionTitle title="صور من النظام" />
-
-      {/* Subtitle matching Figma Desktop - 7 */}
-      <p
-        dir="auto"
-        className="
-          font-['Almarai:Regular'] text-[15px] sm:text-[17px] md:text-[18px]
-          text-gray-600 text-center max-w-[760px] leading-relaxed m-0 -mt-1
-        "
-      >
-        استعراض حي ومفصل لكيفية ظهور لوحة التحكم، الأدوات التفاعلية، والتقارير المتاحة
-        لـ المشرف في منصة حافظ.
-      </p>
+      <SectionTitle
+        title="صور من النظام"
+        subtitle="استعراض حي ومفصل لكيفية ظهور لوحة التحكم، الأدوات التفاعلية، والتقارير المتاحة لـ المشرف في منصة حافظ."
+      />
 
       {/* حاوية معرض الصور */}
       <motion.div
