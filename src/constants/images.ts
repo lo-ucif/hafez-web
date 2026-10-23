@@ -63,8 +63,15 @@ export const IMAGES = {
   orgLogo: "/figma-exact/imgGroup2.svg",
   orgDividerLine: "/figma-exact/imgLine2.svg",
 
-  // Gallery (WebP)
-  gallerySlide: "/figma-exact/imgSlide4361.webp",
+  // Gallery (WebP screenshots from real platform)
+  gallerySlide: "/figma-exact/gallery-dashboard.webp",
+  galleryDashboard: "/figma-exact/gallery-dashboard.webp",
+  galleryAttendance: "/figma-exact/gallery-attendance.webp",
+  galleryAchievements: "/figma-exact/gallery-achievements.webp",
+  galleryCircleSession: "/figma-exact/gallery-circle-session.webp",
+  galleryDailyReview: "/figma-exact/gallery-daily-review.webp",
+  galleryLeaderboard: "/figma-exact/gallery-leaderboard.webp",
+  galleryNotifications: "/figma-exact/gallery-notifications.webp",
   galleryArrowLeft: "/figma-exact/imgKeyboardArrowDown.svg",
   galleryArrowRight: "/figma-exact/imgKeyboardArrowDown1.svg",
   galleryArrowSelect: "/figma-exact/imgKeyboardArrowDown2.svg",
