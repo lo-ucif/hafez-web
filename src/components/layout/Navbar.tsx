@@ -6,7 +6,7 @@ import type { NavLink } from "../../data/navigation";
 import ArabicBg from "../common/ArabicBg";
 
 interface NavbarProps {
-  activePage?: "home" | "terms" | "roles";
+  activePage?: "home" | "roles";
 }
 
 function navigateToHash(hash: string) {
@@ -16,25 +16,22 @@ function navigateToHash(hash: string) {
 
 /**
  * Site-wide Navbar with Framer Motion animations & dynamic active link coloring.
- * - Colors the clicked title in gold (#cab178) with animated underline.
+ * - Colors the clicked title in gold (#cab178) with animated indicator.
  * - Automatically tracks active section on scroll via scroll spy.
- * - Supports multi-page navigation (Home vs Terms & Conditions).
  * - Navbar is transparent at the top of Home page.
- * - Navbar becomes colored after scrolling 200px.
- * - Navbar is always colored on other pages.
+ * - Navbar becomes colored after scrolling.
  * - Animated mobile drawer from the right.
  */
 export default function Navbar({ activePage = "home" }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const [activeId, setActiveId] = useState<string>(() => {
-    if (activePage === "terms") return "terms";
-
     const hash = window.location.hash;
     if (hash === "#features") return "features";
+    if (hash === "#roles" || hash === "#users") return "roles";
+    if (hash === "#gallery") return "gallery";
     if (hash === "#offers") return "offers";
-    if (hash === "#contact") return "support";
-    if (hash === "#terms") return "terms";
+    if (hash === "#contact") return "contact";
 
     return "home";
   });
@@ -73,12 +70,14 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
       if (hash === "#features") {
         setActiveId("features");
+      } else if (hash === "#roles" || hash === "#users") {
+        setActiveId("roles");
+      } else if (hash === "#gallery") {
+        setActiveId("gallery");
       } else if (hash === "#offers") {
         setActiveId("offers");
       } else if (hash === "#contact") {
-        setActiveId("support");
-      } else if (hash === "#terms") {
-        setActiveId("terms");
+        setActiveId("contact");
       } else if (hash === "#home" || !hash) {
         setActiveId("home");
       }
@@ -105,12 +104,12 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
         0;
       setIsScrolled(currentScroll > 15);
 
-      // If scrolled close to bottom of page, highlight the last item (support/contact)
+      // If scrolled close to bottom of page, highlight the last item (contact)
       if (
         window.innerHeight + currentScroll >=
         document.documentElement.scrollHeight - 70
       ) {
-        setActiveId("support");
+        setActiveId("contact");
         return;
       }
 
@@ -120,8 +119,10 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       const sections = [
         { id: "home", linkId: "home" },
         { id: "features", linkId: "features" },
+        { id: "roles", linkId: "roles" },
+        { id: "gallery", linkId: "gallery" },
         { id: "offers", linkId: "offers" },
-        { id: "contact", linkId: "support" },
+        { id: "contact", linkId: "contact" },
       ];
 
       for (const item of [...sections].reverse()) {
@@ -161,11 +162,6 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     }
     setActiveId(link.id);
     setMobileMenuOpen(false);
-
-    if (link.id === "terms") {
-      navigateToHash("#terms");
-      return;
-    }
 
     if (activePage !== "home") {
       navigateToHash(link.href);
@@ -228,7 +224,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
   // Handle Contact button click ("تواصل معنا")
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    setActiveId("support");
+    setActiveId("contact");
     setMobileMenuOpen(false);
 
     if (activePage !== "home") {
@@ -352,7 +348,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           </div>
 
           {/* Right Group: Nav Links + Logo in RTL */}
-          <div className="flex items-center gap-[30px] lg:gap-[45px] xl:gap-[60px]" dir="rtl">
+          <div className="flex items-center gap-3 lg:gap-5 xl:gap-8" dir="rtl">
             {/* Logo on the far right (first child in RTL) */}
             <motion.a
               href="#home"
@@ -388,7 +384,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             </motion.a>
 
             {/* Nav links to the left of the Logo matching requested style */}
-            <nav aria-label="التنقل الرئيسي" className="hidden md:flex items-center gap-1 lg:gap-2">
+            <nav aria-label="التنقل الرئيسي" className="hidden md:flex items-center gap-0.5 lg:gap-1">
               <ul className="flex items-center list-none m-0 p-0" dir="rtl">
                 {navLinks.map((link) => {
                   const isLinkActive = activeId === link.id;
@@ -399,7 +395,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
                         href={link.href}
                         onClick={(e) => handleNavClick(link, e)}
                         dir="auto"
-                        className={`relative flex flex-col items-center justify-center px-3 lg:px-4 py-2 text-[18px] transition-colors cursor-pointer group select-none no-underline ${
+                        className={`relative flex flex-col items-center justify-center px-2 lg:px-3 xl:px-3.5 py-2 text-[15px] lg:text-[16px] xl:text-[17px] transition-colors cursor-pointer group select-none no-underline whitespace-nowrap ${
                           isLinkActive
                             ? "text-[#cab178] font-semibold"
                             : "text-white/90 hover:text-[#cab178] font-medium"

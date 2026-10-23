@@ -20,7 +20,7 @@ export default function Home() {
   // Smooth scroll when landing on a section hash from another page (e.g. returning to #features)
   useEffect(() => {
     const hash = window.location.hash;
-    if (!hash || hash === "#home" || hash.startsWith("#/role") || hash.startsWith("#terms")) return;
+    if (!hash || hash === "#home" || hash.startsWith("#/role")) return;
 
     const id = hash.replace(/^#\/?/, "");
     const el = document.getElementById(id);
