@@ -18,10 +18,10 @@ export default function SectionTitle({
 }: SectionTitleProps) {
   return (
     <div
-      className={`flex items-center justify-end relative shrink-0 cursor-default select-none ${className}`}
+      className={`content-stretch flex items-center justify-center relative shrink-0 cursor-default select-none ${className}`}
     >
-      {/* Left narrow bar */}
-      <div className="h-11.25 relative shrink-0 w-[9px]">
+      {/* Left gold narrow bar matching Figma node 196:260 */}
+      <div className="h-[53px] relative shrink-0 w-[9px]">
         <img
           alt=""
           className="absolute block inset-0 max-w-none size-full"
@@ -29,37 +29,41 @@ export default function SectionTitle({
         />
       </div>
 
-      {/* Main wide bar */}
-      <div className="h-11.25 relative shrink-0 w-45">
+      {/* Main wide bar matching Figma node 196:261 */}
+      <div className="h-[53px] relative shrink-0 w-[262px] bg-[#1a5a81] overflow-hidden flex items-center justify-center">
         <img
           alt=""
           className="absolute block inset-0 max-w-none size-full"
           src={IMAGES.sectionBarLong}
         />
+        {/* Repeating calligraphy watermark layer */}
+        <div
+          className="absolute inset-0 opacity-10 pointer-events-none bg-repeat bg-center"
+          style={{ backgroundImage: `url(${IMAGES.arabicBg})`, backgroundSize: "53px" }}
+        />
+        {/* Title text matching Figma node 196:263 */}
+        <p
+          dir="auto"
+          className="
+            -translate-x-1/2 -translate-y-1/2
+            absolute left-1/2 top-1/2 z-10
+            font-['Almarai:Bold'] font-bold not-italic
+            text-[22px] sm:text-[24px] text-center text-white
+            whitespace-nowrap leading-none m-0
+          "
+        >
+          {title}
+        </p>
       </div>
 
-      {/* Right narrow bar */}
-      <div className="h-11.25 relative shrink-0 w-[9px]">
+      {/* Right gold narrow bar matching Figma node 196:262 */}
+      <div className="h-[53px] relative shrink-0 w-[9px]">
         <img
           alt=""
           className="absolute block inset-0 max-w-none size-full"
           src={IMAGES.sectionBarShort}
         />
       </div>
-
-      {/* Title text – centered over all three bars */}
-      <p
-        dir="auto"
-        className="
-          -translate-x-1/2 -translate-y-1/2
-          absolute left-1/2 top-1/2
-          font-['Almarai:Bold'] not-italic
-          text-[20px] text-center text-white
-          whitespace-nowrap leading-none
-        "
-      >
-        {title}
-      </p>
     </div>
   );
 }

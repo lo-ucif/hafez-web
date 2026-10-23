@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { IMAGES } from "../../constants/images";
-import Button from "../common/Button";
 import ArabicBg from "../common/ArabicBg";
 
 /**
@@ -52,40 +51,53 @@ export default function CTA() {
           w-full max-w-[1200px] relative z-10
         "
       >
-        {/* Book cover / Mascot illustration */}
+        {/* Book cover / Mascot illustration matching Figma node 196:503 */}
         <motion.div
           whileHover={{ y: -8, scale: 1.03 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="w-[350px] sm:w-[290px] md:w-[400px] h-auto aspect-[308/350] relative  shrink-0 overflow-hidden cursor-pointer"
+          className="w-[280px] sm:w-[308px] h-[320px] sm:h-[350.66px] relative shrink-0 overflow-hidden cursor-pointer"
         >
-          <img alt="غلاف كتاب طلب نسخة" src={IMAGES.ctaBookCover} />
+          <img
+            alt="شعار حافظ الروبوت"
+            className="absolute inset-0 max-w-none object-contain size-full pointer-events-none"
+            src={IMAGES.bookCoverUniversity}
+          />
         </motion.div>
 
-        {/* Text + button */}
+        {/* Text + button matching Figma node 196:504 */}
         <div
           dir="rtl"
-          className="flex flex-col gap-6 md:gap-[24px] items-center md:items-start justify-center max-w-[480px] text-center md:text-right"
+          className="flex flex-col gap-6 md:gap-[20px] items-center md:items-start justify-center max-w-[535px] text-center md:text-right"
         >
           <h2
             dir="auto"
             className="
               font-['Almarai:Bold'] not-italic
-              text-[26px] sm:text-[30px] md:text-[36px]
-              text-white leading-snug md:leading-[55px]
+              text-[28px] sm:text-[34px] md:text-[36px]
+              text-white leading-snug md:leading-[60px]
               whitespace-pre-wrap m-0
             "
           >
             <span className="block">لديكم مدرسة قرآنية؟</span>
-            <span className="block">{` لا تتردّد واطلب نسختك الآن!`}</span>
+            <span className="block">{` لا تتردّد واطلب نسختك  مجانا الآن!`}</span>
           </h2>
 
-          <Button
-            variant="gold"
-            size="lg"
-            className="rounded-[12px] w-full max-w-[180px] h-[40px] sm:h-[50px] text-[20px] sm:text-[24px]"
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05, boxShadow: "0px 8px 25px rgba(202, 177, 120, 0.45)" }}
+            whileTap={{ scale: 0.95 }}
+            className="
+              bg-[#cab178] hover:bg-[#bfa56a] text-white
+              font-['Almarai:Bold'] font-bold text-[20px] sm:text-[24px]
+              rounded-[12px]
+              w-[240px] sm:w-[285px] h-[54px] sm:h-[64px]
+              flex items-center justify-center
+              no-underline cursor-pointer shadow-md
+              transition-all duration-200
+            "
           >
             طلب نسخة
-          </Button>
+          </motion.a>
         </div>
       </div>
     </section>

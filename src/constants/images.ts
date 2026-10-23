@@ -44,10 +44,13 @@ export const IMAGES = {
   bookCoverAdmin: "/figma-exact/imgBookCover3.png",
   roleHeroArch: "/figma-exact/imgRectangle39633.svg",
 
-  // Pricing book covers
-  bookCoverPrimary: "/figma-exact/imgBookCover4.png",
-  bookCoverMiddle: "/figma-exact/imgBookCover5.png",
-  bookCoverHigh: "/figma-exact/imgBookCover6.png",
+  // Institutions / Book covers
+  institutionMaqraa: "/figma-exact/institution-maqraa.png",
+  institutionSchool: "/figma-exact/institution-school.png",
+  institutionMosque: "/figma-exact/institution-mosque.png",
+  bookCoverPrimary: "/figma-exact/institution-maqraa.png",
+  bookCoverMiddle: "/figma-exact/institution-school.png",
+  bookCoverHigh: "/figma-exact/institution-mosque.png",
   bookCoverUniversity: "/figma-exact/imgBookCover7.png",
 
   // CTA section

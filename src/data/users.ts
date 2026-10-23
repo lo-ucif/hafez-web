@@ -8,6 +8,8 @@ export interface UserType {
   coverOffsetX: string;
   coverOffsetY: string;
   coverScale: string;
+  status: 'متوفر حاليا' | 'قريبا';
+  available: boolean;
 }
 
 export const userTypes: UserType[] = [
@@ -19,6 +21,8 @@ export const userTypes: UserType[] = [
     coverOffsetX: '-7.65%',
     coverOffsetY: '5.8%',
     coverScale: '120.54%',
+    status: 'متوفر حاليا',
+    available: true,
   },
   {
     id: 'teacher',
@@ -28,6 +32,8 @@ export const userTypes: UserType[] = [
     coverOffsetX: '-7.65%',
     coverOffsetY: '5.8%',
     coverScale: '120.54%',
+    status: 'متوفر حاليا',
+    available: true,
   },
   {
     id: 'student',
@@ -37,6 +43,8 @@ export const userTypes: UserType[] = [
     coverOffsetX: '-15.38%',
     coverOffsetY: '4.64%',
     coverScale: '130.35%',
+    status: 'متوفر حاليا',
+    available: true,
   },
   {
     id: 'parent',
@@ -46,5 +54,7 @@ export const userTypes: UserType[] = [
     coverOffsetX: '-7.65%',
     coverOffsetY: '5.8%',
     coverScale: '120.54%',
+    status: 'قريبا',
+    available: false,
   },
 ];

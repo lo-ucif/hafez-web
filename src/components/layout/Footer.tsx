@@ -14,7 +14,7 @@ export default function Footer() {
     <footer
       dir="rtl"
       className="
-        bg-[#15455e] relative w-full overflow-clip
+        bg-[#1a5a81] relative w-full overflow-clip
         flex flex-col items-center
         pb-8 md:pb-[60px] pt-12 md:pt-[60px] px-6 md:px-[40px]
       "

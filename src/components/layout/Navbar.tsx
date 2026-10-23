@@ -35,8 +35,9 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
     if (hash === "#features") return "features";
     if (hash === "#users") return "users";
-    if (hash === "#pricing") return "offers";
-    if (hash === "#contact") return "support";
+    if (hash === "#institutions") return "institutions";
+    if (hash === "#gallery") return "gallery";
+    if (hash === "#contact") return "contact";
     if (hash === "#terms") return "terms";
 
     return "home";
@@ -93,10 +94,12 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
         setActiveId("features");
       } else if (hash === "#users") {
         setActiveId("users");
-      } else if (hash === "#pricing") {
-        setActiveId("offers");
+      } else if (hash === "#institutions") {
+        setActiveId("institutions");
+      } else if (hash === "#gallery") {
+        setActiveId("gallery");
       } else if (hash === "#contact") {
-        setActiveId("support");
+        setActiveId("contact");
       } else if (hash === "#terms") {
         setActiveId("terms");
       } else if (hash === "#home" || !hash) {
@@ -121,8 +124,9 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       { id: "home", linkId: "home" },
       { id: "features", linkId: "features" },
       { id: "users", linkId: "users" },
-      { id: "pricing", linkId: "offers" },
-      { id: "contact", linkId: "support" },
+      { id: "institutions", linkId: "institutions" },
+      { id: "gallery", linkId: "gallery" },
+      { id: "contact", linkId: "contact" },
     ];
 
     let ticking = false;
@@ -208,21 +212,20 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
   // Handle CTA button click
   const handleCtaClick = () => {
-    setActiveId("offers");
+    setActiveId("contact");
     setMobileMenuOpen(false);
 
     if (activePage !== "home") {
-      navigateToHash("#pricing");
+      navigateToHash("#contact");
     } else {
-      const el =
-        document.getElementById("pricing") || document.getElementById("cta");
+      const el = document.getElementById("contact");
 
       if (el) {
         el.scrollIntoView({
           behavior: "smooth",
         });
 
-        navigateToHash("#pricing");
+        navigateToHash("#contact");
       }
     }
   };

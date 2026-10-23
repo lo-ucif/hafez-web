@@ -80,35 +80,35 @@ export default function Hero() {
           <span className="block">{` القرآن`}</span>
         </motion.h1>
 
-        {/* CTA Button matching Figma with interactive physics */}
+        {/* CTA Button matching Figma Desktop - 7 (node 279:423) */}
         <motion.a
-          href="#features"
+          href="#contact"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
           whileHover={{
-            scale: 1.08,
-            boxShadow: "0px 8px 25px rgba(202, 177, 120, 0.4)",
+            scale: 1.05,
+            boxShadow: "0px 8px 25px rgba(202, 177, 120, 0.45)",
           }}
-          whileTap={{ scale: 0.94 }}
+          whileTap={{ scale: 0.95 }}
           className="
-            bg-[#cab178] hover:bg-[#b89f66]
-            transition-colors duration-200
+            bg-[#cab178] hover:bg-[#bfa56a]
+            transition-all duration-200
             flex items-center justify-center
-            px-6 py-2.5 sm:px-8 sm:py-3 md:px-9 md:py-3
-            rounded-[6px] md:rounded-[8px]
-            w-auto min-w-[120px] cursor-pointer no-underline
+            w-[240px] sm:w-[285px] h-[54px] sm:h-[64px]
+            rounded-[12px]
+            cursor-pointer no-underline
             shadow-md
           "
         >
           <span
             className="
               font-['Almarai:Bold'] font-bold leading-none not-italic
-              text-[15px] md:text-[18px] text-white whitespace-nowrap
+              text-[20px] sm:text-[24px] text-white whitespace-nowrap
             "
             dir="auto"
           >
-            متابعة
+            طلب نسخة
           </span>
         </motion.a>
       </div>

@@ -5,57 +5,35 @@ import { IMAGES } from "../../constants/images";
 import SectionTitle from "../common/SectionTitle";
 
 
-// صور معرض منصة حافظ
+// صور معرض منصة حافظ - استخدام صورة لوحة التحكم الحقيقية من فيجما
 const gallerySlides = [
   {
-    image: IMAGES.gallerySlide1,
-    title: "الصفحة الرئيسية",
-    description: "الواجهة الرئيسية لمنصة حافظ",
+    image: IMAGES.gallerySlide,
+    title: "لوحة تحكم المشرف",
+    description: "إحصاءات تطور الحفظ، شريط تقدم الحفظ، ومتابعة الحلقات",
   },
   {
-    image: IMAGES.gallerySlide2,
-    title: "إدارة الحفظ",
-    description: "تنظيم حفظ القرآن الكريم ومراجعته",
+    image: IMAGES.gallerySlide,
+    title: "إدارة الحلقات والطلاب",
+    description: "متابعة الحفظ الأسبوعي والمراجعة اليومية للطلاب والمعلمين",
   },
   {
-    image: IMAGES.gallerySlide3,
-    title: "متابعة التقدم",
-    description: "متابعة تقدم المستخدم في الحفظ والمراجعة",
+    image: IMAGES.gallerySlide,
+    title: "بطاقة الإنجازات والأحكام",
+    description: "رصد وتوثيق إتقان أحكام التجويد ومستويات التلاوة",
   },
   {
-    image: IMAGES.gallerySlide4,
-    title: "خطة الحفظ",
-    description: "تنظيم خطة الحفظ اليومية",
-  },
-  {
-    image: IMAGES.gallerySlide5,
-    title: "المراجعة اليومية",
-    description: "تنظيم جلسات مراجعة القرآن الكريم",
-  },
-  {
-    image: IMAGES.gallerySlide6,
-    title: "الإحصائيات",
-    description: "عرض إحصائيات تقدم المستخدم",
-  },
-  {
-    image: IMAGES.gallerySlide7,
-    title: "إدارة المهام",
-    description: "متابعة المهام اليومية للحفظ والمراجعة",
-  },
-  {
-    image: IMAGES.gallerySlide8,
-    title: "الملف الشخصي",
-    description: "عرض معلومات المستخدم وإنجازاته",
+    image: IMAGES.gallerySlide,
+    title: "التقارير والمراسلات",
+    description: "إرسال التنبيهات وإصدار التقارير الدورية التفصيلية",
   },
 ];
 
 const TOTAL_SLIDES = gallerySlides.length;
 
 export default function Gallery() {
-  // الشريحة النشطة؛ تبدأ من الصورة السابعة إذا كانت موجودة
-  const [currentSlide, setCurrentSlide] = useState(
-    Math.min(6, gallerySlides.length - 1),
-  );
+  // الشريحة النشطة
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   // اتجاه حركة الصور
   const [direction, setDirection] = useState(0);
@@ -93,12 +71,24 @@ export default function Gallery() {
       id="gallery"
       aria-label="صور من النظام"
       className="
-        bg-white flex flex-col gap-8 md:gap-[60px] items-center overflow-clip
-        pb-12 md:pb-[60px] pt-12 md:pt-[100px] px-4 md:px-[10px]
+        bg-white flex flex-col gap-6 md:gap-8 items-center overflow-clip
+        pb-14 md:pb-[70px] pt-12 md:pt-[90px] px-4 md:px-[10px]
         relative w-full max-w-[1440px] mx-auto
       "
     >
       <SectionTitle title="صور من النظام" />
+
+      {/* Subtitle matching Figma Desktop - 7 */}
+      <p
+        dir="auto"
+        className="
+          font-['Almarai:Regular'] text-[15px] sm:text-[17px] md:text-[18px]
+          text-gray-600 text-center max-w-[760px] leading-relaxed m-0 -mt-1
+        "
+      >
+        استعراض حي ومفصل لكيفية ظهور لوحة التحكم، الأدوات التفاعلية، والتقارير المتاحة
+        لـ المشرف في منصة حافظ.
+      </p>
 
       {/* حاوية معرض الصور */}
       <motion.div

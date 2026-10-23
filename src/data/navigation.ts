@@ -10,9 +10,10 @@ export interface NavLink {
 export const navLinks: NavLink[] = [
   { id: 'home', label: 'الرئيسية', href: '#home', isActive: true },
   { id: 'features', label: 'مميزات النظام', href: '#features' },
-  { id: 'users', label: 'المستخدمون', href: '#users' },
-  { id: 'offers', label: 'العروض', href: '#pricing' },
-  { id: 'support', label: 'الدعم', href: '#contact' },
+  { id: 'users', label: 'الأدوار', href: '#users' },
+  { id: 'institutions', label: 'من يستعمل النظام', href: '#institutions' },
+  { id: 'gallery', label: 'صور من النظام', href: '#gallery' },
+  { id: 'contact', label: 'تواصل معنا', href: '#contact' },
   { id: 'terms', label: 'الشروط والأحكام', href: '#terms' },
 ];
 

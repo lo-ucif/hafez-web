@@ -1,88 +1,76 @@
 import { motion } from "framer-motion";
-import { IMAGES } from "../../constants/images";
 import { institutions } from "../../data/institutions";
-import ArabicBg from "../common/ArabicBg";
+import SectionTitle from "../common/SectionTitle";
 
 /**
- * Institutions / Organization users banner section.
- * Corresponds to Figma desktop node 196:416.
- * Features 3 institution cards with crisp white cards, gold badges, and illustrations.
+ * Institutions / "من يستعمل النظام" section.
+ * Matches Figma Desktop - 7 (node 196:177).
+ * Features white background, SectionTitle, descriptive subtitle,
+ * and 3 institution cards with crisp gold tag badges.
  */
 export default function Institutions() {
   return (
     <section
-      aria-label="المؤسسات المستفيدة من النظام"
+      id="institutions"
+      aria-label="من يستعمل النظام"
       className="
-        bg-[#1a5a81] relative w-full overflow-clip
-        flex flex-col gap-10 md:gap-[60px] items-center justify-center
-        pb-14 md:pb-[100px] pt-12 md:pt-[80px] px-4 md:px-[10px]
+        bg-white relative w-full overflow-clip
+        flex flex-col gap-8 md:gap-10 items-center justify-center
+        pb-14 md:pb-[90px] pt-12 md:pt-[80px] px-4 md:px-[10px]
+        max-w-[1440px] mx-auto
       "
     >
-      <ArabicBg
-        positionClass="left-[-249px] top-[-677px]"
-        sizeClass="size-[1983px]"
-        opacityClass="opacity-3"
-      />
+      {/* Heading matching Figma Desktop - 7 */}
+      <SectionTitle title="من يستعمل النظام" />
 
-      {/* Heading matching Figma node 196:418 */}
-      <div className="flex flex-col gap-2.5 items-center justify-center relative z-10">
-        <h2
-          dir="auto"
-          className="
-            font-['Almarai:Regular'] not-italic text-[24px] md:text-[28px]
-            text-center text-white whitespace-nowrap leading-normal m-0
-          "
-        >
-          مستخدمو النظام
-        </h2>
-        <div className="h-0 relative w-[92px]">
-          <div className="absolute inset-[-3.77px_0_0_0]">
-            <img
-              alt=""
-              aria-hidden="true"
-              className="block max-w-none size-full"
-              src={IMAGES.navUnderline}
-            />
-          </div>
-        </div>
-      </div>
+      {/* Subtitle matching Figma Desktop - 7 */}
+      <p
+        dir="auto"
+        className="
+          font-['Almarai:Regular'] text-[15px] sm:text-[17px] md:text-[18px]
+          text-gray-600 text-center max-w-[760px] leading-relaxed m-0 -mt-2
+        "
+      >
+        استعراض حي ومفصل لكيفية ظهور لوحة التحكم، الأدوات التفاعلية، والتقارير المتاحة
+        لـ المشرف في منصة حافظ.
+      </p>
 
-      {/* Cards list matching Figma node 196:421 */}
-      <div className="flex flex-wrap gap-8 md:gap-[67px] items-center justify-center w-full relative z-10 max-w-[1440px] mx-auto">
+      {/* Cards list matching Figma Desktop - 7 / node 196:421 */}
+      <div className="flex flex-wrap gap-8 md:gap-[50px] lg:gap-[67px] items-center justify-center w-full relative z-10 max-w-[1280px] mx-auto mt-4">
         {institutions.map((item) => (
           <motion.article
             key={item.id}
             whileHover={{ y: -8, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="
-              group drop-shadow-[0px_8.463px_6.347px_rgba(0,0,0,0.1),0px_3.385px_2.539px_rgba(0,0,0,0.1)]
-              bg-white flex items-center justify-center p-[10px]
-              relative rounded-[5px]
-              w-full max-w-[327px] h-auto min-h-[242px] shrink-0 cursor-pointer
+              group drop-shadow-[0px_9.042px_6.781px_rgba(0,0,0,0.1),0px_3.617px_2.712px_rgba(0,0,0,0.1)]
+              relative rounded-[9px]
+              w-full max-w-[328px] h-[238px] shrink-0 cursor-pointer
+              overflow-visible
             "
           >
-            {/* Gold tag badge positioned top-right on the card matching Figma node 196:423 */}
+            {/* Gold tag badge positioned top-right on the card matching Figma node 196:421 */}
             <div
               className="
-                absolute bg-[#cab178] border-[#cab178] border-[0.717px] border-solid
+                absolute bg-[#cab178] border-[#cab178] border-[0.766px] border-solid
                 flex items-center justify-center
-                right-[-30px] top-[10px] z-20 overflow-hidden
-                px-[20px] py-[10px] shadow-sm
+                right-[-12px] sm:right-[-16px] top-[11px] z-20 overflow-hidden
+                px-[21px] py-[8px] rounded-[4px] shadow-md
               "
             >
               <span
                 dir="auto"
-                className="font-['Almarai:Bold'] text-[17px] sm:text-[19px] md:text-[20px] text-white whitespace-nowrap leading-normal"
+                className="font-['Almarai:Bold'] text-[18px] md:text-[20px] text-white whitespace-nowrap leading-normal"
               >
                 {item.title}
               </span>
             </div>
 
             {/* Institution image */}
-            <div className="h-[210px] sm:h-[222px] w-[295px] sm:w-[307px] relative rounded-[8.132px] overflow-hidden">
+            <div className="size-full relative rounded-[9px] overflow-hidden bg-slate-100">
               <img
                 alt={item.title}
-                className="absolute inset-0 object-cover rounded-[8.132px] size-full pointer-events-none transition-transform duration-300 group-hover:scale-105"
+                className={`size-full object-cover ${item.objectPosition || "object-center"} rounded-[9px] pointer-events-none transition-transform duration-300 group-hover:scale-105`}
                 src={item.image}
               />
             </div>
