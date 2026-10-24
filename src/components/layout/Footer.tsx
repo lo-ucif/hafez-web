@@ -3,26 +3,6 @@ import { IMAGES } from "../../constants/images";
 
 const socialLinks = [
   {
-    id: "whatsapp",
-    label: "واتساب",
-    href: "https://wa.me/",
-    svg: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="size-[24px]"
-      >
-        <path
-          d="M17.472 14.382C17.18 14.236 15.748 13.53 15.482 13.433C15.215 13.336 15.021 13.287 14.827 13.579C14.633 13.871 14.075 14.526 13.905 14.721C13.735 14.915 13.565 14.939 13.274 14.793C12.983 14.647 12.046 14.34 10.934 13.349C10.068 12.578 9.483 11.626 9.313 11.334C9.143 11.042 9.295 10.884 9.441 10.739C9.572 10.608 9.733 10.398 9.879 10.228C10.024 10.058 10.073 9.936 10.17 9.742C10.267 9.547 10.218 9.377 10.145 9.231C10.073 9.085 9.49 7.651 9.247 7.067C9.011 6.498 8.772 6.576 8.592 6.567L8.034 6.558C7.84 6.558 7.524 6.631 7.257 6.923C6.99 7.215 6.237 7.92 6.237 9.354C6.237 10.789 7.281 12.174 7.427 12.369C7.573 12.563 9.479 15.503 12.404 16.764C13.1 17.065 13.644 17.245 14.067 17.379C14.767 17.602 15.405 17.57 15.909 17.495C16.471 17.411 17.64 16.787 17.883 16.106C18.126 15.425 18.126 14.841 18.053 14.721C17.98 14.6 17.763 14.528 17.472 14.382ZM12.043 21.75C10.323 21.75 8.718 21.288 7.327 20.463L3 21.6L4.161 17.378C3.218 15.918 2.667 14.178 2.667 12.308C2.667 7.172 6.871 2.992 12.046 2.992C14.551 2.994 16.902 3.972 18.671 5.746C20.44 7.521 21.415 9.878 21.413 12.385C21.41 17.524 17.209 21.75 12.043 21.75Z"
-          fill="currentColor"
-        />
-      </svg>
-    ),
-  },
-  {
     id: "facebook",
     label: "فيسبوك",
     href: "https://facebook.com",
@@ -89,84 +69,111 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { id: "about", label: "عن المنصة", href: "#home" },
-  { id: "features", label: "مميزات النظام", href: "#features" },
-  { id: "roles", label: "الأدوار في النظام", href: "#roles" },
-  { id: "gallery", label: "معرض النظام", href: "#gallery" },
-  { id: "testimonials", label: "آراء المستخدمين", href: "#testimonials" },
-  { id: "contact", label: "تواصل معنا", href: "#contact" },
+  { id: "about", label: "من نحن", href: "#home" },
+  { id: "fatwa", label: "فتاوى", href: "#" },
+  { id: "media", label: "مكتبة الوسائط", href: "#gallery" },
+  { id: "news", label: "أخبارنا وفعالياتنا", href: "#features" },
+  { id: "contact", label: "اتصل بنا", href: "#contact" },
 ];
 
 /**
- * Site Footer matching Figma node 196:572 ("Footer / 1 /")
+ * Site Footer matching Figma node 337:196 ("Footer / 1 /")
  */
 export default function Footer() {
   return (
     <footer
       dir="rtl"
-      className="bg-[#1a5a81] relative w-full overflow-hidden flex flex-col items-center px-6 md:px-[40px] py-12 md:py-[60px]"
-      data-node-id="196:572"
+      className="bg-[#1a5a81] relative w-full overflow-hidden flex flex-col items-center px-6 md:px-[40px] py-12 md:py-[40px]"
+      data-node-id="337:196"
       data-name="Footer / 1 /"
     >
-      {/* Decorative Arabic Calligraphy Watermark matching Figma node 279:512 */}
+      {/* Decorative Arabic Calligraphy Watermark matching Figma node 337:197 */}
       <div
         className="-translate-x-1/2 absolute left-[calc(50%+0.5px)] size-[1953px] top-[-822.17px] pointer-events-none z-0"
-        data-node-id="279:512"
+        data-node-id="337:197"
         data-name="خلفية الحروف العربية2 1"
         aria-hidden="true"
       >
         <img
           alt=""
-          className="absolute inset-0 max-w-none object-cover opacity-[0.04] pointer-events-none size-full"
+          className="absolute inset-0 max-w-none object-cover opacity-[0.08] pointer-events-none size-full"
           src={IMAGES.arabicBg}
         />
       </div>
 
       <div
         className="flex flex-col gap-10 md:gap-[40px] items-center justify-center max-w-[1280px] w-full relative z-10"
-        data-node-id="196:589"
+        data-node-id="337:198"
         data-name="Container"
       >
-        {/* Top 3 Columns Row matching Figma node 201:1376 */}
+        {/* Top 3 Columns Row matching Figma node 337:199 */}
         <div
           className="flex flex-col md:flex-row flex-wrap gap-10 md:gap-[40px] items-start justify-between w-full"
-          data-node-id="201:1376"
+          data-node-id="337:199"
           data-name="Links"
         >
-          {/* Column 1 (Right in RTL): Hafez Logo matching Figma node 201:1414 */}
+          {/* Column 1 (Right in RTL): Hafez Logo + Newsletter Text matching Figma node 337:225 */}
           <div
-            className="flex items-center justify-start w-full md:w-auto shrink-0"
-            data-node-id="201:1414"
+            className="flex flex-col gap-[16px] items-start w-full md:w-[404px] shrink-0 text-right"
+            data-node-id="337:225"
           >
+            {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="h-[180px] sm:h-[210px] md:h-[235.42px] w-[210px] sm:w-[245px] md:w-[276px] relative cursor-pointer"
+              className="h-[100px] w-[118px] relative shrink-0 cursor-pointer"
+              data-node-id="337:226"
             >
               <img
                 alt="شعار حافظ"
-                className="absolute block inset-0 max-w-none size-full object-contain"
-                src={IMAGES.heroLogo}
+                className="block size-full object-contain object-right"
+                src={IMAGES.footerLogo}
               />
             </motion.div>
+
+            {/* Newsletter text */}
+            <div
+              className="flex flex-col gap-[12px] items-start w-full"
+              data-node-id="337:242"
+              data-name="Newsletter"
+            >
+              <p
+                className="font-['Tajawal:Regular'] font-normal text-[18px] leading-[1.6] text-white text-right w-full m-0"
+                data-node-id="337:277"
+              >
+                اشترك في نشرتنا لتصلك أحدث المبادرات المجتمعية والاستراتيجيات المؤسسية لجمعية الإرشاد والإصلاح
+              </p>
+              <div
+                className="flex flex-col items-start w-full"
+                data-node-id="337:278"
+                data-name="Actions"
+              >
+                <p
+                  className="font-['Tajawal:Regular'] text-[12px] leading-[1.6] text-white/70 text-right w-full m-0"
+                  data-node-id="337:279"
+                >
+                  من خلال الاشتراك، أنت توافق على سياسة الخصوصية الخاصة بنا وتوافق على تلقي التحديثات
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Column 2 (Middle in RTL): Social Links "تابعنا" matching Figma node 201:1377 */}
+          {/* Column 2 (Middle in RTL): Social Links "تابعنا" matching Figma node 337:213 */}
           <div
-            className="flex flex-col gap-[16px] items-start w-full sm:w-[260px] md:w-[300px] shrink-0"
-            data-node-id="201:1377"
+            className="flex flex-col gap-[16px] items-start w-full sm:w-[220px] md:w-[260px] shrink-0"
+            data-node-id="337:213"
             data-name="Column"
           >
             <h4
               className="font-['Tajawal:Bold'] font-bold text-white text-[18px] leading-[1.5] text-right w-full m-0"
-              data-node-id="201:1378"
+              data-node-id="337:214"
             >
               تابعنا
             </h4>
 
             <div
               className="flex flex-col items-start w-full"
-              data-node-id="201:1379"
+              data-node-id="337:215"
               data-name="Social Links"
             >
               {socialLinks.map((item) => (
@@ -178,7 +185,7 @@ export default function Footer() {
                   whileHover={{ x: -4, color: "#cab178" }}
                   transition={{ duration: 0.2 }}
                   className="
-                    flex gap-[12px] items-center justify-start py-[8px] w-full
+                    flex gap-[12px] items-center justify-start py-[8px]
                     text-white hover:text-[#cab178] no-underline transition-colors
                   "
                 >
@@ -193,22 +200,22 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 3 (Left in RTL): Quick Links "روابط سريعة" matching Figma node 201:1395 */}
+          {/* Column 3 (Left in RTL): Quick Links "روابط سريعة" matching Figma node 337:200 */}
           <div
-            className="flex flex-col gap-[16px] items-start w-full sm:w-[260px] md:w-[300px] shrink-0"
-            data-node-id="201:1395"
+            className="flex flex-col gap-[16px] items-start w-full sm:w-[220px] md:w-[260px] shrink-0"
+            data-node-id="337:200"
             data-name="Column"
           >
             <h4
               className="font-['Tajawal:Bold'] font-bold text-white text-[18px] leading-[1.5] text-right w-full m-0"
-              data-node-id="201:1396"
+              data-node-id="337:201"
             >
               روابط سريعة
             </h4>
 
             <div
               className="flex flex-col items-start w-full"
-              data-node-id="201:1397"
+              data-node-id="337:202"
               data-name="Footer Links"
             >
               {quickLinks.map((link) => (
@@ -230,29 +237,29 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Credits & Copyright Row matching Figma node 196:666 */}
+        {/* Bottom Credits & Copyright Row matching Figma node 337:280 */}
         <div
           className="flex flex-col gap-[32px] items-start w-full"
-          data-node-id="196:666"
+          data-node-id="337:280"
           data-name="Credits"
         >
-          {/* Divider line matching Figma node 196:667 */}
+          {/* Divider line matching Figma node 337:281 */}
           <div
             className="w-full border-t border-white/20 shrink-0"
-            data-node-id="196:667"
+            data-node-id="337:281"
             data-name="Divider"
           />
 
-          {/* Row matching Figma node 196:668 */}
+          {/* Row matching Figma node 337:282 */}
           <div
             className="flex flex-col sm:flex-row gap-4 items-center justify-between w-full text-white"
-            data-node-id="196:668"
+            data-node-id="337:282"
             data-name="Row"
           >
-            {/* Right in RTL: "© 2026 منصة حافظ. جميع الحقوق محفوظة" */}
+            {/* Right in RTL: "© 2026   منصة حافظ. جميع الحقوق محفوظة" */}
             <p
               className="font-['Tajawal:Regular'] text-[16px] leading-[1.5] m-0 text-white/90"
-              data-node-id="196:670"
+              data-node-id="337:284"
             >
               © 2026 منصة حافظ. جميع الحقوق محفوظة
             </p>
@@ -260,7 +267,7 @@ export default function Footer() {
             {/* Left in RTL: "من إنجاز منصة حافظ" */}
             <p
               className="font-['Tajawal:Bold'] font-bold text-[17px] leading-[1.5] m-0 text-white"
-              data-node-id="196:669"
+              data-node-id="337:283"
             >
               من إنجاز منصة حافظ
             </p>
