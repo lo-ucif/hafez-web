@@ -31,7 +31,7 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
       <ArabicBg
         positionClass="-translate-x-1/2 left-1/2 top-0"
         sizeClass="size-[308px]"
-        opacityClass="opacity-6"
+        opacityClass="opacity-[0.06]"
       />
 
       <motion.img
@@ -182,8 +182,8 @@ export default function Features() {
 
 
 
-      {/* Feature cards grid */}
-      <div className="flex flex-wrap gap-5 md:gap-[21px] items-center justify-center w-full">
+      {/* Feature cards grid matching 3x2 Figma layout */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-[24px] max-w-[1160px] w-full justify-items-center">
         {features.map((feature, index) => (
           <FeatureCard key={feature.id} feature={feature} index={index} />
         ))}
