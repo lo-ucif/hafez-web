@@ -59,6 +59,7 @@ export const IMAGES = {
   // CTA section
   ctaBookCover: hafez,
   ctaBgShape: "/figma-exact/cta-bg-shape.svg",
+  ctaBgShapeMobile: "/figma-exact/cta-bg-shape-mobile.svg",
   ctaBoyQuran: "/figma-exact/cta-boy-quran.png",
 
   // Organisations banner
