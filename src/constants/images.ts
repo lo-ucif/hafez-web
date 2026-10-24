@@ -87,6 +87,8 @@ export const IMAGES = {
   iconLocation: "/figma-exact/imgLocationOn.svg",
   formResize: "/figma-exact/imgFrame165.svg",
   plusIcon: "/figma-exact/imgSvgPlusIcon.svg",
+  contactRobot: "/figma-exact/robot-paper-plane.png",
+  contactBgShape: "/figma-exact/contact-bg-shape.svg",
 
   // Footer
   footerDivider: "/figma-exact/imgDivider.svg",

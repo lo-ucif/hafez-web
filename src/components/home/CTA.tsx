@@ -57,7 +57,7 @@ export default function CTA() {
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           className="
             relative z-10 shrink-0
-            w-[230px] sm:w-[260px] md:w-[360px] lg:w-[5200px] xl:w-[600px]
+            w-[230px] sm:w-[260px] md:w-[360px] lg:w-[520px] xl:w-[600px]
             h-[190px] sm:h-[250px] md:h-[370px] lg:h-[476px]
             flex items-end justify-start
             pl-1 sm:pl-2 md:pl-4 lg:pl-6 xl:pl-8
