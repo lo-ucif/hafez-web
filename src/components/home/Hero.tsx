@@ -20,8 +20,8 @@ export default function Hero() {
       className="
         bg-[#1a5a81] relative w-full overflow-hidden
         flex flex-col items-center justify-center
-        min-h-[580px] sm:min-h-[640px] md:min-h-[700px] lg:min-h-[760px] xl:min-h-[800px]
-        pt-[90px] sm:pt-[110px] md:pt-[120px] pb-[60px] sm:pb-[70px] md:pb-[80px]
+        min-h-screen min-h-[100dvh]
+        pt-[60px] sm:pt-[80px] md:pt-[100px] pb-8 sm:pb-12 md:pb-16
       "
       data-node-id="196:178"
       data-name="post"
@@ -41,7 +41,7 @@ export default function Hero() {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 w-full max-w-[1280px] px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center gap-[28px] sm:gap-[32px] md:gap-[36px]">
+      <div className="relative z-10 w-full max-w-[1280px] px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center gap-[24px] sm:gap-[28px] md:gap-[36px] my-auto">
         {/* Row: In RTL:
             - 1st item (Logo) renders on the RIGHT on desktop
             - 2nd item (Divider) renders in the MIDDLE on desktop
