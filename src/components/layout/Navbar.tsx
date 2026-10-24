@@ -304,46 +304,54 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           "
           dir="ltr"
         >
-          {/* Left Side Buttons (LTR): تواصل معنا + طلب نسخة */}
-          <div className="flex items-center gap-4 lg:gap-6">
-            <motion.a
-              href="#contact"
+          {/* Left Side Buttons (LTR): تسجيل الدخول + إنشاء حساب matching Figma node 330:994 */}
+          <div className="flex items-center gap-[12px] lg:gap-[16px]" dir="ltr" data-node-id="330:994">
+            {/* Button 1: تسجيل الدخول (Figma node 330:995) */}
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               onClick={handleContactClick}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
               className="
-                font-['Changa'] font-semibold
-                text-[15px] lg:text-[16px] text-white hover:text-[#cab178]
-                px-[14px] lg:px-[20px] py-[8px]
-                transition-colors duration-200 cursor-pointer no-underline whitespace-nowrap
+                bg-[#e6edf1] hover:bg-[#d8e4eb] text-[#1a5a81]
+                font-['Changa:SemiBold'] font-semibold
+                text-[15px] lg:text-[16px] leading-none
+                h-[36px] px-[16px] py-[10px]
+                rounded-[6px] shadow-sm
+                transition-all duration-200
+                cursor-pointer whitespace-nowrap
+                flex items-center justify-center
               "
               dir="auto"
+              data-node-id="330:995"
             >
-              تواصل معنا
-            </motion.a>
+              تسجيل الدخول
+            </motion.button>
 
+            {/* Button 2: إنشاء حساب (Figma node 330:997) */}
             <motion.button
               type="button"
               whileHover={{
-                scale: 1.04,
-                boxShadow: "0px 6px 16px rgba(0,0,0,0.18)",
+                scale: 1.03,
+                boxShadow: "0px 4px 12px rgba(0,0,0,0.25)",
               }}
-              whileTap={{
-                scale: 0.96,
-              }}
+              whileTap={{ scale: 0.97 }}
               onClick={handleCtaClick}
               className="
-                bg-white hover:bg-slate-50 text-[#1a5a81]
-                font-['Changa'] font-semibold
+                bg-[#1a5a81] hover:bg-[#154664] text-white
+                border border-white/30
+                font-['Changa:SemiBold'] font-semibold
                 text-[15px] lg:text-[16px] leading-none
-                px-[20px] lg:px-[23px] py-[10px]
-                rounded-[2px] shadow-sm
+                h-[36px] px-[16px] py-[10px]
+                rounded-[6px] shadow-sm
                 transition-all duration-200
                 cursor-pointer whitespace-nowrap
+                flex items-center justify-center
               "
               dir="auto"
+              data-node-id="330:997"
             >
-              طلب نسخة
+              إنشاء حساب
             </motion.button>
           </div>
 
@@ -672,13 +680,12 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
                 </nav>
               </div>
 
-              {/* Bottom Action Buttons (Figma node 308:175) */}
+              {/* Bottom Action Buttons: إنشاء حساب + تسجيل الدخول */}
               <div
                 className="flex flex-col gap-3 w-full pb-2 shrink-0 relative z-10"
-                data-node-id="308:175"
                 dir="rtl"
               >
-                {/* Button 1: طلب نسخة (Figma node 308:176) */}
+                {/* Button 1: إنشاء حساب */}
                 <motion.button
                   type="button"
                   whileHover={{ scale: 1.02 }}
@@ -688,35 +695,33 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
                     bg-white hover:bg-slate-50 text-[#1a5a81]
                     w-full py-[12px] sm:py-[14px]
                     flex items-center justify-center
-                    font-['Changa:SemiBold'] font-semibold text-[20px] sm:text-[22px] leading-none
-                    rounded-[2px] shadow-md
+                    font-['Changa:SemiBold'] font-semibold text-[18px] sm:text-[20px] leading-none
+                    rounded-[6px] shadow-md
                     transition-all cursor-pointer whitespace-nowrap
                   "
                   dir="auto"
-                  data-node-id="308:176"
                 >
-                  طلب نسخة
+                  إنشاء حساب
                 </motion.button>
 
-                {/* Button 2: تواصل معنا (Figma node 308:178) */}
-                <motion.a
-                  href="#contact"
-                  onClick={handleContactClick}
+                {/* Button 2: تسجيل الدخول */}
+                <motion.button
+                  type="button"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.96 }}
+                  onClick={handleContactClick}
                   className="
-                    bg-[#15455e] hover:bg-[#11384d] text-white
+                    bg-[#e6edf1] hover:bg-[#d8e4eb] text-[#1a5a81]
                     w-full py-[12px] sm:py-[14px]
                     flex items-center justify-center
-                    font-['Changa:SemiBold'] font-semibold text-[20px] sm:text-[22px] leading-none
-                    rounded-[2px] shadow-md
-                    no-underline transition-all cursor-pointer whitespace-nowrap
+                    font-['Changa:SemiBold'] font-semibold text-[18px] sm:text-[20px] leading-none
+                    rounded-[6px] shadow-md
+                    transition-all cursor-pointer whitespace-nowrap
                   "
                   dir="auto"
-                  data-node-id="308:178"
                 >
-                  تواصل معنا
-                </motion.a>
+                  تسجيل الدخول
+                </motion.button>
               </div>
             </motion.div>
           </div>
