@@ -49,9 +49,9 @@ export default function Home() {
         <Institutions />
         <Organisations />
         <Gallery />
-        <Testimonials />
         <CTA />
         <Contact />
+        <Testimonials />
       </main>
 
       <Footer />

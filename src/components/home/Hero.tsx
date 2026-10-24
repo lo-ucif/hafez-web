@@ -42,10 +42,10 @@ export default function Hero() {
 
       {/* Main Content Container matching Figma layout */}
       <div className="relative z-10 w-full max-w-[1280px] px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center gap-[24px] sm:gap-[28px] md:gap-[32px]">
-        {/* Row matching Figma node 196:212 */}
+        {/* Row matching Figma node 196:212 (on mobile: logo first, then text; on desktop: side-by-side) */}
         <div
           className="
-            flex flex-col lg:flex-row items-center justify-center
+            flex flex-col-reverse lg:flex-row items-center justify-center
             gap-6 sm:gap-8 lg:gap-[24px] xl:gap-[32px]
             w-full
           "
