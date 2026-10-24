@@ -9,14 +9,15 @@ import ArabicBg from "../common/ArabicBg";
 function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, delay: index * 0.08, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 35, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.55, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{
-        y: -8,
+        y: -10,
+        scale: 1.02,
         boxShadow:
-          "0 20px 25px -5px rgba(26,90,129,0.12), 0 8px 10px -6px rgba(26,90,129,0.08)",
+          "0 22px 30px -6px rgba(26,90,129,0.16), 0 10px 14px -6px rgba(26,90,129,0.08)",
       }}
       whileTap={{ scale: 0.98 }}
       className="
@@ -26,6 +27,7 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
         pb-5 pt-6 px-4
         relative rounded-[24px] w-full max-w-[362px]
         overflow-hidden cursor-pointer select-none
+        transition-all duration-300
       "
     >
       <ArabicBg

@@ -28,13 +28,19 @@ export default function Institutions() {
 
       {/* Cards list matching Figma Desktop - 7 / node 196:421 */}
       <div className="flex flex-wrap gap-8 md:gap-[50px] lg:gap-[67px] items-center justify-center w-full relative z-10 max-w-[1280px] mx-auto mt-4">
-        {institutions.map((item) => (
+        {institutions.map((item, index) => (
           <motion.article
             key={item.id}
+            initial={{ opacity: 0, y: 35, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -8, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="
               group drop-shadow-[0px_9.042px_6.781px_rgba(0,0,0,0.1),0px_3.617px_2.712px_rgba(0,0,0,0.1)]
+              hover:drop-shadow-[0px_16px_22px_rgba(26,90,129,0.15)]
+              transition-all duration-300
               relative rounded-[9px]
               w-full max-w-[328px] h-[238px] shrink-0 cursor-pointer
               overflow-visible

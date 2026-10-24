@@ -101,7 +101,11 @@ export default function Footer() {
         />
       </div>
 
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="flex flex-col gap-10 md:gap-[40px] items-center justify-center max-w-[1280px] w-full relative z-10"
         data-node-id="337:198"
         data-name="Container"
@@ -275,7 +279,7 @@ export default function Footer() {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 }

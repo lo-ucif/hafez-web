@@ -85,7 +85,11 @@ export default function Contact() {
         data-node-id="329:356"
       >
         {/* ── Left Column: Text + Robot Mascot (Figma nodes 329:378 & 337:148) ── */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           dir="rtl"
           className="
             flex flex-col items-center lg:items-start text-center lg:text-right
@@ -128,20 +132,22 @@ export default function Contact() {
             data-node-id="337:148"
             data-name="Cheerful Robot Sending a Paper Plane"
           >
-            <img
+            <motion.img
+              animate={{ y: [0, -8, 0], rotate: [0, 1.2, 0, -1.2, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               alt="روبوت حافظ يرسل رسالة"
               className="w-full h-auto object-contain block drop-shadow-[0_12px_24px_rgba(0,0,0,0.12)]"
               src={IMAGES.contactRobot}
             />
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* ── Right Column: Form Card (Figma node 329:357) ── */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           dir="rtl"
           className="
             bg-white w-full max-w-[601px] shrink-0

@@ -5,21 +5,20 @@ import SectionTitle from "../common/SectionTitle";
 import ArabicBg from "../common/ArabicBg";
 
 const cardGridMotion: Variants = {
-  initial: { opacity: 0, y: 12 },
+  initial: { opacity: 0 },
   animate: {
     opacity: 1,
-    y: 0,
-    transition: { staggerChildren: 0.06, delayChildren: 0.04 },
+    transition: { staggerChildren: 0.12, delayChildren: 0.08 },
   },
 };
 
 const cardItemMotion: Variants = {
-  initial: { opacity: 0, y: 20, scale: 0.96 },
+  initial: { opacity: 0, y: 35, scale: 0.94 },
   animate: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { type: "spring", stiffness: 380, damping: 28 },
+    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
   },
   exit: { opacity: 0, scale: 0.9, transition: { duration: 0.2 } },
 };
@@ -31,9 +30,12 @@ function UserCard({ user }: { user: UserType }) {
     <motion.div
       layout
       variants={cardItemMotion}
-      whileHover={{ y: -6 }}
+      whileHover={{ y: -8, scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       className="
         group drop-shadow-[0px_8.463px_6.347px_rgba(0,0,0,0.1),0px_3.385px_2.539px_rgba(0,0,0,0.1)]
+        hover:drop-shadow-[0px_16px_20px_rgba(26,90,129,0.15)]
+        transition-all duration-300
         flex flex-col items-center
         pb-[45px] pt-[8.463px]
         relative rounded-[24px] w-[283.5px]
@@ -124,7 +126,8 @@ export default function Users() {
         <motion.div
           variants={cardGridMotion}
           initial="initial"
-          animate="animate"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.15 }}
           className="flex flex-wrap gap-8 sm:gap-6 md:gap-[20px] items-center justify-center w-full"
         >
           {userTypes.map((user) => (

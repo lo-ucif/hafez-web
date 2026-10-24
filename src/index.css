@@ -38,6 +38,36 @@ a {
   cursor: pointer;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sleek Brand Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a5a81;
+  border-radius: 9999px;
+  border: 2px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cab178;
+}
+
+/* Custom Text Selection Highlight */
+::selection {
+  background-color: #cab178;
+  color: #ffffff;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }

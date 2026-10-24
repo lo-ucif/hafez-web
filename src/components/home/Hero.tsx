@@ -33,7 +33,9 @@ export default function Hero() {
         data-name="خلفية الحروف العربية2 2"
         aria-hidden="true"
       >
-        <img
+        <motion.img
+          animate={{ scale: [1, 1.02, 1], rotate: [0, 1, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
           alt=""
           className="absolute inset-0 max-w-none object-cover opacity-[0.03] pointer-events-none size-full select-none"
           src={IMAGES.arabicBg}
@@ -60,7 +62,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: 25, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="
               relative shrink-0
               w-[240px] h-[205px]
@@ -72,7 +74,9 @@ export default function Hero() {
             "
             data-node-id="196:213"
           >
-            <img
+            <motion.img
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
               alt="شعار منصة حافظ"
               src={IMAGES.heroLogo}
               className="w-full h-full object-contain block max-w-none select-none drop-shadow-[0_12px_28px_rgba(0,0,0,0.18)]"

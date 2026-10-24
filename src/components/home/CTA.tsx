@@ -51,10 +51,10 @@ export default function CTA() {
 
         {/* Left Side: Boy reading Quran illustration (node 343:406 & 344:423) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92, x: -15 }}
+          initial={{ opacity: 0, scale: 0.92, x: -25 }}
           whileInView={{ opacity: 1, scale: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.75, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="
             relative z-10 shrink-0
             w-[230px] sm:w-[260px] md:w-[360px] lg:w-[520px] xl:w-[600px]
@@ -65,7 +65,9 @@ export default function CTA() {
           "
           data-node-id="344:423"
         >
-          <img
+          <motion.img
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             alt="طالب يقرأ القرآن الكريم"
             src={IMAGES.ctaBoyQuran}
             className="w-full h-full object-contain object-bottom-left block drop-shadow-[0_8px_20px_rgba(0,0,0,0.14)]"
@@ -74,10 +76,10 @@ export default function CTA() {
 
         {/* Right Side: Text & Button (node 343:407 & 344:424) */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           dir="rtl"
           className="
             relative z-10 flex flex-col items-end text-right

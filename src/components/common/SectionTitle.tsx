@@ -19,7 +19,11 @@ export default function SectionTitle({
   className = "",
 }: SectionTitleProps) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 24, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`content-stretch flex flex-col gap-[10px] items-center relative shrink-0 cursor-default select-none ${className}`}
       data-node-id="240:57"
     >
@@ -76,6 +80,6 @@ export default function SectionTitle({
           </p>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
