@@ -96,7 +96,7 @@ export default function Footer() {
       >
         <img
           alt=""
-          className="absolute inset-0 max-w-none object-cover opacity-[0.08] pointer-events-none size-full"
+          className="absolute inset-0 max-w-none object-cover opacity-[0.04] pointer-events-none size-full"
           src={IMAGES.arabicBg}
         />
       </div>
@@ -141,7 +141,8 @@ export default function Footer() {
                 className="font-['Tajawal:Regular'] font-normal text-[18px] leading-[1.6] text-white text-right w-full m-0"
                 data-node-id="337:277"
               >
-                اشترك في نشرتنا لتصلك أحدث المبادرات المجتمعية والاستراتيجيات المؤسسية لجمعية الإرشاد والإصلاح
+                اشترك في نشرتنا لتصلك أحدث المبادرات المجتمعية والاستراتيجيات
+                المؤسسية لجمعية الإرشاد والإصلاح
               </p>
               <div
                 className="flex flex-col items-start w-full"
@@ -152,7 +153,8 @@ export default function Footer() {
                   className="font-['Tajawal:Regular'] text-[12px] leading-[1.6] text-white/70 text-right w-full m-0"
                   data-node-id="337:279"
                 >
-                  من خلال الاشتراك، أنت توافق على سياسة الخصوصية الخاصة بنا وتوافق على تلقي التحديثات
+                  من خلال الاشتراك، أنت توافق على سياسة الخصوصية الخاصة بنا
+                  وتوافق على تلقي التحديثات
                 </p>
               </div>
             </div>
