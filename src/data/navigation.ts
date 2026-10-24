@@ -24,6 +24,7 @@ export interface SocialLink {
 }
 
 export const socialLinks: SocialLink[] = [
+  { id: 'whatsapp', label: 'واتساب', href: 'https://wa.me/', icon: IMAGES.socialFacebook },
   { id: 'facebook', label: 'فيسبوك', href: '#', icon: IMAGES.socialFacebook },
   { id: 'instagram', label: 'إنستغرام', href: '#', icon: IMAGES.socialInstagram },
   { id: 'x', label: 'X', href: '#', icon: IMAGES.socialX },
