@@ -96,7 +96,7 @@ export default function Footer() {
       >
         <img
           alt=""
-          className="absolute inset-0 max-w-none object-cover opacity-[0.04] pointer-events-none size-full"
+          className="absolute inset-0 max-w-none object-cover opacity-[0.03] pointer-events-none size-full"
           src={IMAGES.arabicBg}
         />
       </div>
