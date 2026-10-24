@@ -1,110 +1,131 @@
 import { motion } from "framer-motion";
 import { IMAGES } from "../../constants/images";
-import ArabicBg from "../common/ArabicBg";
 
 /**
- * CTA (Call-to-Action) section — "لديكم مدرسة قرآنية؟" full-width banner
- * with mascot book cover, gold badge, and request button.
- * Responsive for phone mode and desktop mode.
+ * CTA (Call-to-Action) section — "لديكم مدرسة قرآنية؟"
+ * Matches Figma node 343:378.
  */
 export default function CTA() {
   return (
     <section
       id="offers"
       aria-label="العروض - طلب نسخة"
-      className="
-        bg-[#1a5a81] relative w-full overflow-clip
-        flex flex-col items-center justify-center
-        py-6 md:py-10 px-4 sm:px-8
-      "
+      className="bg-white relative w-full overflow-hidden py-12 md:py-20 px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center"
+      data-node-id="343:378"
     >
-      {/* Diagonal Ribbon matching Figma node 196:515 */}
-      <div className="absolute top-0 right-0 w-[160px] sm:w-[220px] md:w-[280px] h-[160px] sm:h-[220px] md:h-[280px] pointer-events-none overflow-hidden z-20">
-        <div
-          className="
-            absolute bg-[#cab178] text-white
-            font-['Almarai:Bold'] text-[16px] sm:text-[18px] md:text-[22px]
-            py-5 sm:py-6 text-center shadow-md
-            w-[220px] sm:w-[320px] md:w-[400px]
-            top-[20px] sm:top-[45px] md:top-[60px] -right-[55px] sm:-right-[70px] md:-right-[85px]
-            rotate-45 select-none tracking-wide
-          "
-          dir="auto"
-        >
-          اطلب نسختك الآن!
-        </div>
-      </div>
-
-      <div className="-translate-x-1/2 absolute flex h-[350px] items-center left-1/2 top-0 w-[1440px] pointer-events-none opacity-30">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <ArabicBg
-            key={i}
-            positionClass="relative"
-            sizeClass="size-[413px] mr-[-100px]"
-            opacityClass="opacity-3"
-          />
-        ))}
-      </div>
-
-      <div
+      {/* Outer Banner Container matching Figma node 343:402 */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        dir="ltr"
         className="
-          flex flex-col md:flex-row-reverse gap-8 md:gap-16 lg:gap-24 items-center justify-center
-          w-full max-w-[1200px] relative z-10
+          relative w-full max-w-[1240px] min-h-[380px] md:min-h-[460px] lg:h-[478px]
+          flex flex-col lg:flex-row items-center justify-between
+          overflow-visible
         "
+        data-node-id="343:402"
+        data-name="post"
       >
-        {/* Mascot illustration with SVG background matching user request */}
-        <motion.div
-          whileHover={{ y: -8, scale: 1.03 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="w-[280px] sm:w-[320px] h-[320px] sm:h-[350px] relative shrink-0 flex items-center justify-center cursor-pointer select-none"
-        >
-          {/* Transparent Robot Mascot */}
+        {/* Background Shape on Desktop */}
+        <div className="hidden lg:block absolute inset-0 pointer-events-none z-0" data-node-id="343:403">
           <img
-            alt="شعار حافظ الروبوت"
-            className="relative z-10 w-auto h-[100%] max-h-[400px] "
-            src={IMAGES.robotMascot}
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-fill block select-none"
+            src={IMAGES.ctaBgShape}
+          />
+        </div>
+
+        {/* Fallback solid background on Mobile/Tablet */}
+        <div className="block lg:hidden absolute inset-0 bg-[#1A5A81] rounded-[24px] pointer-events-none z-0 overflow-hidden">
+          <div className="absolute -left-12 -bottom-12 w-48 h-48 bg-[#cab178] rounded-full opacity-30 blur-2xl" />
+        </div>
+
+        {/* Left Side: Boy reading Quran illustration */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92, x: -20 }}
+          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+          className="
+            relative z-10 shrink-0
+            w-[280px] sm:w-[360px] md:w-[420px] lg:w-[480px] xl:w-[513px]
+            h-[260px] sm:h-[340px] md:h-[400px] lg:h-[476px]
+            flex items-end justify-center lg:justify-start
+            lg:pl-4 xl:pl-6
+            select-none pointer-events-none
+          "
+          data-node-id="343:406"
+        >
+          <img
+            alt="طالب يقرأ القرآن الكريم"
+            src={IMAGES.ctaBoyQuran}
+            className="w-full h-full object-contain block drop-shadow-[0_12px_24px_rgba(0,0,0,0.15)]"
           />
         </motion.div>
 
-        {/* Text + button matching Figma node 196:504 */}
-        <div
+        {/* Right Side: Text & Button */}
+        <motion.div
+          initial={{ opacity: 0, x: 25 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           dir="rtl"
-          className="flex flex-col gap-6 md:gap-[20px] items-center md:items-start justify-center max-w-[535px] text-center md:text-right"
+          className="
+            relative z-10 flex flex-col items-center lg:items-end text-center lg:text-right
+            justify-center w-full lg:max-w-[560px]
+            py-8 px-6 sm:px-10 lg:py-0 lg:px-0 lg:pr-12 xl:pr-16
+            gap-6 sm:gap-8 lg:gap-[45px]
+          "
+          data-node-id="343:407"
         >
-          <h2
-            dir="auto"
-            className="
-              font-['Almarai:Bold'] not-italic
-              text-[28px] sm:text-[34px] md:text-[36px]
-              text-white leading-snug md:leading-[60px]
-              whitespace-pre-wrap m-0
-            "
+          {/* Headline */}
+          <div
+            className="font-['Almarai'] font-bold text-white text-[24px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-[1.3] lg:leading-[1.35] tracking-tight m-0"
+            data-node-id="343:408"
           >
-            <span className="block">لديكم مدرسة قرآنية؟</span>
-            <span className="block">{` لا تتردّد واطلب نسختك  مجانا الآن!`}</span>
-          </h2>
+            <p className="m-0 mb-1 lg:mb-2" dir="auto">
+              لديكم مدرسة قرآنية؟
+            </p>
+            <p className="m-0 text-white" dir="auto">
+              لا تتردّد واطلب نسختك مجانا الآن!
+            </p>
+          </div>
 
+          {/* CTA Button */}
           <motion.a
             href="#contact"
             whileHover={{
               scale: 1.05,
-              boxShadow: "0px 8px 25px rgba(202, 177, 120, 0.45)",
+              boxShadow: "0px 8px 24px rgba(202, 177, 120, 0.45)",
             }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.96 }}
             className="
-              bg-[#cab178] hover:bg-[#bfa56a] text-white
-              font-['Almarai:Bold'] font-bold text-[20px] sm:text-[24px]
-              rounded-[12px]
-              w-[240px] sm:w-[285px] h-[54px] sm:h-[64px]
+              bg-[#cab178] hover:bg-[#bfa56a]
+              transition-colors duration-200
               flex items-center justify-center
-              no-underline cursor-pointer shadow-md
-              transition-all duration-200
+              w-[200px] sm:w-[238px] h-[48px] sm:h-[54px]
+              rounded-[10px]
+              cursor-pointer no-underline
+              shadow-[0px_4px_16px_rgba(0,0,0,0.16)]
             "
+            data-node-id="343:409"
           >
-            طلب نسخة
+            <span
+              className="
+                font-['Almarai'] font-bold leading-normal not-italic
+                text-[18px] sm:text-[22px] lg:text-[24px] text-white whitespace-nowrap
+              "
+              dir="auto"
+              data-node-id="343:411"
+            >
+              طلب نسخة
+            </span>
           </motion.a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
