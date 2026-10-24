@@ -8,7 +8,8 @@ export const IMAGES = {
   arabicBg: "/figma-exact/img22.webp",
 
   // Hero / branding
-  heroLogo: "/figma-exact/imgFrame1000009141.svg",
+  heroLogo: "/figma-exact/hero-logo.svg",
+  heroDivider: "/figma-exact/hero-divider.svg",
   logoPartHa: "/figma-exact/img.svg",
   logoPartHin: "/figma-exact/img1.svg",
   logoBarTop: "/figma-exact/imgFrame1000009036.svg",
