@@ -85,13 +85,13 @@ export default function Contact() {
           data-node-id="329:378"
         >
           {/* Heading */}
-          <h2
+          {/* <h2
             className="font-['Almarai'] font-bold text-[#1a5a81] text-[34px] sm:text-[42px] md:text-[48px] tracking-tight leading-[1.2] m-0"
             dir="auto"
             data-node-id="329:379"
           >
             تواصل معنا:
-          </h2>
+          </h2> */}
 
           {/* Description */}
           <p
