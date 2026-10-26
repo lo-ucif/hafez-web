@@ -1,7 +1,30 @@
 import { motion } from "framer-motion";
 import { IMAGES } from "../../constants/images";
+import { navLinks } from "../../data/navigation";
 
 const socialLinks = [
+  {
+    id: "whatsapp",
+    label: "واتساب",
+    href: "https://wa.me/",
+    svg: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="size-[24px]"
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.69 12.04 3.69C14.24 3.69 16.31 4.55 17.86 6.11C19.42 7.67 20.27 9.74 20.27 11.91C20.27 16.46 16.58 20.15 12.04 20.15ZM16.55 14.43C16.3 14.31 15.08 13.71 14.85 13.62C14.62 13.54 14.46 13.5 14.29 13.75C14.13 14 13.65 14.57 13.5 14.74C13.36 14.9 13.21 14.93 12.96 14.8C12.71 14.68 11.91 14.41 10.96 13.57C10.22 12.91 9.72 12.1 9.58 11.85C9.43 11.6 9.56 11.47 9.69 11.35C9.8 11.24 9.93 11.07 10.06 10.92C10.18 10.77 10.22 10.67 10.31 10.5C10.39 10.33 10.35 10.19 10.29 10.06C10.22 9.94 9.73 8.73 9.52 8.24C9.32 7.75 9.12 7.82 8.97 7.81C8.83 7.8 8.66 7.8 8.5 7.8C8.33 7.8 8.07 7.86 7.84 8.11C7.61 8.36 6.97 8.96 6.97 10.18C6.97 11.41 7.86 12.59 7.99 12.76C8.11 12.92 9.75 15.45 12.25 16.53C12.84 16.79 13.3 16.94 13.66 17.06C14.26 17.25 14.8 17.22 15.23 17.16C15.71 17.09 16.71 16.55 16.92 15.98C17.13 15.4 17.13 14.91 17.06 14.8C17 14.7 16.8 14.55 16.55 14.43Z"
+          fill="currentColor"
+        />
+      </svg>
+    ),
+  },
   {
     id: "facebook",
     label: "فيسبوك",
@@ -66,14 +89,6 @@ const socialLinks = [
       </svg>
     ),
   },
-];
-
-const quickLinks = [
-  { id: "about", label: "من نحن", href: "#home" },
-  { id: "fatwa", label: "فتاوى", href: "#" },
-  { id: "media", label: "مكتبة الوسائط", href: "#gallery" },
-  { id: "news", label: "أخبارنا وفعالياتنا", href: "#features" },
-  { id: "contact", label: "اتصل بنا", href: "#contact" },
 ];
 
 /**
@@ -224,10 +239,29 @@ export default function Footer() {
               data-node-id="337:202"
               data-name="Footer Links"
             >
-              {quickLinks.map((link) => (
+              {navLinks.map((link) => (
                 <motion.a
                   key={link.id}
                   href={link.href}
+                  onClick={(e) => {
+                    const targetId = link.href.replace("#", "");
+                    const el = document.getElementById(targetId);
+                    if (el) {
+                      e.preventDefault();
+                      const headerHeight = window.innerWidth < 768 ? 60 : 90;
+                      const currentScroll =
+                        window.scrollY || window.pageYOffset || 0;
+                      const targetY =
+                        el.getBoundingClientRect().top +
+                        currentScroll -
+                        headerHeight;
+                      window.scrollTo({
+                        top: Math.max(0, targetY),
+                        behavior: "smooth",
+                      });
+                      window.history.pushState(null, "", link.href);
+                    }
+                  }}
                   whileHover={{ x: -4, color: "#cab178" }}
                   transition={{ duration: 0.2 }}
                   className="
