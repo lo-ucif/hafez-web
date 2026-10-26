@@ -6,8 +6,8 @@ import SectionTitle from "../common/SectionTitle";
 /**
  * Contact section strictly matching Figma node 329:350 ("section 12").
  * Supports PC (desktop), tablet, and mobile with exact styling:
- * - Top pill badge "تواصل معنا"
- * - Soft light-blue polygonal background shape
+ * - Top section title matching previous design (SectionTitle with gold accent line)
+ * - Soft light-blue background (#EEF3F7)
  * - Left column: "تواصل معنا:", description, and cheerful robot mascot sending paper plane
  * - Right column: Elevated white form card with input borders, terms checkbox, and submit button
  */
@@ -50,40 +50,22 @@ export default function Contact() {
     <section
       id="contact"
       aria-label="تواصل معنا"
-      className="bg-[#fefefe] w-full py-10 sm:py-14 md:py-18 lg:py-20 px-4 sm:px-6 md:px-10 lg:px-16 flex flex-col items-center justify-center relative overflow-hidden"
+      className="bg-[#EEF3F7] w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-10 lg:px-16 flex flex-col items-center justify-center relative overflow-hidden"
       data-node-id="329:350"
       data-name="section 12"
     >
-      {/* Background Decorative Polygonal Shape (Figma node 337:101) */}
-      <div
-        className="hidden md:block absolute -translate-x-1/2 left-1/2 top-1/2 -translate-y-1/2 w-[1440px] h-[640px] pointer-events-none z-0"
-        data-node-id="337:101"
-      >
-        <div className="w-full h-full scale-x-[-1] opacity-90">
-          <img
-            alt=""
-            aria-hidden="true"
-            className="w-full h-full object-fill block select-none"
-            src={IMAGES.contactBgShape}
-          />
-        </div>
-      </div>
-
-      {/* Top Section Title (Figma node 236:60) */}
+      {/* Top Section Title matching previous design (Figma node 236:60) */}
       <div className="relative z-10 mb-8 sm:mb-12 md:mb-14">
-        <SectionTitle
-          title="تواصل معنا"
-          subtitle="نسعد بتواصلكم معنا والإجابة على كافة استفساراتكم واقتراحاتكم حول منصة حافظ."
-        />
+        <SectionTitle title="تواصل معنا" />
       </div>
 
       {/* Main Container: LTR on Desktop for Left/Right column placement matching Figma node 329:356 */}
       <div
         dir="ltr"
         className="
-          relative z-10 w-full max-w-[1240px]
+          relative z-10 w-full max-w-[1200px]
           flex flex-col lg:flex-row items-center lg:items-start justify-between
-          gap-8 sm:gap-10 lg:gap-8 xl:gap-12
+          gap-10 sm:gap-12 lg:gap-8 xl:gap-14
         "
         data-node-id="329:356"
       >
@@ -96,15 +78,15 @@ export default function Contact() {
           dir="rtl"
           className="
             flex flex-col items-center lg:items-start text-center lg:text-right
-            w-full lg:max-w-[488px] shrink-0
-            gap-6 sm:gap-8 lg:gap-10
-            pt-2 lg:pt-6
+            w-full lg:max-w-[480px] shrink-0
+            gap-4 sm:gap-6
+            pt-2 lg:pt-4
           "
           data-node-id="329:378"
         >
           {/* Heading */}
           <h2
-            className="font-['Almarai'] font-bold text-[#1a5a81] text-[34px] sm:text-[44px] md:text-[52px] lg:text-[60px] tracking-[-0.6px] leading-[1.2] m-0"
+            className="font-['Almarai'] font-bold text-[#1a5a81] text-[34px] sm:text-[42px] md:text-[48px] tracking-tight leading-[1.2] m-0"
             dir="auto"
             data-node-id="329:379"
           >
@@ -113,7 +95,7 @@ export default function Contact() {
 
           {/* Description */}
           <p
-            className="font-['Almarai'] font-normal text-[17px] sm:text-[20px] md:text-[22px] lg:text-[25px] leading-[1.6] text-black/60 m-0 max-w-[488px]"
+            className="font-['Almarai'] font-normal text-[16px] sm:text-[18px] md:text-[20px] leading-[1.6] text-gray-600 m-0 max-w-[460px]"
             dir="auto"
             data-node-id="329:380"
           >
@@ -122,24 +104,24 @@ export default function Contact() {
 
           {/* Robot Mascot Sending Paper Plane (Figma node 337:148) */}
           <motion.div
-            initial={{ opacity: 0, y: 25, scale: 0.95 }}
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            whileHover={{ y: -6, scale: 1.04 }}
+            whileHover={{ y: -6, scale: 1.03 }}
             className="
               relative shrink-0 select-none
-              w-[220px] sm:w-[260px] md:w-[290px] lg:w-[316px]
-              h-auto mt-2 lg:mt-4
+              w-[220px] sm:w-[260px] md:w-[290px] lg:w-[310px]
+              h-auto mt-2 lg:mt-4 self-center lg:self-start
             "
             data-node-id="337:148"
             data-name="Cheerful Robot Sending a Paper Plane"
           >
             <motion.img
-              animate={{ y: [0, -8, 0], rotate: [0, 1.2, 0, -1.2, 0] }}
+              animate={{ y: [0, -8, 0], rotate: [0, 1, 0, -1, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               alt="روبوت حافظ يرسل رسالة"
-              className="w-full h-auto object-contain block drop-shadow-[0_12px_24px_rgba(0,0,0,0.12)]"
+              className="w-full h-auto object-contain block drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)]"
               src={IMAGES.contactRobot}
             />
           </motion.div>
@@ -153,11 +135,11 @@ export default function Contact() {
           transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           dir="rtl"
           className="
-            bg-white w-full max-w-[601px] shrink-0
-            rounded-[24px] sm:rounded-[30px]
-            shadow-[0px_10px_40px_rgba(0,0,0,0.1),0px_0px_34px_rgba(0,0,0,0.08)]
-            px-5 sm:px-8 md:px-[30px] py-7 sm:py-9 md:py-[40px]
-            flex flex-col gap-5 sm:gap-[20px] relative
+            bg-white w-full max-w-[560px] shrink-0
+            rounded-[20px] sm:rounded-[24px]
+            shadow-[0px_10px_35px_rgba(0,0,0,0.06),0px_2px_12px_rgba(0,0,0,0.04)]
+            px-5 sm:px-8 py-6 sm:py-8
+            flex flex-col gap-4 sm:gap-5 relative
           "
           data-node-id="329:357"
         >
@@ -204,10 +186,10 @@ export default function Contact() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex flex-col gap-4 sm:gap-[20px] w-full"
+                className="flex flex-col gap-3.5 sm:gap-4 w-full"
               >
                 {/* الاسم الكامل (Figma node 329:358) */}
-                <div className="h-[52px] sm:h-[60px] relative w-full" data-node-id="329:358">
+                <div className="h-[50px] sm:h-[54px] relative w-full" data-node-id="329:358">
                   <input
                     type="text"
                     required
@@ -216,28 +198,28 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, fullName: e.target.value })
                     }
-                    className="w-full h-full bg-white border border-[#0a142f]/35 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-4 sm:px-[20px] font-['Almarai'] text-[15px] sm:text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/60 transition-colors text-right"
+                    className="w-full h-full bg-white border border-[#CBD5E1] focus:border-[#1a5a81] focus:ring-2 focus:ring-[#1a5a81]/15 focus:outline-none rounded-[6px] px-4 font-['Almarai'] text-[15px] sm:text-[16px] text-gray-800 placeholder:text-gray-400 transition-all text-right"
                     dir="auto"
                   />
                 </div>
 
-                {/* البريد الالكتروني (Figma node 329:361) */}
-                <div className="h-[52px] sm:h-[60px] relative w-full" data-node-id="329:361">
+                {/* البريد الإلكتروني (Figma node 329:361) */}
+                <div className="h-[50px] sm:h-[54px] relative w-full" data-node-id="329:361">
                   <input
                     type="email"
                     required
-                    placeholder="البريد الالكتروني"
+                    placeholder="البريد الإلكتروني"
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-4 sm:px-[20px] font-['Almarai'] text-[15px] sm:text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/60 transition-colors text-right"
+                    className="w-full h-full bg-white border border-[#CBD5E1] focus:border-[#1a5a81] focus:ring-2 focus:ring-[#1a5a81]/15 focus:outline-none rounded-[6px] px-4 font-['Almarai'] text-[15px] sm:text-[16px] text-gray-800 placeholder:text-gray-400 transition-all text-right"
                     dir="auto"
                   />
                 </div>
 
                 {/* رقم الهاتف (Figma node 329:364) */}
-                <div className="h-[52px] sm:h-[60px] relative w-full" data-node-id="329:364">
+                <div className="h-[50px] sm:h-[54px] relative w-full" data-node-id="329:364">
                   <input
                     type="tel"
                     required
@@ -246,13 +228,13 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-4 sm:px-[20px] font-['Almarai'] text-[15px] sm:text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/60 transition-colors text-right"
+                    className="w-full h-full bg-white border border-[#CBD5E1] focus:border-[#1a5a81] focus:ring-2 focus:ring-[#1a5a81]/15 focus:outline-none rounded-[6px] px-4 font-['Almarai'] text-[15px] sm:text-[16px] text-gray-800 placeholder:text-gray-400 transition-all text-right"
                     dir="auto"
                   />
                 </div>
 
                 {/* الموضوع (Figma node 329:367) */}
-                <div className="h-[52px] sm:h-[60px] relative w-full" data-node-id="329:367">
+                <div className="h-[50px] sm:h-[54px] relative w-full" data-node-id="329:367">
                   <input
                     type="text"
                     required
@@ -261,13 +243,13 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, subject: e.target.value })
                     }
-                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] px-4 sm:px-[20px] font-['Almarai'] text-[15px] sm:text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/60 transition-colors text-right"
+                    className="w-full h-full bg-white border border-[#CBD5E1] focus:border-[#1a5a81] focus:ring-2 focus:ring-[#1a5a81]/15 focus:outline-none rounded-[6px] px-4 font-['Almarai'] text-[15px] sm:text-[16px] text-gray-800 placeholder:text-gray-400 transition-all text-right"
                     dir="auto"
                   />
                 </div>
 
                 {/* الرسالة (Figma node 329:370) */}
-                <div className="h-[140px] sm:h-[165px] relative w-full" data-node-id="329:370">
+                <div className="h-[140px] sm:h-[160px] relative w-full" data-node-id="329:370">
                   <textarea
                     required
                     placeholder="الرسالة"
@@ -275,7 +257,7 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
                     }
-                    className="w-full h-full bg-white border border-[#0a142f]/30 focus:border-[#1a5a81] focus:ring-1 focus:ring-[#1a5a81] focus:outline-none rounded-[5px] p-4 sm:p-[18px] font-['Almarai'] text-[15px] sm:text-[16px] text-[#0a142f] placeholder:text-[#0a142f]/60 transition-colors resize-none text-right"
+                    className="w-full h-full bg-white border border-[#CBD5E1] focus:border-[#1a5a81] focus:ring-2 focus:ring-[#1a5a81]/15 focus:outline-none rounded-[6px] p-4 font-['Almarai'] text-[15px] sm:text-[16px] text-gray-800 placeholder:text-gray-400 transition-all resize-none text-right"
                     dir="auto"
                   />
                 </div>
@@ -293,11 +275,11 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, agreeTerms: e.target.checked })
                     }
-                    className="size-[19px] sm:size-[21px] rounded-[3px] border-[#a4a4a4] border-[1.5px] accent-[#1a5a81] cursor-pointer"
+                    className="size-[18px] sm:size-[19px] rounded-[3px] border-[#CBD5E1] border text-[#1a5a81] focus:ring-[#1a5a81] cursor-pointer accent-[#1a5a81]"
                   />
                   <label
                     htmlFor="contact-terms"
-                    className="font-['Almarai'] font-normal text-[14px] sm:text-[16px] text-[#303030] cursor-pointer leading-none"
+                    className="font-['Almarai'] font-normal text-[13px] sm:text-[15px] text-gray-600 cursor-pointer select-none leading-none"
                     data-node-id="329:375"
                   >
                     أوافق على الشروط وسياسة الخصوصية
@@ -309,10 +291,10 @@ export default function Contact() {
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     data-node-id="329:376"
-                    className="bg-[#1a5a81] hover:bg-[#154e70] h-[48px] sm:h-[51px] w-full sm:w-[199.57px] rounded-[6px] text-white font-['Almarai'] font-bold text-[20px] sm:text-[22px] flex items-center justify-center transition-all cursor-pointer shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="bg-[#1a5a81] hover:bg-[#154a6b] h-[48px] sm:h-[50px] px-10 sm:px-12 rounded-[6px] text-white font-['Almarai'] font-bold text-[18px] sm:text-[20px] flex items-center justify-center transition-all cursor-pointer shadow-sm hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "..." : "ارسل الان"}
                   </motion.button>
