@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { IMAGES } from '../../constants/images';
 import ArabicBg from '../common/ArabicBg';
+import SectionTitle from '../common/SectionTitle';
 
 /**
  * Organisations banner — dark blue stripe showing institutions using the system.
@@ -19,28 +20,13 @@ export default function Organisations() {
     >
       <ArabicBg positionClass="left-[-249px] top-[-677.68px]" sizeClass="size-[1983px]" opacityClass="opacity-[0.04]" />
 
-      {/* Heading */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="flex flex-col gap-[10px] items-center justify-center relative z-10"
-        data-node-id="329:260"
-      >
-        <h2
-          dir="auto"
-          className="font-['Almarai'] font-normal not-italic text-[24px] sm:text-[28px] text-center text-white whitespace-nowrap leading-[normal] m-0"
-          data-node-id="329:261"
-        >
-          هيئات تستعمل النّظام
-        </h2>
-        <div className="h-0 relative w-[92px]" data-node-id="329:262">
-          <div className="absolute inset-[-3.77px_0_0_0]">
-            <img alt="" aria-hidden="true" className="block max-w-none size-full" src={IMAGES.orgDividerLine} />
-          </div>
-        </div>
-      </motion.div>
+      {/* Heading matching Figma node 236:60 / 329:260 */}
+      <div className="relative z-10">
+        <SectionTitle
+          inverted
+          title="هيئات تستعمل النّظام"
+        />
+      </div>
 
       {/* Logos row */}
       <motion.div

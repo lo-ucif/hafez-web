@@ -179,8 +179,11 @@ export default function Features() {
         relative w-full max-w-[1440px] mx-auto
       "
     >
-      {/* Section Title */}
-      <SectionTitle title="مميزات النظام" />
+      {/* Section Title matching Figma node 236:60 */}
+      <SectionTitle
+        title="مميزات النظام"
+        subtitle="مجموعة متكاملة من الأدوات والخصائص الذكية لتيسير إدارة الحلقات ومتابعة الحفظ والمراجعة بكل سهولة."
+      />
 
 
 

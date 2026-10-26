@@ -69,9 +69,12 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* Top Section Title Pill Badge (Figma node 329:352) */}
+      {/* Top Section Title (Figma node 236:60) */}
       <div className="relative z-10 mb-8 sm:mb-12 md:mb-14">
-        <SectionTitle title="تواصل معنا" />
+        <SectionTitle
+          title="تواصل معنا"
+          subtitle="نسعد بتواصلكم معنا والإجابة على كافة استفساراتكم واقتراحاتكم حول منصة حافظ."
+        />
       </div>
 
       {/* Main Container: LTR on Desktop for Left/Right column placement matching Figma node 329:356 */}
