@@ -5,15 +5,6 @@ import { navLinks } from "../../data/navigation";
 import type { NavLink } from "../../data/navigation";
 import ArabicBg from "../common/ArabicBg";
 
-interface NavbarProps {
-  activePage?: "home" | "roles";
-}
-
-function navigateToHash(hash: string) {
-  window.history.pushState(null, "", hash);
-  window.dispatchEvent(new HashChangeEvent("hashchange"));
-}
-
 /**
  * Site-wide Navbar with Framer Motion animations & dynamic active link coloring.
  * - Colors the clicked title in gold (#cab178) with animated indicator.
@@ -22,7 +13,7 @@ function navigateToHash(hash: string) {
  * - Navbar becomes colored after scrolling.
  * - Animated mobile drawer from the right.
  */
-export default function Navbar({ activePage = "home" }: NavbarProps) {
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const [activeId, setActiveId] = useState<string>(() => {
@@ -37,12 +28,10 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
   });
 
   const [isScrolled, setIsScrolled] = useState(() => {
-    return activePage !== "home" || window.scrollY > 10;
+    return window.scrollY > 10;
   });
 
   useEffect(() => {
-    if (activePage !== "home") return;
-
     const handleNavbarScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
@@ -54,17 +43,14 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     return () => {
       window.removeEventListener("scroll", handleNavbarScroll);
     };
-  }, [activePage]);
+  }, []);
 
-  const navbarBackground =
-    activePage === "home" && !isScrolled
-      ? "bg-[#1A5A81]/95 md:bg-transparent"
-      : "bg-[#1A5A81] shadow-md";
+  const navbarBackground = !isScrolled
+    ? "bg-[#1A5A81]/95 md:bg-transparent"
+    : "bg-[#1A5A81] shadow-md";
 
-  // Sync active link with hash changes and activePage prop
+  // Sync active link with hash changes
   useEffect(() => {
-    if (activePage !== "home") return;
-
     const updateFromHash = () => {
       const hash = window.location.hash;
 
@@ -90,12 +76,10 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     return () => {
       window.removeEventListener("hashchange", updateFromHash);
     };
-  }, [activePage]);
+  }, []);
 
   // Scroll Spy: dynamically highlight the title matching the section on screen
   useEffect(() => {
-    if (activePage !== "home") return;
-
     const handleScroll = () => {
       const currentScroll =
         window.scrollY ||
@@ -140,7 +124,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [activePage]);
+  }, []);
 
   // Prevent background scroll when mobile drawer is open
   useEffect(() => {
@@ -163,30 +147,26 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     setActiveId(link.id);
     setMobileMenuOpen(false);
 
-    if (activePage !== "home") {
-      navigateToHash(link.href);
-    } else {
-      const targetId = link.href.replace("#", "");
-      const el = document.getElementById(targetId);
+    const targetId = link.href.replace("#", "");
+    const el = document.getElementById(targetId);
 
-      if (el) {
-        const isMobile = window.innerWidth < 768;
-        const headerHeight = isMobile ? 54 : 84;
-        const currentScroll =
-          window.scrollY ||
-          window.pageYOffset ||
-          document.documentElement.scrollTop ||
-          0;
-        const targetY =
-          el.getBoundingClientRect().top + currentScroll - headerHeight;
+    if (el) {
+      const isMobile = window.innerWidth < 768;
+      const headerHeight = isMobile ? 54 : 84;
+      const currentScroll =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        0;
+      const targetY =
+        el.getBoundingClientRect().top + currentScroll - headerHeight;
 
-        window.scrollTo({
-          top: Math.max(0, targetY),
-          behavior: "smooth",
-        });
+      window.scrollTo({
+        top: Math.max(0, targetY),
+        behavior: "smooth",
+      });
 
-        window.history.pushState(null, "", link.href);
-      }
+      window.history.pushState(null, "", link.href);
     }
   };
 
@@ -195,29 +175,25 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     setActiveId("offers");
     setMobileMenuOpen(false);
 
-    if (activePage !== "home") {
-      navigateToHash("#offers");
-    } else {
-      const el = document.getElementById("offers") || document.getElementById("contact");
+    const el = document.getElementById("offers") || document.getElementById("contact");
 
-      if (el) {
-        const isMobile = window.innerWidth < 768;
-        const headerHeight = isMobile ? 54 : 84;
-        const currentScroll =
-          window.scrollY ||
-          window.pageYOffset ||
-          document.documentElement.scrollTop ||
-          0;
-        const targetY =
-          el.getBoundingClientRect().top + currentScroll - headerHeight;
+    if (el) {
+      const isMobile = window.innerWidth < 768;
+      const headerHeight = isMobile ? 54 : 84;
+      const currentScroll =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        0;
+      const targetY =
+        el.getBoundingClientRect().top + currentScroll - headerHeight;
 
-        window.scrollTo({
-          top: Math.max(0, targetY),
-          behavior: "smooth",
-        });
+      window.scrollTo({
+        top: Math.max(0, targetY),
+        behavior: "smooth",
+      });
 
-        window.history.pushState(null, "", "#offers");
-      }
+      window.history.pushState(null, "", "#offers");
     }
   };
 
@@ -227,29 +203,25 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     setActiveId("contact");
     setMobileMenuOpen(false);
 
-    if (activePage !== "home") {
-      navigateToHash("#contact");
-    } else {
-      const el = document.getElementById("contact");
+    const el = document.getElementById("contact");
 
-      if (el) {
-        const isMobile = window.innerWidth < 768;
-        const headerHeight = isMobile ? 54 : 84;
-        const currentScroll =
-          window.scrollY ||
-          window.pageYOffset ||
-          document.documentElement.scrollTop ||
-          0;
-        const targetY =
-          el.getBoundingClientRect().top + currentScroll - headerHeight;
+    if (el) {
+      const isMobile = window.innerWidth < 768;
+      const headerHeight = isMobile ? 54 : 84;
+      const currentScroll =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        0;
+      const targetY =
+        el.getBoundingClientRect().top + currentScroll - headerHeight;
 
-        window.scrollTo({
-          top: Math.max(0, targetY),
-          behavior: "smooth",
-        });
+      window.scrollTo({
+        top: Math.max(0, targetY),
+        behavior: "smooth",
+      });
 
-        window.history.pushState(null, "", "#contact");
-      }
+      window.history.pushState(null, "", "#contact");
     }
   };
 
@@ -258,16 +230,12 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     setActiveId("home");
     setMobileMenuOpen(false);
 
-    if (activePage !== "home") {
-      navigateToHash("#home");
-    } else {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-      window.history.pushState(null, "", "#home");
-    }
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    window.history.pushState(null, "", "#home");
   };
 
   return (

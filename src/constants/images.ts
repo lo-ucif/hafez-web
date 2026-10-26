@@ -1,8 +1,6 @@
 // ─── Figma-exact public image paths ───────────────────────────────────────────
 // All images live in /public/figma-exact/ and are referenced by absolute URL.
 
-import hafez from "../assets/hafez.webp";
-
 export const IMAGES = {
   // Decorative / background
   arabicBg: "/figma-exact/img22.webp",
@@ -16,14 +14,6 @@ export const IMAGES = {
   logoBarBottom: "/figma-exact/imgFrame1000009137.svg",
   footerLogo: "/figma-exact/imgFrame1000009142.svg",
 
-  // Section-title decoration
-  sectionBarShort: "/figma-exact/imgRectangle39628.svg",
-  sectionBarLong: "/figma-exact/imgRectangle39629.svg",
-  sectionBarLeft: "/figma-exact/imgRectangle39627.svg",
-
-  // About section
-  aboutIllustration: "/figma-exact/imgFrame1000009138.svg",
-
   // Features / "Why Hafez" icons
   featurePresentation: "/figma-exact/imgStreamlinePlumpPresentationRemix.svg",
   featureStudents: "/figma-exact/imgGroup.svg",
@@ -32,8 +22,7 @@ export const IMAGES = {
   featureReports: "/figma-exact/imgAntDesignPieChartFilled.svg",
   featureMemorization: "/figma-exact/imgBoxiconsBookBookmarkFilled.svg",
 
-  // Why Hafez circles
-  whyCircle: "/figma-exact/imgEllipse87.svg",
+  // Why Hafez icons
   whyIconSettings: "/figma-exact/imgGroup1.svg",
   whyIconData: "/figma-exact/imgAntDesignFileTextFilled.svg",
   whyIconActivity: "/figma-exact/imgMynauiActivitySolid.svg",
@@ -44,32 +33,22 @@ export const IMAGES = {
   bookCoverStudent: "/figma-exact/imgBookCover1.webp",
   bookCoverTeacher: "/figma-exact/imgBookCover2.webp",
   bookCoverAdmin: "/figma-exact/imgBookCover3.webp",
-  roleHeroArch: "/figma-exact/imgRectangle39633.svg",
 
-  // Institutions / Book covers (WebP)
+  // Institutions (WebP)
   institutionMaqraa: "/figma-exact/institution-maqraa.webp",
   institutionSchool: "/figma-exact/institution-school.webp",
   institutionMosque: "/figma-exact/institution-mosque.webp",
-  bookCoverPrimary: "/figma-exact/institution-maqraa.webp",
-  bookCoverMiddle: "/figma-exact/institution-school.webp",
-  bookCoverHigh: "/figma-exact/institution-mosque.webp",
-  bookCoverUniversity: "/figma-exact/robot-mascot.webp",
-  robotMascot: "/figma-exact/robot-mascot.webp",
 
-  // CTA section
-  ctaBookCover: hafez,
+  // CTA section (WebP & SVG)
   ctaBgShape: "/figma-exact/cta-bg-shape.svg",
   ctaBgShapeMobile: "/figma-exact/cta-bg-shape-mobile.svg",
-  ctaBoyQuran: "/figma-exact/cta-boy-quran.png",
+  ctaBoyQuran: "/figma-exact/cta-boy-quran.webp",
 
-  // Organisations banner
-  orgDivider: "/figma-exact/imgVector21.svg",
-  orgLogo: "/figma-exact/imgGroup2.svg",
+  // Organisations banner (WebP & SVG)
   orgDividerLine: "/figma-exact/org-underline.svg",
-  orgTabibHafez: "/figma-exact/org-tabib-hafez.png",
+  orgTabibHafez: "/figma-exact/org-tabib-hafez.webp",
 
-  // Gallery (WebP screenshots from real platform)
-  gallerySlide: "/figma-exact/gallery-dashboard.webp",
+  // Gallery (WebP screenshots & SVGs)
   galleryDashboard: "/figma-exact/gallery-dashboard.webp",
   galleryAttendance: "/figma-exact/gallery-attendance.webp",
   galleryAchievements: "/figma-exact/gallery-achievements.webp",
@@ -79,35 +58,8 @@ export const IMAGES = {
   galleryNotifications: "/figma-exact/gallery-notifications.webp",
   galleryArrowLeft: "/figma-exact/imgKeyboardArrowDown.svg",
   galleryArrowRight: "/figma-exact/imgKeyboardArrowDown1.svg",
-  galleryArrowSelect: "/figma-exact/imgKeyboardArrowDown2.svg",
 
-  // Contact
-  iconMail: "/figma-exact/imgMail.svg",
-  iconPhone: "/figma-exact/imgCall.svg",
-  iconLocation: "/figma-exact/imgLocationOn.svg",
-  formResize: "/figma-exact/imgFrame165.svg",
-  plusIcon: "/figma-exact/imgSvgPlusIcon.svg",
-  contactRobot: "/figma-exact/robot-paper-plane.png",
+  // Contact (WebP & SVG)
+  contactRobot: "/figma-exact/robot-paper-plane.webp",
   contactBgShape: "/figma-exact/contact-bg-shape.svg",
-
-  // Footer
-  footerDivider: "/figma-exact/imgDivider.svg",
-  socialFacebook: "/figma-exact/imgFacebook.svg",
-  socialInstagram: "/figma-exact/imgInstagram.svg",
-  socialX: "/figma-exact/imgX.svg",
-  socialLinkedIn: "/figma-exact/imgLinkedIn.svg",
-  socialYoutube: "/figma-exact/imgYoutube.svg",
-
-  // Navbar active underline
-  navUnderline: "/figma-exact/imgLine1.svg",
-
-  // Image gallery (WebP)
-  gallerySlide1: "/figma-exact/imgBookCover.webp",
-  gallerySlide2: "/figma-exact/imgBookCover.webp",
-  gallerySlide3: "/figma-exact/imgBookCover.webp",
-  gallerySlide4: "/figma-exact/imgBookCover.webp",
-  gallerySlide5: "/figma-exact/imgBookCover.webp",
-  gallerySlide6: "/figma-exact/imgBookCover.webp",
-  gallerySlide7: "/figma-exact/imgBookCover.webp",
-  gallerySlide8: "/figma-exact/imgBookCover.webp",
 } as const;

@@ -21,7 +21,7 @@ export default function Home() {
   // Smooth scroll when landing on a section hash from another page (e.g. returning to #features)
   useEffect(() => {
     const hash = window.location.hash;
-    if (!hash || hash === "#home" || hash.startsWith("#/role")) return;
+    if (!hash || hash === "#home") return;
 
     const id = hash.replace(/^#\/?/, "");
     const el = document.getElementById(id);
@@ -40,7 +40,7 @@ export default function Home() {
       className="min-h-screen bg-white text-gray-900 flex flex-col overflow-x-hidden font-['Almarai']"
       dir="rtl"
     >
-      <Navbar activePage="home" />
+      <Navbar />
 
       <main className="flex-1 w-full">
         <Hero />
