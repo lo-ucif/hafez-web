@@ -155,8 +155,8 @@ export default function Navbar() {
     const el = document.getElementById(targetId);
 
     if (el) {
-      const isMobile = window.innerWidth < 768;
-      const headerHeight = isMobile ? 54 : 84;
+      const isMobile = window.innerWidth < 1024;
+      const headerHeight = isMobile ? 54 : 76;
       const currentScroll =
         window.scrollY ||
         window.pageYOffset ||
@@ -182,8 +182,8 @@ export default function Navbar() {
     const el = document.getElementById("offers") || document.getElementById("contact");
 
     if (el) {
-      const isMobile = window.innerWidth < 768;
-      const headerHeight = isMobile ? 54 : 84;
+      const isMobile = window.innerWidth < 1024;
+      const headerHeight = isMobile ? 54 : 76;
       const currentScroll =
         window.scrollY ||
         window.pageYOffset ||
@@ -210,8 +210,8 @@ export default function Navbar() {
     const el = document.getElementById("contact");
 
     if (el) {
-      const isMobile = window.innerWidth < 768;
-      const headerHeight = isMobile ? 54 : 84;
+      const isMobile = window.innerWidth < 1024;
+      const headerHeight = isMobile ? 54 : 76;
       const currentScroll =
         window.scrollY ||
         window.pageYOffset ||
@@ -268,27 +268,27 @@ export default function Navbar() {
           />
         </div>
 
-        {/* ── Desktop Navigation (md and up) matching Figma node 196:180 ── */}
+        {/* ── Desktop Navigation (lg and up) matching Figma node 196:180 ── */}
         <div
           className="
-            hidden md:flex items-center justify-between
-            h-[76px] px-6 lg:px-8 xl:px-12 w-full max-w-[1440px] mx-auto relative z-10
+            hidden lg:flex items-center justify-between
+            h-[68px] xl:h-[76px] px-4 lg:px-6 xl:px-10 w-full max-w-[1440px] mx-auto relative z-10
           "
           dir="ltr"
         >
           {/* Left Side Buttons (LTR): تسجيل الدخول + إنشاء حساب matching Figma node 330:994 */}
-          <div className="flex items-center gap-[12px] lg:gap-[16px]" dir="ltr" data-node-id="330:994">
+          <div className="flex items-center gap-2 xl:gap-3.5 shrink-0" dir="ltr" data-node-id="330:994">
             {/* Button 1: تسجيل الدخول (Figma node 330:995) */}
             <motion.button
               type="button"
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               onClick={handleContactClick}
               className="
                 bg-[#e6edf1] hover:bg-[#d8e4eb] text-[#1a5a81]
                 font-['Changa:SemiBold'] font-semibold
-                text-[15px] lg:text-[16px] leading-none
-                h-[36px] px-[16px] py-[10px]
+                text-[13px] xl:text-[15px] leading-none
+                h-[32px] xl:h-[36px] px-3 xl:px-[16px] py-1.5 xl:py-[10px]
                 rounded-[6px] shadow-sm
                 transition-all duration-200
                 cursor-pointer whitespace-nowrap
@@ -303,18 +303,15 @@ export default function Navbar() {
             {/* Button 2: إنشاء حساب (Figma node 330:997) */}
             <motion.button
               type="button"
-              whileHover={{
-                scale: 1.03,
-                boxShadow: "0px 4px 12px rgba(0,0,0,0.25)",
-              }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               onClick={handleCtaClick}
               className="
                 bg-[#1a5a81] hover:bg-[#154664] text-white
                 border border-white/30
                 font-['Changa:SemiBold'] font-semibold
-                text-[15px] lg:text-[16px] leading-none
-                h-[36px] px-[16px] py-[10px]
+                text-[13px] xl:text-[15px] leading-none
+                h-[32px] xl:h-[36px] px-3 xl:px-[16px] py-1.5 xl:py-[10px]
                 rounded-[6px] shadow-sm
                 transition-all duration-200
                 cursor-pointer whitespace-nowrap
@@ -328,54 +325,54 @@ export default function Navbar() {
           </div>
 
           {/* Right Group: Nav Links + Logo in RTL */}
-          <div className="flex items-center gap-3 lg:gap-5 xl:gap-8" dir="rtl">
+          <div className="flex items-center gap-2 xl:gap-6 min-w-0" dir="rtl">
             {/* Logo on the far right (first child in RTL) */}
             <motion.a
               href="#home"
               onClick={handleLogoClick}
-              whileHover={{ scale: 1.06 }}
+              whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.95 }}
               aria-label="الصفحة الرئيسية"
-              className="relative shrink-0 h-[56.75px] w-[66px] transition-transform duration-200 cursor-pointer"
+              className="relative shrink-0 h-[48px] xl:h-[56.75px] w-[56px] xl:w-[66px] transition-transform duration-200 cursor-pointer"
             >
               <img
                 alt=""
                 aria-hidden="true"
-                className="absolute h-[56.75px] left-[39.9px] top-0 w-[5.448px] max-w-none block"
+                className="absolute h-[48px] xl:h-[56.75px] left-[34px] xl:left-[39.9px] top-0 w-[4.6px] xl:w-[5.448px] max-w-none block"
                 src={IMAGES.logoBarTop}
               />
               <img
                 alt="شعار حافظ"
-                className="absolute h-[41.612px] left-0 top-[8.15px] w-[37.218px] max-w-none block"
+                className="absolute h-[35px] xl:h-[41.612px] left-0 top-[7px] xl:top-[8.15px] w-[31px] xl:w-[37.218px] max-w-none block"
                 src={IMAGES.logoPartHa}
               />
               <img
                 alt=""
                 aria-hidden="true"
-                className="absolute h-[35.776px] left-[38.3px] top-[12.89px] w-[23.314px] max-w-none block"
+                className="absolute h-[30px] xl:h-[35.776px] left-[32px] xl:left-[38.3px] top-[11px] xl:top-[12.89px] w-[20px] xl:w-[23.314px] max-w-none block"
                 src={IMAGES.logoPartHin}
               />
               <img
                 alt=""
                 aria-hidden="true"
-                className="absolute h-[19.551px] left-[40.81px] top-[29.03px] w-[25.722px] max-w-none block"
+                className="absolute h-[16px] xl:h-[19.551px] left-[35px] xl:left-[40.81px] top-[25px] xl:top-[29.03px] w-[22px] xl:w-[25.722px] max-w-none block"
                 src={IMAGES.logoBarBottom}
               />
             </motion.a>
 
             {/* Nav links to the left of the Logo matching requested style */}
-            <nav aria-label="التنقل الرئيسي" className="hidden md:flex items-center gap-0.5 lg:gap-1">
+            <nav aria-label="التنقل الرئيسي" className="flex items-center gap-0.5 xl:gap-1 min-w-0">
               <ul className="flex items-center list-none m-0 p-0" dir="rtl">
                 {navLinks.map((link) => {
                   const isLinkActive = activeId === link.id;
 
                   return (
-                    <li key={link.id} className="relative flex items-center">
+                    <li key={link.id} className="relative flex items-center shrink-0">
                       <a
                         href={link.href}
                         onClick={(e) => handleNavClick(link, e)}
                         dir="auto"
-                        className={`relative flex flex-col items-center justify-center px-1.5 lg:px-2.5 xl:px-3 py-2 text-[14px] lg:text-[15px] xl:text-[16px] transition-colors cursor-pointer group select-none no-underline whitespace-nowrap ${
+                        className={`relative flex flex-col items-center justify-center px-1.5 xl:px-3 py-1.5 text-[13px] xl:text-[16px] transition-colors cursor-pointer group select-none no-underline whitespace-nowrap ${
                           isLinkActive
                             ? "text-[#cab178] font-semibold"
                             : "text-white/90 hover:text-[#cab178] font-medium"
@@ -410,7 +407,7 @@ export default function Navbar() {
         {/* ── Mobile Navigation Header Bar ── */}
         <div
           className="
-            flex md:hidden
+            flex lg:hidden
             items-center justify-between
             px-5 py-3
             w-full relative
@@ -484,7 +481,7 @@ export default function Navbar() {
       {/* ── Mobile Navbar Drawer (Figma node 308:144 - Opens from Right, Height = Device Height) ── */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 md:hidden">
+          <div className="fixed inset-0 z-50 lg:hidden">
             {/* Backdrop Overlay */}
             <motion.div
               initial={{ opacity: 0 }}

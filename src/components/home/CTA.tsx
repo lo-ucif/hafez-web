@@ -10,7 +10,7 @@ export default function CTA() {
     <section
       id="offers"
       aria-label="العروض - طلب نسخة"
-      className="bg-white relative w-full overflow-hidden py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-6 md:px-8 flex flex-col items-center justify-center"
+      className="bg-white relative w-full overflow-hidden py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center"
       data-node-id="343:378"
     >
       {/* Outer Banner Container matching Figma node 343:402 (Desktop) and 344:419 (Mobile) */}
@@ -21,16 +21,18 @@ export default function CTA() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         dir="ltr"
         className="
-          relative w-full max-w-[380px] sm:max-w-[460px] md:max-w-[680px] lg:max-w-[1240px]
-          h-[197px] sm:h-[258px] md:h-[380px] lg:h-[478px]
+          relative w-full max-w-[1240px]
+          h-[190px] sm:h-[240px] md:h-[320px] lg:h-[400px] xl:h-[478px]
           flex flex-row items-center justify-between
-          overflow-visible select-none
+          overflow-hidden select-none
+          rounded-[16px] sm:rounded-[22px] md:rounded-[28px] lg:rounded-[36px]
+          shadow-[0_8px_30px_rgba(26,90,129,0.12)]
         "
         data-node-id="343:402"
         data-name="post"
       >
-        {/* Background Shape on Desktop (node 343:403) */}
-        <div className="hidden lg:block absolute inset-0 pointer-events-none z-0" data-node-id="343:403">
+        {/* Background Shape on Desktop & Tablet (node 343:403) */}
+        <div className="hidden sm:block absolute inset-0 pointer-events-none z-0" data-node-id="343:403">
           <img
             alt=""
             aria-hidden="true"
@@ -39,8 +41,8 @@ export default function CTA() {
           />
         </div>
 
-        {/* Background Shape on Mobile & Tablet (node 344:420) */}
-        <div className="block lg:hidden absolute inset-0 pointer-events-none z-0" data-node-id="344:420">
+        {/* Background Shape on Mobile (node 344:420) */}
+        <div className="block sm:hidden absolute inset-0 pointer-events-none z-0" data-node-id="344:420">
           <img
             alt=""
             aria-hidden="true"
@@ -50,17 +52,12 @@ export default function CTA() {
         </div>
 
         {/* Left Side: Boy reading Quran illustration (node 343:406 & 344:423) */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: 0.08, ease: "easeOut" }}
+        <div
           className="
             relative z-10 shrink-0
-            w-[230px] sm:w-[260px] md:w-[360px] lg:w-[520px] xl:w-[600px]
-            h-[190px] sm:h-[250px] md:h-[370px] lg:h-[476px]
+            w-[42%] max-w-[500px] h-full
             flex items-end justify-start
-            pl-1 sm:pl-2 md:pl-4 lg:pl-6 xl:pl-8
+            pl-1.5 sm:pl-3 md:pl-5 lg:pl-8
             select-none pointer-events-none
           "
           data-node-id="344:423"
@@ -70,23 +67,19 @@ export default function CTA() {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             alt="طالب يقرأ القرآن الكريم"
             src={IMAGES.ctaBoyQuran}
-            className="w-full h-full object-contain object-bottom-left block drop-shadow-[0_8px_20px_rgba(0,0,0,0.14)]"
+            className="w-full max-h-full object-contain object-bottom-left block drop-shadow-[0_8px_20px_rgba(0,0,0,0.14)]"
           />
-        </motion.div>
+        </div>
 
         {/* Right Side: Text & Button (node 343:407 & 344:424) */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: 0.12, ease: "easeOut" }}
+        <div
           dir="rtl"
           className="
             relative z-10 flex flex-col items-end text-right
             justify-center shrink-0
-            w-[145px] sm:w-[190px] md:w-[280px] lg:max-w-[560px] lg:w-auto
-            pr-3 sm:pr-5 md:pr-8 lg:pr-12 xl:pr-16
-            gap-[14px] sm:gap-[20px] md:gap-[30px] lg:gap-[45px]
+            w-[58%] max-w-[620px] h-full
+            pr-3 sm:pr-5 md:pr-7 lg:pr-10 xl:pr-14
+            gap-2 sm:gap-3 md:gap-5 lg:gap-7 xl:gap-9
           "
           data-node-id="344:424"
         >
@@ -94,18 +87,18 @@ export default function CTA() {
           <div
             className="
               font-['Almarai'] font-bold text-white
-              text-[12.5px] sm:text-[17px] md:text-[25px] lg:text-[38px] xl:text-[40px]
+              text-[11.5px] sm:text-[15px] md:text-[21px] lg:text-[28px] xl:text-[36px]
               leading-[1.3] lg:leading-[1.35] tracking-tight m-0
             "
             data-node-id="344:425"
           >
-            <p className="m-0 mb-0.5 sm:mb-1 lg:mb-2" dir="auto">
+            <p className="m-0 mb-0.5 sm:mb-1" dir="auto">
               لديكم مدرسة قرآنية؟
             </p>
             <p className="m-0 text-white" dir="auto">
-              <span className="lg:inline">لا تتردّد واطلب </span>
-              <br className="inline lg:hidden" />
-              <span className="lg:inline">نسختك مجانا الآن!</span>
+              <span>لا تتردّد واطلب </span>
+              <br className="inline sm:hidden" />
+              <span>نسختك مجانا الآن!</span>
             </p>
           </div>
 
@@ -113,7 +106,7 @@ export default function CTA() {
           <motion.a
             href="#contact"
             whileHover={{
-              scale: 1.05,
+              scale: 1.04,
               boxShadow: "0px 6px 20px rgba(202, 177, 120, 0.45)",
             }}
             whileTap={{ scale: 0.96 }}
@@ -121,8 +114,8 @@ export default function CTA() {
               bg-[#cab178] hover:bg-[#bfa56a]
               transition-colors duration-200
               flex items-center justify-center
-              w-[78px] sm:w-[105px] md:w-[150px] lg:w-[238px]
-              h-[22px] sm:h-[30px] md:h-[40px] lg:h-[54px]
+              px-2.5 sm:px-4 md:px-6 lg:px-9
+              py-1 sm:py-1.5 md:py-2.5 lg:py-3.5
               rounded-[4px] sm:rounded-[6px] lg:rounded-[10px]
               cursor-pointer no-underline
               shadow-[0px_3px_12px_rgba(0,0,0,0.16)]
@@ -132,7 +125,7 @@ export default function CTA() {
             <span
               className="
                 font-['Almarai'] font-bold leading-normal not-italic
-                text-[9px] sm:text-[12px] md:text-[16px] lg:text-[24px]
+                text-[9px] sm:text-[11px] md:text-[15px] lg:text-[21px]
                 text-white whitespace-nowrap
               "
               dir="auto"
@@ -141,7 +134,7 @@ export default function CTA() {
               طلب نسخة
             </span>
           </motion.a>
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );

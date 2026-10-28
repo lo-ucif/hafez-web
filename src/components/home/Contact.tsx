@@ -64,8 +64,8 @@ export default function Contact() {
         dir="ltr"
         className="
           relative z-10 w-full max-w-[1240px]
-          flex flex-col lg:flex-row items-center lg:items-center justify-between
-          gap-8 sm:gap-10 lg:gap-8 xl:gap-12
+          flex flex-col lg:flex-row items-center justify-center lg:justify-between
+          gap-8 sm:gap-10 lg:gap-6 xl:gap-12
         "
         data-node-id="329:356"
       >
@@ -74,7 +74,7 @@ export default function Contact() {
           dir="rtl"
           className="
             flex flex-col items-center lg:items-start text-center lg:text-right
-            w-full lg:max-w-[500px] xl:max-w-[540px] shrink-0
+            w-full lg:flex-1 max-w-[500px] min-w-0
             gap-4 sm:gap-6
             pt-2 lg:pt-0
           "
@@ -92,8 +92,8 @@ export default function Contact() {
           {/* Robot Mascot Sending Paper Plane (Figma node 337:148) */}
           <div
             className="
-              relative shrink-0 select-none
-              w-[290px] sm:w-[350px] md:w-[400px] lg:w-[450px] xl:w-[480px] max-w-[90vw]
+              relative select-none
+              w-[260px] sm:w-[320px] md:w-[360px] lg:w-[400px] xl:w-[460px] max-w-full
               h-auto mt-2 lg:mt-3 self-center lg:self-start
             "
             data-node-id="337:148"
@@ -113,7 +113,7 @@ export default function Contact() {
         <div
           dir="rtl"
           className="
-            bg-white w-full max-w-[560px] shrink-0
+            bg-white w-full max-w-[540px] lg:flex-1 min-w-0
             rounded-[20px] sm:rounded-[24px]
             shadow-[0px_10px_35px_rgba(0,0,0,0.06),0px_2px_12px_rgba(0,0,0,0.04)]
             px-5 sm:px-8 py-6 sm:py-8
