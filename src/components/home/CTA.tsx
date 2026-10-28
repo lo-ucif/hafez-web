@@ -62,7 +62,7 @@ export default function CTA() {
           className="
             relative z-10 shrink-0
             w-[178px] h-[198px]
-            sm:w-[320px] md:w-[370px] lg:w-[413px] sm:h-full
+            sm:w-[320px] md:w-[370px] lg:w-[580px] sm:h-full
             flex items-end justify-center sm:justify-start
             pt-3 sm:pt-0
             sm:pl-4 md:pl-6 lg:pl-10
