@@ -55,7 +55,7 @@ export default function CTA() {
         <div
           className="
             relative z-10 shrink-0
-            w-[42%] max-w-[500px] h-full
+            w-[38%] sm:w-[40%] md:w-[42%] max-w-[500px] h-full
             flex items-end justify-start
             pl-1.5 sm:pl-3 md:pl-5 lg:pl-8
             select-none pointer-events-none
@@ -75,30 +75,28 @@ export default function CTA() {
         <div
           dir="rtl"
           className="
-            relative z-10 flex flex-col items-end text-right
-            justify-center shrink-0
-            w-[58%] max-w-[620px] h-full
-            pr-3 sm:pr-5 md:pr-7 lg:pr-10 xl:pr-14
-            gap-2 sm:gap-3 md:gap-5 lg:gap-7 xl:gap-9
+            relative z-10 flex flex-col items-start text-right
+            justify-center flex-1 h-full
+            pr-3 sm:pr-6 md:pr-10 lg:pr-14 xl:pr-16
+            pl-2 sm:pl-4
+            gap-2.5 sm:gap-4 md:gap-6 lg:gap-8
           "
           data-node-id="344:424"
         >
           {/* Headline matching node 344:425 (Mobile) and 343:408 (Desktop) */}
           <div
             className="
-              font-['Almarai'] font-bold text-white
-              text-[11.5px] sm:text-[15px] md:text-[21px] lg:text-[28px] xl:text-[36px]
-              leading-[1.3] lg:leading-[1.35] tracking-tight m-0
+              w-full text-right font-['Almarai'] font-bold text-white
+              text-[13px] xs:text-[15px] sm:text-[20px] md:text-[28px] lg:text-[36px] xl:text-[44px]
+              leading-[1.3] md:leading-[1.35] tracking-tight m-0
             "
             data-node-id="344:425"
           >
-            <p className="m-0 mb-0.5 sm:mb-1" dir="auto">
+            <p className="m-0 mb-1 sm:mb-2 md:mb-2.5" dir="auto">
               لديكم مدرسة قرآنية؟
             </p>
             <p className="m-0 text-white" dir="auto">
-              <span>لا تتردّد واطلب </span>
-              <br className="inline sm:hidden" />
-              <span>نسختك مجانا الآن!</span>
+              لا تتردّد واطلب نسختك مجانا الآن!
             </p>
           </div>
 
@@ -111,12 +109,13 @@ export default function CTA() {
             }}
             whileTap={{ scale: 0.96 }}
             className="
+              self-start
               bg-[#cab178] hover:bg-[#bfa56a]
               transition-colors duration-200
               flex items-center justify-center
-              px-2.5 sm:px-4 md:px-6 lg:px-9
-              py-1 sm:py-1.5 md:py-2.5 lg:py-3.5
-              rounded-[4px] sm:rounded-[6px] lg:rounded-[10px]
+              px-3.5 sm:px-5 md:px-8 lg:px-10
+              py-1.5 sm:py-2 md:py-3 lg:py-3.5
+              rounded-[5px] sm:rounded-[8px] lg:rounded-[12px]
               cursor-pointer no-underline
               shadow-[0px_3px_12px_rgba(0,0,0,0.16)]
             "
@@ -125,7 +124,7 @@ export default function CTA() {
             <span
               className="
                 font-['Almarai'] font-bold leading-normal not-italic
-                text-[9px] sm:text-[11px] md:text-[15px] lg:text-[21px]
+                text-[10px] sm:text-[13px] md:text-[17px] lg:text-[22px]
                 text-white whitespace-nowrap
               "
               dir="auto"
