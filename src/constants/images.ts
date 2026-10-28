@@ -64,4 +64,8 @@ export const IMAGES = {
   // Contact (WebP & SVG)
   contactRobot: "/figma-exact/robot-paper-plane.webp",
   contactBgShape: "/figma-exact/contact-bg-shape.svg",
+
+  // Testimonials (PNG)
+  testimonialAvatar: "/figma-exact/testimonial-avatar.png",
+  testimonialBg: "/figma-exact/testimonial-bg.png",
 } as const;

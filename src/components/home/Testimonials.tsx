@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { IMAGES } from "../../constants/images";
 import SectionTitle from "../common/SectionTitle";
 
 interface Testimonial {
@@ -42,6 +43,7 @@ const testimonials: Testimonial[] = [
 
 /**
  * Testimonials / User Reviews section matching Figma node 298:68
+ * With card design matching Figma node 380:108
  * With infinite marching cards marquee loop and pause-on-hover.
  */
 export default function Testimonials() {
@@ -194,14 +196,14 @@ export default function Testimonials() {
         onMouseLeave={handleMouseLeave}
         dir="ltr"
       >
-        {/* Soft edge gradient fades - reduced on mobile so cards stay crisp */}
+        {/* Soft edge gradient fades */}
         <div className="absolute top-0 bottom-0 left-0 w-6 sm:w-20 md:w-32 bg-gradient-to-r from-[#fefefe] via-[#fefefe]/80 to-transparent z-20 pointer-events-none" />
         <div className="absolute top-0 bottom-0 right-0 w-6 sm:w-20 md:w-32 bg-gradient-to-l from-[#fefefe] via-[#fefefe]/80 to-transparent z-20 pointer-events-none" />
 
         {/* Continuous animation line using requestAnimationFrame with seamless centering */}
         <div
           ref={trackRef}
-          className="flex items-stretch gap-4 sm:gap-6 md:gap-7 w-max px-4 sm:px-6 will-change-transform"
+          className="flex items-stretch gap-5 sm:gap-7 md:gap-8 w-max px-4 sm:px-6 will-change-transform"
         >
           {marqueeList.map((item, idx) => {
             const uniqueKey = `${item.id}-${idx}`;
@@ -212,15 +214,13 @@ export default function Testimonials() {
                 key={uniqueKey}
                 whileHover={!isCardActive ? { y: -6, scale: 1.02 } : {}}
                 onClick={(e) => handleCardClick(e, uniqueKey)}
-                data-node-id="312:113"
+                data-node-id="380:108"
                 className={`
-                  bg-white w-[82vw] max-w-[310px] sm:w-[320px] md:w-[340px]
-                  min-h-[160px] sm:min-h-[175px] rounded-[18px] sm:rounded-[20px]
-                  p-[16px] sm:p-[20px] cursor-pointer
-                  shadow-[0px_2px_12px_rgba(0,0,0,0.08)] sm:shadow-[0px_0px_12px_rgba(0,0,0,0.12)]
-                  hover:shadow-[0px_8px_24px_rgba(26,90,129,0.18)]
-                  flex flex-col justify-between gap-[8px] sm:gap-[10px]
-                  transition-all duration-300 shrink-0
+                  bg-white w-[82vw] max-w-[324px] sm:w-[324px]
+                  min-h-[220px] rounded-[20px] overflow-hidden cursor-pointer
+                  shadow-[0px_0px_10.6px_0px_rgba(0,0,0,0.25)]
+                  hover:shadow-[0px_8px_24px_rgba(26,90,129,0.22)]
+                  transition-all duration-300 shrink-0 relative flex flex-col items-center pb-[20px]
                   ${
                     isCardActive
                       ? "scale-[1.03] ring-2 ring-[#cab178] shadow-[0px_8px_26px_rgba(202,177,120,0.38)]"
@@ -233,52 +233,74 @@ export default function Testimonials() {
                 aria-pressed={isCardActive}
                 aria-label={`رأي ${item.name}، انقر للتوسيط والإيقاف`}
               >
-                {/* Content Section matching Figma node 312:114 */}
-                <div className="flex flex-col items-end w-full gap-[6px] sm:gap-[8px]" data-node-id="312:114">
-                  {/* Header: Name on Right, Quote SVG icon on Left matching Figma node 312:115 */}
-                  <div className="flex items-center justify-between pb-[2px] sm:pb-[4px] w-full" data-node-id="312:115">
-                    {/* Name: Figma node 312:118 (renders on the Right in RTL) */}
+                {/* Top Blue Header Banner matching Figma node 380:109 */}
+                <div
+                  className="h-[69px] w-full relative overflow-hidden bg-[#1a5a81] shrink-0"
+                  data-node-id="380:109"
+                  data-name="Rectangle 39635"
+                >
+                  <div aria-hidden className="absolute inset-0 pointer-events-none">
+                    <div className="absolute bg-[#1a5a81] inset-0" />
+                    <img
+                      alt=""
+                      className="absolute inset-0 max-w-none object-cover opacity-10 size-full pointer-events-none"
+                      src={IMAGES.testimonialBg}
+                    />
+                  </div>
+                </div>
+
+                {/* Floating Avatar matching Figma node 380:116 */}
+                <div
+                  className="absolute top-[28.8px] left-1/2 -translate-x-1/2 size-[65px] rounded-full border-[2.7px] border-solid border-white shadow-[0px_0.68px_1.35px_rgba(0,0,0,0.05)] overflow-hidden bg-[#1a5a81] z-10 shrink-0"
+                  data-node-id="380:116"
+                  data-name="Eugenia Babajanyan"
+                >
+                  <img
+                    alt={item.name}
+                    className="size-full object-cover rounded-full pointer-events-none"
+                    src={IMAGES.testimonialAvatar}
+                  />
+                </div>
+
+                {/* Content Section matching Figma node 380:110 */}
+                <div
+                  className="flex flex-col items-center justify-center w-full px-[20px] pt-[32px] gap-[10px] text-center"
+                  data-node-id="380:110"
+                  data-name="ContentSection"
+                >
+                  {/* Heading: Name & Role matching Figma node 380:111 */}
+                  <div
+                    className="flex flex-col items-center justify-center text-center w-full"
+                    data-node-id="380:111"
+                    data-name="Heading 1 - Title:margin"
+                  >
                     <h3
-                      className="font-['Almarai:Bold'] font-bold text-[#1a5a81] text-[18px] sm:text-[20px] leading-[26px] sm:leading-[29px] m-0"
-                      data-node-id="312:118"
+                      className="font-['Almarai:Bold'] font-bold text-[#1a5a81] text-[20px] leading-[29.2px] m-0"
+                      data-node-id="380:112"
                     >
                       {item.name}
                     </h3>
-
-                    {/* Figma node 317:331 - Golden Quote SVG icon (renders on the Left in RTL) */}
-                    <div className="relative shrink-0 w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" data-node-id="317:331" aria-hidden="true">
-                      <svg
-                        width="100%"
-                        height="100%"
-                        viewBox="0 0 28 28"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-full h-full block"
-                      >
-                        <path
-                          d="M16.3532 24.5V15.8772C16.3532 9.2225 20.706 4.71217 26.8333 3.5L27.9942 6.0095C25.1568 7.07933 23.3333 10.2538 23.3333 12.8333H28V24.5H16.3532V24.5M0 24.5V15.8772C0 9.2225 4.37267 4.71217 10.5 3.5L11.662 6.0095C8.8235 7.07933 7 10.2538 7 12.8333H11.6468V24.5H0V24.5"
-                          fill="#CAB178"
-                        />
-                      </svg>
-                    </div>
+                    <p
+                      className="font-['Almarai:Regular'] text-[#caa778] text-[12px] leading-[16.5px] m-0"
+                      data-node-id="380:113"
+                    >
+                      {item.role}
+                    </p>
                   </div>
 
-                  {/* Description / Snippet: Figma node 312:120 */}
-                  <div className="w-full" data-node-id="312:119">
+                  {/* Description / Snippet matching Figma node 380:114 */}
+                  <div
+                    className="w-full text-center"
+                    data-node-id="380:114"
+                    data-name="Description/Snippet"
+                  >
                     <p
-                      className="font-['Almarai:Regular'] text-[#666666] text-[12px] sm:text-[12.5px] leading-[19px] sm:leading-[20.3px] text-right m-0"
-                      data-node-id="312:120"
+                      className="font-['Almarai:Regular'] text-[#666666] text-[12px] leading-[20.3px] text-center m-0"
+                      data-node-id="380:115"
                     >
                       {item.quote}
                     </p>
                   </div>
-                </div>
-
-                {/* Role / Tag at bottom-left matching Figma node 315:164 */}
-                <div className="flex justify-end w-full pt-1" data-node-id="315:164">
-                  <span className="font-['Almarai:Regular'] text-[#caa778] text-[11.5px] sm:text-[12px] leading-[16px] block text-left">
-                    {item.role}
-                  </span>
                 </div>
               </motion.article>
             );
