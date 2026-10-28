@@ -45,10 +45,8 @@ export const IMAGES = {
   ctaBoyQuran: "/figma-exact/cta-boy-quran.webp",
 
   // Organisations banner (WebP & SVG)
-  orgDividerLine: "/figma-exact/org-underline.svg",
   orgTabibHafez: "/figma-exact/org-tabib-hafez.webp",
   orgShifaaLogo: "/figma-exact/org-shifaa-logo.svg",
-  orgSeparator: "/figma-exact/org-separator.svg",
 
   // Gallery (WebP screenshots & SVGs)
   galleryDashboard: "/figma-exact/gallery-dashboard.webp",
@@ -61,9 +59,8 @@ export const IMAGES = {
   galleryArrowLeft: "/figma-exact/imgKeyboardArrowDown.svg",
   galleryArrowRight: "/figma-exact/imgKeyboardArrowDown1.svg",
 
-  // Contact (WebP & SVG)
+  // Contact (WebP)
   contactRobot: "/figma-exact/robot-paper-plane.webp",
-  contactBgShape: "/figma-exact/contact-bg-shape.svg",
 
   // Testimonials (WebP)
   testimonialAvatar: "/figma-exact/testimonial-avatar.webp",
