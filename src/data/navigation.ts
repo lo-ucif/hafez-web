@@ -9,6 +9,7 @@ export const navLinks: NavLink[] = [
   { id: 'home', label: 'الرئيسية', href: '#home', isActive: true },
   { id: 'features', label: 'مميزات النظام', href: '#features' },
   { id: 'roles', label: 'الأدوار', href: '#roles' },
+  { id: 'institutions', label: 'من يستعمل النظام', href: '#institutions' },
   { id: 'gallery', label: 'معرض النظام', href: '#gallery' },
   { id: 'offers', label: 'العروض', href: '#offers' },
   { id: 'contact', label: 'تواصل معنا', href: '#contact' },

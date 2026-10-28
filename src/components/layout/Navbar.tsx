@@ -20,6 +20,7 @@ export default function Navbar() {
     const hash = window.location.hash;
     if (hash === "#features") return "features";
     if (hash === "#roles" || hash === "#users") return "roles";
+    if (hash === "#institutions") return "institutions";
     if (hash === "#gallery") return "gallery";
     if (hash === "#offers") return "offers";
     if (hash === "#contact") return "contact";
@@ -58,6 +59,8 @@ export default function Navbar() {
         setActiveId("features");
       } else if (hash === "#roles" || hash === "#users") {
         setActiveId("roles");
+      } else if (hash === "#institutions") {
+        setActiveId("institutions");
       } else if (hash === "#gallery") {
         setActiveId("gallery");
       } else if (hash === "#offers") {
@@ -104,6 +107,7 @@ export default function Navbar() {
         { id: "home", linkId: "home" },
         { id: "features", linkId: "features" },
         { id: "roles", linkId: "roles" },
+        { id: "institutions", linkId: "institutions" },
         { id: "gallery", linkId: "gallery" },
         { id: "offers", linkId: "offers" },
         { id: "contact", linkId: "contact" },
@@ -371,7 +375,7 @@ export default function Navbar() {
                         href={link.href}
                         onClick={(e) => handleNavClick(link, e)}
                         dir="auto"
-                        className={`relative flex flex-col items-center justify-center px-2 lg:px-3 xl:px-3.5 py-2 text-[15px] lg:text-[16px] xl:text-[17px] transition-colors cursor-pointer group select-none no-underline whitespace-nowrap ${
+                        className={`relative flex flex-col items-center justify-center px-1.5 lg:px-2.5 xl:px-3 py-2 text-[14px] lg:text-[15px] xl:text-[16px] transition-colors cursor-pointer group select-none no-underline whitespace-nowrap ${
                           isLinkActive
                             ? "text-[#cab178] font-semibold"
                             : "text-white/90 hover:text-[#cab178] font-medium"
