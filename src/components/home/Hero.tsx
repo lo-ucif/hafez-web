@@ -74,9 +74,7 @@ export default function Hero() {
             "
             data-node-id="196:213"
           >
-            <motion.img
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+            <img
               alt="شعار منصة حافظ"
               src={IMAGES.heroLogo}
               className="w-full h-full object-contain block max-w-none select-none drop-shadow-[0_12px_28px_rgba(0,0,0,0.18)]"
