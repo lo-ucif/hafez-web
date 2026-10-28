@@ -11,7 +11,7 @@ export default function CTA() {
     <section
       id="offers"
       aria-label="العروض - طلب نسخة"
-      className="bg-white relative w-full overflow-hidden py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center"
+      className="bg-[#ffffff] relative w-full overflow-hidden py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center"
       data-node-id="343:378"
     >
       {/* Outer Banner Container:
@@ -33,7 +33,6 @@ export default function CTA() {
           items-center justify-start sm:justify-between
           overflow-hidden select-none
           rounded-[24px] sm:rounded-[clamp(24px,2.6vw,36px)]
-          shadow-[0_8px_30px_rgba(26,90,129,0.12)]
         "
         data-node-id="343:402"
         data-name="post"
