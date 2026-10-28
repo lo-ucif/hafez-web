@@ -46,7 +46,9 @@ export const IMAGES = {
 
   // Organisations banner (WebP & SVG)
   orgDividerLine: "/figma-exact/org-underline.svg",
-  orgTabibHafez: "/figma-exact/org-tabib-hafez.webp",
+  orgTabibHafez: "/figma-exact/org-tabib-hafez.png",
+  orgShifaaLogo: "/figma-exact/org-shifaa-logo.svg",
+  orgSeparator: "/figma-exact/org-separator.svg",
 
   // Gallery (WebP screenshots & SVGs)
   galleryDashboard: "/figma-exact/gallery-dashboard.webp",
