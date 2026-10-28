@@ -6,23 +6,13 @@ import ArabicBg from "../common/ArabicBg";
 
 // ─── Feature Card ─────────────────────────────────────────────────────────────
 
-function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
+function FeatureCard({ feature }: { feature: Feature; index: number }) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.45, delay: (index % 3) * 0.08, ease: "easeOut" }}
-      whileHover={{
-        y: -4,
-        scale: 1.01,
-        boxShadow:
-          "0 14px 20px -6px rgba(26,90,129,0.12), 0 6px 10px -4px rgba(26,90,129,0.06)",
-      }}
-      whileTap={{ scale: 0.99 }}
+    <article
       className="
         backdrop-blur-[34.87px] bg-white
         drop-shadow-[0px_2px_3px_rgba(0,0,0,0.12)]
+        hover:drop-shadow-[0px_8px_16px_rgba(26,90,129,0.12)]
         flex flex-col gap-6 md:gap-[34px] min-h-[290px] md:h-[311px] items-center justify-center
         pb-5 pt-6 px-4
         relative rounded-[24px] w-full max-w-[362px]
@@ -36,10 +26,8 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
         opacityClass="opacity-[0.06]"
       />
 
-      <motion.img
+      <img
         alt={feature.title}
-        whileHover={{ scale: 1.04 }}
-        transition={{ duration: 0.25 }}
         className="relative shrink-0 size-[75px] md:size-[90px] object-contain"
         src={feature.icon}
       />
@@ -62,7 +50,7 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
       >
         {feature.description}
       </p>
-    </motion.article>
+    </article>
   );
 }
 
@@ -70,17 +58,7 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
 
 function WhyHafezItem({ item, index }: { item: WhyItem; index: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{
-        duration: 0.45,
-        delay: index * 0.08,
-        ease: "easeOut",
-      }}
-      whileHover={{ y: -3, scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
+    <div
       className="
         flex flex-col gap-3 md:gap-[20px]
         items-center relative cursor-pointer
@@ -163,7 +141,7 @@ function WhyHafezItem({ item, index }: { item: WhyItem; index: number }) {
       >
         {item.label}
       </p>
-    </motion.div>
+    </div>
   );
 }
 

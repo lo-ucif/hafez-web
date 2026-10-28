@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { institutions } from "../../data/institutions";
 import SectionTitle from "../common/SectionTitle";
 
@@ -28,15 +27,9 @@ export default function Institutions() {
 
       {/* Cards list matching Figma Desktop - 7 / node 196:421 */}
       <div className="flex flex-wrap gap-8 md:gap-[50px] lg:gap-[67px] items-center justify-center w-full relative z-10 max-w-[1280px] mx-auto mt-4">
-        {institutions.map((item, index) => (
-          <motion.article
+        {institutions.map((item) => (
+          <article
             key={item.id}
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
-            whileHover={{ y: -4, scale: 1.01 }}
-            whileTap={{ scale: 0.99 }}
             className="
               group drop-shadow-[0px_9.042px_6.781px_rgba(0,0,0,0.1),0px_3.617px_2.712px_rgba(0,0,0,0.1)]
               hover:drop-shadow-[0px_16px_22px_rgba(26,90,129,0.15)]
@@ -71,7 +64,7 @@ export default function Institutions() {
                 src={item.image}
               />
             </div>
-          </motion.article>
+          </article>
         ))}
       </div>
     </section>

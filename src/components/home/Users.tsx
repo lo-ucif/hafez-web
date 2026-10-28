@@ -1,36 +1,13 @@
-import { motion, type Variants } from "framer-motion";
 import { userTypes } from "../../data/users";
 import type { UserType } from "../../data/users";
 import SectionTitle from "../common/SectionTitle";
 import ArabicBg from "../common/ArabicBg";
 
-const cardGridMotion: Variants = {
-  initial: { opacity: 0 },
-  animate: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.08 },
-  },
-};
-
-const cardItemMotion: Variants = {
-  initial: { opacity: 0, y: 14 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, ease: "easeOut" },
-  },
-  exit: { opacity: 0, transition: { duration: 0.2 } },
-};
-
 // ─── User Card ────────────────────────────────────────────────────────────────
 
 function UserCard({ user }: { user: UserType }) {
   return (
-    <motion.div
-      layout
-      variants={cardItemMotion}
-      whileHover={{ y: -4, scale: 1.01 }}
-      whileTap={{ scale: 0.99 }}
+    <div
       className="
         group drop-shadow-[0px_8.463px_6.347px_rgba(0,0,0,0.1),0px_3.385px_2.539px_rgba(0,0,0,0.1)]
         hover:drop-shadow-[0px_16px_20px_rgba(26,90,129,0.15)]
@@ -98,7 +75,7 @@ function UserCard({ user }: { user: UserType }) {
           {user.status}
         </span>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -122,17 +99,11 @@ export default function Users() {
       />
 
       <div className="w-full flex flex-col items-center relative min-h-[320px] mt-2">
-        <motion.div
-          variants={cardGridMotion}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.15 }}
-          className="flex flex-wrap gap-8 sm:gap-6 md:gap-[20px] items-center justify-center w-full"
-        >
+        <div className="flex flex-wrap gap-8 sm:gap-6 md:gap-[20px] items-center justify-center w-full">
           {userTypes.map((user) => (
             <UserCard key={user.id} user={user} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

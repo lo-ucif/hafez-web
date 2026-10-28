@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
 import { IMAGES } from "../../constants/images";
 import SectionTitle from "../common/SectionTitle";
 
@@ -211,9 +210,8 @@ export default function Testimonials() {
             const cleanQuote = item.quote.trim().replace(/^["“]|["”]$/g, "").trim().replace(/[.\s]+$/, "");
 
             return (
-              <motion.article
+              <article
                 key={uniqueKey}
-                whileHover={!isCardActive ? { y: -3, scale: 1.008 } : {}}
                 onClick={(e) => handleCardClick(e, uniqueKey)}
                 data-node-id="312:121"
                 className={`
@@ -224,7 +222,7 @@ export default function Testimonials() {
                   transition-all duration-300 shrink-0 relative flex flex-col items-center pb-[20px]
                   ${
                     isCardActive
-                      ? "scale-[1.015] ring-2 ring-[#cab178] shadow-[0px_6px_20px_rgba(202,177,120,0.3)]"
+                      ? "ring-2 ring-[#cab178] shadow-[0px_6px_20px_rgba(202,177,120,0.3)]"
                       : "border border-transparent"
                   }
                 `}
@@ -298,7 +296,7 @@ export default function Testimonials() {
                     </p>
                   </div>
                 </div>
-              </motion.article>
+              </article>
             );
           })}
         </div>

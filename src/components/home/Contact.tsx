@@ -70,11 +70,7 @@ export default function Contact() {
         data-node-id="329:356"
       >
         {/* ── Left Column: Text + Robot Mascot (Figma nodes 329:378 & 337:148) ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+        <div
           dir="rtl"
           className="
             flex flex-col items-center lg:items-start text-center lg:text-right
@@ -94,12 +90,7 @@ export default function Contact() {
           </p>
 
           {/* Robot Mascot Sending Paper Plane (Figma node 337:148) */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
-            whileHover={{ y: -4, scale: 1.01 }}
+          <div
             className="
               relative shrink-0 select-none
               w-[220px] sm:w-[260px] md:w-[290px] lg:w-[310px]
@@ -115,15 +106,11 @@ export default function Contact() {
               className="w-full h-auto object-contain block drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)]"
               src={IMAGES.contactRobot}
             />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* ── Right Column: Form Card (Figma node 329:357) ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+        <div
           dir="rtl"
           className="
             bg-white w-full max-w-[560px] shrink-0
@@ -293,7 +280,7 @@ export default function Contact() {
               </motion.form>
             )}
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
