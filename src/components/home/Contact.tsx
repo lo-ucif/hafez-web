@@ -63,9 +63,9 @@ export default function Contact() {
       <div
         dir="ltr"
         className="
-          relative z-10 w-full max-w-[1200px]
-          flex flex-col lg:flex-row items-center lg:items-start justify-between
-          gap-10 sm:gap-12 lg:gap-8 xl:gap-14
+          relative z-10 w-full max-w-[1240px]
+          flex flex-col lg:flex-row items-center lg:items-center justify-between
+          gap-8 sm:gap-10 lg:gap-8 xl:gap-12
         "
         data-node-id="329:356"
       >
@@ -74,15 +74,15 @@ export default function Contact() {
           dir="rtl"
           className="
             flex flex-col items-center lg:items-start text-center lg:text-right
-            w-full lg:max-w-[480px] shrink-0
+            w-full lg:max-w-[500px] xl:max-w-[540px] shrink-0
             gap-4 sm:gap-6
-            pt-2 lg:pt-4
+            pt-2 lg:pt-0
           "
           data-node-id="329:378"
         >
           {/* Description */}
           <p
-            className="font-['Almarai'] font-normal text-[16px] sm:text-[18px] md:text-[20px] leading-[1.6] text-gray-600 m-0 max-w-[460px]"
+            className="font-['Almarai'] font-normal text-[16px] sm:text-[18px] md:text-[20px] leading-[1.6] text-gray-600 m-0 max-w-[480px]"
             dir="auto"
             data-node-id="329:380"
           >
@@ -93,8 +93,8 @@ export default function Contact() {
           <div
             className="
               relative shrink-0 select-none
-              w-[220px] sm:w-[260px] md:w-[290px] lg:w-[310px]
-              h-auto mt-2 lg:mt-4 self-center lg:self-start
+              w-[290px] sm:w-[350px] md:w-[400px] lg:w-[450px] xl:w-[480px] max-w-[90vw]
+              h-auto mt-2 lg:mt-3 self-center lg:self-start
             "
             data-node-id="337:148"
             data-name="Cheerful Robot Sending a Paper Plane"
