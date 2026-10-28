@@ -99,7 +99,7 @@ export default function Organisations() {
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
           transition={{
-            duration: 12,
+            duration: 25,
             repeat: Infinity,
             ease: "linear",
           }}
