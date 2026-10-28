@@ -80,9 +80,7 @@ export default function CTA() {
           "
           data-node-id="344:423"
         >
-          <motion.img
-            animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          <img
             alt="طالب يقرأ القرآن الكريم"
             src={IMAGES.ctaBoyQuran}
             className="
