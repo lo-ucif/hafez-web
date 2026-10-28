@@ -47,21 +47,14 @@ export default function Organisations() {
         />
       </motion.div>
 
-      {/* Partner Logos matching Figma node 196:464 */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.96 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.12 }}
-        className="flex flex-wrap items-center justify-center gap-6 sm:gap-[32px] md:gap-[40px] relative shrink-0 w-full z-10"
+      {/* Desktop & Tablet: Static side-by-side logos matching Figma */}
+      <div
+        className="hidden sm:flex items-center justify-center gap-6 sm:gap-[32px] md:gap-[40px] relative shrink-0 w-full z-10"
         data-node-id="196:464"
       >
         {/* Right (in RTL): نادي الطبيب الحافظ - كلية الطب قسنطينة */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ duration: 0.2 }}
-          className="h-[52px] sm:h-[60px] md:h-[65px] w-auto max-w-[200px] relative shrink-0 cursor-pointer flex items-center justify-center"
+        <div
+          className="h-[52px] sm:h-[60px] md:h-[65px] w-auto max-w-[200px] relative shrink-0 flex items-center justify-center"
           data-node-id="375:81"
           data-name="Cover-الطبيب-الحافظ_2-removebg-preview 2"
         >
@@ -70,7 +63,7 @@ export default function Organisations() {
             className="h-full w-auto object-contain block select-none drop-shadow-sm pointer-events-none"
             src={IMAGES.orgTabibHafez}
           />
-        </motion.div>
+        </div>
 
         {/* Center: Vertical Golden Divider */}
         <div
@@ -80,11 +73,8 @@ export default function Organisations() {
         />
 
         {/* Left (in RTL): نادي شفاء (Shifaa Club) */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ duration: 0.2 }}
-          className="h-[68px] sm:h-[78px] md:h-[88px] w-auto max-w-[170px] relative shrink-0 cursor-pointer flex items-center justify-center"
+        <div
+          className="h-[68px] sm:h-[78px] md:h-[88px] w-auto max-w-[170px] relative shrink-0 flex items-center justify-center"
           data-node-id="375:62"
           data-name="logo 3"
         >
@@ -93,8 +83,56 @@ export default function Organisations() {
             className="h-full w-auto object-contain block select-none drop-shadow-sm pointer-events-none"
             src={IMAGES.orgShifaaLogo}
           />
+        </div>
+      </div>
+
+      {/* Mobile Mode: Infinite Loop Marquee (Right to Left) */}
+      <div
+        className="sm:hidden w-full overflow-hidden relative z-10 py-1 select-none"
+        dir="ltr"
+        aria-label="هيئات شريكة"
+      >
+        {/* Soft edge gradient fades */}
+        <div className="absolute top-0 bottom-0 left-0 w-6 bg-gradient-to-r from-[#1a5a81] to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-6 bg-gradient-to-l from-[#1a5a81] to-transparent z-20 pointer-events-none" />
+
+        <motion.div
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="flex items-center w-max gap-5 will-change-transform"
+        >
+          {[0, 1, 2, 3].map((setIndex) => (
+            <div key={setIndex} className="flex items-center gap-5 shrink-0">
+              <div className="h-[44px] w-auto max-w-[155px] flex items-center justify-center shrink-0">
+                <img
+                  alt="شعار نادي الطبيب الحافظ"
+                  className="h-full w-auto object-contain block select-none"
+                  src={IMAGES.orgTabibHafez}
+                />
+              </div>
+              <div
+                className="h-[34px] w-[2px] bg-[#cab178] rounded-full shrink-0"
+                aria-hidden="true"
+              />
+              <div className="h-[54px] w-auto max-w-[125px] flex items-center justify-center shrink-0">
+                <img
+                  alt="شعار نادي شفاء"
+                  className="h-full w-auto object-contain block select-none"
+                  src={IMAGES.orgShifaaLogo}
+                />
+              </div>
+              <div
+                className="h-[34px] w-[2px] bg-[#cab178] rounded-full shrink-0"
+                aria-hidden="true"
+              />
+            </div>
+          ))}
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
