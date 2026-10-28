@@ -28,10 +28,10 @@ export default function SectionTitle({
 }: SectionTitleProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
       className={`flex flex-col items-center justify-center text-center relative shrink-0 cursor-default select-none ${className}`}
       data-node-id="236:60"
     >

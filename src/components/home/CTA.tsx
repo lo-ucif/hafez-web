@@ -15,10 +15,10 @@ export default function CTA() {
     >
       {/* Outer Banner Container matching Figma node 343:402 (Desktop) and 344:419 (Mobile) */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         dir="ltr"
         className="
           relative w-full max-w-[380px] sm:max-w-[460px] md:max-w-[680px] lg:max-w-[1240px]
@@ -51,10 +51,10 @@ export default function CTA() {
 
         {/* Left Side: Boy reading Quran illustration (node 343:406 & 344:423) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92, x: -25 }}
-          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.75, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.5, delay: 0.08, ease: "easeOut" }}
           className="
             relative z-10 shrink-0
             w-[230px] sm:w-[260px] md:w-[360px] lg:w-[520px] xl:w-[600px]
@@ -76,10 +76,10 @@ export default function CTA() {
 
         {/* Right Side: Text & Button (node 343:407 & 344:424) */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.5, delay: 0.12, ease: "easeOut" }}
           dir="rtl"
           className="
             relative z-10 flex flex-col items-end text-right

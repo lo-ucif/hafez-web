@@ -60,9 +60,9 @@ export default function Hero() {
         >
           {/* Logo Illustration (Right side on desktop in RTL) */}
           <motion.div
-            initial={{ opacity: 0, x: 25, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="
               relative shrink-0
               w-[240px] h-[205px]
@@ -75,7 +75,7 @@ export default function Hero() {
             data-node-id="196:213"
           >
             <motion.img
-              animate={{ y: [0, -8, 0] }}
+              animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
               alt="شعار منصة حافظ"
               src={IMAGES.heroLogo}
@@ -85,9 +85,9 @@ export default function Hero() {
 
           {/* Middle Vertical Divider */}
           <motion.div
-            initial={{ opacity: 0, scaleY: 0.5 }}
-            animate={{ opacity: 1, scaleY: 1 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             className="hidden lg:flex items-center justify-center shrink-0 h-[175px] xl:h-[200px] px-1"
             data-node-id="330:1329"
             aria-hidden="true"
@@ -101,9 +101,9 @@ export default function Hero() {
 
           {/* Text Column: Title + Description (Left side on desktop in RTL) */}
           <motion.div
-            initial={{ opacity: 0, x: -25 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.08, ease: "easeOut" }}
             className="
               flex flex-col items-center lg:items-start text-center lg:text-right
               text-white max-w-[560px] xl:max-w-[590px] w-full shrink-0

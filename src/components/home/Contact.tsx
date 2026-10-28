@@ -71,10 +71,10 @@ export default function Contact() {
       >
         {/* ── Left Column: Text + Robot Mascot (Figma nodes 329:378 & 337:148) ── */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           dir="rtl"
           className="
             flex flex-col items-center lg:items-start text-center lg:text-right
@@ -104,11 +104,11 @@ export default function Contact() {
 
           {/* Robot Mascot Sending Paper Plane (Figma node 337:148) */}
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            whileHover={{ y: -6, scale: 1.03 }}
+            transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
+            whileHover={{ y: -4, scale: 1.01 }}
             className="
               relative shrink-0 select-none
               w-[220px] sm:w-[260px] md:w-[290px] lg:w-[310px]
@@ -129,10 +129,10 @@ export default function Contact() {
 
         {/* ── Right Column: Form Card (Figma node 329:357) ── */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
           dir="rtl"
           className="
             bg-white w-full max-w-[560px] shrink-0

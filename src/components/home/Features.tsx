@@ -9,17 +9,17 @@ import ArabicBg from "../common/ArabicBg";
 function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 35, scale: 0.96 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.55, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.45, delay: (index % 3) * 0.08, ease: "easeOut" }}
       whileHover={{
-        y: -10,
-        scale: 1.02,
+        y: -4,
+        scale: 1.01,
         boxShadow:
-          "0 22px 30px -6px rgba(26,90,129,0.16), 0 10px 14px -6px rgba(26,90,129,0.08)",
+          "0 14px 20px -6px rgba(26,90,129,0.12), 0 6px 10px -4px rgba(26,90,129,0.06)",
       }}
-      whileTap={{ scale: 0.98 }}
+      whileTap={{ scale: 0.99 }}
       className="
         backdrop-blur-[34.87px] bg-white
         drop-shadow-[0px_2px_3px_rgba(0,0,0,0.12)]
@@ -38,8 +38,8 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
 
       <motion.img
         alt={feature.title}
-        whileHover={{ scale: 1.1, rotate: [0, -3, 3, 0] }}
-        transition={{ duration: 0.3 }}
+        whileHover={{ scale: 1.04 }}
+        transition={{ duration: 0.25 }}
         className="relative shrink-0 size-[75px] md:size-[90px] object-contain"
         src={feature.icon}
       />
@@ -71,15 +71,16 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
 function WhyHafezItem({ item, index }: { item: WhyItem; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.85, y: 20 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.4 }}
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
       transition={{
-        duration: 0.5,
+        duration: 0.45,
+        delay: index * 0.08,
         ease: "easeOut",
       }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ y: -3, scale: 1.03 }}
+      whileTap={{ scale: 0.98 }}
       className="
         flex flex-col gap-3 md:gap-[20px]
         items-center relative cursor-pointer

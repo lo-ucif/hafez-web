@@ -13,14 +13,13 @@ const cardGridMotion: Variants = {
 };
 
 const cardItemMotion: Variants = {
-  initial: { opacity: 0, y: 35, scale: 0.94 },
+  initial: { opacity: 0, y: 14 },
   animate: {
     opacity: 1,
     y: 0,
-    scale: 1,
-    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.45, ease: "easeOut" },
   },
-  exit: { opacity: 0, scale: 0.9, transition: { duration: 0.2 } },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
 // ─── User Card ────────────────────────────────────────────────────────────────
@@ -30,8 +29,8 @@ function UserCard({ user }: { user: UserType }) {
     <motion.div
       layout
       variants={cardItemMotion}
-      whileHover={{ y: -8, scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={{ y: -4, scale: 1.01 }}
+      whileTap={{ scale: 0.99 }}
       className="
         group drop-shadow-[0px_8.463px_6.347px_rgba(0,0,0,0.1),0px_3.385px_2.539px_rgba(0,0,0,0.1)]
         hover:drop-shadow-[0px_16px_20px_rgba(26,90,129,0.15)]

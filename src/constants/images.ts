@@ -46,7 +46,7 @@ export const IMAGES = {
 
   // Organisations banner (WebP & SVG)
   orgDividerLine: "/figma-exact/org-underline.svg",
-  orgTabibHafez: "/figma-exact/org-tabib-hafez.png",
+  orgTabibHafez: "/figma-exact/org-tabib-hafez.webp",
   orgShifaaLogo: "/figma-exact/org-shifaa-logo.svg",
   orgSeparator: "/figma-exact/org-separator.svg",
 
@@ -65,7 +65,7 @@ export const IMAGES = {
   contactRobot: "/figma-exact/robot-paper-plane.webp",
   contactBgShape: "/figma-exact/contact-bg-shape.svg",
 
-  // Testimonials (PNG)
-  testimonialAvatar: "/figma-exact/testimonial-avatar.png",
-  testimonialBg: "/figma-exact/testimonial-bg.png",
+  // Testimonials (WebP)
+  testimonialAvatar: "/figma-exact/testimonial-avatar.webp",
+  testimonialBg: "/figma-exact/testimonial-bg.webp",
 } as const;

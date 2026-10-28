@@ -98,10 +98,10 @@ export default function Gallery() {
 
       {/* حاوية معرض الصور */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
         className="
           flex gap-4 sm:gap-8 md:gap-[84px]
           items-center justify-center relative
@@ -258,10 +258,9 @@ export default function Gallery() {
               className={`
                 transition-all duration-300 rounded-[999px]
                 cursor-pointer p-0 border-none shrink-0
-                ${
-                  isActive
-                    ? "bg-[#1a5a81] h-[7px] md:h-[11px] w-[22px] md:w-[36px]"
-                    : "bg-[#97bacf] size-[7px] md:size-[11px] hover:bg-[#78a5bf]"
+                ${isActive
+                  ? "bg-[#1a5a81] h-[7px] md:h-[11px] w-[22px] md:w-[36px]"
+                  : "bg-[#97bacf] size-[7px] md:size-[11px] hover:bg-[#78a5bf]"
                 }
               `}
             />

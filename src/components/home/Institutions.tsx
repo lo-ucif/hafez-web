@@ -31,12 +31,12 @@ export default function Institutions() {
         {institutions.map((item, index) => (
           <motion.article
             key={item.id}
-            initial={{ opacity: 0, y: 35, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ y: -8, scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
+            whileHover={{ y: -4, scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
             className="
               group drop-shadow-[0px_9.042px_6.781px_rgba(0,0,0,0.1),0px_3.617px_2.712px_rgba(0,0,0,0.1)]
               hover:drop-shadow-[0px_16px_22px_rgba(26,90,129,0.15)]

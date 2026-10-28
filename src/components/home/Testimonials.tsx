@@ -81,7 +81,7 @@ export default function Testimonials() {
   }, [isCentered]);
 
   useEffect(() => {
-    const SPEED = 42; // pixels per second smooth movement
+    const SPEED = 28; // gentle smooth movement
 
     const tick = (time: number) => {
       if (lastTimeRef.current === null) {
@@ -213,18 +213,18 @@ export default function Testimonials() {
             return (
               <motion.article
                 key={uniqueKey}
-                whileHover={!isCardActive ? { y: -6, scale: 1.02 } : {}}
+                whileHover={!isCardActive ? { y: -3, scale: 1.008 } : {}}
                 onClick={(e) => handleCardClick(e, uniqueKey)}
                 data-node-id="312:121"
                 className={`
                   bg-white w-[85vw] max-w-[336px] sm:w-[336px]
                   min-h-[190px] rounded-[20px] overflow-hidden cursor-pointer
                   shadow-[0px_0px_10.6px_0px_rgba(0,0,0,0.25)]
-                  hover:shadow-[0px_8px_24px_rgba(26,90,129,0.22)]
+                  hover:shadow-[0px_6px_18px_rgba(26,90,129,0.18)]
                   transition-all duration-300 shrink-0 relative flex flex-col items-center pb-[20px]
                   ${
                     isCardActive
-                      ? "scale-[1.03] ring-2 ring-[#cab178] shadow-[0px_8px_26px_rgba(202,177,120,0.38)]"
+                      ? "scale-[1.015] ring-2 ring-[#cab178] shadow-[0px_6px_20px_rgba(202,177,120,0.3)]"
                       : "border border-transparent"
                   }
                 `}
