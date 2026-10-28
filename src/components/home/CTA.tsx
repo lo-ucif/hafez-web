@@ -55,10 +55,10 @@ export default function CTA() {
         <div
           className="
             relative z-10 shrink-0
-            w-[38%] sm:w-[40%] md:w-[42%] max-w-[500px] h-full
+            w-[42%] sm:w-[42%] md:w-[44%] max-w-[500px] h-full
             flex items-end justify-start
-            pl-1.5 sm:pl-3 md:pl-5 lg:pl-8
             select-none pointer-events-none
+            overflow-hidden
           "
           data-node-id="344:423"
         >
@@ -67,7 +67,13 @@ export default function CTA() {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             alt="طالب يقرأ القرآن الكريم"
             src={IMAGES.ctaBoyQuran}
-            className="w-full max-h-full object-contain object-bottom-left block drop-shadow-[0_8px_20px_rgba(0,0,0,0.14)]"
+            className="
+              h-[92%] sm:h-[94%] md:h-[96%]
+              w-auto max-w-none
+              object-contain object-bottom-left
+              block drop-shadow-[0_8px_20px_rgba(0,0,0,0.14)]
+              -translate-x-[16%] sm:-translate-x-[8%] md:translate-x-0
+            "
           />
         </div>
 
