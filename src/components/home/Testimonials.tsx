@@ -43,7 +43,7 @@ const testimonials: Testimonial[] = [
 
 /**
  * Testimonials / User Reviews section matching Figma node 298:68
- * With card design matching Figma node 380:108
+ * With card design matching Figma node 312:121
  * With infinite marching cards marquee loop and pause-on-hover.
  */
 export default function Testimonials() {
@@ -208,16 +208,17 @@ export default function Testimonials() {
           {marqueeList.map((item, idx) => {
             const uniqueKey = `${item.id}-${idx}`;
             const isCardActive = isCentered && activeCardKey === uniqueKey;
+            const cleanQuote = item.quote.trim().replace(/^["“]|["”]$/g, "").trim().replace(/[.\s]+$/, "");
 
             return (
               <motion.article
                 key={uniqueKey}
                 whileHover={!isCardActive ? { y: -6, scale: 1.02 } : {}}
                 onClick={(e) => handleCardClick(e, uniqueKey)}
-                data-node-id="380:108"
+                data-node-id="312:121"
                 className={`
-                  bg-white w-[82vw] max-w-[324px] sm:w-[324px]
-                  min-h-[220px] rounded-[20px] overflow-hidden cursor-pointer
+                  bg-white w-[85vw] max-w-[336px] sm:w-[336px]
+                  min-h-[190px] rounded-[20px] overflow-hidden cursor-pointer
                   shadow-[0px_0px_10.6px_0px_rgba(0,0,0,0.25)]
                   hover:shadow-[0px_8px_24px_rgba(26,90,129,0.22)]
                   transition-all duration-300 shrink-0 relative flex flex-col items-center pb-[20px]
@@ -233,10 +234,10 @@ export default function Testimonials() {
                 aria-pressed={isCardActive}
                 aria-label={`رأي ${item.name}، انقر للتوسيط والإيقاف`}
               >
-                {/* Top Blue Header Banner matching Figma node 380:109 */}
+                {/* Top Blue Header Banner matching Figma node 380:97 */}
                 <div
                   className="h-[69px] w-full relative overflow-hidden bg-[#1a5a81] shrink-0"
-                  data-node-id="380:109"
+                  data-node-id="380:97"
                   data-name="Rectangle 39635"
                 >
                   <div aria-hidden className="absolute inset-0 pointer-events-none">
@@ -249,56 +250,51 @@ export default function Testimonials() {
                   </div>
                 </div>
 
-                {/* Floating Avatar matching Figma node 380:116 */}
+                {/* Floating Avatar matching Figma node 380:102 */}
                 <div
-                  className="absolute top-[28.8px] left-1/2 -translate-x-1/2 size-[65px] rounded-full border-[2.7px] border-solid border-white shadow-[0px_0.68px_1.35px_rgba(0,0,0,0.05)] overflow-hidden bg-[#1a5a81] z-10 shrink-0"
-                  data-node-id="380:116"
+                  className="absolute top-[28.8px] left-1/2 -translate-x-1/2 size-[65px] rounded-full border-[2.7px] border-solid border-white shadow-[0px_0.68px_1.35px_0px_rgba(0,0,0,0.05)] overflow-hidden bg-[#1a5a81] z-10 shrink-0"
+                  data-node-id="380:102"
                   data-name="Eugenia Babajanyan"
                 >
                   <img
                     alt={item.name}
-                    className="size-full object-cover rounded-full pointer-events-none"
+                    className="size-full object-contain rounded-full pointer-events-none"
                     src={IMAGES.testimonialAvatar}
                   />
                 </div>
 
-                {/* Content Section matching Figma node 380:110 */}
+                {/* Content Section matching Figma node 312:122 */}
                 <div
-                  className="flex flex-col items-center justify-center w-full px-[20px] pt-[32px] gap-[10px] text-center"
-                  data-node-id="380:110"
+                  className="flex flex-col items-center justify-center w-full px-[20px] pt-[30px] gap-[10px] text-center"
+                  data-node-id="312:122"
                   data-name="ContentSection"
                 >
-                  {/* Heading: Name & Role matching Figma node 380:111 */}
+                  {/* Heading: Name matching Figma node 312:123 */}
                   <div
                     className="flex flex-col items-center justify-center text-center w-full"
-                    data-node-id="380:111"
+                    data-node-id="312:123"
                     data-name="Heading 1 - Title:margin"
                   >
                     <h3
-                      className="font-['Almarai:Bold'] font-bold text-[#1a5a81] text-[20px] leading-[29.2px] m-0"
-                      data-node-id="380:112"
+                      className="font-bold text-[#1a5a81] text-[20px] leading-[29.2px] m-0 text-center"
+                      data-node-id="315:157"
                     >
                       {item.name}
                     </h3>
-                    <p
-                      className="font-['Almarai:Regular'] text-[#caa778] text-[12px] leading-[16.5px] m-0"
-                      data-node-id="380:113"
-                    >
-                      {item.role}
-                    </p>
                   </div>
 
-                  {/* Description / Snippet matching Figma node 380:114 */}
+                  {/* Description / Snippet matching Figma node 312:127 */}
                   <div
                     className="w-full text-center"
-                    data-node-id="380:114"
+                    data-node-id="312:127"
                     data-name="Description/Snippet"
                   >
                     <p
-                      className="font-['Almarai:Regular'] text-[#666666] text-[12px] leading-[20.3px] text-center m-0"
-                      data-node-id="380:115"
+                      className="font-normal text-[#666666] text-[12px] leading-[20.3px] text-center m-0"
+                      data-node-id="312:128"
                     >
-                      {item.quote}
+                      <span>“{cleanQuote}” </span>
+                      <span className="text-[#cab178] font-medium">{item.role}</span>
                     </p>
                   </div>
                 </div>
