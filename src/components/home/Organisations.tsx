@@ -9,6 +9,7 @@ import ArabicBg from "../common/ArabicBg";
 export default function Organisations() {
   return (
     <section
+      id="organisations"
       aria-label="هيئات تستعمل النّظام"
       className="
         bg-[#1a5a81] relative w-full overflow-clip

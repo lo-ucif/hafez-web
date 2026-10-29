@@ -4,7 +4,6 @@ import { IMAGES } from "../../constants/images";
 import { navLinks } from "../../data/navigation";
 import type { NavLink } from "../../data/navigation";
 import ArabicBg from "../common/ArabicBg";
-import { WHATSAPP_ORDER_LINK } from "../../constants/contact";
 
 /**
  * Site-wide Navbar with Framer Motion animations & dynamic active link coloring.
@@ -22,9 +21,9 @@ export default function Navbar() {
     if (hash === "#features") return "features";
     if (hash === "#roles" || hash === "#users") return "roles";
     if (hash === "#institutions") return "institutions";
+    if (hash === "#organisations") return "organisations";
     if (hash === "#gallery") return "gallery";
-    if (hash === "#offers") return "offers";
-    if (hash === "#contact") return "contact";
+    if (hash === "#testimonials") return "testimonials";
 
     return "home";
   });
@@ -62,12 +61,12 @@ export default function Navbar() {
         setActiveId("roles");
       } else if (hash === "#institutions") {
         setActiveId("institutions");
+      } else if (hash === "#organisations") {
+        setActiveId("organisations");
       } else if (hash === "#gallery") {
         setActiveId("gallery");
-      } else if (hash === "#offers") {
-        setActiveId("offers");
-      } else if (hash === "#contact") {
-        setActiveId("contact");
+      } else if (hash === "#testimonials") {
+        setActiveId("testimonials");
       } else if (hash === "#home" || !hash) {
         setActiveId("home");
       }
@@ -92,12 +91,12 @@ export default function Navbar() {
         0;
       setIsScrolled(currentScroll > 15);
 
-      // If scrolled close to bottom of page, highlight the last item (contact)
+      // If scrolled close to bottom of page, highlight testimonials
       if (
         window.innerHeight + currentScroll >=
         document.documentElement.scrollHeight - 70
       ) {
-        setActiveId("contact");
+        setActiveId("testimonials");
         return;
       }
 
@@ -109,9 +108,9 @@ export default function Navbar() {
         { id: "features", linkId: "features" },
         { id: "roles", linkId: "roles" },
         { id: "institutions", linkId: "institutions" },
+        { id: "organisations", linkId: "organisations" },
         { id: "gallery", linkId: "gallery" },
-        { id: "offers", linkId: "offers" },
-        { id: "contact", linkId: "contact" },
+        { id: "testimonials", linkId: "testimonials" },
       ];
 
       for (const item of [...sections].reverse()) {
@@ -172,6 +171,33 @@ export default function Navbar() {
       });
 
       window.history.pushState(null, "", link.href);
+    }
+  };
+
+  // Handle "طلب نسخة" button click -> scrolls directly to the CTA section ("لديكم مدرسة قرآنية؟")
+  const handleRequestCopyClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setActiveId("offers");
+    setMobileMenuOpen(false);
+
+    const el = document.getElementById("offers");
+    if (el) {
+      const isMobile = window.innerWidth < 1024;
+      const headerHeight = isMobile ? 54 : 76;
+      const currentScroll =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        0;
+      const targetY =
+        el.getBoundingClientRect().top + currentScroll - headerHeight;
+
+      window.scrollTo({
+        top: Math.max(0, targetY),
+        behavior: "smooth",
+      });
+
+      window.history.pushState(null, "", "#offers");
     }
   };
 
@@ -274,13 +300,12 @@ export default function Navbar() {
               تواصل معنا
             </motion.button>
 
-            {/* Button 2: طلب نسخة (Figma node 330:997) -> Goes directly to WhatsApp */}
-            <motion.a
-              href={WHATSAPP_ORDER_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* Button 2: طلب نسخة (Figma node 330:997) -> Scrolls to CTA section */}
+            <motion.button
+              type="button"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
+              onClick={handleRequestCopyClick}
               className="
                 bg-[#1a5a81] hover:bg-[#154664] text-white
                 border border-white/30
@@ -290,13 +315,13 @@ export default function Navbar() {
                 rounded-[6px] shadow-sm
                 transition-all duration-200
                 cursor-pointer whitespace-nowrap
-                flex items-center justify-center no-underline
+                flex items-center justify-center
               "
               dir="auto"
               data-node-id="330:997"
             >
               طلب نسخة
-            </motion.a>
+            </motion.button>
           </div>
 
           {/* Right Group: Nav Links + Logo in RTL */}
@@ -336,7 +361,7 @@ export default function Navbar() {
             </motion.a>
 
             {/* Nav links to the left of the Logo matching requested style */}
-            <nav aria-label="التنقل الرئيسي" className="flex items-center gap-0.5 xl:gap-1 min-w-0">
+            <nav aria-label="التنقل الرئيسي" className="flex items-center gap-0 xl:gap-0.5 2xl:gap-1 min-w-0">
               <ul className="flex items-center list-none m-0 p-0" dir="rtl">
                 {navLinks.map((link) => {
                   const isLinkActive = activeId === link.id;
@@ -347,7 +372,7 @@ export default function Navbar() {
                         href={link.href}
                         onClick={(e) => handleNavClick(link, e)}
                         dir="auto"
-                        className={`relative flex flex-col items-center justify-center px-1.5 xl:px-3 py-1.5 text-[13px] xl:text-[16px] transition-colors cursor-pointer group select-none no-underline whitespace-nowrap ${
+                        className={`relative flex flex-col items-center justify-center px-1 xl:px-2.5 2xl:px-3 py-1.5 text-[12px] xl:text-[14px] 2xl:text-[15.5px] transition-colors cursor-pointer group select-none no-underline whitespace-nowrap ${
                           isLinkActive
                             ? "text-[#cab178] font-semibold"
                             : "text-white/90 hover:text-[#cab178] font-medium"
@@ -629,12 +654,10 @@ export default function Navbar() {
                 className="flex flex-col gap-3 w-full pb-2 shrink-0 relative z-10"
                 dir="rtl"
               >
-                {/* Button 1: طلب نسخة -> Goes directly to WhatsApp */}
-                <motion.a
-                  href={WHATSAPP_ORDER_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileMenuOpen(false)}
+                {/* Button 1: طلب نسخة -> Scrolls to CTA section */}
+                <motion.button
+                  type="button"
+                  onClick={handleRequestCopyClick}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.96 }}
                   className="
@@ -643,12 +666,12 @@ export default function Navbar() {
                     flex items-center justify-center
                     font-['Changa:SemiBold'] font-semibold text-[18px] sm:text-[20px] leading-none
                     rounded-[6px] shadow-md
-                    transition-all cursor-pointer whitespace-nowrap no-underline
+                    transition-all cursor-pointer whitespace-nowrap
                   "
                   dir="auto"
                 >
                   طلب نسخة
-                </motion.a>
+                </motion.button>
 
                 {/* Button 2: تواصل معنا */}
                 <motion.button
