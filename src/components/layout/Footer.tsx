@@ -305,13 +305,21 @@ export default function Footer() {
               © 2026 منصة حافظ. جميع الحقوق محفوظة
             </p>
 
-            {/* Left in RTL: "من إنجاز منصة حافظ" */}
-            <p
-              className="font-['Tajawal:Bold'] font-bold text-[17px] leading-[1.5] m-0 text-white"
+            {/* Left in RTL: الأحكام والشروط | سياسة الخصوصية */}
+            <div
+              className="flex items-center gap-2.5 sm:gap-3 text-white/75 font-['Tajawal:Regular'] text-[15px] sm:text-[16px] leading-[1.5]"
               data-node-id="337:283"
             >
-              من إنجاز منصة حافظ
-            </p>
+              <span className="hover:text-white transition-colors cursor-pointer select-none">
+                الأحكام والشروط
+              </span>
+              <span className="text-[#cab178] font-bold select-none text-[15px]" aria-hidden="true">
+                |
+              </span>
+              <span className="hover:text-white transition-colors cursor-pointer select-none">
+                سياسة الخصوصية
+              </span>
+            </div>
           </div>
         </div>
       </motion.div>

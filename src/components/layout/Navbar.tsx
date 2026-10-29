@@ -330,33 +330,15 @@ export default function Navbar() {
             <motion.a
               href="#home"
               onClick={handleLogoClick}
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               aria-label="الصفحة الرئيسية"
-              className="relative shrink-0 h-[48px] xl:h-[56.75px] w-[56px] xl:w-[66px] transition-transform duration-200 cursor-pointer"
+              className="relative shrink-0 flex items-center justify-center h-[46px] xl:h-[54px] w-auto transition-transform duration-200 cursor-pointer"
             >
               <img
-                alt=""
-                aria-hidden="true"
-                className="absolute h-[48px] xl:h-[56.75px] left-[34px] xl:left-[39.9px] top-0 w-[4.6px] xl:w-[5.448px] max-w-none block"
-                src={IMAGES.logoBarTop}
-              />
-              <img
                 alt="شعار حافظ"
-                className="absolute h-[35px] xl:h-[41.612px] left-0 top-[7px] xl:top-[8.15px] w-[31px] xl:w-[37.218px] max-w-none block"
-                src={IMAGES.logoPartHa}
-              />
-              <img
-                alt=""
-                aria-hidden="true"
-                className="absolute h-[30px] xl:h-[35.776px] left-[32px] xl:left-[38.3px] top-[11px] xl:top-[12.89px] w-[20px] xl:w-[23.314px] max-w-none block"
-                src={IMAGES.logoPartHin}
-              />
-              <img
-                alt=""
-                aria-hidden="true"
-                className="absolute h-[16px] xl:h-[19.551px] left-[35px] xl:left-[40.81px] top-[25px] xl:top-[29.03px] w-[22px] xl:w-[25.722px] max-w-none block"
-                src={IMAGES.logoBarBottom}
+                className="h-full w-auto max-h-[46px] xl:max-h-[54px] object-contain block drop-shadow-sm select-none"
+                src="/hafez-logo.svg"
               />
             </motion.a>
 
@@ -538,36 +520,18 @@ export default function Navbar() {
                 data-node-id="308:145"
                 dir="ltr"
               >
-                {/* Logo (Figma node 308:146) */}
+                {/* Logo */}
                 <a
                   href="#home"
                   onClick={handleLogoClick}
                   aria-label="الصفحة الرئيسية"
-                  className="relative shrink-0 h-[48px] w-[56px] cursor-pointer"
+                  className="relative shrink-0 flex items-center justify-center h-[44px] w-auto cursor-pointer"
                   data-node-id="308:147"
                 >
                   <img
-                    alt=""
-                    aria-hidden="true"
-                    className="absolute h-[48px] left-[33.8px] top-0 w-[4.6px] max-w-none block"
-                    src={IMAGES.logoBarTop}
-                  />
-                  <img
                     alt="شعار حافظ"
-                    className="absolute h-[35.2px] left-0 top-[6.9px] w-[31.5px] max-w-none block"
-                    src={IMAGES.logoPartHa}
-                  />
-                  <img
-                    alt=""
-                    aria-hidden="true"
-                    className="absolute h-[30.3px] left-[32.4px] top-[10.9px] w-[19.7px] max-w-none block"
-                    src={IMAGES.logoPartHin}
-                  />
-                  <img
-                    alt=""
-                    aria-hidden="true"
-                    className="absolute h-[16.5px] left-[34.6px] top-[24.6px] w-[21.8px] max-w-none block"
-                    src={IMAGES.logoBarBottom}
+                    className="h-full w-auto max-h-[44px] object-contain block select-none"
+                    src="/hafez-logo.svg"
                   />
                 </a>
 
