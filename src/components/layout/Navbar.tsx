@@ -19,6 +19,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const [activeId, setActiveId] = useState<string>(() => {
+    if (currentPage !== "home") return "home";
     const hash = window.location.hash;
     if (hash === "#features") return "features";
     if (hash === "#roles" || hash === "#users") return "roles";
@@ -52,8 +53,20 @@ export default function Navbar() {
     ? "bg-[#1A5A81]/95 md:bg-transparent"
     : "bg-[#1A5A81] shadow-md";
 
+  // Keep "الرئيسية" active whenever on Terms or Privacy pages
+  useEffect(() => {
+    if (currentPage !== "home") {
+      setActiveId("home");
+    }
+  }, [currentPage]);
+
   // Sync active link with hash changes
   useEffect(() => {
+    if (currentPage !== "home") {
+      setActiveId("home");
+      return;
+    }
+
     const updateFromHash = () => {
       const hash = window.location.hash;
 
@@ -81,7 +94,7 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("hashchange", updateFromHash);
     };
-  }, []);
+  }, [currentPage]);
 
   // Scroll Spy: dynamically highlight the title matching the section on screen
   useEffect(() => {
@@ -92,6 +105,12 @@ export default function Navbar() {
         document.documentElement.scrollTop ||
         0;
       setIsScrolled(currentScroll > 15);
+
+      // When on subpages (Terms & Conditions / Privacy Policy), always keep "الرئيسية" colored
+      if (currentPage !== "home") {
+        setActiveId("home");
+        return;
+      }
 
       // If scrolled close to bottom of page, highlight testimonials
       if (
@@ -130,7 +149,7 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [currentPage]);
 
   // Prevent background scroll when mobile drawer is open
   useEffect(() => {
