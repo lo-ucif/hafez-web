@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { IMAGES } from "../../constants/images";
 import { navLinks } from "../../data/navigation";
 import { WHATSAPP_LINK } from "../../constants/contact";
+import { useNavigation } from "../../context/NavigationContext";
 
 const socialLinks = [
   {
@@ -96,6 +97,8 @@ const socialLinks = [
  * Site Footer matching Figma node 337:196 ("Footer / 1 /")
  */
 export default function Footer() {
+  const { navigateTo } = useNavigation();
+
   return (
     <footer
       dir="rtl"
@@ -139,6 +142,7 @@ export default function Footer() {
           >
             {/* Logo */}
             <motion.div
+              onClick={() => navigateTo("home")}
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="h-[100px] w-[118px] relative shrink-0 cursor-pointer"
@@ -245,30 +249,15 @@ export default function Footer() {
                   key={link.id}
                   href={link.href}
                   onClick={(e) => {
-                    const targetId = link.href.replace("#", "");
-                    const el = document.getElementById(targetId);
-                    if (el) {
-                      e.preventDefault();
-                      const headerHeight = window.innerWidth < 768 ? 60 : 90;
-                      const currentScroll =
-                        window.scrollY || window.pageYOffset || 0;
-                      const targetY =
-                        el.getBoundingClientRect().top +
-                        currentScroll -
-                        headerHeight;
-                      window.scrollTo({
-                        top: Math.max(0, targetY),
-                        behavior: "smooth",
-                      });
-                      window.history.pushState(null, "", link.href);
-                    }
+                    e.preventDefault();
+                    navigateTo("home", link.href);
                   }}
                   whileHover={{ x: -4, color: "#cab178" }}
                   transition={{ duration: 0.2 }}
                   className="
                     flex items-center justify-start py-[8px] w-full
                     text-white/90 hover:text-[#cab178] no-underline transition-colors
-                    font-['Tajawal:Regular'] text-[16px] leading-[1.5] text-right
+                    font-['Tajawal:Regular'] text-[16px] leading-[1.5] text-right cursor-pointer
                   "
                 >
                   {link.label}
@@ -310,15 +299,23 @@ export default function Footer() {
               className="flex items-center gap-2.5 sm:gap-3 text-white/75 font-['Tajawal:Regular'] text-[15px] sm:text-[16px] leading-[1.5]"
               data-node-id="337:283"
             >
-              <span className="hover:text-white transition-colors cursor-pointer select-none">
+              <button
+                type="button"
+                onClick={() => navigateTo("terms")}
+                className="hover:text-white transition-colors cursor-pointer select-none bg-transparent border-0 p-0 text-inherit font-inherit text-[15px] sm:text-[16px] underline-offset-4 hover:underline"
+              >
                 الأحكام والشروط
-              </span>
+              </button>
               <span className="text-[#cab178] font-bold select-none text-[15px]" aria-hidden="true">
                 |
               </span>
-              <span className="hover:text-white transition-colors cursor-pointer select-none">
+              <button
+                type="button"
+                onClick={() => navigateTo("terms", "#your-privacy")}
+                className="hover:text-white transition-colors cursor-pointer select-none bg-transparent border-0 p-0 text-inherit font-inherit text-[15px] sm:text-[16px] underline-offset-4 hover:underline"
+              >
                 سياسة الخصوصية
-              </span>
+              </button>
             </div>
           </div>
         </div>

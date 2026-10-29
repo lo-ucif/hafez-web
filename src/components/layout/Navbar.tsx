@@ -4,6 +4,7 @@ import { IMAGES } from "../../constants/images";
 import { navLinks } from "../../data/navigation";
 import type { NavLink } from "../../data/navigation";
 import ArabicBg from "../common/ArabicBg";
+import { useNavigation } from "../../context/NavigationContext";
 
 /**
  * Site-wide Navbar with Framer Motion animations & dynamic active link coloring.
@@ -14,6 +15,7 @@ import ArabicBg from "../common/ArabicBg";
  * - Animated mobile drawer from the right.
  */
 export default function Navbar() {
+  const { currentPage, navigateTo } = useNavigation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const [activeId, setActiveId] = useState<string>(() => {
@@ -151,6 +153,11 @@ export default function Navbar() {
     setActiveId(link.id);
     setMobileMenuOpen(false);
 
+    if (currentPage !== "home") {
+      navigateTo("home", link.href);
+      return;
+    }
+
     const targetId = link.href.replace("#", "");
     const el = document.getElementById(targetId);
 
@@ -180,6 +187,11 @@ export default function Navbar() {
     setActiveId("offers");
     setMobileMenuOpen(false);
 
+    if (currentPage !== "home") {
+      navigateTo("home", "#offers");
+      return;
+    }
+
     const el = document.getElementById("offers");
     if (el) {
       const isMobile = window.innerWidth < 1024;
@@ -207,6 +219,11 @@ export default function Navbar() {
     setActiveId("contact");
     setMobileMenuOpen(false);
 
+    if (currentPage !== "home") {
+      navigateTo("home", "#contact");
+      return;
+    }
+
     const el = document.getElementById("contact");
 
     if (el) {
@@ -231,10 +248,15 @@ export default function Navbar() {
 
   // Handle Logo click
   const handleLogoClick = (e: React.MouseEvent) => {
+    if (e) e.preventDefault();
     setActiveId("home");
     setMobileMenuOpen(false);
 
-    e.preventDefault();
+    if (currentPage !== "home") {
+      navigateTo("home");
+      return;
+    }
+
     window.scrollTo({
       top: 0,
       behavior: "smooth",
