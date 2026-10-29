@@ -35,9 +35,9 @@ function UserCard({ user }: { user: UserType }) {
             alt={user.title}
             className="absolute h-full max-w-none pointer-events-none rounded-[10.155px] transition-transform duration-300 group-hover:scale-103"
             style={{
-              left: user.coverOffsetX,
-              top: user.coverOffsetY,
-              width: user.coverScale,
+              left: user.coverOffsetX ?? "-7.65%",
+              top: user.coverOffsetY ?? "5.8%",
+              width: user.coverScale ?? "120%",
             }}
             src={user.bookCover}
           />

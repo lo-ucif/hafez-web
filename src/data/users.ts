@@ -5,9 +5,9 @@ export interface UserType {
   title: string;
   description: string;
   bookCover: string;
-  coverOffsetX: string;
-  coverOffsetY: string;
-  coverScale: string;
+  coverOffsetX?: string;
+  coverOffsetY?: string;
+  coverScale?: string;
   status: 'متوفر حاليا' | 'قريبا';
   available: boolean;
 }
