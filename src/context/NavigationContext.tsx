@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 
-export type PageRoute = "home" | "terms";
+export type PageRoute = "home" | "terms" | "privacy";
 
 interface NavigationContextType {
   currentPage: PageRoute;
@@ -20,12 +20,21 @@ function getRouteFromUrl(): PageRoute {
   const hash = window.location.hash.toLowerCase();
 
   if (
+    path.includes("/privacy") ||
+    hash.startsWith("#/privacy") ||
+    hash === "#privacy"
+  ) {
+    return "privacy";
+  }
+
+  if (
     path.includes("/terms") ||
     hash.startsWith("#/terms") ||
     hash === "#terms"
   ) {
     return "terms";
   }
+
   return "home";
 }
 
@@ -39,6 +48,10 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
 
     if (page === "terms") {
       const newUrl = targetHash ? `/terms${targetHash}` : "/terms";
+      window.history.pushState(null, "", newUrl);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (page === "privacy") {
+      const newUrl = targetHash ? `/privacy${targetHash}` : "/privacy";
       window.history.pushState(null, "", newUrl);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
@@ -89,4 +102,3 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
     </NavigationContext.Provider>
   );
 };
-

@@ -563,7 +563,15 @@ export default function Terms() {
                 </div>
 
                 <p className="font-['Tajawal'] text-[16px] text-gray-700 leading-[1.8] m-0">
-                  يُرجى مراجعة وثيقة <strong>سياسة الخصوصية</strong> لمعرفة المزيد حول التدابير التقنية والتنظيمية التي نتخذها لحفظ سرية وأمان بياناتكم.
+                  يُرجى مراجعة وثيقة{" "}
+                  <button
+                    type="button"
+                    onClick={() => navigateTo("privacy")}
+                    className="font-bold text-[#1a5a81] hover:text-[#cab178] underline cursor-pointer"
+                  >
+                    سياسة الخصوصية
+                  </button>{" "}
+                  لمعرفة المزيد حول التدابير التقنية والتنظيمية التي نتخذها لحفظ سرية وأمان بياناتكم.
                 </p>
               </section>
 

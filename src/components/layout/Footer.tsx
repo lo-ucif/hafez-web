@@ -311,7 +311,7 @@ export default function Footer() {
               </span>
               <button
                 type="button"
-                onClick={() => navigateTo("terms", "#your-privacy")}
+                onClick={() => navigateTo("privacy")}
                 className="hover:text-white transition-colors cursor-pointer select-none bg-transparent border-0 p-0 text-inherit font-inherit text-[15px] sm:text-[16px] underline-offset-4 hover:underline"
               >
                 سياسة الخصوصية
