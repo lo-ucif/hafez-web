@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { IMAGES } from "../../constants/images";
 import { navLinks } from "../../data/navigation";
+import { WHATSAPP_LINK } from "../../constants/contact";
 
 const socialLinks = [
   {
     id: "whatsapp",
     label: "واتساب",
-    href: "https://wa.me/",
+    href: WHATSAPP_LINK,
     svg: (
       <svg
         width="24"

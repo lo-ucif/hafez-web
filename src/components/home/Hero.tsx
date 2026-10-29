@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { IMAGES } from "../../constants/images";
+import { WHATSAPP_ORDER_LINK } from "../../constants/contact";
 
 /**
  * Hero section strictly matching Figma node 196:178 ("post").
@@ -156,7 +157,9 @@ export default function Hero() {
           data-node-id="330:1340"
         >
           <motion.a
-            href="#contact"
+            href={WHATSAPP_ORDER_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{
               scale: 1.04,
               boxShadow: "0px 8px 24px rgba(202, 177, 120, 0.45)",

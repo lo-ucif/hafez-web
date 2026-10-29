@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
+import { WHATSAPP_PHONE } from "../../constants/contact";
 
 interface WhatsAppButtonProps {
-  /** Optional phone number with country code (e.g. "213XXXXXXXXX" or "966XXXXXXXXX") */
+  /** Optional phone number with country code (defaults to 213780280208) */
   phoneNumber?: string;
   /** Optional pre-filled message sent to WhatsApp */
   message?: string;
@@ -15,7 +16,7 @@ interface WhatsAppButtonProps {
  * - On hover: expands smoothly into a pill shape showing the WhatsApp icon + "WhatsApp" label.
  */
 export default function WhatsAppButton({
-  phoneNumber = "",
+  phoneNumber = WHATSAPP_PHONE,
   message = "",
   className = "",
 }: WhatsAppButtonProps) {

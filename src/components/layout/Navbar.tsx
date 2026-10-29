@@ -4,6 +4,7 @@ import { IMAGES } from "../../constants/images";
 import { navLinks } from "../../data/navigation";
 import type { NavLink } from "../../data/navigation";
 import ArabicBg from "../common/ArabicBg";
+import { WHATSAPP_ORDER_LINK } from "../../constants/contact";
 
 /**
  * Site-wide Navbar with Framer Motion animations & dynamic active link coloring.
@@ -174,33 +175,6 @@ export default function Navbar() {
     }
   };
 
-  // Handle CTA button click ("طلب نسخة")
-  const handleCtaClick = () => {
-    setActiveId("offers");
-    setMobileMenuOpen(false);
-
-    const el = document.getElementById("offers") || document.getElementById("contact");
-
-    if (el) {
-      const isMobile = window.innerWidth < 1024;
-      const headerHeight = isMobile ? 54 : 76;
-      const currentScroll =
-        window.scrollY ||
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        0;
-      const targetY =
-        el.getBoundingClientRect().top + currentScroll - headerHeight;
-
-      window.scrollTo({
-        top: Math.max(0, targetY),
-        behavior: "smooth",
-      });
-
-      window.history.pushState(null, "", "#offers");
-    }
-  };
-
   // Handle Contact button click ("تواصل معنا")
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -276,9 +250,9 @@ export default function Navbar() {
           "
           dir="ltr"
         >
-          {/* Left Side Buttons (LTR): تسجيل الدخول + إنشاء حساب matching Figma node 330:994 */}
+          {/* Left Side Buttons (LTR): تواصل معنا + طلب نسخة matching Figma node 330:994 */}
           <div className="flex items-center gap-2 xl:gap-3.5 shrink-0" dir="ltr" data-node-id="330:994">
-            {/* Button 1: تسجيل الدخول (Figma node 330:995) */}
+            {/* Button 1: تواصل معنا (Figma node 330:995) */}
             <motion.button
               type="button"
               whileHover={{ scale: 1.02 }}
@@ -297,15 +271,16 @@ export default function Navbar() {
               dir="auto"
               data-node-id="330:995"
             >
-              تسجيل الدخول
+              تواصل معنا
             </motion.button>
 
-            {/* Button 2: إنشاء حساب (Figma node 330:997) */}
-            <motion.button
-              type="button"
+            {/* Button 2: طلب نسخة (Figma node 330:997) -> Goes directly to WhatsApp */}
+            <motion.a
+              href={WHATSAPP_ORDER_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
-              onClick={handleCtaClick}
               className="
                 bg-[#1a5a81] hover:bg-[#154664] text-white
                 border border-white/30
@@ -315,13 +290,13 @@ export default function Navbar() {
                 rounded-[6px] shadow-sm
                 transition-all duration-200
                 cursor-pointer whitespace-nowrap
-                flex items-center justify-center
+                flex items-center justify-center no-underline
               "
               dir="auto"
               data-node-id="330:997"
             >
-              إنشاء حساب
-            </motion.button>
+              طلب نسخة
+            </motion.a>
           </div>
 
           {/* Right Group: Nav Links + Logo in RTL */}
@@ -649,31 +624,33 @@ export default function Navbar() {
                 </nav>
               </div>
 
-              {/* Bottom Action Buttons: إنشاء حساب + تسجيل الدخول */}
+              {/* Bottom Action Buttons: طلب نسخة + تواصل معنا */}
               <div
                 className="flex flex-col gap-3 w-full pb-2 shrink-0 relative z-10"
                 dir="rtl"
               >
-                {/* Button 1: إنشاء حساب */}
-                <motion.button
-                  type="button"
+                {/* Button 1: طلب نسخة -> Goes directly to WhatsApp */}
+                <motion.a
+                  href={WHATSAPP_ORDER_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.96 }}
-                  onClick={handleCtaClick}
                   className="
                     bg-white hover:bg-slate-50 text-[#1a5a81]
                     w-full py-[12px] sm:py-[14px]
                     flex items-center justify-center
                     font-['Changa:SemiBold'] font-semibold text-[18px] sm:text-[20px] leading-none
                     rounded-[6px] shadow-md
-                    transition-all cursor-pointer whitespace-nowrap
+                    transition-all cursor-pointer whitespace-nowrap no-underline
                   "
                   dir="auto"
                 >
-                  إنشاء حساب
-                </motion.button>
+                  طلب نسخة
+                </motion.a>
 
-                {/* Button 2: تسجيل الدخول */}
+                {/* Button 2: تواصل معنا */}
                 <motion.button
                   type="button"
                   whileHover={{ scale: 1.02 }}
@@ -689,7 +666,7 @@ export default function Navbar() {
                   "
                   dir="auto"
                 >
-                  تسجيل الدخول
+                  تواصل معنا
                 </motion.button>
               </div>
             </motion.div>

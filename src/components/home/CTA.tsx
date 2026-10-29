@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { IMAGES } from "../../constants/images";
+import { WHATSAPP_ORDER_LINK } from "../../constants/contact";
 
 /**
  * CTA (Call-to-Action) section — "لديكم مدرسة قرآنية؟"
@@ -138,7 +139,9 @@ export default function CTA() {
 
           {/* CTA Button matching Figma node 344:426 (Mobile) and 343:409 (Desktop) */}
           <motion.a
-            href="#contact"
+            href={WHATSAPP_ORDER_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{
               scale: 1.04,
               boxShadow: "0px 6px 20px rgba(202, 177, 120, 0.45)",
