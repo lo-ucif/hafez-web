@@ -369,7 +369,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2 xl:gap-6 min-w-0" dir="rtl">
             {/* Logo on the far right (first child in RTL) */}
             <motion.a
-              href="#home"
+              href="/"
               onClick={handleLogoClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -476,7 +476,7 @@ export default function Navbar() {
 
           {/* Logo for Mobile Header */}
           <motion.a
-            href="#home"
+            href="/"
             onClick={handleLogoClick}
             whileTap={{
               scale: 0.95,
@@ -563,7 +563,7 @@ export default function Navbar() {
               >
                 {/* Logo */}
                 <a
-                  href="#home"
+                  href="/"
                   onClick={handleLogoClick}
                   aria-label="الصفحة الرئيسية"
                   className="relative shrink-0 flex items-center justify-center h-[44px] w-auto cursor-pointer"

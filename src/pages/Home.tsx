@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import SEO from "../components/common/SEO";
 
 import Hero from "../components/home/Hero";
 import Features from "../components/home/Features";
@@ -40,6 +41,11 @@ export default function Home() {
       className="min-h-screen bg-white text-gray-900 flex flex-col overflow-x-hidden font-['Almarai']"
       dir="rtl"
     >
+      <SEO
+        title="حافظ | منصة إدارة حلقات القرآن الكريم"
+        description="حافظ منصة تساعد جمعيات ومؤسسات القرآن الكريم على إدارة الحلقات وتنظيم شؤون الطلاب والمعلمين ومتابعة رحلة حفظ القرآن الكريم."
+        canonicalPath="/"
+      />
       <Navbar />
 
       <main className="flex-1 w-full">

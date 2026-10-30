@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import SEO from "../components/common/SEO";
 import { IMAGES } from "../constants/images";
 import { useNavigation } from "../context/NavigationContext";
 
@@ -168,6 +169,11 @@ export default function Privacy() {
       className="min-h-screen bg-[#fcfdfd] text-gray-800 flex flex-col font-['Almarai'] selection:bg-[#cab178] selection:text-white"
       dir="rtl"
     >
+      <SEO
+        title="سياسة الخصوصية | منصة حافظ"
+        description="سياسة الخصوصية وأمن البيانات وحماية سرية حفظة القرآن والطلاب والمعلمين في منصة حافظ لإدارة الحلقات القرآنية."
+        canonicalPath="/privacy"
+      />
       {/* ── Same Navbar from Home page ── */}
       <Navbar />
 
@@ -203,13 +209,16 @@ export default function Privacy() {
             transition={{ duration: 0.4 }}
             className="flex items-center gap-2 text-white/70 text-xs sm:text-sm font-['Tajawal'] mb-4 sm:mb-6"
           >
-            <button
-              type="button"
-              onClick={() => navigateTo("home")}
-              className="hover:text-[#cab178] transition-colors cursor-pointer"
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo("home");
+              }}
+              className="hover:text-[#cab178] transition-colors cursor-pointer no-underline text-inherit"
             >
               الرئيسية
-            </button>
+            </a>
             <span className="text-[#cab178]">/</span>
             <span className="text-white font-medium">سياسة الخصوصية</span>
           </motion.div>
@@ -308,14 +317,17 @@ export default function Privacy() {
                     <p className="font-['Tajawal'] text-xs text-gray-600 m-0 leading-relaxed">
                       نحن لا نبيع أو نؤجر أي بيانات شخصية لأطراف ثالثة إطلاقاً.
                     </p>
-                    <button
-                      type="button"
-                      onClick={() => navigateTo("home", "#contact")}
-                      className="mt-2.5 text-xs text-[#cab178] hover:text-[#b39962] font-bold flex items-center gap-1 cursor-pointer"
+                    <a
+                      href="/#contact"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigateTo("home", "#contact");
+                      }}
+                      className="mt-2.5 text-xs text-[#cab178] hover:text-[#b39962] font-bold flex items-center gap-1 cursor-pointer no-underline"
                     >
                       <span>تواصل مع مسؤول الخصوصية</span>
                       <span>←</span>
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -585,13 +597,16 @@ export default function Privacy() {
                     <p className="font-['Almarai'] font-bold text-sm text-[#1a5a81] m-0 mb-1">
                       الدعم الفني عبر واتساب:
                     </p>
-                    <button
-                      type="button"
-                      onClick={() => navigateTo("home", "#contact")}
-                      className="font-['Tajawal'] text-sm text-[#cab178] hover:underline font-bold"
+                    <a
+                      href="/#contact"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigateTo("home", "#contact");
+                      }}
+                      className="font-['Tajawal'] text-sm text-[#cab178] hover:underline font-bold no-underline"
                     >
                       التواصل الفوري مع الدعم الفني
-                    </button>
+                    </a>
                   </div>
                 </div>
               </section>
@@ -607,19 +622,22 @@ export default function Privacy() {
                   </p>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => navigateTo("home", "#offers")}
+                <a
+                  href="/#offers"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("home", "#offers");
+                  }}
                   className="
                     bg-[#cab178] hover:bg-[#b89e67] text-white
                     font-['Almarai'] font-bold text-[16px]
                     px-6 py-3 rounded-lg shadow-sm
                     transition-all duration-200 cursor-pointer whitespace-nowrap
-                    hover:scale-105 active:scale-95
+                    hover:scale-105 active:scale-95 no-underline inline-block
                   "
                 >
                   طلب نسخة تجريبية
-                </button>
+                </a>
               </div>
 
             </article>

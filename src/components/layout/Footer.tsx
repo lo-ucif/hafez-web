@@ -141,19 +141,24 @@ export default function Footer() {
             data-node-id="337:225"
           >
             {/* Logo */}
-            <motion.div
-              onClick={() => navigateTo("home")}
+            <motion.a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo("home");
+              }}
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="h-[100px] w-[118px] relative shrink-0 cursor-pointer"
+              className="h-[100px] w-[118px] relative shrink-0 cursor-pointer block"
               data-node-id="337:226"
+              aria-label="الرئيسية منصة حافظ"
             >
               <img
                 alt="شعار حافظ"
                 className="block size-full object-contain object-right"
                 src={IMAGES.footerLogo}
               />
-            </motion.div>
+            </motion.a>
 
             {/* Newsletter text */}
             <div
@@ -299,23 +304,29 @@ export default function Footer() {
               className="flex items-center gap-2.5 sm:gap-3 text-white/75 font-['Tajawal:Regular'] text-[15px] sm:text-[16px] leading-[1.5]"
               data-node-id="337:283"
             >
-              <button
-                type="button"
-                onClick={() => navigateTo("terms")}
-                className="hover:text-white transition-colors cursor-pointer select-none bg-transparent border-0 p-0 text-inherit font-inherit text-[15px] sm:text-[16px] underline-offset-4 hover:underline"
+              <a
+                href="/terms"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateTo("terms");
+                }}
+                className="hover:text-white transition-colors cursor-pointer select-none bg-transparent border-0 p-0 text-inherit font-inherit text-[15px] sm:text-[16px] underline-offset-4 hover:underline no-underline"
               >
                 الأحكام والشروط
-              </button>
+              </a>
               <span className="text-[#cab178] font-bold select-none text-[15px]" aria-hidden="true">
                 |
               </span>
-              <button
-                type="button"
-                onClick={() => navigateTo("privacy")}
-                className="hover:text-white transition-colors cursor-pointer select-none bg-transparent border-0 p-0 text-inherit font-inherit text-[15px] sm:text-[16px] underline-offset-4 hover:underline"
+              <a
+                href="/privacy"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateTo("privacy");
+                }}
+                className="hover:text-white transition-colors cursor-pointer select-none bg-transparent border-0 p-0 text-inherit font-inherit text-[15px] sm:text-[16px] underline-offset-4 hover:underline no-underline"
               >
                 سياسة الخصوصية
-              </button>
+              </a>
             </div>
           </div>
         </div>
