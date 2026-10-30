@@ -209,7 +209,7 @@ export default function Terms() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="flex items-center gap-2 text-white/70 text-xs sm:text-sm font-['Tajawal'] mb-5"
+            className="flex items-center gap-2 text-white/70 text-xs sm:text-sm font-['Tajawal'] mb-4 sm:mb-6"
           >
             <button
               type="button"
@@ -220,21 +220,6 @@ export default function Terms() {
             </button>
             <span className="text-[#cab178]">/</span>
             <span className="text-white font-medium">الشروط والأحكام</span>
-          </motion.div>
-
-          {/* Golden Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="
-              inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full
-              bg-white/10 backdrop-blur-md border border-white/20
-              text-[#cab178] text-xs sm:text-sm font-semibold mb-4 shadow-sm
-            "
-          >
-            <span className="size-2 rounded-full bg-[#cab178] animate-pulse" />
-            <span>وثيقة تنظيمية رسمية • منصة حافظ</span>
           </motion.div>
 
           {/* Main Title */}
@@ -260,34 +245,11 @@ export default function Terms() {
             className="
               font-['Tajawal'] font-normal text-white/90
               text-[16px] sm:text-[18px] md:text-[20px]
-              leading-[1.7] max-w-2xl mt-4 mb-2
+              leading-[1.7] max-w-2xl mt-4 mb-0
             "
           >
             القواعد والضوابط القانونية والتنظيمية المعتمدة لاستخدام منصة حافظ وخدماتها الرقمية لإدارة الحلقات والمدارس القرآنية.
           </motion.p>
-
-          {/* Metadata badges */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-white/70 font-['Tajawal'] mt-4"
-          >
-            <div className="flex items-center gap-1.5">
-              <svg className="size-4 text-[#cab178]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-              <span>آخر تحديث: 2026</span>
-            </div>
-            <span className="text-white/30 hidden sm:inline">•</span>
-            <div className="flex items-center gap-1.5">
-              <svg className="size-4 text-[#cab178]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              <span>سارية المفعول لجميع المشتركين</span>
-            </div>
-          </motion.div>
         </div>
       </section>
 
