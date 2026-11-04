@@ -476,7 +476,7 @@ export default function Navbar() {
 
       </motion.header>
 
-      {/* ── Mobile Navbar Overlay (Opens from Top Right to fill Full Screen) ── */}
+      {/* ── Mobile Navbar Overlay (Opens from Top Right to fill Full Screen - 100% Responsive, No Scroll) ── */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -502,11 +502,11 @@ export default function Navbar() {
             style={{ transformOrigin: "top right" }}
             className="
               fixed inset-0 z-50 lg:hidden
-              w-screen w-full h-screen h-[100dvh]
+              w-screen w-full h-[100dvh] max-h-[100dvh]
               bg-[#1a5a81]
               flex flex-col justify-between
-              py-6 px-6 sm:px-8
-              overflow-y-auto
+              p-4 sm:p-6
+              overflow-hidden
             "
             data-node-id="308:144"
             data-name="MobileMenu"
@@ -527,7 +527,7 @@ export default function Navbar() {
 
             {/* Top Bar: Close Button on Right, Logo on Left (matching RTL header) */}
             <div
-              className="flex items-center justify-between w-full relative z-10 shrink-0 pb-4 border-b border-white/10"
+              className="flex items-center justify-between w-full relative z-10 shrink-0 pb-2.5 sm:pb-3 border-b border-white/10"
               dir="rtl"
             >
               {/* Close Button on Right */}
@@ -537,14 +537,14 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 aria-label="إغلاق القائمة"
                 className="
-                  size-[42px] flex items-center justify-center
+                  size-[38px] sm:size-[42px] flex items-center justify-center
                   rounded-lg text-white hover:text-[#cab178] hover:bg-white/10
                   transition-colors cursor-pointer
                 "
                 data-node-id="308:163"
               >
                 <svg
-                  className="size-[28px]"
+                  className="size-[26px] sm:size-[28px]"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -562,24 +562,24 @@ export default function Navbar() {
                 href="/"
                 onClick={handleLogoClick}
                 aria-label="الصفحة الرئيسية"
-                className="relative shrink-0 flex items-center justify-center h-[42px] w-auto cursor-pointer"
+                className="relative shrink-0 flex items-center justify-center h-[36px] sm:h-[40px] w-auto cursor-pointer"
                 data-node-id="308:147"
               >
                 <img
                   alt="شعار حافظ"
-                  className="h-full w-auto max-h-[42px] object-contain block select-none"
+                  className="h-full w-auto max-h-[36px] sm:max-h-[40px] object-contain block select-none"
                   src="/hafez-logo.svg"
                 />
               </a>
             </div>
 
-            {/* Navigation Links */}
+            {/* Navigation Links: Dynamically distributed via flex-1 + justify-evenly, strictly no scroll */}
             <div
-              className="flex flex-col items-stretch justify-center w-full my-auto py-6 relative z-10"
+              className="flex-1 flex flex-col justify-evenly w-full min-h-0 py-2 sm:py-3 relative z-10"
               data-node-id="308:165"
               dir="rtl"
             >
-              <nav className="w-full flex flex-col gap-3 sm:gap-4" data-node-id="308:166" aria-label="روابط الموبايل">
+              <nav className="w-full flex-1 flex flex-col justify-evenly" data-node-id="308:166" aria-label="روابط الموبايل">
                 {navLinks.map((link, idx) => {
                   const isLinkActive = activeId === link.id;
 
@@ -591,19 +591,19 @@ export default function Navbar() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{
-                        delay: 0.1 + idx * 0.04,
-                        duration: 0.35,
+                        delay: 0.08 + idx * 0.03,
+                        duration: 0.3,
                         ease: [0.16, 1, 0.3, 1],
                       }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full flex items-center justify-between no-underline cursor-pointer group py-2.5 px-3 rounded-lg hover:bg-white/5 transition-colors"
+                      className="w-full flex items-center justify-between no-underline cursor-pointer group py-1 sm:py-1.5 px-3 rounded-lg hover:bg-white/5 transition-colors"
                     >
                       {/* Title Text on the RIGHT in RTL */}
                       <span
                         dir="auto"
                         className={`
                           font-['Almarai:Bold'] font-bold
-                          text-[20px] sm:text-[22px] text-right
+                          text-[18px] sm:text-[20px] text-right
                           transition-colors duration-200
                           ${
                             isLinkActive
@@ -618,11 +618,11 @@ export default function Navbar() {
                       {/* Active Gold Indicator Dot on the LEFT in RTL */}
                       {isLinkActive ? (
                         <div
-                          className="bg-[#cab178] rounded-full shrink-0 size-[12px] sm:size-[14px] shadow-[0_0_12px_#cab178]"
+                          className="bg-[#cab178] rounded-full shrink-0 size-[10px] sm:size-[12px] shadow-[0_0_10px_#cab178]"
                           data-node-id="308:168"
                         />
                       ) : (
-                        <div className="size-[12px] sm:size-[14px] shrink-0" />
+                        <div className="size-[10px] sm:size-[12px] shrink-0" />
                       )}
                     </motion.a>
                   );
@@ -634,8 +634,8 @@ export default function Navbar() {
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.35 }}
-              className="flex flex-col gap-3 w-full pb-2 shrink-0 relative z-10"
+              transition={{ delay: 0.22, duration: 0.3 }}
+              className="flex flex-col gap-2 sm:gap-2.5 w-full pt-2 pb-1 shrink-0 relative z-10"
               dir="rtl"
             >
               {/* Button 1: طلب نسخة */}
@@ -646,10 +646,10 @@ export default function Navbar() {
                 whileTap={{ scale: 0.97 }}
                 className="
                   bg-white hover:bg-slate-50 text-[#1a5a81]
-                  w-full py-[13px] sm:py-[15px]
+                  w-full py-2.5 sm:py-3
                   flex items-center justify-center
-                  font-['Changa:Bold'] font-bold text-[18px] sm:text-[20px] leading-none
-                  rounded-[10px] shadow-lg
+                  font-['Changa:Bold'] font-bold text-[16px] sm:text-[18px] leading-none
+                  rounded-[8px] sm:rounded-[10px] shadow-md
                   transition-all cursor-pointer whitespace-nowrap
                 "
                 dir="auto"
@@ -665,10 +665,10 @@ export default function Navbar() {
                 onClick={handleContactClick}
                 className="
                   bg-white/10 hover:bg-white/15 text-white border border-white/20
-                  w-full py-[13px] sm:py-[15px]
+                  w-full py-2.5 sm:py-3
                   flex items-center justify-center
-                  font-['Changa:SemiBold'] font-semibold text-[18px] sm:text-[20px] leading-none
-                  rounded-[10px] shadow-sm backdrop-blur-sm
+                  font-['Changa:SemiBold'] font-semibold text-[16px] sm:text-[18px] leading-none
+                  rounded-[8px] sm:rounded-[10px] shadow-sm backdrop-blur-sm
                   transition-all cursor-pointer whitespace-nowrap
                 "
                 dir="auto"
