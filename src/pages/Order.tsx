@@ -13,123 +13,27 @@ const EMAILJS_SERVICE_ID = "service_xzwa9op";
 const EMAILJS_TEMPLATE_ID = "template_y0k2lnd";
 const EMAILJS_PUBLIC_KEY = "lE79wZxISOlIUfSer";
 
-// 4 Institution types with custom vector SVG icons matching the user's reference style
+// 4 Institution types using the user's exact official vector icons (without text)
 const INSTITUTION_TYPES = [
   {
     id: "school",
     label: "مدرسة قرآنية",
-    svg: (
-      <svg viewBox="0 0 48 48" className="size-7 sm:size-8" fill="none" aria-hidden="true">
-        {/* Book shadow / back pages */}
-        <path
-          d="M38 14L34 37.5C33.7 39 32.3 40.2 30.7 40.2L13 40.2C11.8 40.2 11 39 11.4 37.8L13.5 31"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-        />
-        {/* Main tilted solid book */}
-        <path
-          d="M17.5 7.8C18.2 6.1 20.1 5 22 5.3L34.2 7.2C36.4 7.6 37.9 9.6 37.5 11.8L33.2 35.5C32.8 37.7 30.8 39.2 28.6 38.8L16.4 36.9C14.2 36.5 12.7 34.5 13.1 32.3L17.5 7.8Z"
-          fill="currentColor"
-        />
-        {/* Two white cutout bars on cover */}
-        <path
-          d="M22 13.5L30 14.8M21 19.5L29 20.8"
-          stroke="white"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
+    icon: "/images/order/school.png",
   },
   {
     id: "mosque",
     label: "مسجد / حلقة قرآنية",
-    svg: (
-      <svg viewBox="0 0 48 48" className="size-7 sm:size-8" fill="none" aria-hidden="true">
-        {/* Dome */}
-        <path
-          d="M24 6C24 6 15 13 15 22C15 23 15 24 15 25H33C33 24 33 23 33 22C33 13 24 6 24 6Z"
-          fill="currentColor"
-        />
-        {/* Crescent tip */}
-        <path
-          d="M24 3V6M22.5 3.5C23.2 2.5 24.8 2.5 25.5 3.5"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-        {/* Main walls */}
-        <path
-          d="M11 24C10 24 9 25 9 26V40C9 41.1 10 42 11 42H37C38 42 39 41.1 39 40V26C39 25 38 24 37 24H11Z"
-          fill="currentColor"
-        />
-        {/* White cutout arched door */}
-        <path
-          d="M21 42V33C21 31.3 22.3 30 24 30C25.7 30 27 31.3 27 33V42H21Z"
-          fill="white"
-        />
-      </svg>
-    ),
+    icon: "/images/order/mosque.png",
   },
   {
     id: "online",
     label: "مقرأة إلكترونية",
-    svg: (
-      <svg viewBox="0 0 48 48" className="size-7 sm:size-8" fill="none" aria-hidden="true">
-        {/* Screen body */}
-        <rect
-          x="7"
-          y="9"
-          width="34"
-          height="25"
-          rx="5"
-          fill="currentColor"
-        />
-        {/* Stand */}
-        <path
-          d="M18 34L16 40H32L30 34H18Z"
-          fill="currentColor"
-        />
-        <path
-          d="M13 40H35"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-        />
-        {/* White cutout open Quran lines */}
-        <path
-          d="M24 15V26M24 19C21.5 17.5 17 17.5 15 19V25C17 23.5 21.5 23.5 24 25M24 19C26.5 17.5 31 17.5 33 19V25C31 23.5 26.5 23.5 24 25"
-          stroke="white"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
+    icon: "/images/order/online.png",
   },
   {
     id: "other",
     label: "جهة أخرى",
-    svg: (
-      <svg viewBox="0 0 48 48" className="size-7 sm:size-8" fill="none" aria-hidden="true">
-        {/* Roof triangle */}
-        <path
-          d="M24 6L8 16H40L24 6Z"
-          fill="currentColor"
-        />
-        <rect x="7" y="16" width="34" height="3" rx="1.5" fill="currentColor" />
-        {/* Building body */}
-        <path
-          d="M10 20H38V38C38 39.7 36.7 41 35 41H13C11.3 41 10 39.7 10 38V20Z"
-          fill="currentColor"
-        />
-        {/* White cutout pillars */}
-        <rect x="14" y="22" width="3.5" height="15" rx="1.75" fill="white" />
-        <rect x="22.25" y="22" width="3.5" height="15" rx="1.75" fill="white" />
-        <rect x="30.5" y="22" width="3.5" height="15" rx="1.75" fill="white" />
-      </svg>
-    ),
+    icon: "/images/order/other.png",
   },
 ];
 
@@ -378,19 +282,14 @@ export default function Order() {
               exit={{ opacity: 0, y: -15 }}
               className="bg-white rounded-[24px] shadow-[0px_10px_35px_rgba(0,0,0,0.06),0px_2px_12px_rgba(0,0,0,0.04)] border border-gray-100 p-6 sm:p-10 md:p-12 relative"
             >
-              {/* Header Title with Custom Vector Icon */}
+              {/* Header Title with User's Official Vector Icon */}
               <div className="flex items-center gap-3.5 pb-6 border-b border-gray-100 mb-8">
-                <div className="size-12 rounded-[12px] bg-[#1a5a81]/10 text-[#1a5a81] flex items-center justify-center shadow-sm">
-                  <svg viewBox="0 0 48 48" className="size-7" fill="none" aria-hidden="true">
-                    <rect x="10" y="10" width="28" height="32" rx="4" fill="currentColor" />
-                    <rect x="17" y="5" width="14" height="8" rx="3" fill="#cab178" />
-                    <path
-                      d="M17 21H31M17 27H31M17 33H26"
-                      stroke="white"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
+                <div className="size-14 sm:size-16 rounded-[14px] bg-[#1a5a81]/6 flex items-center justify-center p-2.5 shrink-0 shadow-xs">
+                  <img
+                    src="/images/order/form-header.png"
+                    alt="استمارة معلومات المدرسة والجهة القرآنية"
+                    className="size-full object-contain"
+                  />
                 </div>
                 <div>
                   <h2 className="font-['Almarai'] font-bold text-[20px] sm:text-[24px] text-[#1a5a81] m-0">
@@ -403,12 +302,12 @@ export default function Order() {
               </div>
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                {/* 1. نوع المؤسسة - 4 خيارات بأيقونات المتجهات المخصصة */}
+                {/* 1. نوع المؤسسة - 4 خيارات بأيقونات المتجهات الرسمية */}
                 <div className="flex flex-col gap-2.5">
                   <label className="font-['Almarai'] font-bold text-[15px] sm:text-[16px] text-gray-800">
                     نوع الجهة القرآنية <span className="text-red-500">*</span>
                   </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                     {INSTITUTION_TYPES.map((type) => {
                       const isSelected = formData.institutionType === type.label;
                       return (
@@ -417,23 +316,25 @@ export default function Order() {
                           type="button"
                           onClick={() => setFormData({ ...formData, institutionType: type.label })}
                           className={`
-                            flex flex-col items-center justify-center gap-2 p-3.5 sm:p-4 rounded-[12px] border transition-all cursor-pointer text-center
+                            flex flex-col items-center justify-center gap-2.5 p-3.5 sm:p-4 rounded-[14px] border transition-all cursor-pointer text-center
                             ${
                               isSelected
-                                ? "border-[#1a5a81] bg-[#1a5a81]/10 text-[#1a5a81] font-bold shadow-md ring-2 ring-[#1a5a81]/20 scale-[1.02]"
-                                : "border-gray-200 bg-gray-50/60 hover:bg-gray-100/80 hover:border-[#1a5a81]/40 text-gray-700"
+                                ? "border-[#1a5a81] bg-[#1a5a81]/10 text-[#1a5a81] font-bold shadow-md ring-2 ring-[#1a5a81]/25 scale-[1.02]"
+                                : "border-gray-200 bg-white hover:bg-gray-50/80 hover:border-[#1a5a81]/40 text-gray-700 shadow-xs"
                             }
                           `}
                         >
-                          <div
-                            className={`
-                              transition-colors
-                              ${isSelected ? "text-[#1a5a81]" : "text-[#1a5a81]/80"}
-                            `}
-                          >
-                            {type.svg}
+                          <div className="h-12 sm:h-14 w-full flex items-center justify-center">
+                            <img
+                              src={type.icon}
+                              alt={type.label}
+                              className={`
+                                max-h-full max-w-[80%] object-contain transition-transform
+                                ${isSelected ? "scale-105" : "opacity-90"}
+                              `}
+                            />
                           </div>
-                          <span className="font-['Almarai'] text-[13.5px] sm:text-[14.5px] leading-tight">
+                          <span className="font-['Almarai'] text-[13.5px] sm:text-[15px] leading-tight font-medium">
                             {type.label}
                           </span>
                         </button>
