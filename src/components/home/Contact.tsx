@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { IMAGES } from "../../constants/images";
 import SectionTitle from "../common/SectionTitle";
@@ -64,24 +64,22 @@ export default function Contact() {
       );
       setIsSubmitting(false);
       setSubmitted(true);
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+        agreeTerms: false,
+      });
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 6000);
     } catch (error) {
       console.error("Failed to send email via EmailJS:", error);
       setIsSubmitting(false);
       setErrorMessage("حدث خطأ أثناء إرسال الرسالة، يرجى المحاولة لاحقاً.");
     }
-  };
-
-  const handleReset = () => {
-    setSubmitted(false);
-    setErrorMessage(null);
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-      agreeTerms: false,
-    });
   };
 
   return (
@@ -159,52 +157,11 @@ export default function Contact() {
           "
           data-node-id="329:357"
         >
-          <AnimatePresence mode="wait">
-            {submitted ? (
-              <motion.div
-                key="success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="py-12 flex flex-col items-center justify-center text-center gap-4"
-              >
-                <div className="size-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shadow-inner">
-                  <svg
-                    className="size-8"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <h4 className="font-['Almarai'] font-bold text-[24px] text-gray-800 m-0">
-                  تم استلام رسالتك بنجاح!
-                </h4>
-                <p className="font-['Almarai'] text-[16px] text-gray-600 max-w-md m-0 leading-relaxed">
-                  شكراً لتواصلك معنا. سنقوم بالرد عليك عبر البريد الإلكتروني أو الهاتف في أقرب وقت.
-                </p>
-                <button
-                  type="button"
-                  onClick={handleReset}
-                  className="mt-4 px-6 py-2.5 rounded-[6px] bg-[#1a5a81] hover:bg-[#154e70] text-white font-['Almarai'] font-bold text-[18px] transition-colors cursor-pointer shadow-md"
-                >
-                  إرسال رسالة أخرى
-                </button>
-              </motion.div>
-            ) : (
-              <motion.form
-                key="form"
-                onSubmit={handleSubmit}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="flex flex-col gap-3.5 sm:gap-4 w-full"
-              >
-                {/* الاسم الكامل (Figma node 329:358) */}
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-3.5 sm:gap-4 w-full"
+          >
+            {/* الاسم الكامل (Figma node 329:358) */}
                 <div className="h-[50px] sm:h-[54px] relative w-full" data-node-id="329:358">
                   <input
                     type="text"
@@ -302,29 +259,45 @@ export default function Contact() {
                   </label>
                 </div>
 
-                {/* رسالة الخطأ إن وُجدت */}
-                {errorMessage && (
-                  <p className="font-['Almarai'] text-red-500 text-[14px] m-0 text-right">
-                    {errorMessage}
-                  </p>
-                )}
+            {/* زر الإرسال على اليمين مع رسالة التأكيد النصية الصغيرة */}
+            <div className="flex items-center justify-start gap-4 pt-2 w-full flex-wrap">
+              <motion.button
+                type="submit"
+                disabled={isSubmitting}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                data-node-id="329:376"
+                className="bg-[#1a5a81] hover:bg-[#154a6b] h-[48px] sm:h-[50px] px-10 sm:px-12 rounded-[6px] text-white font-['Almarai'] font-bold text-[18px] sm:text-[20px] flex items-center justify-center transition-all cursor-pointer shadow-sm hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "جارٍ الإرسال..." : "ارسل الان"}
+              </motion.button>
 
-                {/* زر الإرسال على اليمين (Figma node 329:376) */}
-                <div className="flex justify-start pt-2 w-full">
-                  <motion.button
-                    type="submit"
-                    disabled={isSubmitting}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    data-node-id="329:376"
-                    className="bg-[#1a5a81] hover:bg-[#154a6b] h-[48px] sm:h-[50px] px-10 sm:px-12 rounded-[6px] text-white font-['Almarai'] font-bold text-[18px] sm:text-[20px] flex items-center justify-center transition-all cursor-pointer shadow-sm hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? "جارٍ الإرسال..." : "ارسل الان"}
-                  </motion.button>
-                </div>
-              </motion.form>
-            )}
-          </AnimatePresence>
+              {/* نص تأكيد الإرسال الصغير */}
+              {submitted && (
+                <motion.span
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="font-['Almarai'] text-emerald-600 font-semibold text-[14px] sm:text-[15px] flex items-center gap-1.5"
+                >
+                  <svg className="size-4 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span>تم إرسال رسالتك بنجاح!</span>
+                </motion.span>
+              )}
+
+              {/* رسالة الخطأ إن وُجدت */}
+              {errorMessage && (
+                <motion.span
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="font-['Almarai'] text-red-500 font-medium text-[13px] sm:text-[14px]"
+                >
+                  {errorMessage}
+                </motion.span>
+              )}
+            </div>
+          </form>
         </div>
       </div>
     </section>
