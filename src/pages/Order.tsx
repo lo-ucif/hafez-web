@@ -81,6 +81,10 @@ export default function Order() {
       setErrorMessage("يرجى إدخال البريد الإلكتروني.");
       return;
     }
+    if (!formData.city.trim()) {
+      setErrorMessage("يرجى إدخال المدينة / الولاية.");
+      return;
+    }
     if (!formData.agreeTerms) {
       setErrorMessage("يرجى الموافقة على شروط التواصل.");
       return;
@@ -408,10 +412,11 @@ export default function Order() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div className="flex flex-col gap-2">
                     <label className="font-['Almarai'] font-bold text-[14px] sm:text-[15px] text-gray-800">
-                      المدينة / الولاية
+                      المدينة / الولاية <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
+                      required
                       placeholder="مثال: الجزائر العاصمة، قسنطينة، سطيف..."
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
