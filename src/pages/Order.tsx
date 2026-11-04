@@ -321,10 +321,9 @@ export default function Order() {
                           onClick={() => setFormData({ ...formData, institutionType: type.label })}
                           className={`
                             flex flex-col items-center justify-center gap-2.5 p-3.5 sm:p-4 rounded-[14px] border transition-all cursor-pointer text-center
-                            ${
-                              isSelected
-                                ? "border-[#1a5a81] bg-[#1a5a81]/10 text-[#1a5a81] font-bold shadow-md ring-2 ring-[#1a5a81]/25 scale-[1.02]"
-                                : "border-gray-200 bg-white hover:bg-gray-50/80 hover:border-[#1a5a81]/40 text-gray-700 shadow-xs"
+                            ${isSelected
+                              ? "border-[#1a5a81] bg-[#1a5a81]/10 text-[#1a5a81] font-bold shadow-md ring-2 ring-[#1a5a81]/25 scale-[1.02]"
+                              : "border-gray-200 bg-white hover:bg-gray-50/80 hover:border-[#1a5a81]/40 text-gray-700 shadow-xs"
                             }
                           `}
                         >
@@ -488,23 +487,34 @@ export default function Order() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="
-                      w-full sm:w-auto bg-[#1a5a81] hover:bg-[#154a6b]
-                      text-white font-['Almarai'] font-bold text-[18px] sm:text-[20px]
-                      h-[52px] sm:h-[56px] px-10 sm:px-14 rounded-[8px]
+                      w-auto min-w-[210px] shrink-0 bg-[#1a5a81] hover:bg-[#154a6b]
+                      text-white font-['Almarai'] font-bold text-[17px] sm:text-[19px]
+                      h-[52px] sm:h-[56px] px-8 sm:px-12 rounded-[8px]
                       flex items-center justify-center gap-3
                       shadow-[0px_4px_16px_rgba(26,90,129,0.28)]
-                      transition-all cursor-pointer border-0
+                      transition-all cursor-pointer border-0 whitespace-nowrap
                       disabled:opacity-60 disabled:cursor-not-allowed
                     "
                   >
-                    <svg className="size-6 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.69 12.04 3.69C14.24 3.69 16.31 4.55 17.86 6.11C19.42 7.67 20.27 9.74 20.27 11.91C20.27 16.46 16.58 20.15 12.04 20.15Z" />
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="size-6 shrink-0"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.69 12.04 3.69C14.24 3.69 16.31 4.55 17.86 6.11C19.42 7.67 20.27 9.74 20.27 11.91C20.27 16.46 16.58 20.15 12.04 20.15ZM16.55 14.43C16.3 14.31 15.08 13.71 14.85 13.62C14.62 13.54 14.46 13.5 14.29 13.75C14.13 14 13.65 14.57 13.5 14.74C13.36 14.9 13.21 14.93 12.96 14.8C12.71 14.68 11.91 14.41 10.96 13.57C10.22 12.91 9.72 12.1 9.58 11.85C9.43 11.6 9.56 11.47 9.69 11.35C9.8 11.24 9.93 11.07 10.06 10.92C10.18 10.33 10.35 10.19 10.29 10.06C10.22 9.94 9.73 8.73 9.52 8.24C9.32 7.75 9.12 7.82 8.97 7.81C8.83 7.8 8.66 7.8 8.5 7.8C8.33 7.8 8.07 7.86 7.84 8.11C7.61 8.36 6.97 8.96 6.97 10.18C6.97 11.41 7.86 12.59 7.99 12.76C8.11 12.92 9.75 15.45 12.25 16.53C12.84 16.79 13.3 16.94 13.66 17.06C14.26 17.25 14.8 17.22 15.23 17.16C15.71 17.09 16.71 16.55 16.92 15.98C17.13 15.4 17.13 14.91 17.06 14.8C17 14.7 16.8 14.55 16.55 14.43Z"
+                      />
                     </svg>
-                    <span>{isSubmitting ? "جاري الإرسال..." : "إرسال الطلب"}</span>
+                    <span className="whitespace-nowrap leading-none">
+                      {isSubmitting ? "جاري الإرسال..." : "إرسال الطلب"}
+                    </span>
                   </motion.button>
 
                   <p className="font-['Almarai'] text-gray-500 text-[13px] sm:text-[14px] m-0 text-center sm:text-left">
-                    💡 سيتم فتح تطبيق واتساب مباشرة مع كتابة كافة البيانات تلقائياً، يكفيك فقط الضغط على إرسال.
+                    سيتم فتح تطبيق واتساب مباشرة مع كتابة كافة البيانات تلقائياً، يكفيك فقط الضغط على إرسال.
                   </p>
                 </div>
               </form>
