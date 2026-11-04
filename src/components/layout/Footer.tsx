@@ -160,7 +160,7 @@ export default function Footer() {
               />
             </motion.a>
 
-            {/* Newsletter text */}
+            {/* About / Overview text */}
             <div
               className="flex flex-col gap-[12px] items-start w-full"
               data-node-id="337:242"
@@ -170,8 +170,7 @@ export default function Footer() {
                 className="font-['Tajawal:Regular'] font-normal text-[18px] leading-[1.6] text-white text-right w-full m-0"
                 data-node-id="337:277"
               >
-                اشترك في نشرتنا لتصلك أحدث المبادرات المجتمعية والاستراتيجيات
-                المؤسسية لجمعية الإرشاد والإصلاح
+                منصة حافظ: النظام الرقمي المتكامل لإدارة ومتابعة الحلقات والمدارس القرآنية، لتمكين المعلمين ومتابعة الطلاب بكل سهولة واحترافية.
               </p>
               <div
                 className="flex flex-col items-start w-full"
@@ -179,11 +178,10 @@ export default function Footer() {
                 data-name="Actions"
               >
                 <p
-                  className="font-['Tajawal:Regular'] text-[12px] leading-[1.6] text-white/70 text-right w-full m-0"
+                  className="font-['Tajawal:Regular'] text-[14px] leading-[1.6] text-white/75 text-right w-full m-0"
                   data-node-id="337:279"
                 >
-                  من خلال الاشتراك، أنت توافق على سياسة الخصوصية الخاصة بنا
-                  وتوافق على تلقي التحديثات
+                  الحل التقني الأمثل للجمعيات والمؤسسات القرآنية للارتقاء بجودة التعليم القرآني.
                 </p>
               </div>
             </div>
