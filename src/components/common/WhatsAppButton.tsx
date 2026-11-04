@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { WHATSAPP_PHONE } from "../../constants/contact";
 
 interface WhatsAppButtonProps {
-  /** Optional phone number with country code (defaults to 213780280208) */
+  /** Optional phone number with country code (defaults to 213676244189) */
   phoneNumber?: string;
   /** Optional pre-filled message sent to WhatsApp */
   message?: string;

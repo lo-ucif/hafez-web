@@ -30,7 +30,7 @@ const socialLinks = [
   {
     id: "facebook",
     label: "فيسبوك",
-    href: "https://facebook.com",
+    href: "https://www.facebook.com/profile.php?id=61594639155388",
     svg: (
       <svg
         width="24"
@@ -50,7 +50,7 @@ const socialLinks = [
   {
     id: "instagram",
     label: "إنستغرام",
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/mnst_hafez?mdxt=MXBpYjhvdWI2ZG0yaA==",
     svg: (
       <svg
         width="24"
@@ -72,7 +72,7 @@ const socialLinks = [
   {
     id: "linkedin",
     label: "لينكد إن",
-    href: "https://linkedin.com",
+    href: "https://linkedin.com/company/mnsthafez",
     svg: (
       <svg
         width="24"
