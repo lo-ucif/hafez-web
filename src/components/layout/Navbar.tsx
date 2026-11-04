@@ -476,204 +476,207 @@ export default function Navbar() {
 
       </motion.header>
 
-      {/* ── Mobile Navbar Drawer (Figma node 308:144 - Opens from Right, Height = Device Height) ── */}
+      {/* ── Mobile Navbar Overlay (Opens from Top Right to fill Full Screen) ── */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 lg:hidden">
-            {/* Backdrop Overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-xs"
-              onClick={() => setMobileMenuOpen(false)}
-            />
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: 0.9,
+              clipPath: "circle(24px at calc(100% - 36px) 30px)",
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              clipPath: "circle(160% at calc(100% - 36px) 30px)",
+            }}
+            exit={{
+              opacity: 0,
+              scale: 0.92,
+              clipPath: "circle(24px at calc(100% - 36px) 30px)",
+            }}
+            transition={{
+              duration: 0.45,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            style={{ transformOrigin: "top right" }}
+            className="
+              fixed inset-0 z-50 lg:hidden
+              w-screen w-full h-screen h-[100dvh]
+              bg-[#1a5a81]
+              flex flex-col justify-between
+              py-6 px-6 sm:px-8
+              overflow-y-auto
+            "
+            data-node-id="308:144"
+            data-name="MobileMenu"
+          >
+            {/* Calligraphy Watermarks */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+              <ArabicBg
+                positionClass="top-10 -right-10"
+                sizeClass="size-[360px]"
+                opacityClass="opacity-15"
+              />
+              <ArabicBg
+                positionClass="bottom-0 -left-10"
+                sizeClass="size-[360px]"
+                opacityClass="opacity-15"
+              />
+            </div>
 
-            {/* Slide-in Drawer from Right */}
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{
-                type: "spring",
-                damping: 30,
-                stiffness: 300,
-                mass: 0.8,
-              }}
-              className="
-                fixed top-0 bottom-0 right-0 z-50
-                w-[300px] sm:w-[340px] max-w-[85vw]
-                h-screen h-[100dvh]
-                bg-[#1a5a81]
-                border-l border-white/20
-                shadow-[-10px_0_40px_rgba(0,0,0,0.5)]
-                flex flex-col justify-between
-                py-6 px-5 sm:px-6
-                overflow-y-auto
-                relative
-              "
-              data-node-id="308:144"
-              data-name="Hero"
+            {/* Top Bar: Close Button on Right, Logo on Left (matching RTL header) */}
+            <div
+              className="flex items-center justify-between w-full relative z-10 shrink-0 pb-4 border-b border-white/10"
+              dir="rtl"
             >
-              {/* Calligraphy Watermarks */}
-              <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
-                <ArabicBg
-                  positionClass="top-10 -right-10"
-                  sizeClass="size-[320px]"
-                  opacityClass="opacity-15"
-                />
-                <ArabicBg
-                  positionClass="bottom-0 -left-10"
-                  sizeClass="size-[320px]"
-                  opacityClass="opacity-15"
-                />
-              </div>
-
-              {/* Top Bar: Logo on Left, Close Button on Right (LTR flex) */}
-              <div
-                className="flex items-center justify-between w-full relative z-10 shrink-0 pb-3 border-b border-white/10"
-                data-node-id="308:145"
-                dir="ltr"
+              {/* Close Button on Right */}
+              <motion.button
+                type="button"
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="إغلاق القائمة"
+                className="
+                  size-[42px] flex items-center justify-center
+                  rounded-lg text-white hover:text-[#cab178] hover:bg-white/10
+                  transition-colors cursor-pointer
+                "
+                data-node-id="308:163"
               >
-                {/* Logo */}
-                <a
-                  href="/"
-                  onClick={handleLogoClick}
-                  aria-label="الصفحة الرئيسية"
-                  className="relative shrink-0 flex items-center justify-center h-[44px] w-auto cursor-pointer"
-                  data-node-id="308:147"
+                <svg
+                  className="size-[28px]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  <img
-                    alt="شعار حافظ"
-                    className="h-full w-auto max-h-[44px] object-contain block select-none"
-                    src="/hafez-logo.svg"
-                  />
-                </a>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </motion.button>
 
-                {/* Close Button (Figma node 308:163) */}
-                <motion.button
-                  type="button"
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setMobileMenuOpen(false)}
-                  aria-label="إغلاق القائمة"
-                  className="
-                    size-[40px] flex items-center justify-center
-                    text-white hover:text-[#cab178]
-                    transition-colors cursor-pointer
-                  "
-                  data-node-id="308:163"
-                >
-                  <svg
-                    className="size-[28px]"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </motion.button>
-              </div>
-
-              {/* Navigation Links (Figma node 308:165) */}
-              <div
-                className="flex flex-col items-center justify-center w-full my-auto py-5 relative z-10"
-                data-node-id="308:165"
-                dir="rtl"
+              {/* Logo on Left */}
+              <a
+                href="/"
+                onClick={handleLogoClick}
+                aria-label="الصفحة الرئيسية"
+                className="relative shrink-0 flex items-center justify-center h-[42px] w-auto cursor-pointer"
+                data-node-id="308:147"
               >
-                <nav className="w-full flex flex-col gap-3 sm:gap-[18px]" data-node-id="308:166" aria-label="روابط الموبايل">
-                  {navLinks.map((link) => {
-                    const isLinkActive = activeId === link.id;
+                <img
+                  alt="شعار حافظ"
+                  className="h-full w-auto max-h-[42px] object-contain block select-none"
+                  src="/hafez-logo.svg"
+                />
+              </a>
+            </div>
 
-                    return (
-                      <motion.a
-                        key={link.id}
-                        href={link.href}
-                        onClick={(e) => handleNavClick(link, e)}
-                        whileTap={{ scale: 0.98 }}
-                        className="w-full flex items-center justify-between no-underline cursor-pointer group py-1"
+            {/* Navigation Links */}
+            <div
+              className="flex flex-col items-stretch justify-center w-full my-auto py-6 relative z-10"
+              data-node-id="308:165"
+              dir="rtl"
+            >
+              <nav className="w-full flex flex-col gap-3 sm:gap-4" data-node-id="308:166" aria-label="روابط الموبايل">
+                {navLinks.map((link, idx) => {
+                  const isLinkActive = activeId === link.id;
+
+                  return (
+                    <motion.a
+                      key={link.id}
+                      href={link.href}
+                      onClick={(e) => handleNavClick(link, e)}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: 0.1 + idx * 0.04,
+                        duration: 0.35,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full flex items-center justify-between no-underline cursor-pointer group py-2.5 px-3 rounded-lg hover:bg-white/5 transition-colors"
+                    >
+                      {/* Title Text on the RIGHT in RTL */}
+                      <span
+                        dir="auto"
+                        className={`
+                          font-['Almarai:Bold'] font-bold
+                          text-[20px] sm:text-[22px] text-right
+                          transition-colors duration-200
+                          ${
+                            isLinkActive
+                              ? "text-[#cab178]"
+                              : "text-white group-hover:text-[#cab178]"
+                          }
+                        `}
                       >
-                        {/* Title Text (Figma nodes 308:169-174) on the RIGHT in RTL */}
-                        <span
-                          dir="auto"
-                          className={`
-                            font-['Almarai:Bold'] font-bold
-                            text-[20px] sm:text-[22px] text-right
-                            transition-colors duration-200
-                            ${
-                              isLinkActive
-                                ? "text-[#cab178]"
-                                : "text-white group-hover:text-[#cab178]"
-                            }
-                          `}
-                        >
-                          {link.label}
-                        </span>
+                        {link.label}
+                      </span>
 
-                        {/* Active Gold Indicator Dot (Figma node 308:168) on the far-LEFT in RTL */}
-                        {isLinkActive ? (
-                          <div
-                            className="bg-[#cab178] rounded-[84px] shrink-0 size-[12px] sm:size-[14px] shadow-[0_0_10px_#cab178]"
-                            data-node-id="308:168"
-                          />
-                        ) : (
-                          <div className="size-[12px] sm:size-[14px] shrink-0" />
-                        )}
-                      </motion.a>
-                    );
-                  })}
-                </nav>
-              </div>
+                      {/* Active Gold Indicator Dot on the LEFT in RTL */}
+                      {isLinkActive ? (
+                        <div
+                          className="bg-[#cab178] rounded-full shrink-0 size-[12px] sm:size-[14px] shadow-[0_0_12px_#cab178]"
+                          data-node-id="308:168"
+                        />
+                      ) : (
+                        <div className="size-[12px] sm:size-[14px] shrink-0" />
+                      )}
+                    </motion.a>
+                  );
+                })}
+              </nav>
+            </div>
 
-              {/* Bottom Action Buttons: طلب نسخة + تواصل معنا */}
-              <div
-                className="flex flex-col gap-3 w-full pb-2 shrink-0 relative z-10"
-                dir="rtl"
+            {/* Bottom Action Buttons: طلب نسخة + تواصل معنا */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.35 }}
+              className="flex flex-col gap-3 w-full pb-2 shrink-0 relative z-10"
+              dir="rtl"
+            >
+              {/* Button 1: طلب نسخة */}
+              <motion.button
+                type="button"
+                onClick={handleRequestCopyClick}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.97 }}
+                className="
+                  bg-white hover:bg-slate-50 text-[#1a5a81]
+                  w-full py-[13px] sm:py-[15px]
+                  flex items-center justify-center
+                  font-['Changa:Bold'] font-bold text-[18px] sm:text-[20px] leading-none
+                  rounded-[10px] shadow-lg
+                  transition-all cursor-pointer whitespace-nowrap
+                "
+                dir="auto"
               >
-                {/* Button 1: طلب نسخة -> Scrolls to CTA section */}
-                <motion.button
-                  type="button"
-                  onClick={handleRequestCopyClick}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.96 }}
-                  className="
-                    bg-white hover:bg-slate-50 text-[#1a5a81]
-                    w-full py-[12px] sm:py-[14px]
-                    flex items-center justify-center
-                    font-['Changa:SemiBold'] font-semibold text-[18px] sm:text-[20px] leading-none
-                    rounded-[6px] shadow-md
-                    transition-all cursor-pointer whitespace-nowrap
-                  "
-                  dir="auto"
-                >
-                  طلب نسخة
-                </motion.button>
+                طلب نسخة
+              </motion.button>
 
-                {/* Button 2: تواصل معنا */}
-                <motion.button
-                  type="button"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.96 }}
-                  onClick={handleContactClick}
-                  className="
-                    bg-[#e6edf1] hover:bg-[#d8e4eb] text-[#1a5a81]
-                    w-full py-[12px] sm:py-[14px]
-                    flex items-center justify-center
-                    font-['Changa:SemiBold'] font-semibold text-[18px] sm:text-[20px] leading-none
-                    rounded-[6px] shadow-md
-                    transition-all cursor-pointer whitespace-nowrap
-                  "
-                  dir="auto"
-                >
-                  تواصل معنا
-                </motion.button>
-              </div>
+              {/* Button 2: تواصل معنا */}
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={handleContactClick}
+                className="
+                  bg-white/10 hover:bg-white/15 text-white border border-white/20
+                  w-full py-[13px] sm:py-[15px]
+                  flex items-center justify-center
+                  font-['Changa:SemiBold'] font-semibold text-[18px] sm:text-[20px] leading-none
+                  rounded-[10px] shadow-sm backdrop-blur-sm
+                  transition-all cursor-pointer whitespace-nowrap
+                "
+                dir="auto"
+              >
+                تواصل معنا
+              </motion.button>
             </motion.div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
