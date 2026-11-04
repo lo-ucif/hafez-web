@@ -260,7 +260,7 @@ export default function Order() {
                   href={generatedWhatsAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#25D366] hover:bg-[#20ba59] text-white px-8 py-3.5 rounded-[8px] font-bold text-[16px] sm:text-[18px] flex items-center gap-2.5 shadow-md hover:shadow-lg transition-all no-underline"
+                  className="bg-[#1a5a81] hover:bg-[#154a6b] text-white px-8 py-3.5 rounded-[8px] font-bold text-[16px] sm:text-[18px] flex items-center gap-2.5 shadow-md hover:shadow-lg transition-all no-underline"
                 >
                   <span>فتح واتساب مجدداً</span>
                   <svg className="size-5" fill="currentColor" viewBox="0 0 24 24">
@@ -480,7 +480,7 @@ export default function Order() {
                   </p>
                 )}
 
-                {/* زر الإرسال عبر واتساب */}
+                {/* زر الإرسال باللون الأزرق وأيقونة واتساب */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-gray-100">
                   <motion.button
                     type="submit"
@@ -488,11 +488,11 @@ export default function Order() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="
-                      w-full sm:w-auto bg-[#25D366] hover:bg-[#20ba59]
+                      w-full sm:w-auto bg-[#1a5a81] hover:bg-[#154a6b]
                       text-white font-['Almarai'] font-bold text-[18px] sm:text-[20px]
                       h-[52px] sm:h-[56px] px-10 sm:px-14 rounded-[8px]
                       flex items-center justify-center gap-3
-                      shadow-[0px_4px_16px_rgba(37,211,102,0.3)]
+                      shadow-[0px_4px_16px_rgba(26,90,129,0.28)]
                       transition-all cursor-pointer border-0
                       disabled:opacity-60 disabled:cursor-not-allowed
                     "
@@ -500,7 +500,7 @@ export default function Order() {
                     <svg className="size-6 shrink-0" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.69 12.04 3.69C14.24 3.69 16.31 4.55 17.86 6.11C19.42 7.67 20.27 9.74 20.27 11.91C20.27 16.46 16.58 20.15 12.04 20.15Z" />
                     </svg>
-                    <span>{isSubmitting ? "جاري التجهيز..." : "إرسال الطلب عبر واتساب"}</span>
+                    <span>{isSubmitting ? "جاري الإرسال..." : "إرسال الطلب"}</span>
                   </motion.button>
 
                   <p className="font-['Almarai'] text-gray-500 text-[13px] sm:text-[14px] m-0 text-center sm:text-left">
