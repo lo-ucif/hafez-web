@@ -54,17 +54,21 @@ export default function Organisations() {
         data-node-id="196:464"
       >
         {/* Right (in RTL): نادي الطبيب الحافظ - كلية الطب قسنطينة */}
-        <div
-          className="h-[52px] sm:h-[60px] md:h-[65px] w-auto max-w-[200px] relative shrink-0 flex items-center justify-center"
+        <a
+          href="https://tabibhafiz.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="نادي الطبيب الحافظ - كلية الطب قسنطينة"
+          className="h-[52px] sm:h-[60px] md:h-[65px] w-auto max-w-[200px] relative shrink-0 flex items-center justify-center cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-200"
           data-node-id="375:81"
           data-name="Cover-الطبيب-الحافظ_2-removebg-preview 2"
         >
           <img
             alt="شعار نادي الطبيب الحافظ - كلية الطب قسنطينة"
-            className="h-full w-auto object-contain block select-none drop-shadow-sm pointer-events-none"
+            className="h-full w-auto object-contain block select-none drop-shadow-sm"
             src={IMAGES.orgTabibHafez}
           />
-        </div>
+        </a>
 
         {/* Center: Vertical Golden Divider */}
         <div
@@ -108,13 +112,19 @@ export default function Organisations() {
         >
           {[0, 1, 2, 3].map((setIndex) => (
             <div key={setIndex} className="flex items-center gap-5 shrink-0">
-              <div className="h-[44px] w-auto max-w-[155px] flex items-center justify-center shrink-0">
+              <a
+                href="https://tabibhafiz.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="نادي الطبيب الحافظ"
+                className="h-[44px] w-auto max-w-[155px] flex items-center justify-center shrink-0 cursor-pointer active:scale-95 transition-transform"
+              >
                 <img
                   alt="شعار نادي الطبيب الحافظ"
                   className="h-full w-auto object-contain block select-none"
                   src={IMAGES.orgTabibHafez}
                 />
-              </div>
+              </a>
               <div
                 className="h-[34px] w-[2px] bg-[#cab178] rounded-full shrink-0"
                 aria-hidden="true"
