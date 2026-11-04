@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import { IMAGES } from "../../constants/images";
 import SectionTitle from "../common/SectionTitle";
+
+// EmailJS Configuration
+const EMAILJS_SERVICE_ID = "service_xzwa9op";
+const EMAILJS_TEMPLATE_ID = "template_y0k2lnd";
+const EMAILJS_PUBLIC_KEY = "lE79wZxISOlIUfSer";
 
 /**
  * Contact section strictly matching Figma node 329:350 ("section 12").
@@ -23,19 +29,51 @@ export default function Contact() {
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
 
-    setTimeout(() => {
+    const templateParams = {
+      from_name: formData.fullName,
+      user_name: formData.fullName,
+      name: formData.fullName,
+
+      from_email: formData.email,
+      user_email: formData.email,
+      email: formData.email,
+      reply_to: formData.email,
+
+      phone: formData.phone,
+      user_phone: formData.phone,
+
+      subject: formData.subject,
+      title: formData.subject,
+
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 600);
+    } catch (error) {
+      console.error("Failed to send email via EmailJS:", error);
+      setIsSubmitting(false);
+      setErrorMessage("حدث خطأ أثناء إرسال الرسالة، يرجى المحاولة لاحقاً.");
+    }
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setErrorMessage(null);
     setFormData({
       fullName: "",
       email: "",
@@ -264,6 +302,13 @@ export default function Contact() {
                   </label>
                 </div>
 
+                {/* رسالة الخطأ إن وُجدت */}
+                {errorMessage && (
+                  <p className="font-['Almarai'] text-red-500 text-[14px] m-0 text-right">
+                    {errorMessage}
+                  </p>
+                )}
+
                 {/* زر الإرسال على اليمين (Figma node 329:376) */}
                 <div className="flex justify-start pt-2 w-full">
                   <motion.button
@@ -274,7 +319,7 @@ export default function Contact() {
                     data-node-id="329:376"
                     className="bg-[#1a5a81] hover:bg-[#154a6b] h-[48px] sm:h-[50px] px-10 sm:px-12 rounded-[6px] text-white font-['Almarai'] font-bold text-[18px] sm:text-[20px] flex items-center justify-center transition-all cursor-pointer shadow-sm hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? "..." : "ارسل الان"}
+                    {isSubmitting ? "جارٍ الإرسال..." : "ارسل الان"}
                   </motion.button>
                 </div>
               </motion.form>
