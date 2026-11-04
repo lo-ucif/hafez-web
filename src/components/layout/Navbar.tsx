@@ -276,7 +276,7 @@ export default function Navbar() {
         `}
       >
         {/* Subtle Arabic calligraphy watermark pattern matching Figma Desktop - 7 */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10 hidden lg:block">
           <ArabicBg
             positionClass="top-[-100px] left-1/2 -translate-x-1/2"
             sizeClass="w-[1440px] h-[300px]"
@@ -511,19 +511,7 @@ export default function Navbar() {
             data-node-id="308:144"
             data-name="MobileMenu"
           >
-            {/* Calligraphy Watermarks */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
-              <ArabicBg
-                positionClass="top-10 -right-10"
-                sizeClass="size-[360px]"
-                opacityClass="opacity-15"
-              />
-              <ArabicBg
-                positionClass="bottom-0 -left-10"
-                sizeClass="size-[360px]"
-                opacityClass="opacity-15"
-              />
-            </div>
+
 
             {/* Top Bar: Close Button on Right, Logo on Left (matching RTL header) */}
             <div
