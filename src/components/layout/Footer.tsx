@@ -299,34 +299,30 @@ export default function Footer() {
               © 2026 منصة حافظ. جميع الحقوق محفوظة
             </p>
 
-            {/* Left in RTL: الأحكام والشروط | سياسة الخصوصية */}
+            {/* Left in RTL: الأحكام والشروط | سياسة الخصوصية (معطلة مؤقتاً بدون حذف) */}
             <div
-              className="flex items-center gap-2.5 sm:gap-3 text-white/75 font-['Tajawal:Regular'] text-[15px] sm:text-[16px] leading-[1.5]"
+              className="flex items-center gap-2.5 sm:gap-3 text-white/70 font-['Tajawal:Regular'] text-[15px] sm:text-[16px] leading-[1.5]"
               data-node-id="337:283"
             >
-              <a
-                href="/terms"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigateTo("terms");
-                }}
-                className="hover:text-white transition-colors cursor-pointer select-none bg-transparent border-0 p-0 text-inherit font-inherit text-[15px] sm:text-[16px] underline-offset-4 hover:underline no-underline"
+              <span
+                role="link"
+                aria-disabled="true"
+                onClick={(e) => e.preventDefault()}
+                className="cursor-default select-none bg-transparent border-0 p-0 text-inherit font-inherit text-[15px] sm:text-[16px]"
               >
                 الأحكام والشروط
-              </a>
+              </span>
               <span className="text-[#cab178] font-bold select-none text-[15px]" aria-hidden="true">
                 |
               </span>
-              <a
-                href="/privacy"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigateTo("privacy");
-                }}
-                className="hover:text-white transition-colors cursor-pointer select-none bg-transparent border-0 p-0 text-inherit font-inherit text-[15px] sm:text-[16px] underline-offset-4 hover:underline no-underline"
+              <span
+                role="link"
+                aria-disabled="true"
+                onClick={(e) => e.preventDefault()}
+                className="cursor-default select-none bg-transparent border-0 p-0 text-inherit font-inherit text-[15px] sm:text-[16px]"
               >
                 سياسة الخصوصية
-              </a>
+              </span>
             </div>
           </div>
         </div>

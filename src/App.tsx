@@ -5,14 +5,17 @@ import Privacy from "./pages/Privacy";
 import WhatsAppButton from "./components/common/WhatsAppButton";
 import { NavigationProvider, useNavigation } from "./context/NavigationContext";
 
+// Flag to deactivate Terms and Privacy pages without deleting them
+const ENABLE_LEGAL_PAGES = false;
+
 function AppContent() {
   const { currentPage } = useNavigation();
 
   return (
     <>
-      {currentPage === "terms" ? (
+      {ENABLE_LEGAL_PAGES && currentPage === "terms" ? (
         <Terms />
-      ) : currentPage === "privacy" ? (
+      ) : ENABLE_LEGAL_PAGES && currentPage === "privacy" ? (
         <Privacy />
       ) : (
         <Home />

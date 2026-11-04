@@ -14,8 +14,10 @@ const NavigationContext = createContext<NavigationContextType>({
 
 export const useNavigation = () => useContext(NavigationContext);
 
+const ENABLE_LEGAL_PAGES = false;
+
 function getRouteFromUrl(): PageRoute {
-  if (typeof window === "undefined") return "home";
+  if (typeof window === "undefined" || !ENABLE_LEGAL_PAGES) return "home";
   const path = window.location.pathname.toLowerCase();
   const hash = window.location.hash.toLowerCase();
 
@@ -44,6 +46,10 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
   const [currentPage, setCurrentPage] = useState<PageRoute>(getRouteFromUrl);
 
   const navigateTo = useCallback((page: PageRoute, targetHash?: string) => {
+    if (!ENABLE_LEGAL_PAGES && (page === "terms" || page === "privacy")) {
+      return;
+    }
+
     setCurrentPage(page);
 
     if (page === "terms") {
