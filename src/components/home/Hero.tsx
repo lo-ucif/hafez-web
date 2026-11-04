@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { IMAGES } from "../../constants/images";
-import { WHATSAPP_ORDER_LINK } from "../../constants/contact";
+import { useNavigation } from "../../context/NavigationContext";
 
 /**
  * Hero section strictly matching Figma node 196:178 ("post").
@@ -14,6 +14,8 @@ import { WHATSAPP_ORDER_LINK } from "../../constants/contact";
  * - Below: Golden CTA button "طلب نسخة" (217px × 49px, rounded-9px, #cab178)
  */
 export default function Hero() {
+  const { navigateTo } = useNavigation();
+
   return (
     <section
       id="home"
@@ -148,7 +150,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* CTA Button matching user reference image */}
+        {/* CTA Button navigating to Order Page */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -156,10 +158,12 @@ export default function Hero() {
           className="mt-1 sm:mt-2"
           data-node-id="330:1340"
         >
-          <motion.a
-            href={WHATSAPP_ORDER_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateTo("order");
+            }}
             whileHover={{
               scale: 1.04,
               boxShadow: "0px 8px 24px rgba(202, 177, 120, 0.45)",
@@ -171,7 +175,7 @@ export default function Hero() {
               flex items-center justify-center
               w-[180px] sm:w-[200px] h-[42px] sm:h-[46px]
               rounded-[8px]
-              cursor-pointer no-underline
+              cursor-pointer border-0
               shadow-[0px_4px_16px_rgba(0,0,0,0.16)]
             "
             data-node-id="330:1341"
@@ -186,7 +190,7 @@ export default function Hero() {
             >
               طلب نسخة
             </span>
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
     </section>

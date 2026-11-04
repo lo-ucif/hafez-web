@@ -200,36 +200,11 @@ export default function Navbar() {
     }
   };
 
-  // Handle "طلب نسخة" button click -> scrolls directly to the CTA section ("لديكم مدرسة قرآنية؟")
+  // Handle "طلب نسخة" button click -> navigates to Order page
   const handleRequestCopyClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    setActiveId("offers");
     setMobileMenuOpen(false);
-
-    if (currentPage !== "home") {
-      navigateTo("home", "#offers");
-      return;
-    }
-
-    const el = document.getElementById("offers");
-    if (el) {
-      const isMobile = window.innerWidth < 1024;
-      const headerHeight = isMobile ? 54 : 76;
-      const currentScroll =
-        window.scrollY ||
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        0;
-      const targetY =
-        el.getBoundingClientRect().top + currentScroll - headerHeight;
-
-      window.scrollTo({
-        top: Math.max(0, targetY),
-        behavior: "smooth",
-      });
-
-      window.history.pushState(null, "", "#offers");
-    }
+    navigateTo("order");
   };
 
   // Handle Contact button click ("تواصل معنا")

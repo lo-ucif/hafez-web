@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 
-export type PageRoute = "home" | "terms" | "privacy";
+export type PageRoute = "home" | "terms" | "privacy" | "order";
 
 interface NavigationContextType {
   currentPage: PageRoute;
@@ -17,24 +17,34 @@ export const useNavigation = () => useContext(NavigationContext);
 const ENABLE_LEGAL_PAGES = false;
 
 function getRouteFromUrl(): PageRoute {
-  if (typeof window === "undefined" || !ENABLE_LEGAL_PAGES) return "home";
+  if (typeof window === "undefined") return "home";
   const path = window.location.pathname.toLowerCase();
   const hash = window.location.hash.toLowerCase();
 
   if (
-    path.includes("/privacy") ||
-    hash.startsWith("#/privacy") ||
-    hash === "#privacy"
+    path.includes("/order") ||
+    hash.startsWith("#/order") ||
+    hash === "#order"
   ) {
-    return "privacy";
+    return "order";
   }
 
-  if (
-    path.includes("/terms") ||
-    hash.startsWith("#/terms") ||
-    hash === "#terms"
-  ) {
-    return "terms";
+  if (ENABLE_LEGAL_PAGES) {
+    if (
+      path.includes("/privacy") ||
+      hash.startsWith("#/privacy") ||
+      hash === "#privacy"
+    ) {
+      return "privacy";
+    }
+
+    if (
+      path.includes("/terms") ||
+      hash.startsWith("#/terms") ||
+      hash === "#terms"
+    ) {
+      return "terms";
+    }
   }
 
   return "home";
@@ -52,7 +62,11 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
 
     setCurrentPage(page);
 
-    if (page === "terms") {
+    if (page === "order") {
+      const newUrl = targetHash ? `/order${targetHash}` : "/order";
+      window.history.pushState(null, "", newUrl);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (page === "terms") {
       const newUrl = targetHash ? `/terms${targetHash}` : "/terms";
       window.history.pushState(null, "", newUrl);
       window.scrollTo({ top: 0, behavior: "smooth" });

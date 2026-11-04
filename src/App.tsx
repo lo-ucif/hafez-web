@@ -2,6 +2,7 @@ import "./index.css";
 import Home from "./pages/Home";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import Order from "./pages/Order";
 import WhatsAppButton from "./components/common/WhatsAppButton";
 import { NavigationProvider, useNavigation } from "./context/NavigationContext";
 
@@ -13,7 +14,9 @@ function AppContent() {
 
   return (
     <>
-      {ENABLE_LEGAL_PAGES && currentPage === "terms" ? (
+      {currentPage === "order" ? (
+        <Order />
+      ) : ENABLE_LEGAL_PAGES && currentPage === "terms" ? (
         <Terms />
       ) : ENABLE_LEGAL_PAGES && currentPage === "privacy" ? (
         <Privacy />

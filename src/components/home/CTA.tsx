@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { IMAGES } from "../../constants/images";
-import { WHATSAPP_ORDER_LINK } from "../../constants/contact";
+import { useNavigation } from "../../context/NavigationContext";
 
 /**
  * CTA (Call-to-Action) section — "لديكم مدرسة قرآنية؟"
@@ -8,6 +8,7 @@ import { WHATSAPP_ORDER_LINK } from "../../constants/contact";
  * Fully dynamic and fluid across all responsive screen sizes.
  */
 export default function CTA() {
+  const { navigateTo } = useNavigation();
   return (
     <section
       id="offers"
@@ -137,11 +138,13 @@ export default function CTA() {
             </p>
           </div>
 
-          {/* CTA Button matching Figma node 344:426 (Mobile) and 343:409 (Desktop) */}
-          <motion.a
-            href={WHATSAPP_ORDER_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* CTA Button navigating to Order Page */}
+          <motion.button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateTo("order");
+            }}
             whileHover={{
               scale: 1.04,
               boxShadow: "0px 6px 20px rgba(202, 177, 120, 0.45)",
@@ -155,7 +158,7 @@ export default function CTA() {
               w-[143px] sm:w-[clamp(130px,18vw,239px)]
               h-[32px] sm:h-[clamp(32px,4.2vw,54px)]
               rounded-[6px] sm:rounded-[clamp(6px,0.8vw,10px)]
-              cursor-pointer no-underline
+              cursor-pointer border-0
               shadow-[0px_3px_12px_rgba(0,0,0,0.16)]
             "
             data-node-id="343:409"
@@ -171,7 +174,7 @@ export default function CTA() {
             >
               طلب نسخة
             </span>
-          </motion.a>
+          </motion.button>
         </div>
       </motion.div>
     </section>
