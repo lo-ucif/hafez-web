@@ -395,7 +395,7 @@ export default function Navbar() {
                         href={link.href}
                         onClick={(e) => handleNavClick(link, e)}
                         dir="auto"
-                        className={`relative flex flex-col items-center justify-center px-1 xl:px-2.5 2xl:px-3 py-1.5 text-[12px] xl:text-[14px] 2xl:text-[15.5px] transition-colors cursor-pointer group select-none no-underline whitespace-nowrap ${
+                        className={`relative flex flex-col items-center justify-center px-1 xl:px-2.5 2xl:px-3 py-1.5 text-[12px] xl:text-[14px] 2xl:text-[15.5px] transition-colors cursor-pointer group no-underline whitespace-nowrap ${
                           isLinkActive
                             ? "text-[#cab178] font-semibold"
                             : "text-white/90 hover:text-[#cab178] font-medium"
@@ -620,7 +620,7 @@ export default function Navbar() {
                         href={link.href}
                         onClick={(e) => handleNavClick(link, e)}
                         whileTap={{ scale: 0.98 }}
-                        className="w-full flex items-center justify-between no-underline cursor-pointer select-none group py-1"
+                        className="w-full flex items-center justify-between no-underline cursor-pointer group py-1"
                       >
                         {/* Title Text (Figma nodes 308:169-174) on the RIGHT in RTL */}
                         <span

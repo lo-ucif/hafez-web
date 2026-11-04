@@ -190,7 +190,7 @@ export default function Testimonials() {
 
       {/* Infinite Marching Cards Marquee Track */}
       <div
-        className="w-full relative overflow-hidden py-4 sm:py-6 select-none"
+        className="w-full relative overflow-hidden py-4 sm:py-6"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         dir="ltr"

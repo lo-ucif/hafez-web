@@ -32,7 +32,7 @@ export default function CTA() {
           sm:aspect-[1196/478] sm:h-auto sm:min-h-[260px] sm:max-h-[478px]
           flex flex-col sm:flex-row
           items-center justify-start sm:justify-between
-          overflow-hidden select-none
+          overflow-hidden
           rounded-[24px] sm:rounded-[clamp(24px,2.6vw,36px)]
         "
         data-node-id="343:402"

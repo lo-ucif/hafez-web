@@ -16,7 +16,7 @@ function FeatureCard({ feature }: { feature: Feature; index: number }) {
         flex flex-col gap-6 md:gap-[34px] min-h-[290px] md:h-[311px] items-center justify-center
         pb-5 pt-6 px-4
         relative rounded-[24px] w-full max-w-[362px]
-        overflow-hidden cursor-pointer select-none
+        overflow-hidden cursor-pointer
         transition-all duration-300
       "
     >

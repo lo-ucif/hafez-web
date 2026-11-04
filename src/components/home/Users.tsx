@@ -15,7 +15,7 @@ function UserCard({ user }: { user: UserType }) {
         flex flex-col items-center
         pb-[45px] pt-[8.463px]
         relative rounded-[24px] w-[283.5px]
-        overflow-visible select-none cursor-default
+        overflow-visible cursor-default
       "
       aria-label={user.title}
       style={{

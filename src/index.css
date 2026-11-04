@@ -66,10 +66,22 @@ html {
   background: #cab178;
 }
 
-/* Custom Text Selection Highlight */
-::selection {
-  background-color: #cab178;
-  color: #ffffff;
+/* Custom Text Selection Highlight across entire site */
+::selection,
+*::selection {
+  background-color: #cab178 !important;
+  color: #ffffff !important;
+}
+
+::-moz-selection,
+*::-moz-selection {
+  background-color: #cab178 !important;
+  color: #ffffff !important;
+}
+
+/* Ensure all textual elements are fully selectable */
+h1, h2, h3, h4, h5, h6, p, span, li, a, label, article, section, blockquote {
+  user-select: text;
 }
 
 @media (prefers-reduced-motion: reduce) {

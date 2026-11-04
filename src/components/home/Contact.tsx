@@ -237,7 +237,7 @@ export default function Contact() {
 
                 {/* أوافق على الشروط وسياسة الخصوصية (Figma node 329:373) */}
                 <div
-                  className="flex items-center gap-2.5 pt-1 w-full justify-start select-none"
+                  className="flex items-center gap-2.5 pt-1 w-full justify-start"
                   data-node-id="329:373"
                 >
                   <input
@@ -252,7 +252,7 @@ export default function Contact() {
                   />
                   <label
                     htmlFor="contact-terms"
-                    className="font-['Almarai'] font-normal text-[13px] sm:text-[15px] text-gray-600 cursor-pointer select-none leading-none"
+                    className="font-['Almarai'] font-normal text-[13px] sm:text-[15px] text-gray-600 cursor-pointer leading-none"
                     data-node-id="329:375"
                   >
                     أوافق على الشروط وسياسة الخصوصية
