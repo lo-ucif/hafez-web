@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { features, whyItems } from "../../data/features";
 import type { Feature, WhyItem } from "../../data/features";
 import SectionTitle from "../common/SectionTitle";
-import ArabicBg from "../common/ArabicBg";
+import { IMAGES } from "../../constants/images";
 
 // ─── Feature Card ─────────────────────────────────────────────────────────────
 
@@ -10,30 +10,35 @@ function FeatureCard({ feature }: { feature: Feature; index: number }) {
   return (
     <article
       className="
-        backdrop-blur-[34.87px] bg-white
-        drop-shadow-[0px_2px_3px_rgba(0,0,0,0.12)]
-        hover:drop-shadow-[0px_8px_16px_rgba(26,90,129,0.12)]
-        flex flex-col gap-6 md:gap-[34px] min-h-[290px] md:h-[311px] items-center justify-center
-        pb-5 pt-6 px-4
-        relative rounded-[24px] w-full max-w-[362px]
+        bg-white
+        border border-gray-100/90
+        shadow-[0px_4px_20px_rgba(0,0,0,0.06)]
+        hover:shadow-[0px_10px_25px_rgba(26,90,129,0.14)]
+        hover:-translate-y-1
+        flex flex-col gap-6 md:gap-[30px] min-h-[290px] md:h-[311px] items-center justify-center
+        pb-5 pt-6 px-5
+        relative rounded-[28px] w-full max-w-[362px]
         overflow-hidden cursor-pointer
         transition-all duration-300
       "
     >
-      <ArabicBg
-        positionClass="-translate-x-1/2 left-1/2 top-0"
-        sizeClass="size-[308px]"
-        opacityClass="opacity-[0.06]"
+      {/* Figma exact node 330:1204 background */}
+      <img
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none opacity-[0.4]"
+        src={IMAGES.cardBg}
       />
 
       <img
         alt={feature.title}
-        className="relative shrink-0 size-[75px] md:size-[90px] object-contain"
+        className="relative z-10 shrink-0 size-[75px] md:size-[90px] object-contain"
         src={feature.icon}
       />
       <h3
         dir="auto"
         className="
+          relative z-10
           font-['Almarai:Bold'] not-italic text-[20px] md:text-[24px] text-black text-center
           leading-normal m-0
         "
@@ -43,6 +48,7 @@ function FeatureCard({ feature }: { feature: Feature; index: number }) {
       <p
         dir="auto"
         className="
+          relative z-10
           font-['Almarai:Regular'] not-italic text-[15px] md:text-[18px]
           text-[rgba(0,0,0,0.6)] text-center leading-relaxed
           m-0 max-w-[300px]

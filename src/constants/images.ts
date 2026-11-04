@@ -4,6 +4,7 @@
 export const IMAGES = {
   // Decorative / background
   arabicBg: "/figma-exact/img22.webp",
+  cardBg: "/figma-exact/card-bg.webp",
 
   // Hero / branding
   heroLogo: "/figma-exact/hero-logo.svg",

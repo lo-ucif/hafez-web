@@ -1,7 +1,7 @@
 import { userTypes } from "../../data/users";
 import type { UserType } from "../../data/users";
 import SectionTitle from "../common/SectionTitle";
-import ArabicBg from "../common/ArabicBg";
+import { IMAGES } from "../../constants/images";
 
 // ─── User Card ────────────────────────────────────────────────────────────────
 
@@ -23,10 +23,11 @@ function UserCard({ user }: { user: UserType }) {
           "linear-gradient(90deg, rgba(255,255,255,0.002) 0%, rgba(255,255,255,0.002) 100%), linear-gradient(90deg, rgb(255,255,255) 0%, rgb(255,255,255) 100%)",
       }}
     >
-      <ArabicBg
-        positionClass="-translate-x-1/2 left-[calc(50%-0.25px)] top-[13px]"
-        sizeClass="size-[283px]"
-        opacityClass="opacity-6"
+      <img
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none rounded-[24px] opacity-[0.4]"
+        src={IMAGES.cardBg}
       />
 
       <div className="block w-full">
